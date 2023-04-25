@@ -113,7 +113,10 @@ void insert_at_beginning(node** head, int data)
   (*head)-&gt;prev = new_node;
   // head points to newNode
   (*head) = new_node;
-}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=a95f4182a0" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=a95f4182a0" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ![](ps://uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b35b45818dc6_image11_72830c61eba2296ca479929681c6f517_800.jp)
 To insert a node in between two nodes of our doubly linked list, we'll have to create the node before we place it:
@@ -174,7 +177,10 @@ void insertMid(node **head, int data)
   new_node-&gt;prev = temp;
   temp-&gt;next = new_node;
   temp-&gt;next-&gt;prev = new_node;
-}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=647f4cb643" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=647f4cb643" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 ![](rc="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b37af3818dc0_image10_5e0823811b28858d36df3d125e6f76e8_800.jp)
 
 To insert our node at the end of our list, we'll first have to create it:
@@ -218,7 +224,10 @@ void insertAtEnd(node **head, int data)
   temp-&gt;next = new_node;
   new_node-&gt;prev = temp;
   new_node-&gt;next = NULL;
-}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=a8f8428fbe" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=a8f8428fbe" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 ![](src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b3d425818db5_image9_852e9c2d907b48a38998cdcf630752a2_800.jp)
 
 ### Updating a node
@@ -253,7 +262,10 @@ void updateNode(node **head, int data)
       return;
   }
   temp-&gt;data = data;
-}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=dbfe43a132" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=dbfe43a132" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 ![](webflow.com/6143afec68f555387049efb3/639178e3c389b31125818dc4_image8_40e18fee2f3bf7c39bf1b22dcdd04ccb_800.jp)
 
 ### Deleting a node
@@ -300,7 +312,10 @@ void deleteNode(node **head)
     ptr-&gt;next-&gt;prev = temp;
 
   free(ptr);
-}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=1b8a499fc6" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=1b8a499fc6" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 In the function above, we deleted the node directly after the node with a value of 75.
 ![](sl.webflow.com/6143afec68f555387049efb3/639178e3c389b3da04818dc3_image7_90a37ea18c8ca0796c6e99db5692c6f0_800.jp)
 
@@ -322,7 +337,10 @@ while (temp != NULL)
   temp-&gt;prev = temp-&gt;next;
   temp-&gt;next = buf;
   temp = temp-&gt;prev;
-}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=92884295a2" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=92884295a2" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 With these done, our previous and next pointers has been swapped. Now we'll set the head pointer to the last node of the list.
 ![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b392e7818dc1_image2_51bf123530ce800c8531abc16cd26867_800.jp)
 

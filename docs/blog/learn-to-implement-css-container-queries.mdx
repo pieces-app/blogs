@@ -17,7 +17,10 @@ To query a component based on its parent width, we need to use the ```container-
 ```
 .wrapper {
   container-type: inline-size;
-}```<a href="https://victorchisom25.pieces.cloud/?p=c6744b8f13" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=c6744b8f13" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 This allows us to begin querying a component. In the example below, we need to add a certain style if the container of the ```.card``` element has a width of ```400px``` or more:
 ```
@@ -26,14 +29,20 @@ This allows us to begin querying a component. In the example below, we need to a
     display: flex;
     align-items: center;
   }
-}```<a href="https://victorchisom25.pieces.cloud/?p=8d0946bf48" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=8d0946bf48" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 While the above method is effective, using many containers can make it a little overwhelming. For this reason, it's best to give a container a name:
 ```
 .wrapper {
   container-type: inline-size;
   container-name: card;
-}```<a href="https://victorchisom25.pieces.cloud/?p=c8e74ba294" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=c8e74ba294" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 The container name can now be added next to ```@container``` as shown below:
 ```
@@ -42,7 +51,10 @@ The container name can now be added next to ```@container``` as shown below:
     display: flex;
     align-items: center;
   }
-}```<a href="https://victorchisom25.pieces.cloud/?p=5be049a19b" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=5be049a19b" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Let's go back to the first example to see how container queries can help us avoid using several CSS classes:
 ```
@@ -59,7 +71,10 @@ Let's go back to the first example to see how container queries can help us avoi
     display: flex;
     align-items: center;
   }
-}```<a href="https://victorchisom25.pieces.cloud/?p=ef4647ac72" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=ef4647ac72" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ## When and Where to Use CSS Container Queries
 For this project, we'll utilize plain HTML and CSS. This is our first HTML. You'll see that we've included a link to our own &quot;styles.css file&quot; as well:
@@ -150,7 +165,10 @@ body {
 }
 .large {
  width: 100%;
-}```<a href="https://victorchisom25.pieces.cloud/?p=956e4e97c7" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=956e4e97c7" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Your page will look like this:
 
@@ -178,7 +196,10 @@ The same card will be copied and pasted into a new ```div``` that has the class 
 // styles.css
 .small {
  width: 500px;
-}```<a href="https://victorchisom25.pieces.cloud/?p=d8f7499591" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=d8f7499591" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Keep in mind that both cards are identical, and are simply arranged in two distinct ```divs```. This is how they appear:
 ![](ploads-ssl.webflow.com/6143afec68f555387049efb3/63d193b7ca25810e59d6b0b4_image6_92c81741fce12abb454c336c1ca39cf2_800.p)
@@ -190,7 +211,10 @@ In the event that the container's width is less than 500 pixels, we want the tex
 /* styles.css */
 .parent {
  contain: layout inline-size style;
-}```<a href="https://victorchisom25.pieces.cloud/?p=3c554f9a73" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=3c554f9a73" target="_blank" rel="noopener noreferrer">Save this code</a>
 Now, we can add container queries to our card:
 ```
 /* styles.css */
@@ -199,7 +223,10 @@ Now, we can add container queries to our card:
  flex-direction: column;
  background-color: pink;
     }
-}```<a href="https://victorchisom25.pieces.cloud/?p=a21847a741" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://victorchisom25.pieces.cloud/?p=a21847a741" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 The end! Now, if you return to your browser, you’ll see that the new styles have been applied to the card within the ```div``` with the class ```small```.
 

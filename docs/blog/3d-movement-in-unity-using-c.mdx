@@ -11,6 +11,7 @@ The transform class contains a game object's position, rotation and scale. Unity
 There are some properties and methods that the transform class has, a few of which are discussed below.
 
 ### Properties
+
 - ```Transform.rotation```: Stores a <a href="https://docs.unity3d.com/ScriptReference/Quaternion.html" target="_blank" rel="noopener noreferrer">quaternion</a>, which Unity can use to manipulate the rotation of a game object or produce the current rotation.
 - ```Transform.position```: Used to get the position of a game object’s transform component and manipulate it to move the object in 3D world space.
 - ```Transform.localScale```: Allows developers to alter the size of a game object in the 3D world space.
@@ -18,6 +19,7 @@ There are some properties and methods that the transform class has, a few of whi
 - ```Transform.forward```: Returns a normalized vector representing the z-axis in the 3D world space. Its value can be altered to cause a game object to move in the z-axis while also considering the rotation of the game object.
 
 ### Public Methods
+
 - ```Transform.SetParent()```:Sets the parent of the transform, but unlike the parent property, it allows the transform to keep its local orientation.
 - ```Transform.Translate()```: Moves the game object's transform in the direction and distance specified.
 - ```Transform.TransformDirection()```:Converts the direction (x,y,z) from local space to world space.
@@ -30,6 +32,7 @@ For more information on the transform class with all its properties and methods,
 A rigidbody component added to a game object puts it under the influence of Unity's physics engine, which simulates real-life physics in the game project. Once the component is added to a game object in Unity, it is pulled downwards by gravity. It will react to any collision with other objects as long as the appropriate collider component is present. The rigidbody class can allow developers to apply forces to a game object in a way that seems physically real. Also, the rigidbody class has a lot of properties and methods, including the following:
 
 ### Properties
+
 - ```Rigidbody.drag```: Sets the drag of a game object.
 - ```Rigidbody.isKinematic```: Determines if a rigidbody attached to a game object is affected by physics.
 - ```Rigidbody.mass```: Specifies the mass of the rigidbody component.
@@ -37,6 +40,7 @@ A rigidbody component added to a game object puts it under the influence of Unit
 - ```Rigidbody.velocity```: Represents the velocity vector of the rigidbody. It is used to alter the rate of change of rigidbody position in world space.
 
 ### Methods
+
 - ```Rigidbody.AddExplosiveForce()```: Used to apply a force that simulates an explosion to a rigidbody.
 - ```Rigidbody.AddForce()```: Applies a force continuously to the rigidbody along the specified axis.
 - ```Rigidbody.AddTorque()```: Applies torque to the rigidbody component.
@@ -82,12 +86,14 @@ movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
 
 
 We call the translate method and assign parameters:
+
 ```
 transform.Translate(movedirection * speed * Time.deltaTime);
 ```
 
 
 The entire code block is as so:
+
 ```
 using UnityEngine;
 using System.Collections;
@@ -104,15 +110,18 @@ private Vector3 movedirection;
         movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
         transform.Translate(movedirection * speed * Time.deltaTime);|
    }
-}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=a90f48a69c" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=a90f48a69c" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Transform.position
 The position property is used to specify the location of a game object in the 3D world space, and it is accessible in the unity editor and through scripts. By steadily altering this value, we can achieve the movement mechanic.
 
 ```
 public Vector3 position;
-```
 
+```
 
 To implement this in code, we’ll follow the first three steps in the ```Transform.Translate() ```section, and then add the following code in the ```Update() ```method:
 
@@ -122,6 +131,7 @@ transform.position += movedirection * speed * Time.deltaTime;
 
 
 Here is the entire code block:
+
 ```
 using UnityEngine;
 using System.Collections;
@@ -138,7 +148,10 @@ private Vector3 movedirection;
          movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
          transform.position += movedirection * speed * Time.deltaTime;
     }
-}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=24224b91be" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=24224b91be" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Rigidbody.AddForce()
 A previous section showed us that this method applies force to a game object using the built-in Unity physics engine. Next, we'll achieve controlled movement by integrating the inputs with this method and adjusting the amount of force applied using a variable.
@@ -159,20 +172,25 @@ private Rigidbody objRb
 ```
 
 The ```rigidbody``` is initialized within the ```Start()``` method in the class:
+
 ```
 Start()
 {
      objRb = GetComponent&lt;Rigidbody&gt;();
 
 ```
+
 The ```GetComponent&lt;Rigidbody&gt;()``` code above fetches the Rigidbody from the game object that it is attached to. After initialization, we’ll call the ```AddForce``` method in the ```FixedUpdate()``` method:
+
 ```
     void FixedUpdate()
     {
          objRb.AddForce(movedirection * force);
-    }```
+    }
+```
 
 The entire code block looks like this:
+
 ```
 using UnityEngine;
 using System.Collections;
@@ -198,7 +216,10 @@ public class TestClass : MonoBehaviour
      {
           objRb.AddForce(movedirection * force);
      }
-}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=6bbe4e9555" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=6bbe4e9555" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Rigidbody.velocity
 This property represents the rate of change in a rigidbody's position. It gives a much quicker movement than the other listed methods in the rigidbody class.
@@ -258,7 +279,10 @@ public class TestClass : MonoBehaviour
      {
           objRb.velocity = movedirection * speed;
      }
-}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=813e4a8e94" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=813e4a8e94" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Rigidbody.MovePosition()
 Another way to program movement in Unity is by using this method call. It moves the kinematic rigidbody towards a specified position, factoring interpolation, thus creating a smooth transition between frames.
@@ -290,6 +314,9 @@ public class TestClass : MonoBehaviour
           movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
           m_Rigidbody.MovePosition(transform.position + movedirection * Time.deltaTime * speed);
      }
-}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=68b04aa56f" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+}
+```
+
+<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=68b04aa56f" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ## Conclusion

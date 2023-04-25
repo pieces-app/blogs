@@ -80,7 +80,10 @@ void main(List&lt;String&gt; arguments) async {
  final command = argResults.command!.name!;
  // gets the command entered
  final isForced = argResults[&quot;force&quot;] as bool;
-}```<a href="https://takrutvik.pieces.cloud/?p=d3b0499bd4" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://takrutvik.pieces.cloud/?p=d3b0499bd4" target="_blank" rel="noopener noreferrer">Save this code</a>
 There are two important pieces of information here, the ```ArgParser``` and the ```ArgResults```:
 - **ArgParser:** ```ArgParser``` can be used to define parsers to parse the arguments. You can then add to the parser the commands, flags and options that you expect to use in your CLI application.
 - **ArgResults:** Once you’ve created your parser, you can parse the raw ```arguments``` and it’ll return the ```ArgResults``` object, which will map the raw values from the ```arguments``` list to the defined commands, flags and options. This makes it easier to use the arguments from input through a concrete class. You can also treat it like a ```map``` to find different values as we did above to get values for the ```force``` flag.
@@ -107,7 +110,10 @@ It’s not uncommon to come across errors in your applications and catch them, o
 
 The dart:io library also provides a standard error stream that logs the errors to the console:
 ```
-stderr.writeln(&quot;Ooops! Something's not right!&quot;)```<a href="https://takrutvik.pieces.cloud/?p=50d64f936a" target="_blank" rel="noopener noreferrer">Save this code</a>
+stderr.writeln(&quot;Ooops! Something's not right!&quot;}
+```
+
+<a href="https://takrutvik.pieces.cloud/?p=50d64f936a" target="_blank" rel="noopener noreferrer">Save this code</a>
 This will log out the given error. Also, this operation is non-blocking.
 Your application may throw exceptions at runtime. You should handle these exceptions when they occur, and provide the proper message to the user to tell them what went wrong. Exceptions can be easily caught with a ```try/catch``` block.
 ```
@@ -124,7 +130,10 @@ void main(List&lt;String&gt; arguments) {
   studout.writeln(e.message);
           exit(1);
 }
-}```<a href="https://takrutvik.pieces.cloud/?p=c83548a027" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://takrutvik.pieces.cloud/?p=c83548a027" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Here, we used a ```try/catch``` block to catch any exceptions that might be thrown during the parsing of ```arguments```. Also, we are defining a ```catch``` block that will only catch the exceptions of type ```ArgParserException```. This makes it easier to work with different types of exceptions individually and provide outputs that are more helpful for those kinds of exceptions.
 The last catch block will catch all other exceptions aside from the ```ArgParserException``` type, and provide a general message with the error thrown to the user.
@@ -143,7 +152,10 @@ void readFile(String path) {
  } on FileSystemException catch (e) {
    exitCode = 2;
  }
-}```<a href="https://takrutvik.pieces.cloud/?p=20364f8430" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://takrutvik.pieces.cloud/?p=20364f8430" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Setting up a new ```exitCode``` doesn’t terminate the program. The program will continue to execute until it’s complete or an error occurs.
 
@@ -158,7 +170,10 @@ final notesFile = File(&quot;./bin/notes.txt&quot;);
 final notes = notesFile.readAsLinesSync();
 for (String note in notes) {
        stdout.writeln(note);
-   }```<a href="https://takrutvik.pieces.cloud/?p=14544997ee" target="_blank" rel="noopener noreferrer">Save this code</a>
+   }
+```
+
+<a href="https://takrutvik.pieces.cloud/?p=14544997ee" target="_blank" rel="noopener noreferrer">Save this code</a>
 The ```File``` object is part of dart:io and has utility methods that you can use for reading/writing to a file at the given path.
 Here, you’re reading from a file named **notes.txt** within the **bin** folder, as shown below:
 ```
@@ -227,7 +242,10 @@ void main(List&lt;String&gt; arguments) async {
     logger.success(
           backgroundBlue.wrap(&quot;\\nLook! A text with colored background!🥳&quot;),
     );
-}```<a href="https://takrutvik.pieces.cloud/?p=d29d4cbad1" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://takrutvik.pieces.cloud/?p=d29d4cbad1" target="_blank" rel="noopener noreferrer">Save this code</a>
 Output:
 ![](/6143afec68f555387049efb3/635ab3e8bd64ae4cb5663587_output_b1d7215a553f6793cc3bd89dd7444bf2_800.p)
 

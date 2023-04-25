@@ -56,7 +56,10 @@ func main() {
   rt = reflect.TypeOf([2]int {1, 2})
   ct = ct.Elem()
   fmt.Println(ct)
-}```<a href="https://ikehakinyemi.pieces.cloud/?p=e6a84ab2a6" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://ikehakinyemi.pieces.cloud/?p=e6a84ab2a6" target="_blank" rel="noopener noreferrer">Save this code</a>
 **Output:**
 ```
 // terminal
@@ -97,7 +100,10 @@ func main() {
     }
   }
   fmt.Printf(&quot;Mutated data: %+v\\n&quot;, data)
-}```<a href="https://ikehakinyemi.pieces.cloud/?p=6e54499f8e" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://ikehakinyemi.pieces.cloud/?p=6e54499f8e" target="_blank" rel="noopener noreferrer">Save this code</a>
 **Output**:
 ```
 // terminal
@@ -137,7 +143,10 @@ func main() {
   fmt.Printf(&quot;Original data: %+v\\n&quot;, data)
   data.refChange(100, &quot;No, peace is not an option comrade!&quot;, 4.7)
   fmt.Printf(&quot;Mutated data: %+v\\n&quot;, data)
-}```<a href="https://ikehakinyemi.pieces.cloud/?p=38ef428609" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://ikehakinyemi.pieces.cloud/?p=38ef428609" target="_blank" rel="noopener noreferrer">Save this code</a>
 **Output**:
 ```
 // terminal
@@ -199,14 +208,20 @@ Once we implement ```sort.Interface``` for our custom data stored in slices, the
 // go
 type Writer interface {
   Write(p []byte) (n int, err error)
-}```<a href="https://ikehakinyemi.pieces.cloud/?p=765343948b" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://ikehakinyemi.pieces.cloud/?p=765343948b" target="_blank" rel="noopener noreferrer">Save this code</a>
 The above interface definition needs only one function signature to satisfy the ```Writer``` interface. The ```Write``` function takes as its argument a byte slice containing the data we want to write to, either a file, network or any writable object, and returns two named values, ```n``` and ```err```. These values represent the number of bytes written and an ```error``` variable.
    3. The ```io.Reader```: This interface represents the reading part of the basis of file I/O in Go–the operation of reading from either a file, network or any readable process. The ```Reader``` interface defines only one function signature just like ```io.Writer```. Let’s look at the interface definition:
 ```
 // go
 type Reader interface {
   Read(p []byte) (n int, err error)
-}```<a href="https://ikehakinyemi.pieces.cloud/?p=765343948b" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://ikehakinyemi.pieces.cloud/?p=765343948b" target="_blank" rel="noopener noreferrer">Save this code</a>
 The above definition takes as its argument a byte slice which we will fill with data being read from a file, a network, or any readable object. We fill the byte slice with data up to its length. The return values represent the number of bytes read and an ```error``` variable.
 ## Use cases of Go interface
 The concept of interfaces is predominantly used across different Go packages and executable programs to achieve flexibility without affecting the program's performance. The following example will explore the use of ```sort.Interface``` to sort the ```Pieces``` struct type:
@@ -238,7 +253,10 @@ func main() {
   sort.Sort(sort.Reverse(PSlice(posts)))
   fmt.Println(&quot;Reverse sort:&quot;, posts)
   ...
-}```<a href="https://ikehakinyemi.pieces.cloud/?p=c21b4f8c07" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://ikehakinyemi.pieces.cloud/?p=c21b4f8c07" target="_blank" rel="noopener noreferrer">Save this code</a>
 **Output**:
 ```
 Original: [{7 I come in peace, comrade! 4.1} {100 No, peace is not an option comrade! 4.7} {13 I preach violence, comrade! 4.5} {-1 I live for violence, comrade 5.5}]

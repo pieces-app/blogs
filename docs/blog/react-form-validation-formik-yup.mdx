@@ -140,7 +140,10 @@ button:before {
   to {
     transform: rotate(360deg);
   }
-}```<a href="https://melvin.pieces.cloud/?p=c07c49b6c3" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://melvin.pieces.cloud/?p=c07c49b6c3" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ## Using Formik and Yup Form Validation
 The ```App.js```** **file has a simple sign-up form controlled by Formik. In order to validate Forms in React, inject the Yup form validation schema into the Formik object:
@@ -367,7 +370,10 @@ export default function App() {
       &lt;/div&gt;
     &lt;/div&gt;
   );
-}```<a href="https://melvin.pieces.cloud/?p=49dd4e86ae" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://melvin.pieces.cloud/?p=49dd4e86ae" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 In the code block above, we have the Yup schema, which is an array type of strings. As we can see from the Yup validation schema, the array values are required; we cannot have an empty string as an array value.
 Next, we imported the ```Formik``` component from the Formik package; this wraps the form. Since we’re working with arrays/dynamic form values, we used the ```FieldArray``` component, which helps with array manipulations. On line 32, we have the ```FieldArray```, which is used to render each form field and button. The render props from the ```FieldArray``` had helper props passed to them. This prop allowed us to mutate the array values, as seen in the &quot;Add New Item&quot; button, where we used the ```push()``` method from the helpers to add new values at the end of the array. Also, the &quot;remove&quot; button calls the ```remove()```** **method on click, with the item's index to remove passed as a parameter:

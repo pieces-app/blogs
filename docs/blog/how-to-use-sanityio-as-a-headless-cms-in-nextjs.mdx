@@ -88,7 +88,10 @@ export default createSchema({
     types: schemaTypes.concat([
     /* Your types here! */
   ]),
-})```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=b2924f835d">Save this snippet</a>
+}}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=b2924f835d">Save this snippet</a>
 
 Create a file in the schemas folder and call it ```firstSchema.js```. In the file, we have to declare a type for the schema. Depending on the schema type we use, specific properties are required to go along it. We will use the document type for this current schema, which requires a name, title, and input field. The key for input fields in Sanity, called “fields”, is a property that lets us declare the kind of input to expect. We’ll be using the string type input field.
 ```
@@ -103,7 +106,10 @@ export default {
       title: &quot;Author's Name&quot;
     }
   ]
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=fcf94fafdb">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=fcf94fafdb">Save this snippet</a>
 
 Let’s go back to ```schema.js``` and delete the comments to have a clearer view of what we’re about to do. Then, just above the **createSchema** component, import the schema we’ve just created, **firstSchema,** as a type into the **createSchema** component like so:
 ```
@@ -113,7 +119,10 @@ export default createSchema({
     types: schemaTypes.concat([
     firstSchema,
   ]),
-})```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=ba824ab56a">Save this snippet</a>
+}}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=ba824ab56a">Save this snippet</a>
 
 Save the changes and visit localhost:3333. Next, we’ll see the title of the schema we created, **Author**, displayed. **Author** contains all the schema properties we defined in our project. With these properties, we’ll be able to input and publish new content from the studio to the application.
 ![](ploads-ssl.webflow.com/6143afec68f555387049efb3/638a36b3d070dfa0c0fba390_image1_956f1c4c768e7583daa86bbf13d0d635_800.p)
@@ -145,7 +154,10 @@ export default {
       to: { type: &quot;author&quot;}
     }
   ]
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=45084a8c6d">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=45084a8c6d">Save this snippet</a>
 
 We will also need to provide a slug as an id to navigate between different pages in our Next.js application later. Let’s add that right under the string type like so:
 ```
@@ -183,7 +195,10 @@ types: schemaTypes.concat([
 firstSchema,
 secondSchema
 ]),
-})```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=8fc84c89af">Save this snippet</a>
+}}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=8fc84c89af">Save this snippet</a>
 
 Save the changes and visit localhost:3333. Then, click **Book** and we’ll see the second schema’s properties. For the name of the book, let’s give it any name; for the slug, an id of 1 because this is our first book; an image for the book; and for the last input field, which has the reference type, select an author from the dropdown.
 ![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/638a36b3d070df7c76fba392_image2_bddb7316cddc33ff7bce6ec5d269d845_800.p)
@@ -203,7 +218,10 @@ return (
 &lt;h1&gt;Books&lt;/h1&gt;
 &lt;/div&gt;
 )
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=6759468548">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=6759468548">Save this snippet</a>
 
 Let’s have the name of our book right below the **h1** tag. But how do we get the book we created in the Sanity studio into this component? We’ll use a special server-side rendering function from Next.js called **getServerSideProps** and a query language from Sanity.io called GROQ. Right below the Home() component, we will export an asynchronous **getServerSideProps()** function. Inside this function will be a GROQ query describing the type or nature of information we want to fetch, a URL, a response and a return statement. Since we want to fetch the book’s content from the studio, this is what the query will look like:
 ```
@@ -214,7 +232,10 @@ const query = &#x60;*[ _type == &quot;author&quot; ]&#x60;```<a href="https://us
 
 Now that we have our query, we will have to encode it with encodeURIComponent().
 ```
-const query = encodeURIComponent(&#x60;*[ _type == &quot;book&quot; ]&#x60;)```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=22ed4b9dbc">Save this snippet</a>
+const query = encodeURIComponent(&#x60;*[ _type == &quot;book&quot; ]&#x60;}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=22ed4b9dbc">Save this snippet</a>
 
 For the next step, let’s get the project ID from<a href="https://www.sanity.io/login"> https://www.sanity.io/login</a>. First, sign in using the previous method. Once signed in, click on the Sanity project we are working with, and you will find your project ID. Copy the project ID and paste it  into an environment variable. Next, we will have to set a URL for the fetch request we are about to make with the query. The URL will contain our project ID and our query.
 ```
@@ -226,7 +247,10 @@ const response = await fetch(url).then(res =&gt; res.json())
 return {
 props: {
 book: response.result
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=f28442bfd7">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=f28442bfd7">Save this snippet</a>
 
 In the end, we will get a function in Next.js that fetches content from Sanity:
 ```
@@ -239,7 +263,10 @@ export async function getServerSideProps(){
       book: response.result
     }
   }
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=754446a258">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=754446a258">Save this snippet</a>
 
 Now that we have our content in our application, we have to display it. So in the **Home()** functional component, let’s parse in the props from **getServerSideProps()** and use the props underneath our header. The result from Sanity is an array, and we do have just one book created in the studio, but we will be using a mapping just in case we want to add more content to the studio in the future.
 ```
@@ -258,7 +285,10 @@ export default function Home({ book }) {
     &lt;/ul&gt;
   &lt;/div&gt;
  )
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=a06b4d9474">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=a06b4d9474">Save this snippet</a>
 
 Let’s save this and run the app in development mode by running the command:
 ```
@@ -273,7 +303,10 @@ We’ll see our book displayed! Now let’s get the rest of our content on a dif
 Next.js is amazing when it comes to moving between pages. The process is called “Dynamic Routing”. Remember, we used a slug for our second schema (Book) at the Sanity studio to serve as a custom unique identifier. We will input that slug at the end of our URL to navigate between the pages in Next.js. Let’s create a subfolder in pages called “bookInfo”. The “bookInfo” folder will have a file for our slugs called “[slug].js”. The brackets tell Next.js to treat the file as a dynamic route. Inside “[slug].js”, export an asynchronous **getServerSideProps()** which will expect a context as an argument.
 ```
 export const getServerSideProps = async context =&gt; {
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=a9644997cb">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=a9644997cb">Save this snippet</a>
 
 In **getServerSideProps()**, we will query the slug from the context and store it in a variable called pageSlug like so:
 ```
@@ -281,11 +314,17 @@ const pageSlug = context.query.slug```<a href="https://user-24360516-d5f9-4a9d-9
 
 Let’s create our query with GROQ, but this time we will use the page’s slug and ensure the slug corresponds with the properties of **book**.
 ```
-const query = encodeURIComponent(&#x60;*[ slug.current == &quot;${pageSlug}&quot; &amp;&amp; _type == &quot;book&quot; ]&#x60;)```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=cfa7418d76">Save this snippet</a>
+const query = encodeURIComponent(&#x60;*[ slug.current == &quot;${pageSlug}&quot; &amp;&amp; _type == &quot;book&quot; ]&#x60;}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=cfa7418d76">Save this snippet</a>
 
 Now, we’ll create a URL like we did before and fetch a response.
 ```
-const response = await fetch(url).then(res =&gt; res.json())```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=43c648ab06">Save this snippet</a>
+const response = await fetch(url).then(res =&gt; res.json()}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=43c648ab06">Save this snippet</a>
 
 The response has a result object which contains our book’s name, the book’s image, and the book’s author. We expect the book to have only one detail, so we do not need to map through the result. Let’s store the book’s name into a variable called book like so:
 ```
@@ -305,10 +344,16 @@ Inside **getServerSideProps()**, We have to provide our project ID and dataset a
 const builder = imageUrlBuilder({
   projectId: &quot;YOUR_PROJECT_ID&quot;,
   dataset: &quot;production&quot;
-})```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=1f9741b250">Save this snippet</a>
+}}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=1f9741b250">Save this snippet</a>
 With that variable, let’s call the image builder and parse the original return value for our book’s image.
 ```
-const bookImage = builder.image(response.result[0].image).url()```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=e0464c9f8f">Save this snippet</a>
+const bookImage = builder.image(response.result[0].image).url(}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=e0464c9f8f">Save this snippet</a>
 Lastly, we’ll need to get our book’s author. The author in the second schema is not of type string. Instead, the author is of the type reference, so we will make a GROQ query using the reference content in the second schema’s author to get the string content of the first schema’s author. The content of the reference type is also the same as the “_id” type of our first schema. **_id** is an extended text format generated by Sanity for organizing content. Let’s make a query for our author using an asynchronous function outside of **getServerSideProps()**. We’ll call this function “getAuthor”, and it will contain the following:
 ```
 async function getAuthor(id){
@@ -316,11 +361,17 @@ async function getAuthor(id){
   const url = &#x60;https://YOUR_PROJECT_ID.api.sanity.io/v1/data/query/production?query=${query}&#x60;
   const response = await fetch(url).then(res =&gt; res.json())
     return(response.result[0].name)
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=2c4a4babfa">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=2c4a4babfa">Save this snippet</a>
 
 So we are saying we want to make a query for the “_id“ type in our studio and return the name of the author. Back in **getServerSideProps()**, let’s use the function we just created to get our author. The author contains two objects: the “_type” and “_ref”. We will parse in “_ref” as the id for the function like so:
 ```
-const author = await getAuthor(response.result[0].author._ref)```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=dd994a8aed">Save this snippet</a>
+const author = await getAuthor(response.result[0].author._ref}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=dd994a8aed">Save this snippet</a>
 Sweet! We’ve got all of our content. Once we return them as props, we’ll get something like this:
 
 ```
@@ -343,7 +394,10 @@ return {
     author: author
   }
  }
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=9fe24b9000">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=9fe24b9000">Save this snippet</a>
 All we have to do now is parse the three props into our default functional component like so:
 ```
 export default function BookInfo({ book, bookImage, author })
@@ -353,7 +407,10 @@ export default function BookInfo({ book, bookImage, author })
         &lt;div&gt;{book} is a book published by &lt;b&gt;{author}&lt;/b&gt; &lt;/div&gt;
     &lt;/div&gt;
   )
-}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=384146b3a2">Save this snippet</a>
+}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=384146b3a2">Save this snippet</a>
 
 Let’s return to our “index.js” file and connect it to the “[slug].js” with **useRouter()**, a function in Next.js that lets us move smoothly between clicked pages in the application. For example, when we click on a book on our homepage, Next.js will change our route to a page containing the book’s details. So, in index.js, import the **useRouter()**:
 ```
@@ -361,7 +418,10 @@ import { useRouter } from &quot;next/router&quot;```<a href="https://user-243605
 
 And store it in a const variable called **router**. Make sure the variable is inside the default functional component:
 ```
-const router = useRouter()```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=4ce740bfc2">Save this snippet</a>
+const router = useRouter(}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=4ce740bfc2">Save this snippet</a>
 
 We’ll use the router and its push method in an **onClick()** event for the **li** tag, which contains the name of our books. Inside the push method, we’ll provide the slug of the page we want to navigate to like so:
 ```
@@ -371,7 +431,10 @@ We’ll use the router and its push method in an **onClick()** event for the **l
       {b.name}
     &lt;/li&gt;
   )
-})}```<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=ac4240bd44">Save this snippet</a>
+})}
+```
+
+<a href="https://user-24360516-d5f9-4a9d-9df1-4f3938c9563c-fhcmbheklq-uc.a.run.app/?p=ac4240bd44">Save this snippet</a>
 
 Save, go to localhost:3000, and click on the book “Sanity Tutorial”:
 

@@ -55,10 +55,16 @@ from pytube import YouTube
 import os```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=2607449932" target="_blank" rel="noopener noreferrer">Save this code</a>
 With the libraries imported, you’ll now get the url of the video to be downloaded from the user. To do this, use the ```input()``` function to get the url from the user and the ```YouTube()``` function as imported from the pytube library to save it as a variable for downloading:
 ```
-yt = YouTube(str(input(&quot;Enter the URL of the video you want to download: \\n&gt;&gt; &quot;)))```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=cca64c9db0" target="_blank" rel="noopener noreferrer">Save this code</a>
+yt = YouTube(str(input(&quot;Enter the URL of the video you want to download: \\n&gt;&gt; &quot;))}
+```
+
+<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=cca64c9db0" target="_blank" rel="noopener noreferrer">Save this code</a>
 Since the audio of the YouTube video is the focus of this tutorial, you’ll extract the audio from the variable you created in the previous block of code. To do this, you need to use the ```streams()``` and ```filter()``` methods while setting the ```only_audio``` Boolean parameter as ```True```, signifying that only the audio should be extracted:
 ```
-audio = yt.streams.filter(only_audio = True).first()```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=3015438dfc" target="_blank" rel="noopener noreferrer">Save this code</a>
+audio = yt.streams.filter(only_audio = True).first(}
+```
+
+<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=3015438dfc" target="_blank" rel="noopener noreferrer">Save this code</a>
 ## Step 4: Set a Destination for Saved Files
 The next step is to determine the destination where the file will be saved. This can be done by creating a variable called destination that will hold the path to your video as a string. In this instance, there will be an option for the user to save the audio file in the same directory as the project:
 ```
@@ -71,10 +77,16 @@ You can see from the line of code above that the ```output_path``` parameter is 
 ```
 base, ext = os.path.splitext(out_file)
 new_file = base + '.mp3'
-os.rename(out_file, new_file)```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=641447bb49" target="_blank" rel="noopener noreferrer">Save this code</a>
+os.rename(out_file, new_file}
+```
+
+<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=641447bb49" target="_blank" rel="noopener noreferrer">Save this code</a>
 With the video saved, you’ll then display a result of success for the user to know that the audio has been successfully downloaded:
 ```
-print(yt.title + &quot; has been successfully downloaded in .mp3 format.&quot;)```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=80084f8fc9" target="_blank" rel="noopener noreferrer">Save this code</a>
+print(yt.title + &quot; has been successfully downloaded in .mp3 format.&quot;}
+```
+
+<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=80084f8fc9" target="_blank" rel="noopener noreferrer">Save this code</a>
 ## Step 6: Test in the Terminal
 Next, you can test the program you’ve built on the terminal. To do this, go to the project directory in your terminal and run the command shown below:
 ```
@@ -154,7 +166,10 @@ def index_post():
     base, ext = os.path.splitext(out_file)
     new_file = base + '.mp3'
     os.rename(out_file, new_file)
-    return render_template('results.html')```<a href="https://c185237a-4958-4e1e-a972-57cc037976e7.pieces.cloud/?p=7ad74295d5" target="_blank" rel="noopener noreferrer">Save this code</a>
+    return render_template('results.html'}
+```
+
+<a href="https://c185237a-4958-4e1e-a972-57cc037976e7.pieces.cloud/?p=7ad74295d5" target="_blank" rel="noopener noreferrer">Save this code</a>
 At this point, with your web application created, you can test it. To do this, open your terminal and run the following command to set the Flask runtime to development. This implies that each time there is a change, the server will automatically reload:
 ```
 # Windows

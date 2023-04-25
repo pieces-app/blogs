@@ -138,7 +138,10 @@ mediaKeySession.addEventListener('message', event =&gt; {
     };
     xhr.responseType = &quot;arraybuffer&quot;;
     xhr.send(challenge);
-})```<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=809e4393d0">Save this code</a>
+}}
+```
+
+<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=809e4393d0">Save this code</a>
 
 The challenge is under a form of binary content: ```Uint8Array```. We need to send that data to the license server through a POST request. The license server should answer us with a license containing the keys to decipher the video content.
 If everything goes well and the server gives back the license, we need to give the license to the CDM by using the ```update``` method on ```MediaKeySession```.

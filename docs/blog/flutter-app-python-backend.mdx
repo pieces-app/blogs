@@ -36,7 +36,10 @@ class HelloWorld(Resource):
 
 api.add_resource(HelloWorld, '/')
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=64f84096d6" target="_blank" rel="noopener noreferrer">Save this code</a>
+    app.run(debug=True, host='0.0.0.0', port=8080}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=64f84096d6" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Run the command:
 ```
@@ -69,14 +72,20 @@ class HelloWorld(Resource):
 
 api.add_resource(HelloWorld, '/')
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=efb843a70d" target="_blank" rel="noopener noreferrer">Save this code</a>
+    app.run(debug=True, host='0.0.0.0', port=8080}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=efb843a70d" target="_blank" rel="noopener noreferrer">Save this code</a>
 Following this, when you open the ```localhost``` it's going to look something like this:
 ![](end." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/634ee2fe66b1fa6c372d3aa2_image5_b29d81a5e0e9b05981bd924b6db18e9d_800.p)
 
 ## Integration in Flutter | Flutter App with Python Backend
 To example, I’m going to use **<a href="https://pub.dev/packages/flutter_bloc" target="_blank" rel="noopener noreferrer">flutter_bloc</a>** to handle the REST APIs, followed by cubits and states. The project structure is going to look like this screenshot:
 ![](oads-ssl.webflow.com/6143afec68f555387049efb3/634ee2fe66b1fa84e52d3a67_image2_4d1f3d17357fd084970a2799040ba916_800.p)
-We’ll start with a simple model class that holds a ```List&lt;String&gt;
+We’ll start with a simple model class that holds a
+
+```
+List&lt;String&gt;
 ```
 
 ```
@@ -110,7 +119,10 @@ class Data {
   String toString() =&gt; 'Data(words: $words)';
   @override
   int get hashCode =&gt; words.hashCode;
-}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=9670418e31">Save this code</a>
+}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=9670418e31">Save this code</a>
 
 ### data_provider.dart
 Then, we’ll request the data from the API in the ```data_provider``` layer.
@@ -126,15 +138,23 @@ class DataDataProvider {
  throw Exception(&quot;Internal Server Error&quot;);
     }
   }
-}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=8a1c4b9d53" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
 
-    ### repository.dart
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=8a1c4b9d53" target="_blank" rel="noopener noreferrer">Save this code</a>
+
+### repository.dart
 Next, just pass the data from API to the ```cubits```:
+
 ```
 part of 'cubit.dart';
 class DataRepository {
  Future&lt;Data&gt; fetch() =&gt; DataDataProvider.fetch();
-}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=272a48bce2" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=272a48bce2" target="_blank" rel="noopener noreferrer">Save this code</a>
+
 ### state.dart
 And we’re handling a few different states here:
 - Loading state
@@ -169,7 +189,11 @@ class DataFetchSuccess extends DataState {
 @immutable
 class DataFetchFailed extends DataState {
  const DataFetchFailed({String? message}) : super(message: message);
-}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=f22d48a013" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=f22d48a013" target="_blank" rel="noopener noreferrer">Save this code</a>
+
 ### cubit.dart
 Finally, we’re omitting states based on if we have the data or not.
 ```
@@ -196,7 +220,10 @@ class DataCubit extends Cubit&lt;DataState&gt; {
       emit(DataFetchFailed(message: e.toString()));
     }
   }
-}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=9e954baf07" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=9e954baf07" target="_blank" rel="noopener noreferrer">Save this code</a>
 Now let’s handle the flutter frontend using ```BlocBuilder```. The final product will be something like this:
 ```
 import 'package:flutter/material.dart';
@@ -269,7 +296,10 @@ class _DataScreenState extends State&lt;DataScreen&gt; {
       ),
     );
   }
-}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=b7b344a5a4" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=b7b344a5a4" target="_blank" rel="noopener noreferrer">Save this code</a>
 And… 🥁🥁🥁
 ![](bflow.com/6143afec68f555387049efb3/634ee2fe66b1fadcc92d3aae_image1_c68eca2b783b1e0224faed40aa7c4250.g)
 ## Complexity++
@@ -303,7 +333,10 @@ class HelloWorld(Resource):
 
 api.add_resource(HelloWorld, '/')
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=5664458dc2" target="_blank" rel="noopener noreferrer">Save this code</a>
+    app.run(debug=True, host='0.0.0.0', port=8080}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=5664458dc2" target="_blank" rel="noopener noreferrer">Save this code</a>
 ### Data.dart
 ```
 import 'dart:convert';
@@ -347,7 +380,10 @@ class Data {
  if (identical(this, other)) return true;
  return other.word == word &amp;&amp; other.type == type;
   }
-}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=f48b469c5a" target="_blank" rel="noopener noreferrer">Save this code</a>
+}
+```
+
+<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=f48b469c5a" target="_blank" rel="noopener noreferrer">Save this code</a>
 The UI on our flutter app with python backend will look something like this:
 ![](fec68f555387049efb3/634ee2fe66b1fa20cd2d3b05_image4_9c268ad865f276e0256e4f1b78523340_800.p)
 That concludes our discussion. I hope you have gained new insights and information about integrating a Python backend with a Flutter app. It is common for individuals to inquire about the type of backends that can be used with Flutter. However, it is important to note that Flutter serves as a UI toolkit and can be paired with any backend of your choice, be it Flask-RESTful, Django, Node.js, or any other. 

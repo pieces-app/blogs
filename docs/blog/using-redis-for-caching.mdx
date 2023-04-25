@@ -176,7 +176,10 @@ Once we have a Redis client subscribed to a channel, that client can no longer e
 ### Go-Redis Publisher
 ```
 Go-redis``` allows users to publish messages and subscribe to channels. It also automatically re-connects to the Redis Server when there is a network error.
-Inside our ```get user``` function, we will create a publisher using<a href="https://github.com/go-redis/redis/blob/v8.11.5/commands.go#L3172"> ```redis.Publish()```</a>. This function takes two arguments: the name of the channel to which we want to send the message and the message.
+Inside our ```get user``` function, we will create a publisher using<a href="https://github.com/go-redis/redis/blob/v8.11.5/commands.go#L3172"> ```redis.Publish(}
+```
+
+</a>. This function takes two arguments: the name of the channel to which we want to send the message and the message.
 In our case, we set the channel name to ```send-user-name``` and the payload is the response from ```redis.GetUser``` (see above).
 We are sending the marshaled payload to the channel using ```Publish``` because it allows us to transfer the data as ```[]byte```. Since we are using a ```User``` struct, it can be encoded into a ```[]byte```.
 ![](c="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/632c8f367de581b893ac75c5_image8_5324b0310d04e74fb704fe1ea062f38e_800.p)
@@ -185,7 +188,10 @@ We are sending the marshaled payload to the channel using ```Publish``` because 
 
 ### Go-Redis Subscriber
 
-We create a subscriber using the<a href="https://github.com/go-redis/redis/blob/v8.11.5/redis.go#L686" target="_blank" rel="noopener noreferrer"> ```redis.Subscribe()```</a> function.
+We create a subscriber using the<a href="https://github.com/go-redis/redis/blob/v8.11.5/redis.go#L686" target="_blank" rel="noopener noreferrer"> ```redis.Subscribe(}
+```
+
+</a> function.
 We will have one argument: the channel we want to subscribe to. In our case, this is ```send-user-name```.
 
 ```
