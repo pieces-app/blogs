@@ -34,16 +34,71 @@ The actual site after loading:
 
 ### Setting up a React Project
 We'll begin by putting up a React project with the code below in order to use Google Charts in our React application:
-e>npx create-react-app react-skeleton</pre><p>Next, let’s change the working directory to the folder established by the previous command with the following code:
-e>cd react-react-skeleton</pre><p>Next, we’ll open the folder in our preferred text editor. Now that our app is configured, it's time to add and remove unnecessary boilerplate from it. In the ```/src``` folder, let’s make a ```components``` folder, and in the root directory, we’ll make a ```server``` folder.
+```
+npx create-react-app react-skeleton
+```
+Next, let’s change the working directory to the folder established by the previous command with the following code:
+```
+cd react-react-skeleton
+```
+Next, we’ll open the folder in our preferred text editor. Now that our app is configured, it's time to add and remove unnecessary boilerplate from it. In the ```/src``` folder, let’s make a ```components``` folder, and in the root directory, we’ll make a ```server``` folder.
 
 We have a ```server``` folder because we're going to create a structure that resembles a database so we can store information about the blogs. We won't be entering any backend, so don't be concerned. With ```JSON``` Server, we’ll create a phony REST API.
 
 Next, let’s create a file named ```db.json``` or ```data.json``` in the ```/server``` folder and fill it with some random information typically found on a blog, such as an avatar, author name, thumbnail, title, and description.
 
 The contents of our ```db.json``` file should resemble something like the image below.
-<em>N.B.: An altered version of data is used in this tutorial due to its enormous size, but you can tweak it to your own style as much as you want.</em>
-e>//db.json<br><br>{<br> &quot;blogs&quot; : [<br>        {<br> &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,<br> &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,<br> &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,<br> &quot;author&quot; : &quot;Goodness Woke&quot;,<br> &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;<br>        },<br>        {<br> &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,<br> &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,<br> &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,<br> &quot;author&quot; : &quot;Goodness Woke&quot;,<br> &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;<br>        },<br>        {<br> &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,<br> &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,<br> &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,<br> &quot;author&quot; : &quot;Goodness Woke&quot;,<br> &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;<br>        },<br>        {<br> &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,<br> &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,<br> &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,<br> &quot;author&quot; : &quot;Goodness Woke&quot;,<br> &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;<br>        },<br>        {<br> &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,<br> &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,<br> &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,<br> &quot;author&quot; : &quot;Goodness Woke&quot;,<br> &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;<br>        },<br>        {<br> &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,<br> &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,<br> &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,<br> &quot;author&quot; : &quot;Goodness Woke&quot;,<br> &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;<br>        }<br>    ]<br>}</pre><p>We need to run the above file using the JSON Server package so that we can add endpoints to it and conduct operations like ```POST```, ```GET```, ```DELETE```, etc.
+N.B.: An altered version of data is used in this tutorial due to its enormous size, but you can tweak it to your own style as much as you want.
+```
+//db.json
+{
+ &quot;blogs&quot; : [
+        {
+ &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,
+ &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,
+ &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,
+ &quot;author&quot; : &quot;Goodness Woke&quot;,
+ &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;
+        },
+        {
+ &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,
+ &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,
+ &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,
+ &quot;author&quot; : &quot;Goodness Woke&quot;,
+ &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;
+        },
+        {
+ &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,
+ &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,
+ &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,
+ &quot;author&quot; : &quot;Goodness Woke&quot;,
+ &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;
+        },
+        {
+ &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,
+ &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,
+ &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,
+ &quot;author&quot; : &quot;Goodness Woke&quot;,
+ &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;
+        },
+        {
+ &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,
+ &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,
+ &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,
+ &quot;author&quot; : &quot;Goodness Woke&quot;,
+ &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;
+        },
+        {
+ &quot;title&quot; : &quot;Using regression testing to produce working software&quot;,
+ &quot;thumbnail&quot; : &quot;https://blog.pieces.com/hero_Z1Aauk4.webp&quot;,
+ &quot;avatar&quot; : &quot;https://blog.pieces.com/authors/avatars/goodness-woke.jpg&quot;,
+ &quot;author&quot; : &quot;Goodness Woke&quot;,
+ &quot;description&quot; : &quot;Lorem ipsum dolor sit amet, consectetur adipisci&quot;
+        }
+    ]
+
+```
+We need to run the above file using the JSON Server package so that we can add endpoints to it and conduct operations like ```POST```, ```GET```, ```DELETE```, etc.
 
     To do that, let’s open a new terminal and run ```json-server -watch server/db.json --port 8000```. If it runs successfully, then the terminal should start the server on port 8000, and we should start watching for any changes. By copying and pasting <a href="http://localhost:8000/" target="_blank" rel="noopener noreferrer">http://localhost:8000</a> in a browser, we’ll see that the JSON file has been hosted on localhost. We can also see the blog resources on<a href="http://localhost:8000/blogs" target="_blank" rel="noopener noreferrer"> http://localhost:8000/blogs</a>.
 ### Creating a Fetch Function in App.js
@@ -60,4 +115,4 @@ This is just a grid layout with a typeface. When the Blog component is imported 
 - Use for a lengthy or background process.
 ## Conclusion
 We now understand what skeleton loading is, how it improves user experience by giving the appearance of speedy data loading, and how to put it into practice. The tutorial's source code is available<a href="https://github.com/EJINEROZ/css-skeleton" target="_blank" rel="noopener noreferrer"> here</a>. Feel free to modify it, style it to be whatever you like, and add code enhancements.
-<strong>Resources</strong>
+**Resources**

@@ -8,9 +8,41 @@ The Angular Drag and Drop CDK supports animations, touch devices, configurable d
 
 ## Getting Started
 First, we have to install Angular Material UI into our Project:
-e>ng add @angular/material</pre><p>We’ll then import our ```DragDropModule``` into ```NgModule```:
-e>import { AppRoutingModule } from './app-routing.module';<br>import { AppComponent } from './app.component';<br>import { BrowserAnimationsModule } from '@angular/platform-browser/animations';<br>import {DragDropModule} from '@angular/cdk/drag-drop';<br>@NgModule({<br>  declarations: [<br>    AppComponent<br>  ],<br>  imports: [<br>    BrowserModule,<br>    AppRoutingModule,<br>    BrowserAnimationsModule,<br>    DragDropModule,<br>  ],<br>  providers: [],<br>  bootstrap: [AppComponent]<br>})<br>export class AppModule { }</pre><p>Using the ```cdkDrag``` directive, we can create our first draggable component:
-e>&lt;div class=&quot;box&quot; cdkDrag&gt;<br>  Drag me around<br>&lt;/div&gt;</pre><p>We can already drag and drop in our project after running the code:
+```
+ng add @angular/material
+```
+We’ll then import our ```DragDropModule``` into ```NgModule```:
+```
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    DragDropModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
+
+Using the ```cdkDrag``` directive, we can create our first draggable component:
+```
+&lt;div class=&quot;box&quot; cdkDrag&gt;
+  Drag me around
+&lt;/div&gt;
+```
+
+
+We can already drag and drop in our project after running the code:
 ![](oads-ssl.webflow.com/6143afec68f555387049efb3/6363f3da809a7f968abb83f5_image5_b5cae6c4da6d7d661924711b18e500b8.g)
 
 ## Creating a Drop Zone
@@ -18,21 +50,57 @@ Now that we’re familiar with how to drag an element, we have to build a drop z
 
 ## Reordering Items in a List
 After learning how to create a draggable item and a drop zone, the next step is to drag and reorder items within a list. We'll use the ```*ngFor``` directive to create the list components inside a ```cdkDrop``` container:
-e>&lt;div class=&quot;box&quot; cdkDropList&gt;<br>      &lt;div *ngFor=&quot;let item of items&quot; cdkDrag&gt;{{item}}&lt;/div&gt;<br>    &lt;/div&gt;</pre><p>There is a string array definition for the elements in the ```AppComponent```:
-e>@Component({<br>  selector: 'app-root',<br>  templateUrl: './app.component.html',<br>  styleUrls: ['./app.component.css']<br>})<br>export class AppComponent {<br>  items = ['Football', 'Tennis', 'Basketball', 'Rugby', 'Golf']<br>}</pre><p>The GIF below demonstrates how the items inside self-arrange as we pull them. That is why when we drag and drop something, it goes back to where it was originally.
+```
+&lt;div class=&quot;box&quot; cdkDropList&gt;
+      &lt;div *ngFor=&quot;let item of items&quot; cdkDrag&gt;{{item}}&lt;/div&gt;
+    &lt;/div&gt
+```
+There is a string array definition for the elements in the ```AppComponent```:
+```
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  items = ['Football', 'Tennis', 'Basketball', 'Rugby', 'Golf']
+
+```
+The GIF below demonstrates how the items inside self-arrange as we pull them. That is why when we drag and drop something, it goes back to where it was originally.
 ![](src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6363f3da809a7f753dbb83f4_image3_2f91b7fc048d3e917b18258e01dee7ce.g)
 
 To fix this problem and to save the updated index when an item is dropped inside the list, we must implement the ```cdkDropDropped``` method. The dropped function is consistently called whenever a user drops something inside the drop zone. The following is its trademark:
-e>import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';<br>@Component({...})<br>export class AppComponent {<br>  title = 'dropzone';<br>  items = [...]<br>  drop(event: CdkDragDrop&lt;string[]&gt;) {<br>    moveItemInArray(this.items, event.previousIndex, event.currentIndex);<br>  }<br>}</pre><p>As you can see in the code above, the drag and drop CDK also includes the utility function ```moveItemInArray```. This function returns the new index of the dropped item in the array. Rad!
+```
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+@Component({...})
+export class AppComponent {
+  title = 'dropzone';
+  items = [...]
+  drop(event: CdkDragDrop&lt;string[]&gt;) {
+    moveItemInArray(this.items, event.previousIndex, event.currentIndex);
+  }
+
+```
+As you can see in the code above, the drag and drop CDK also includes the utility function ```moveItemInArray```. This function returns the new index of the dropped item in the array. Rad!
 Now that we have an implementation for it, next, we’ll link the ```dropped``` function to the HTML's ```cdkDrop``` element:
-e>&lt;div class=&quot;box&quot; cdkDropList<br>    (cdkDropListDropped)=&quot;drop($event)&quot;&gt;<br>      &lt;div *ngFor=&quot;let item of items&quot; cdkDrag&gt;{{item}}&lt;/div&gt;<br>    &lt;/div&gt;</pre><p>This results in the ability to drag and reorder the elements inside the ```cdkDrop``` container. Click<a href="https://beta-angular-material-io.firebaseapp.com/cdk/drag-drop/overview#reordering-lists"> here</a> for a better understanding.
+```
+&lt;div class=&quot;box&quot; cdkDropList
+    (cdkDropListDropped)=&quot;drop($event)&quot;&gt;
+      &lt;div *ngFor=&quot;let item of items&quot; cdkDrag&gt;{{item}}&lt;/div&gt;
+    &lt;/div&gt
+```
+This results in the ability to drag and reorder the elements inside the ```cdkDrop``` container. Click<a href="https://beta-angular-material-io.firebaseapp.com/cdk/drag-drop/overview#reordering-lists"> here</a> for a better understanding.
 
 ![](sl.webflow.com/6143afec68f555387049efb3/6363f3da809a7f4c0dbb83f2_image2_dfb420a819eec05c94b410164d6c4cc4.g)
 
 ## Dragging From One List to Another List
 Let's take it a step further and create a simple task board.
 To do this, we’ll split the ```items``` array into three smaller arrays: one for newly created items, one for items that are active, and one for items that have been finished:
-e>incomingGoods = ['Tomatoes', 'Carrots', 'Onions', 'Pepper']<br><br>availableGoods = ['Cucumber']<br><br>soldGoods = ['Orange', 'Apple', 'Banana']</pre><p>Three different lists must be displayed with each list that has its own drop zone. We can connect the arrays to a drop zone by using the ```cdkDropData``` input:
+```
+incomingGoods = ['Tomatoes', 'Carrots', 'Onions', 'Pepper']
+availableGoods = ['Cucumber']
+soldGoods = ['Orange', 'Apple', 'Banana']```
+Three different lists must be displayed with each list that has its own drop zone. We can connect the arrays to a drop zone by using the ```cdkDropData``` input:
 
 A ```cdkDrop``` list can be connected to another ```cdkDrop``` list using the input attribute ```[cdkDropConnectedTo]```. If we don't take the following steps, we won't be able to drag and drop the items to another list.
 The connections that need to be made in our task board example are as follows:
@@ -42,14 +110,103 @@ The connections that need to be made in our task board example are as follows:
 
 To put it another way, we can drag ```incomingGoods``` to ```availableGoods```, ```soldGoods```, or the opposite order. To drag an ```incomingGoods``` to the ```soldGoods```, we must first navigate through the ```availableGoods```.
 Combining these results yields the following:
-e>&lt;div cdkDropListGroup&gt;<br>  &lt;div class=&quot;container&quot;&gt;<br>    &lt;h2&gt;Incoming Goods&lt;/h2&gt;<br>    &lt;div<br> id=&quot;incoming&quot;<br>      cdkDropList<br>      [cdkDropListData]=&quot;incomingItems&quot;<br>      cdkDropListConnectedTo=&quot;available&quot;<br> class=&quot;list&quot;<br>      (cdkDropListDropped)=&quot;drop($event)&quot;<br>      [cdkDropListEnterPredicate]=&quot;noReturnPredicate&quot;&gt;<br>      &lt;div class=&quot;box&quot; *ngFor=&quot;let item of incomingItems&quot; cdkDrag&gt;{{item}}&lt;/div&gt;<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>  &lt;div class=&quot;container&quot;&gt;<br>    &lt;h2&gt;Available Goods&lt;/h2&gt;<br>    &lt;div<br> id=&quot;available&quot;<br>      cdkDropList<br>      [cdkDropListData]=&quot;availableItems&quot;<br>      cdkDropListConnectedTo=&quot;sold&quot;<br> class=&quot;list&quot;<br>      (cdkDropListDropped)=&quot;drop($event)&quot;<br>      &gt;<br>      &lt;div class=&quot;box&quot; *ngFor=&quot;let item of availableItems&quot; cdkDrag&gt;{{item}}&lt;/div&gt;<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>  &lt;div class=&quot;container&quot;&gt;<br>    &lt;h2&gt;Sold Out Goods&lt;/h2&gt;<br>    &lt;div<br> id=&quot;sold&quot;<br>      cdkDropList<br>      [cdkDropListData]=&quot;soldItems&quot;<br>      cdkDropListConnectedTo=&quot;available&quot;<br> class=&quot;list&quot;<br>      (cdkDropListDropped)=&quot;drop($event)&quot;<br>      &gt;<br>      &lt;div class=&quot;box&quot; *ngFor=&quot;let item of soldItems&quot; cdkDrag&gt;{{item}}&lt;/div&gt;<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>&lt;/div&gt;</pre><p>The final step is to make our ```dropped``` function smarter. In order to satisfy our needs, it must move items from one list to another list.
-e>import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';<br><br>dropped(event: CdkDragDrop&lt;string[]&gt;) {<br> if (event.previousContainer === event.container) {<br>   moveItemInArray(<br> event.container.data,<br> event.previousIndex,<br> event.currentIndex<br>   );<br>  } else {<br>    transferArrayItem(<br> event.previousContainer.data,<br> event.container.data,<br> event.previousIndex,<br> event.currentIndex<br>   );<br> }<br>}</pre><p>If the container is the same, it reorders the items in the prior order. If the container is different, the dragged item is moved to the list where it is being dropped. In addition, ```transferArrayItem``` is a helpful function that comes pre-installed. Check the<a href="https://beta-angular-material-io.firebaseapp.com/cdk/drag-drop/overview#transferring-items-between-lists"> documentation</a> here.
+```
+&lt;div cdkDropListGroup&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;h2&gt;Incoming Goods&lt;/h2&gt;
+    &lt;div
+ id=&quot;incoming&quot;
+      cdkDropList
+      [cdkDropListData]=&quot;incomingItems&quot;
+      cdkDropListConnectedTo=&quot;available&quot;
+ class=&quot;list&quot;
+      (cdkDropListDropped)=&quot;drop($event)&quot;
+      [cdkDropListEnterPredicate]=&quot;noReturnPredicate&quot;&gt;
+      &lt;div class=&quot;box&quot; *ngFor=&quot;let item of incomingItems&quot; cdkDrag&gt;{{item}}&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;h2&gt;Available Goods&lt;/h2&gt;
+    &lt;div
+ id=&quot;available&quot;
+      cdkDropList
+      [cdkDropListData]=&quot;availableItems&quot;
+      cdkDropListConnectedTo=&quot;sold&quot;
+ class=&quot;list&quot;
+      (cdkDropListDropped)=&quot;drop($event)&quot;
+      &gt;
+      &lt;div class=&quot;box&quot; *ngFor=&quot;let item of availableItems&quot; cdkDrag&gt;{{item}}&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;h2&gt;Sold Out Goods&lt;/h2&gt;
+    &lt;div
+ id=&quot;sold&quot;
+      cdkDropList
+      [cdkDropListData]=&quot;soldItems&quot;
+      cdkDropListConnectedTo=&quot;available&quot;
+ class=&quot;list&quot;
+      (cdkDropListDropped)=&quot;drop($event)&quot;
+      &gt;
+      &lt;div class=&quot;box&quot; *ngFor=&quot;let item of soldItems&quot; cdkDrag&gt;{{item}}&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt
+```
+The final step is to make our ```dropped``` function smarter. In order to satisfy our needs, it must move items from one list to another list.
+```
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+dropped(event: CdkDragDrop&lt;string[]&gt;) {
+ if (event.previousContainer === event.container) {
+   moveItemInArray(
+ event.container.data,
+ event.previousIndex,
+ event.currentIndex
+   );
+  } else {
+    transferArrayItem(
+ event.previousContainer.data,
+ event.container.data,
+ event.previousIndex,
+ event.currentIndex
+   );
+ }
+
+```
+If the container is the same, it reorders the items in the prior order. If the container is different, the dragged item is moved to the list where it is being dropped. In addition, ```transferArrayItem``` is a helpful function that comes pre-installed. Check the<a href="https://beta-angular-material-io.firebaseapp.com/cdk/drag-drop/overview#transferring-items-between-lists"> documentation</a> here.
 ![](/uploads-ssl.webflow.com/6143afec68f555387049efb3/6363f3da809a7f51c3bb83f6_image4_943d1e81966d67a12449a7b811b70d94.g)
 
 ## Disable Dragging
 Dragging for a certain drag item will be disabled by setting the ```cdkDragDisabled``` input on a ```cdkDrag``` item. Additionally, an entire list can be deactivated with the ```cdkDropListDisabled``` input on a ```cdkDropList```, or a specific handle with the ```cdkDragHandleDisabled``` input on a ```cdkDragHandle```.
-e>&lt;div cdkDropList class=&quot;list&quot; (cdkDropListDropped)=&quot;drop($event)&quot;&gt;<br>  &lt;div<br> class=&quot;box&quot;<br>    *ngFor=&quot;let item of items&quot;<br>    cdkDrag<br>    [cdkDragDisabled]=&quot;item.disabled&quot;&gt;{{item.value}}&lt;/div&gt;<br>&lt;/div&gt;</pre><p>We set the boolean function of our value to either true/false in our ```app.component.ts.```:
-e>import {Component} from '@angular/core';<br>import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';<br>@Component({<br>  selector: 'app-root',<br>  templateUrl: './app.component.html',<br>  styleUrls: ['./app.component.css']<br>})<br>export class AppComponent {<br>  items = [<br>    {value: 'Oranges', disabled: false},<br>    {value: 'Bananas', disabled: true},<br>    {value: 'Mangoes', disabled: false},<br>  ];<br>  drop(event: CdkDragDrop&lt;string[]&gt;) {<br>    moveItemInArray(this.items, event.previousIndex, event.currentIndex);<br>  }</pre><p>Now that the value ```Bananas``` has been set to ```disabled:true```, dragging for that specific item is turned off.
+```
+&lt;div cdkDropList class=&quot;list&quot; (cdkDropListDropped)=&quot;drop($event)&quot;&gt;
+  &lt;div
+ class=&quot;box&quot;
+    *ngFor=&quot;let item of items&quot;
+    cdkDrag
+    [cdkDragDisabled]=&quot;item.disabled&quot;&gt;{{item.value}}&lt;/div&gt;
+&lt;/div&gt
+```
+We set the boolean function of our value to either true/false in our ```app.component.ts.```:
+```
+import {Component} from '@angular/core';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  items = [
+    {value: 'Oranges', disabled: false},
+    {value: 'Bananas', disabled: true},
+    {value: 'Mangoes', disabled: false},
+  ];
+  drop(event: CdkDragDrop&lt;string[]&gt;) {
+    moveItemInArray(this.items, event.previousIndex, event.currentIndex);
+
+```
+Now that the value ```Bananas``` has been set to ```disabled:true```, dragging for that specific item is turned off.
 ![](ps://uploads-ssl.webflow.com/6143afec68f555387049efb3/6363f3da809a7ffc33bb83f7_image1_bdade91e90c255ce951ae93d204d4130.g)
 
 ## Conclusion

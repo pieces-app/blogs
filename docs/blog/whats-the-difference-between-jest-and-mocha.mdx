@@ -17,19 +17,25 @@ Unit testing is an essential component of Test-Driven Development (TDD), which i
 ### Jest
 
 <a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer">Jest</a> is a JavaScript testing framework developed by Facebook. It is primarily intended for React-based apps, although it may also be used with Babel, JavaScript, Node, Angular, and Vue. It can also test NestJS, Next.js, and GraphQL. The Jest testing framework ensures the integrity of any JavaScript codebase. It enables you to develop tests with an easy-to-use, familiar, and feature-rich API that returns results rapidly.
-- <strong>Zero configs:</strong> Jest attempts to function on most JavaScript applications without any configuration. This means you can add Jest as a dependency to your project and begin writing your first test with no or minimal changes.
-- <strong>Great API: </strong>Jest is well known for having a robust API with many assertion types for various requirements. Aside from that, its excellent documentation should help you get up and running quickly.
-- <strong>Snapshots: </strong>Snapshots are essential for front-end testing because they allow you to validate the integrity of massive objects. This means you don't have to create lengthy tests full of assertions to ensure that every attribute on an object is present and of the correct type.
-- <strong>Isolated: </strong>When executing tests, isolation is critical. It guarantees that the findings of different tests do not interfere with one another. Jest runs tests in parallel, each in its process. This means they can't interfere with other tests. Jest serves as the orchestrator, collecting findings from all test procedures.
-- <strong>Supports snapshot testing: </strong>Snapshot testing is an excellent method for ensuring that your application's user interface does not change unexpectedly between versions.
-- <strong>TypeScript support:</strong> It Supports TypeScript via the ts-jest package.
-- <strong>Compatibility: </strong>The Jest framework is compatible with Angular, React, NodeJS, VueJS, and other projects that use Babel.
-- <strong>Jasmine traits:</strong> Jest is based on Jasmine; therefore, it inherited all of its admirable traits. Although Jest has left Jasmine, its features have been preserved and its functionalities have been improved on.
-- <strong>Speed: </strong>It is a highly rapid testing tool. When our test is CPU constrained, it can save us substantial time throughout our test runs. For example, Jest reduced the local test time from 45 minutes to 14 to 15 minutes.
-- <strong>Timer mocks: </strong>Jest can be manipulated with time using:
-- ```clearInterval```
-- ```setInterval```
-- ```clearTimeout```
+- **Zero configs:** Jest attempts to function on most JavaScript applications without any configuration. This means you can add Jest as a dependency to your project and begin writing your first test with no or minimal changes.
+- **Great API: **Jest is well known for having a robust API with many assertion types for various requirements. Aside from that, its excellent documentation should help you get up and running quickly.
+- **Snapshots: **Snapshots are essential for front-end testing because they allow you to validate the integrity of massive objects. This means you don't have to create lengthy tests full of assertions to ensure that every attribute on an object is present and of the correct type.
+- **Isolated: **When executing tests, isolation is critical. It guarantees that the findings of different tests do not interfere with one another. Jest runs tests in parallel, each in its process. This means they can't interfere with other tests. Jest serves as the orchestrator, collecting findings from all test procedures.
+- **Supports snapshot testing: **Snapshot testing is an excellent method for ensuring that your application's user interface does not change unexpectedly between versions.
+- **TypeScript support:** It Supports TypeScript via the ts-jest package.
+- **Compatibility: **The Jest framework is compatible with Angular, React, NodeJS, VueJS, and other projects that use Babel.
+- **Jasmine traits:** Jest is based on Jasmine; therefore, it inherited all of its admirable traits. Although Jest has left Jasmine, its features have been preserved and its functionalities have been improved on.
+- **Speed: **It is a highly rapid testing tool. When our test is CPU constrained, it can save us substantial time throughout our test runs. For example, Jest reduced the local test time from 45 minutes to 14 to 15 minutes.
+- **Timer mocks: **Jest can be manipulated with time using:
+- ```clearInterval
+```
+
+- ```setInterval
+```
+
+- ```clearTimeout
+```
+
 - Using auto-mocking features might cause your test suite to run slowly. This is because the more dependencies a module has, the more effort Jest must perform to fake them out and make them behave like actual dependencies to test your code.
 - Jest snapshot testing is unsuitable for projects that create large snapshot files with thousands of lines.
 - It has fewer tools and support than more established libraries (like Mocha). This might be a drawback for developers who wish to run and debug their tests using an IDE like WebStorm.
@@ -38,11 +44,11 @@ Unit testing is an essential component of Test-Driven Development (TDD), which i
 <a href="https://mochajs.org/" target="_blank" rel="noopener noreferrer">Mocha</a> is an open-source JavaScript testing framework that works in the <a href="https://mochajs.org/#running-mocha-in-the-browser" target="_blank" rel="noopener noreferrer">browser</a> and on Node.js. It has a fairly basic interface and is intended to test <a href="https://mochajs.org/#synchronous-code" target="_blank" rel="noopener noreferrer">synchronous</a> and <a href="https://mochajs.org/#asynchronous-code" target="_blank" rel="noopener noreferrer">asynchronous</a> programming.
 
 Mocha serializes tests to provide flexible and accurate reporting while mapping uncaught exceptions to their related test cases. It enables several forms of testing, such as unit, integration, and end-to-end testing. Mocha provides a foundational test framework for developers. It also includes a plethora of assertion, mocking, and spy libraries that must be installed individually. Chai and Sinon are the most popular of these.
-- <strong>Any assertion library is supported: </strong>Mocha reduces testing expenses and speeds up the process by supporting many JavaScript assertion libraries, including Express.js, Should.js, and Chai. This multiple library support makes designing extensive and complicated test cases easier, and if everything works as expected, retesting won’t be necessary.
-- <strong>Synchronous and asynchronous testing is supported: </strong>Mocha was developed to strengthen asynchronous testing with features that call the callback once the test is completed. By eliminating the callback, it allows for synchronous testing.
-- <strong>Supports both BDD and TDD environments: </strong>Mocha supports both behavior-driven development (BDD) and test-driven development (TDD), making it simple to construct high-quality tests and increase coverage.
-- <strong>Supports multiple browsers: </strong>Mocha makes it simple to write test scenarios that execute smoothly across all major web browsers. It may be expanded with plugins, and each Mocha release includes updated JavaScript and CSS builds for various web browsers.
-- <strong>Various installation techniques:</strong> Mocha may be installed globally or as a development requirement for the project. It may also be configured to execute test cases directly in a web browser.
+- **Any assertion library is supported: **Mocha reduces testing expenses and speeds up the process by supporting many JavaScript assertion libraries, including Express.js, Should.js, and Chai. This multiple library support makes designing extensive and complicated test cases easier, and if everything works as expected, retesting won’t be necessary.
+- **Synchronous and asynchronous testing is supported: **Mocha was developed to strengthen asynchronous testing with features that call the callback once the test is completed. By eliminating the callback, it allows for synchronous testing.
+- **Supports both BDD and TDD environments: **Mocha supports both behavior-driven development (BDD) and test-driven development (TDD), making it simple to construct high-quality tests and increase coverage.
+- **Supports multiple browsers: **Mocha makes it simple to write test scenarios that execute smoothly across all major web browsers. It may be expanded with plugins, and each Mocha release includes updated JavaScript and CSS builds for various web browsers.
+- **Various installation techniques:** Mocha may be installed globally or as a development requirement for the project. It may also be configured to execute test cases directly in a web browser.
 - Unlike Jest, which operates as a standalone framework, Mocha requires more setup, making it weaker.
 - An assertion library must be specifically selected if not flexible enough.
 

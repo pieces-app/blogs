@@ -4,7 +4,7 @@
 > Wed Apr 05 2023 16:53:15 GMT+0000 (Coordinated Universal Time)
 
 The majority of the code written in JavaScript is synchronous. However, this doesn’t mean that JavaScript can’t be executed asynchronously. Asynchronous programming in JavaScript is one of the most important components of the language because it controls how time-consuming actions are carried out. This article will discuss the differences between synchronous and asynchronous JavaScript programming.
-<strong>Prerequisite</strong>: Basic understanding of the fundamentals of JavaScript.
+**Prerequisite**: Basic understanding of the fundamentals of JavaScript.
 
 ## What Is JavaScript?
 <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript" target="_blank" rel="noopener noreferrer">JavaScript</a> is one of the most popular and widely used programming languages. Often abbreviated as JS, JavaScript is a quickly growing <a href="https://code.pieces.app/blog/understanding-the-pillars-of-object-oriented-programming" target="_blank" rel="noopener noreferrer">object-oriented programming language</a>. It’s good at creating interactivity because it enables the implementation of dynamic features that are impossible to execute with just<a href="https://code.pieces.app/blog/getting-started-with-semantic-html" target="_blank" rel="noopener noreferrer"> HTML</a> and<a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer"> CSS</a>. In addition, one of its distinctive features is that it runs directly in the browser.
@@ -13,7 +13,12 @@ For a while, browsers solely used JavaScript to create interactive web pages. Th
 ## What Is Synchronous Programming in JavaScript?
 JavaScript is synchronous by default: every line of code is executed one after the other, and each task must wait for the previous one to be completed before moving to the next.
 Let’s look at this illustration below to see how synchronous JavaScript code runs:
-e>console.log('One');<br>console.log('Two');<br>console.log('Three');<br>// LOGS: 'One', 'Two', 'Three'</pre><p>In the above example, the first line of code, ```One```<strong>, </strong>will be logged first, followed by the second line, ```Two```<strong>,</strong> and the third line, ```Three```. It’s easy to see that the code works sequentially; each line of code waits for the former to be completed before it executes.
+```
+console.log('One');
+console.log('Two');
+console.log('Three');
+// LOGS: 'One', 'Two', 'Three'```
+In the above example, the first line of code, ```One```**, **will be logged first, followed by the second line, ```Two```**,** and the third line, ```Three```. It’s easy to see that the code works sequentially; each line of code waits for the former to be completed before it executes.
 
 ### When to Use Synchronous Programming
 Synchronous programming is straightforward. It’s easier to write code, and it’s not as time-consuming as some might imagine. For example, synchronous programming can be used when developing front-end web applications, mathematical computations, video rendering, or when executing basic central processing unit (CPU) functions. Basically, synchronous programming can be used when the aim is for simplicity rather than efficiency.
@@ -22,7 +27,12 @@ Synchronous programming is straightforward. It’s easier to write code, and it�
 
 <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Introducing" target="_blank" rel="noopener noreferrer">Asynchronous JavaScript programming</a> is one of the key components of the language because it controls how we carry out tasks that require a lot of time. Basically, asynchronous programming is programming that allows multiple events to occur simultaneously. This means that one operation may take place while another is still being processed. It allows operations to take place in a non-sequential manner. Many <a href="https://www.tutorialsteacher.com/webapi/what-is-web-api" target="_blank" rel="noopener noreferrer">web API</a> features now require asynchronous code; this is true for those that access or fetch data from external sources. An example includes retrieving files from databases or accessing a video stream from a webcam, among other things. Because async is multi-threaded, it makes code non-blocking and allows tasks to complete quickly so that the other functions can continue to operate as the request is being processed. In a nutshell, asynchronous code starts now and finishes later.
 Let’s use this illustration to see how asynchronous JavaScript runs:
-e>console.log('One');<br>setTimeout(() =&gt; console.log('Two'), 100);<br>console.log('Three');<br>// LOGS: 'One', 'Three', 'Two'</pre><p>The ```setTimeout``` is what makes our code asynchronous. What the code does first in the example above is to log ```One```<strong>. </strong>Then, instead of executing the ```setTimeout```<strong> </strong>function, it logs ```Three```<strong> </strong>before it runs the ```setTimeout```<strong> </strong>function. Browsers run JavaScript, and there are web APIs that handle it for users. JavaScript passes the ```setTimeout```<strong> </strong>function in these web APIs, and then our code keeps running normally. By running code asynchronously, other code is not blocked from running. When the work is complete, a notification is sent to the main thread about whether the task was successful or failed.
+```
+console.log('One');
+setTimeout(() =&gt; console.log('Two'), 100);
+console.log('Three');
+// LOGS: 'One', 'Three', 'Two'```
+The ```setTimeout``` is what makes our code asynchronous. What the code does first in the example above is to log ```One```**. **Then, instead of executing the ```setTimeout```** **function, it logs ```Three```** **before it runs the ```setTimeout```** **function. Browsers run JavaScript, and there are web APIs that handle it for users. JavaScript passes the ```setTimeout```** **function in these web APIs, and then our code keeps running normally. By running code asynchronously, other code is not blocked from running. When the work is complete, a notification is sent to the main thread about whether the task was successful or failed.
     ### Methods of Handling Asynchronous Code
 JavaScript provides three methods of handling asynchronous code: callbacks, promises, and async/await. Let's discuss each.
 Asynchronous<a href="https://dhis2-app-course.ifi.uio.no/learn/javascript/async/callbacks/" target="_blank" rel="noopener noreferrer"> callbacks</a> are functions that are passed to another function so that the internal function can begin running code in the background. As soon as we need to handle multiple asynchronous operations, callbacks nest into one another, which leads to<a href="https://www.geeksforgeeks.org/what-to-understand-callback-and-callback-hell-in-javascript/#:~:text=Callback%20Hell%3A%20Callback%20Hell%20is,and%20maintainability%20of%20the%20code." target="_blank" rel="noopener noreferrer"> callback hell</a>. This makes callbacks an old-fashioned method of writing asynchronous Javascript.
@@ -32,7 +42,12 @@ This is the basic syntax of the callback function:
 - Rejected: The promise has failed.
 <a href="https://www.w3schools.com/js/js_async.asp" target="_blank" rel="noopener noreferrer">Async/await</a> works with promises in asynchronous functions, making asynchronous code appear more like synchronous or <a href="https://www.techopedia.com/definition/21481/procedural-programming" target="_blank" rel="noopener noreferrer">procedural code</a>. A promise is returned by an asynchronous function.
 The syntax of an async function is as follows:
-e>async function name(parameter1, parameter2, ...paramaterN) {<br>  // statements<br>}</pre><p>Await can only be used in async functions, and it is used for calling async functions. Await blocks the execution of the code inside the async function in which it is contained until the async function has either resolved or been rejected.
+```
+async function name(parameter1, parameter2, ...paramaterN) {
+  // statements
+
+```
+Await can only be used in async functions, and it is used for calling async functions. Await blocks the execution of the code inside the async function in which it is contained until the async function has either resolved or been rejected.
 Here is the syntax of the await function:
 Like everything else in programming, there are situations in which this method should not be used. Developers need to understand the dependencies and processes in their system to know when async should and shouldn’t be used. For example, when dealing with independent tasks, asynchronous programming should be used. It can also be used when loading and downloading data, for running longer programs, and saving an application for work. <a href="https://www.techopedia.com/definition/24931/input-output-io" target="_blank" rel="noopener noreferrer">I/O operations</a> and database queries are other frequent uses of asynchronous programming.
 ## Pros and Cons of Synchronous and Asynchronous Programming

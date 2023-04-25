@@ -18,39 +18,144 @@ A framework for creating progressive user interfaces is called Vue. Vue, in cont
 The first thing we need to do is set up a WordPress site because it will serve as the major source of data for all of the front-end technologies we utilize.
 The use of a Rest API enables programmers to communicate with cross-technology interfaces, provided that both parties can speak JSON. The JSON format is used for the data that is produced by the Rest API. The Rest API is enabled by default; but, you can restrict Rest API access if you so choose. For this project, we won't be modifying that.
 
-<strong>Prerequisites</strong>
+**Prerequisites**
 - An active WordPress installed/running
 - knowledge of Vue basics
 
-<em>On your WordPress blog <strong>Dashboard, </strong>go to <strong>Settings, </strong>select <strong>Permalinks, </strong>and tick either <strong>Post name</strong> or <strong>Custom Structure.</strong> I’ll be going with <strong>Post name</strong>.</em>
+On your WordPress blog **Dashboard, **go to **Settings, **select **Permalinks, **and tick either **Post name** or **Custom Structure.** I’ll be going with **Post name**.
 
 ![](ploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a513929d8cada_image1_9eab0b22257a88eefbb16bde6121d55f_800.jp)
 
 Download the Postman Chrome extension now that we are using API calls. Open the Postman extension and enter the URL using the guidelines below.
-e>https://example.com/wp-json/wp/v2/posts</pre><p>But, if you are running on localhost for development purposes, input the URL below on your Postman Desktop Agent (not the Chrome extension this time).
-e>http://localhost/wordpress/wp-json/wp/v2/posts</pre><p>The post data on your WordPress site will be fetched using the aforementioned URL.
+```
+https://example.com/wp-json/wp/v2/posts
+```
+But, if you are running on localhost for development purposes, input the URL below on your Postman Desktop Agent (not the Chrome extension this time).
+```
+http://localhost/wordpress/wp-json/wp/v2/posts
+```
+The post data on your WordPress site will be fetched using the aforementioned URL.
 
 ![](uploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a51378ed8cae1_image3_ed1b96b71fa9848b3ab24e6a041b35e1_800.p)
 
 Above, we have our data from our REST API in JSON format. Here's the structure you should see after a GET request:
-e>{<br>        &quot;id&quot;: 5,<br>        &quot;date&quot;: &quot;2022-10-01T12:57:47&quot;,<br>        &quot;date_gmt&quot;: &quot;2022-10-01T12:57:47&quot;,<br>        &quot;guid&quot;: {<br>            &quot;rendered&quot;: &quot;http://localhost/wordpress/?p=5&quot;<br>        },<br>        &quot;modified&quot;: &quot;2022-10-01T15:19:58&quot;,<br>        &quot;modified_gmt&quot;: &quot;2022-10-01T15:19:58&quot;,<br>        &quot;slug&quot;: &quot;ejiro-thankgod&quot;,<br>        &quot;status&quot;: &quot;publish&quot;,<br>        &quot;type&quot;: &quot;post&quot;,<br>        &quot;link&quot;: &quot;http://localhost/wordpress/ejiro-thankgod/&quot;,<br>        &quot;title&quot;: {<br>            &quot;rendered&quot;: &quot;Ejiro ThankGod&quot;<br>        },<br>        &quot;content&quot;: {<br>            &quot;rendered&quot;: &quot;\\nHello! just trying things out alright\\n&quot;,<br>            &quot;protected&quot;: false<br>        },<br>        &quot;excerpt&quot;: {<br>            &quot;rendered&quot;: &quot;&lt;p&gt;Hello! just trying things out alright&lt;/p&gt;\\n&quot;,<br>            &quot;protected&quot;: false<br>        },<br>        &quot;author&quot;: 1,<br>        &quot;featured_media&quot;: 0,<br>        &quot;comment_status&quot;: &quot;open&quot;,<br>        &quot;ping_status&quot;: &quot;open&quot;,<br>        &quot;sticky&quot;: false,<br>        &quot;template&quot;: &quot;&quot;,<br>        &quot;format&quot;: &quot;standard&quot;,<br>        &quot;meta&quot;: [],<br>        &quot;categories&quot;: [<br> 1<br>        ],<br>  }</pre><p>Noticed we have the ```id```, ```slug```, ```date```, ```title```, and, of course, the ```content``` which we’ll set up on our Vue.js website.
+```
+{
+        &quot;id&quot;: 5,
+        &quot;date&quot;: &quot;2022-10-01T12:57:47&quot;,
+        &quot;date_gmt&quot;: &quot;2022-10-01T12:57:47&quot;,
+        &quot;guid&quot;: {
+            &quot;rendered&quot;: &quot;http://localhost/wordpress/?p=5&quot;
+        },
+        &quot;modified&quot;: &quot;2022-10-01T15:19:58&quot;,
+        &quot;modified_gmt&quot;: &quot;2022-10-01T15:19:58&quot;,
+        &quot;slug&quot;: &quot;ejiro-thankgod&quot;,
+        &quot;status&quot;: &quot;publish&quot;,
+        &quot;type&quot;: &quot;post&quot;,
+        &quot;link&quot;: &quot;http://localhost/wordpress/ejiro-thankgod/&quot;,
+        &quot;title&quot;: {
+            &quot;rendered&quot;: &quot;Ejiro ThankGod&quot;
+        },
+        &quot;content&quot;: {
+            &quot;rendered&quot;: &quot;\\nHello! just trying things out alright\\n&quot;,
+            &quot;protected&quot;: false
+        },
+        &quot;excerpt&quot;: {
+            &quot;rendered&quot;: &quot;&lt;p&gt;Hello! just trying things out alright&lt;/p&gt;\\n&quot;,
+            &quot;protected&quot;: false
+        },
+        &quot;author&quot;: 1,
+        &quot;featured_media&quot;: 0,
+        &quot;comment_status&quot;: &quot;open&quot;,
+        &quot;ping_status&quot;: &quot;open&quot;,
+        &quot;sticky&quot;: false,
+        &quot;template&quot;: &quot;&quot;,
+        &quot;format&quot;: &quot;standard&quot;,
+        &quot;meta&quot;: [],
+        &quot;categories&quot;: [
+ 1
+        ],
+
+```
+Noticed we have the ```id```, ```slug```, ```date```, ```title```, and, of course, the ```content``` which we’ll set up on our Vue.js website.
 
 ## Setting Up the Vue Front-end
 Headless WordPress will be used for the project's whole backend content management, while Vue.js will handle the project’s frontend display of our content.
-<strong>Prerequisites</strong>
+**Prerequisites**
 - NodeJS &amp; NPM
 - Vue CLI
 - Text Editor, such as Sublime or VS Code
 After setting up the environment with the Vue command line, run the following command on the terminal and follow the prompts to create a Vue app.
-e>vue create &lt;app name&gt;</pre><p>Run the following command after the project has been created to view the Vue app project output at<a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer"> http://localhost:8080</a>.
-e>npm run serve</pre><p>The project source code should then be opened in the code editor of your choice; this is where we'll actually start writing code.
+```
+vue create &lt;app name&gt
+```
+Run the following command after the project has been created to view the Vue app project output at<a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer"> http://localhost:8080</a>.
+```
+npm run serve
+```
+The project source code should then be opened in the code editor of your choice; this is where we'll actually start writing code.
 Add the following code to your App.vue file:
-e>&lt;template&gt;<br>  &lt;div&gt;<br>    &lt;ul v-for=&quot;post in posts&quot; v-bind:key=&quot;post.id&quot;&gt;<br>      &lt;li&gt;<br>        &lt;h2&gt;{{ post.title.rendered }}&lt;/h2&gt;<br>      &lt;/li&gt;<br>      &lt;p&gt;{{ post.content.rendered }}&lt;/p&gt;<br>    &lt;/ul&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br>&lt;script&gt;<br>export default {<br>  data() {<br> return {<br>      posts: [],<br>    };<br>  },<br>  methods: {<br> async getData() {<br> try {<br> let response = await fetch(<br> &quot;http://localhost/wordpress/wp-json/wp/v2/posts&quot;<br>        );<br> this.posts = await response.json();<br>      } catch (error) {<br>        console.log(error);<br>      }<br>    },<br>  },<br>  created() {<br> this.getData();<br>  },<br>};<br>&lt;/script&gt;</pre><p>Line-by-line explanations of the aforementioned block of code in the methods property will follow.
-e>async getData() {<br> try {<br>        let response = await fetch(<br> &quot;http://localhost/wordpress/wp-json/wp/v2/posts&quot;<br>        );<br> this.posts = await response.json();<br>      } catch (error) {<br>        console.log(error);<br>      }</pre><p>The ```getData``` method has the ```async``` keyword appended to it to indicate that it will employ promises. We'll use this keyword along with ```await``` to halt the function's execution until the promise is fulfilled.
+```
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ul v-for=&quot;post in posts&quot; v-bind:key=&quot;post.id&quot;&gt;
+      &lt;li&gt;
+        &lt;h2&gt;{{ post.title.rendered }}&lt;/h2&gt;
+      &lt;/li&gt;
+      &lt;p&gt;{{ post.content.rendered }}&lt;/p&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  data() {
+ return {
+      posts: [],
+    };
+  },
+  methods: {
+ async getData() {
+ try {
+ let response = await fetch(
+ &quot;http://localhost/wordpress/wp-json/wp/v2/posts&quot;
+        );
+ this.posts = await response.json();
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  },
+  created() {
+ this.getData();
+  },
+};
+&lt;/script&gt
+```
+Line-by-line explanations of the aforementioned block of code in the methods property will follow.
+```
+async getData() {
+ try {
+        let response = await fetch(
+ &quot;http://localhost/wordpress/wp-json/wp/v2/posts&quot;
+        );
+ this.posts = await response.json();
+      } catch (error) {
+        console.log(error);
+
+```
+The ```getData``` method has the ```async``` keyword appended to it to indicate that it will employ promises. We'll use this keyword along with ```await``` to halt the function's execution until the promise is fulfilled.
 A block of code that will be tested for errors while it is performed is defined by the ```try``` attribute. The ```fetch``` method is used to retrieve data from the URL in the block of code ```let response = await fetch('http://localhost/wordpress/wp-json/wp/v2/posts');```.
 Considering that the ```fetch``` function will return a promise, ```await``` is prefixed to the request. The information returned by the API following the fulfillment of the promise will be kept in the variable response.
 Using the ```v-for``` directive to loop through the posts, we can now display the data in the template.
-e>&lt;ul v-for=&quot;post in posts&quot; v-bind:key=&quot;post.id&quot;&gt;<br>      &lt;li&gt;<br>       &lt;h2&gt;{{ post.title.rendered }}&lt;/h2&gt;<br>      &lt;/li&gt;<br>      &lt;p&gt;{{ post.content.rendered }}&lt;/p&gt;<br>    &lt;/ul&gt;</pre><p>Now if we check our Vue front-end, we can see the post we made from the WordPress site. Basically, all we have to do is beautify our front-end website and add more API calls.
+```
+&lt;ul v-for=&quot;post in posts&quot; v-bind:key=&quot;post.id&quot;&gt;
+      &lt;li&gt;
+       &lt;h2&gt;{{ post.title.rendered }}&lt;/h2&gt;
+      &lt;/li&gt;
+      &lt;p&gt;{{ post.content.rendered }}&lt;/p&gt;
+    &lt;/ul&gt
+```
+Now if we check our Vue front-end, we can see the post we made from the WordPress site. Basically, all we have to do is beautify our front-end website and add more API calls.
 
 ![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a514b5ad8cab0_image2_bb0c82611bcdbd9557db4987a8d178de_800.p)
 
@@ -62,5 +167,5 @@ e>&lt;ul v-for=&quot;post in posts&quot; v-bind:key=&quot;post.id&quot;&gt;<br> 
 
 ## Conclusion
 With a Headless WordPress CMS, all the benefits of a system for editing rich content like WordPress, plus the performance and security benefits of Vue.js. Now that content production is separated from your development stack, you are able to build your own app with the help of an up-to-date JavaScript framework and a thriving ecosystem. You will have access to all the features you need for your website to expand thanks to the frontend functionality in Vue and the backend functionality in WordPress.
-<strong>Resources</strong>
+**Resources**
 - <a href="https://wordpress.com/" target="_blank" rel="noopener noreferrer">WordPress</a>

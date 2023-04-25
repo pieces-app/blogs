@@ -7,7 +7,7 @@ Have you ever wondered how some programmers are able to produce beautiful backdr
 Particles.js is a dependency-free, lightweight, responsive JavaScript plugin for the kind of adaptable, reactive particle design that can be used for different projects.
 Using ```react-tsparticles```, you can incorporate Particles.js into your React app, creating beautiful animations that will undoubtedly draw in more viewers.
 
-<strong>Prerequisites</strong>
+**Prerequisites**
 - Knowledge of JavaScript
 - Node.js 
 - React.js 
@@ -17,14 +17,234 @@ Using ```react-tsparticles```, you can incorporate Particles.js into your React 
 Use ```npx create-react-app my-app``` to start a fresh React app, or keep working on an existing one if you've already started.
 
 The work will be done in the ```App.js``` file, which can be found in your app:
-e>import logo from './logo.svg';<br>import './App.css';<br>function App() {<br> return (<br> &lt;div className=&quot;App&quot;&gt;<br> &lt;header className=&quot;App-header&quot;&gt;<br> &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;<br> &lt;p&gt;<br>          Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.<br> &lt;/p&gt;<br> &lt;a<br>          className=&quot;App-link&quot;<br>          href=&quot;https://reactjs.org&quot;<br>          target=&quot;_blank&quot;<br>          rel=&quot;noopener noreferrer&quot;<br>        &gt;<br>          Learn React<br> &lt;/a&gt;<br> &lt;/header&gt;<br> &lt;/div&gt;<br>  );<br>}<br>export default App;</pre><p>You’ll have to edit the ```App.js``` file to remove some unnecessary code bases. Below is ```App.js``` after editing:
+```
+import logo from './logo.svg';
+import './App.css';
+function App() {
+ return (
+ &lt;div className=&quot;App&quot;&gt;
+ &lt;header className=&quot;App-header&quot;&gt;
+ &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;
+ &lt;p&gt;
+          Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.
+ &lt;/p&gt;
+ &lt;a
+          className=&quot;App-link&quot;
+          href=&quot;https://reactjs.org&quot;
+          target=&quot;_blank&quot;
+          rel=&quot;noopener noreferrer&quot;
+        &gt;
+          Learn React
+ &lt;/a&gt;
+ &lt;/header&gt;
+ &lt;/div&gt;
+  );
+}
+export default App
+```
+You’ll have to edit the ```App.js``` file to remove some unnecessary code bases. Below is ```App.js``` after editing:
 
 Next, you must first install both ```tsparticles``` and ```react-tsparticles``` in your project as dependencies. Both packages will enable your app to run Particles in the right order.
-e>npm install react-tsparticles</pre><pre>npm install tsparticles</pre><p>After that, import Particles from ```react-tsparticles``` and ```{ loadFull }``` from ```tsparticles```:
-e>import './App.css';<br>import Particles from &quot;react-tsparticles&quot;;<br>import { loadFull } from &quot;tsparticles&quot;;<br><br>function App() {<br> return (<br> &lt;div className=&quot;App&quot;&gt;<br> &lt;h1&gt;Welcome!&lt;/h1&gt;<br> &lt;/div&gt;<br>  );<br>}<br>export default App;</pre><p>You can use the Particles component by passing some props such as ```init``` and ```id```, which will be initialization functions. Also, you’ll use the ```options``` prop, which will be the configurations for particles that we want to display:
-e>import './App.css';<br>import Particles from &quot;react-tsparticles&quot;;<br>import { loadFull } from &quot;tsparticles&quot;;<br>function App() {<br> return (<br> &lt;div className=&quot;App&quot;&gt;<br> &lt;h1&gt;Welcome!&lt;/h1&gt;<br> &lt;Particles<br>      id=&quot;tsparticles&quot;<br>      init={particlesInit}<br>      options={ // display config<br>      }/&gt;<br> &lt;/div&gt;<br>  );<br>}<br>export default App;</pre><p>You’re almost done! You just have to configure your particles/objects in order of animation, interaction, direction, opacity, etc. For this illustration, you’ll be using an already preset configuration from the ```tsparticles```<a href="https://github.com/matteobruni/tsparticles/tree/main/websites/particles.js.org/presets" target="_blank" rel="noopener noreferrer"> repository</a>, but you can always tweak it to your own style or create one from scratch if you’d like.
+```
+npm install react-tsparticles```<pre>npm install tsparticles
+```
+After that, import Particles from ```react-tsparticles``` and ```{ loadFull }``` from ```tsparticles```:
+```
+import './App.css';
+import Particles from &quot;react-tsparticles&quot;;
+import { loadFull } from &quot;tsparticles&quot;;
+function App() {
+ return (
+ &lt;div className=&quot;App&quot;&gt;
+ &lt;h1&gt;Welcome!&lt;/h1&gt;
+ &lt;/div&gt;
+  );
+}
+export default App
+```
+You can use the Particles component by passing some props such as ```init``` and ```id```, which will be initialization functions. Also, you’ll use the ```options``` prop, which will be the configurations for particles that we want to display:
+```
+import './App.css';
+import Particles from &quot;react-tsparticles&quot;;
+import { loadFull } from &quot;tsparticles&quot;;
+function App() {
+ return (
+ &lt;div className=&quot;App&quot;&gt;
+ &lt;h1&gt;Welcome!&lt;/h1&gt;
+ &lt;Particles
+      id=&quot;tsparticles&quot;
+      init={particlesInit}
+      options={ // display config
+      }/&gt;
+ &lt;/div&gt;
+  );
+}
+export default App
+```
+You’re almost done! You just have to configure your particles/objects in order of animation, interaction, direction, opacity, etc. For this illustration, you’ll be using an already preset configuration from the ```tsparticles```<a href="https://github.com/matteobruni/tsparticles/tree/main/websites/particles.js.org/presets" target="_blank" rel="noopener noreferrer"> repository</a>, but you can always tweak it to your own style or create one from scratch if you’d like.
 Below is the particle configuration for the project:
-e>import './App.css';<br>import Particles from &quot;react-tsparticles&quot;;<br>import { loadFull } from &quot;tsparticles&quot;;<br>function App() {<br>  return (<br>    &lt;div className=&quot;App&quot;&gt;<br>     &lt;h1&gt;Welcome!&lt;/h1&gt;<br>     &lt;Particles<br>      id=&quot;tsparticles&quot;<br>      init={particlesInit}<br>      options={{<br> &quot;fullScreen&quot;: {<br> &quot;enable&quot;: true,<br> &quot;zIndex&quot;: 1<br>        },<br> &quot;detectRetina&quot;: true,<br> &quot;fpsLimit&quot;: 120,<br> &quot;interactivity&quot;: {<br> &quot;events&quot;: {<br> &quot;onClick&quot;: {<br> &quot;enable&quot;: true,<br> &quot;mode&quot;: &quot;push&quot;<br>                },<br> &quot;onDiv&quot;: {<br> &quot;elementId&quot;: &quot;repulse-div&quot;,<br> &quot;enable&quot;: false,<br> &quot;mode&quot;: &quot;repulse&quot;<br>                },<br> &quot;onHover&quot;: {<br> &quot;enable&quot;: true,<br> &quot;mode&quot;: &quot;connect&quot;,<br> &quot;parallax&quot;: {<br> &quot;enable&quot;: false,<br> &quot;force&quot;: 60,<br> &quot;smooth&quot;: 10<br>                    }<br>                },<br> &quot;resize&quot;: true<br>            },<br> &quot;modes&quot;: {<br> &quot;bubble&quot;: {<br> &quot;distance&quot;: 400,<br> &quot;duration&quot;: 2,<br> &quot;opacity&quot;: 0.8,<br> &quot;size&quot;: 40,<br> &quot;speed&quot;: 3<br>                },<br> &quot;connect&quot;: {<br> &quot;distance&quot;: 80,<br> &quot;lineLinked&quot;: {<br> &quot;opacity&quot;: 0.5<br>                    },<br> &quot;radius&quot;: 60<br>                },<br> &quot;grab&quot;: {<br> &quot;distance&quot;: 400,<br> &quot;lineLinked&quot;: {<br> &quot;opacity&quot;: 1<br>                    }<br>                },<br> &quot;push&quot;: {<br> &quot;quantity&quot;: 4<br>                },<br> &quot;remove&quot;: {<br> &quot;quantity&quot;: 2<br>                },<br> &quot;repulse&quot;: {<br> &quot;distance&quot;: 200,<br> &quot;duration&quot;: 0.4<br>                }<br>            }<br>        },<br> &quot;particles&quot;: {<br> &quot;color&quot;: {<br> &quot;value&quot;: &quot;random&quot;<br>            },<br> &quot;lineLinked&quot;: {<br> &quot;blink&quot;: false,<br> &quot;color&quot;: &quot;#ffffff&quot;,<br> &quot;consent&quot;: false,<br> &quot;distance&quot;: 150,<br> &quot;enable&quot;: false,<br> &quot;opacity&quot;: 0.4,<br> &quot;width&quot;: 1<br>            },<br> &quot;move&quot;: {<br> &quot;attract&quot;: {<br> &quot;enable&quot;: false,<br> &quot;rotate&quot;: {<br> &quot;x&quot;: 600,<br> &quot;y&quot;: 1200<br>                    }<br>                },<br> &quot;bounce&quot;: false,<br> &quot;direction&quot;: &quot;none&quot;,<br> &quot;enable&quot;: true,<br> &quot;outMode&quot;: &quot;out&quot;,<br> &quot;random&quot;: false,<br> &quot;speed&quot;: 6,<br> &quot;straight&quot;: false<br>            },<br> &quot;number&quot;: {<br> &quot;density&quot;: {<br> &quot;enable&quot;: true,<br> &quot;area&quot;: 800<br>                },<br> &quot;limit&quot;: 500,<br> &quot;value&quot;: 300<br>            },<br> &quot;opacity&quot;: {<br> &quot;animation&quot;: {<br> &quot;enable&quot;: false,<br> &quot;minimumValue&quot;: 0.1,<br> &quot;speed&quot;: 1,<br> &quot;sync&quot;: false<br>                },<br> &quot;random&quot;: false,<br> &quot;value&quot;: 0.5<br>            },<br> &quot;shape&quot;: {<br> &quot;type&quot;: &quot;circle&quot;<br>            },<br> &quot;size&quot;: {<br> &quot;animation&quot;: {<br> &quot;enable&quot;: false,<br> &quot;minimumValue&quot;: 0.1,<br> &quot;speed&quot;: 40,<br> &quot;sync&quot;: false<br>                },<br> &quot;random&quot;: true,<br> &quot;value&quot;: 5<br>            }<br>        },<br> &quot;polygon&quot;: {<br> &quot;draw&quot;: {<br> &quot;enable&quot;: false,<br> &quot;lineColor&quot;: &quot;#ffffff&quot;,<br> &quot;lineWidth&quot;: 0.5<br>            },<br> &quot;move&quot;: {<br> &quot;radius&quot;: 10<br>            },<br> &quot;scale&quot;: 1,<br> &quot;type&quot;: &quot;none&quot;,<br> &quot;url&quot;: &quot;&quot;<br>        },<br> &quot;background&quot;: {<br> &quot;color&quot;: &quot;#000000&quot;,<br> &quot;image&quot;: &quot;&quot;,<br> &quot;position&quot;: &quot;50% 50%&quot;,<br> &quot;repeat&quot;: &quot;no-repeat&quot;,<br> &quot;size&quot;: &quot;cover&quot;<br>        }<br>    }<br>      }/&gt;<br>    &lt;/div&gt;<br>  );<br>}<br>export default App;</pre><p>As a result, you’ll have this nice animation:
+```
+import './App.css';
+import Particles from &quot;react-tsparticles&quot;;
+import { loadFull } from &quot;tsparticles&quot;;
+function App() {
+  return (
+    &lt;div className=&quot;App&quot;&gt;
+     &lt;h1&gt;Welcome!&lt;/h1&gt;
+     &lt;Particles
+      id=&quot;tsparticles&quot;
+      init={particlesInit}
+      options={{
+ &quot;fullScreen&quot;: {
+ &quot;enable&quot;: true,
+ &quot;zIndex&quot;: 1
+        },
+ &quot;detectRetina&quot;: true,
+ &quot;fpsLimit&quot;: 120,
+ &quot;interactivity&quot;: {
+ &quot;events&quot;: {
+ &quot;onClick&quot;: {
+ &quot;enable&quot;: true,
+ &quot;mode&quot;: &quot;push&quot;
+                },
+ &quot;onDiv&quot;: {
+ &quot;elementId&quot;: &quot;repulse-div&quot;,
+ &quot;enable&quot;: false,
+ &quot;mode&quot;: &quot;repulse&quot;
+                },
+ &quot;onHover&quot;: {
+ &quot;enable&quot;: true,
+ &quot;mode&quot;: &quot;connect&quot;,
+ &quot;parallax&quot;: {
+ &quot;enable&quot;: false,
+ &quot;force&quot;: 60,
+ &quot;smooth&quot;: 10
+                    }
+                },
+ &quot;resize&quot;: true
+            },
+ &quot;modes&quot;: {
+ &quot;bubble&quot;: {
+ &quot;distance&quot;: 400,
+ &quot;duration&quot;: 2,
+ &quot;opacity&quot;: 0.8,
+ &quot;size&quot;: 40,
+ &quot;speed&quot;: 3
+                },
+ &quot;connect&quot;: {
+ &quot;distance&quot;: 80,
+ &quot;lineLinked&quot;: {
+ &quot;opacity&quot;: 0.5
+                    },
+ &quot;radius&quot;: 60
+                },
+ &quot;grab&quot;: {
+ &quot;distance&quot;: 400,
+ &quot;lineLinked&quot;: {
+ &quot;opacity&quot;: 1
+                    }
+                },
+ &quot;push&quot;: {
+ &quot;quantity&quot;: 4
+                },
+ &quot;remove&quot;: {
+ &quot;quantity&quot;: 2
+                },
+ &quot;repulse&quot;: {
+ &quot;distance&quot;: 200,
+ &quot;duration&quot;: 0.4
+                }
+            }
+        },
+ &quot;particles&quot;: {
+ &quot;color&quot;: {
+ &quot;value&quot;: &quot;random&quot;
+            },
+ &quot;lineLinked&quot;: {
+ &quot;blink&quot;: false,
+ &quot;color&quot;: &quot;#ffffff&quot;,
+ &quot;consent&quot;: false,
+ &quot;distance&quot;: 150,
+ &quot;enable&quot;: false,
+ &quot;opacity&quot;: 0.4,
+ &quot;width&quot;: 1
+            },
+ &quot;move&quot;: {
+ &quot;attract&quot;: {
+ &quot;enable&quot;: false,
+ &quot;rotate&quot;: {
+ &quot;x&quot;: 600,
+ &quot;y&quot;: 1200
+                    }
+                },
+ &quot;bounce&quot;: false,
+ &quot;direction&quot;: &quot;none&quot;,
+ &quot;enable&quot;: true,
+ &quot;outMode&quot;: &quot;out&quot;,
+ &quot;random&quot;: false,
+ &quot;speed&quot;: 6,
+ &quot;straight&quot;: false
+            },
+ &quot;number&quot;: {
+ &quot;density&quot;: {
+ &quot;enable&quot;: true,
+ &quot;area&quot;: 800
+                },
+ &quot;limit&quot;: 500,
+ &quot;value&quot;: 300
+            },
+ &quot;opacity&quot;: {
+ &quot;animation&quot;: {
+ &quot;enable&quot;: false,
+ &quot;minimumValue&quot;: 0.1,
+ &quot;speed&quot;: 1,
+ &quot;sync&quot;: false
+                },
+ &quot;random&quot;: false,
+ &quot;value&quot;: 0.5
+            },
+ &quot;shape&quot;: {
+ &quot;type&quot;: &quot;circle&quot;
+            },
+ &quot;size&quot;: {
+ &quot;animation&quot;: {
+ &quot;enable&quot;: false,
+ &quot;minimumValue&quot;: 0.1,
+ &quot;speed&quot;: 40,
+ &quot;sync&quot;: false
+                },
+ &quot;random&quot;: true,
+ &quot;value&quot;: 5
+            }
+        },
+ &quot;polygon&quot;: {
+ &quot;draw&quot;: {
+ &quot;enable&quot;: false,
+ &quot;lineColor&quot;: &quot;#ffffff&quot;,
+ &quot;lineWidth&quot;: 0.5
+            },
+ &quot;move&quot;: {
+ &quot;radius&quot;: 10
+            },
+ &quot;scale&quot;: 1,
+ &quot;type&quot;: &quot;none&quot;,
+ &quot;url&quot;: &quot;&quot;
+        },
+ &quot;background&quot;: {
+ &quot;color&quot;: &quot;#000000&quot;,
+ &quot;image&quot;: &quot;&quot;,
+ &quot;position&quot;: &quot;50% 50%&quot;,
+ &quot;repeat&quot;: &quot;no-repeat&quot;,
+ &quot;size&quot;: &quot;cover&quot;
+        }
+    }
+      }/&gt;
+    &lt;/div&gt;
+  );
+}
+export default App
+```
+As a result, you’ll have this nice animation:
 
 ![](flow.com/6143afec68f555387049efb3/63d1636004522c9e2e6526a0_image1_d9529ddc585753a9fa499ee5b9b5b769.g)
 

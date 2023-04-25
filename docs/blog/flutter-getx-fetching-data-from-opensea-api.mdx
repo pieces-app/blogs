@@ -17,27 +17,152 @@ Flutter has numerous state management components, including Provider, GetX, Bloc
 
 Now, use the following Flutter GetX CLI command in your command prompt to install the packages:
 
-```flutter pub get```
+```
+flutter pub get
+```
+
 
 <a href="https://amanullah.pieces.cloud/?p=8a7e48a554" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Create a Model Based on Your Data:
 You can use this website to <a href="https://jsontodart.com/" target="_blank" rel="noopener noreferrer">create a DART model</a> from your JSON data.
 Next, you’ll be creating an ```OpenseaModel``` class that contains the JSON data as shown below:
-e>class OpenseaModel {<br>  OpenseaModel({<br>    required this.assets,<br>  });<br><br>  List&lt;Assets&gt;? assets;<br><br>  OpenseaModel.fromJson(Map&lt;String, dynamic&gt; json) {<br>    assets = List.from(json['assets']).map((e) =&gt; Assets.fromJson(e)).toList();<br>  }<br><br>  Map&lt;String, dynamic&gt; toJson() {<br>    final _data = &lt;String, dynamic&gt;{};<br>    _data['assets'] = assets!.map((e) =&gt; e.toJson()).toList();<br>    return _data;<br>  }<br>}<br><br>class Assets {<br>  Assets({<br>    required this.imageUrl,<br>    required this.name,<br>    this.description,<br>    required this.permalink,<br>  });<br><br>  String? imageUrl;<br>  String? name;<br>  String? description;<br>  String? permalink;<br><br>  Assets.fromJson(Map&lt;String, dynamic&gt; json) {<br>    imageUrl = json['image_url'];<br>    name = json['name'];<br>    description = null;<br>    permalink = json['permalink'];<br>  }<br><br>  Map&lt;String, dynamic&gt; toJson() {<br>    final _data = &lt;String, dynamic&gt;{};<br>    _data['image_url'] = imageUrl;<br>    _data['name'] = name;<br>    _data['description'] = description;<br>    _data['permalink'] = permalink;<br>    return _data;<br>  }<br>}</pre><p><a href="https://amanullah.pieces.cloud/?p=b97c4fb8bf" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+class OpenseaModel {
+  OpenseaModel({
+    required this.assets,
+  });
+  List&lt;Assets&gt;? assets;
+  OpenseaModel.fromJson(Map&lt;String, dynamic&gt; json) {
+    assets = List.from(json['assets']).map((e) =&gt; Assets.fromJson(e)).toList();
+  }
+  Map&lt;String, dynamic&gt; toJson() {
+    final _data = &lt;String, dynamic&gt;{};
+    _data['assets'] = assets!.map((e) =&gt; e.toJson()).toList();
+    return _data;
+  }
+}
+class Assets {
+  Assets({
+    required this.imageUrl,
+    required this.name,
+    this.description,
+    required this.permalink,
+  });
+  String? imageUrl;
+  String? name;
+  String? description;
+  String? permalink;
+  Assets.fromJson(Map&lt;String, dynamic&gt; json) {
+    imageUrl = json['image_url'];
+    name = json['name'];
+    description = null;
+    permalink = json['permalink'];
+  }
+  Map&lt;String, dynamic&gt; toJson() {
+    final _data = &lt;String, dynamic&gt;{};
+    _data['image_url'] = imageUrl;
+    _data['name'] = name;
+    _data['description'] = description;
+    _data['permalink'] = permalink;
+    return _data;
+  }
+}```<a href="https://amanullah.pieces.cloud/?p=b97c4fb8bf" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ## Create a Flutter GetX Controller and make a Network Request Using the HTTP Package:
 Now, follow the steps below to create a Flutter GetX controller and fetch the data into the OpenSea model:
 - If the server returns a status code of 200, use the fromJSON() factory method to convert JSON Map into OpenSea model.
 - Throw an exception if the server does not respond with an OK status code of 200.
-e>import 'dart:convert';<br><br>import 'package:get/get.dart';<br>import 'package:getx_tutorials/models/opensea_model.dart';<br>import 'package:http/http.dart' as http;<br><br>class OpenseaController extends GetxController {<br>  var isLoading = false.obs;<br>  OpenseaModel? openseaModel;<br><br>  @override<br>  Future&lt;void&gt; onInit() async {<br>    super.onInit();<br>    fetchData();<br>  }<br><br>  fetchData() async {<br>    try {<br>      isLoading(true);<br>      http.Response response = await http.get(Uri.tryParse(<br>          'https://api.opensea.io/api/v1/assets?collection=cryptopunks')!);<br>      if (response.statusCode == 200) {<br>        ///data successfully<br>        var result = jsonDecode(response.body);<br><br>        openseaModel = OpenseaModel.fromJson(result);<br>      } else {<br>        print('error fetching data');<br>      }<br>    } catch (e) {<br>      print('Error while getting data is $e');<br>    } finally {<br>      isLoading(false);<br>    }<br>  }<br>}</pre><p><a href="https://amanullah.pieces.cloud/?p=3d6846bee6" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+import 'dart:convert';
+import 'package:get/get.dart';
+import 'package:getx_tutorials/models/opensea_model.dart';
+import 'package:http/http.dart' as http;
+class OpenseaController extends GetxController {
+  var isLoading = false.obs;
+  OpenseaModel? openseaModel;
+  @override
+  Future&lt;void&gt; onInit() async {
+    super.onInit();
+    fetchData();
+  }
+  fetchData() async {
+    try {
+      isLoading(true);
+      http.Response response = await http.get(Uri.tryParse(
+          'https://api.opensea.io/api/v1/assets?collection=cryptopunks')!);
+      if (response.statusCode == 200) {
+        ///data successfully
+        var result = jsonDecode(response.body);
+        openseaModel = OpenseaModel.fromJson(result);
+      } else {
+        print('error fetching data');
+      }
+    } catch (e) {
+      print('Error while getting data is $e');
+    } finally {
+      isLoading(false);
+    }
+  }
+}```<a href="https://amanullah.pieces.cloud/?p=3d6846bee6" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Display the Data in an Appropriate Format:
 Now, on our home screen, we create an instance of our controller as well as a list view to display the data we retrieved from the OpenSea API.
-e>import 'package:flutter/material.dart';<br>import 'package:get/get.dart';<br>import 'package:getx_tutorials/controllers/opensea_controller.dart';<br>import 'package:url_launcher/url_launcher.dart';<br><br>main() {<br>  runApp(GetMaterialApp(home: MyApp()));<br>}<br><br>class MyApp extends StatelessWidget {<br>  OpenseaController openseaController = Get.put(OpenseaController());<br> <br> @override<br>  Widget build(BuildContext context) {<br>    return Scaffold(<br>      appBar: AppBar(title: Text('opensea Api')),<br>        body: Obx(<br>      () =&gt; openseaController.isLoading.value<br>          ? Center(<br>              child: CircularProgressIndicator(),<br>            )<br>          : ListView.builder(<br>              itemCount: openseaController.openseaModel?.assets?.length ?? 0,<br>              itemBuilder: (context, index) {<br>                return ListTile(<br>                    title: Text(<br>                        openseaController.openseaModel?.assets![index].name ??<br>                            'no name'),<br>                    subtitle: Text(openseaController<br>                            .openseaModel?.assets![index].description ??<br>                        'no description'),<br>                    leading: openseaController<br>                                .openseaModel?.assets![index].imageUrl ==<br>                            null<br>                        ? Icon(Icons.image)<br>                        : Image.network(openseaController<br>                            .openseaModel!.assets![index].imageUrl!),<br>                    onTap: () {<br>                      _launchInBrowser(Uri.parse(openseaController<br>                          .openseaModel!.assets![index].permalink!));<br>                    });<br>              }),<br>    ));<br>  }<br><br>  Future&lt;void&gt; _launchInBrowser(Uri url) async {<br>    if (!await launchUrl(<br>      url,<br>      mode: LaunchMode.externalApplication,<br>    )) {<br>      throw 'Could not launch $url';<br>    }<br>  }<br>}</pre><p><a href="https://amanullah.pieces.cloud/?p=4ebd4cbbe4" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:getx_tutorials/controllers/opensea_controller.dart';
+import 'package:url_launcher/url_launcher.dart';
+main() {
+  runApp(GetMaterialApp(home: MyApp()));
+}
+class MyApp extends StatelessWidget {
+  OpenseaController openseaController = Get.put(OpenseaController());
+
+ @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('opensea Api')),
+        body: Obx(
+      () =&gt; openseaController.isLoading.value
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : ListView.builder(
+              itemCount: openseaController.openseaModel?.assets?.length ?? 0,
+              itemBuilder: (context, index) {
+                return ListTile(
+                    title: Text(
+                        openseaController.openseaModel?.assets![index].name ??
+                            'no name'),
+                    subtitle: Text(openseaController
+                            .openseaModel?.assets![index].description ??
+                        'no description'),
+                    leading: openseaController
+                                .openseaModel?.assets![index].imageUrl ==
+                            null
+                        ? Icon(Icons.image)
+                        : Image.network(openseaController
+                            .openseaModel!.assets![index].imageUrl!),
+                    onTap: () {
+                      _launchInBrowser(Uri.parse(openseaController
+                          .openseaModel!.assets![index].permalink!));
+                    });
+              }),
+    ));
+  }
+  Future&lt;void&gt; _launchInBrowser(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
+    }
+  }
+}```<a href="https://amanullah.pieces.cloud/?p=4ebd4cbbe4" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 Also, there is a ```_launchInBrowser() ```method that will open your images link in the browser.
 
-<strong>Output:</strong>
+**Output:**
 ![](ser. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63e3d1c02d302dfe487c350f_image_f5d273aa10090f0519efd3ee2f85112c_800.p)
 
 ## Conclusion
@@ -47,7 +172,7 @@ In this article, you learned how to use Flutter and GetX to Fetch data from an O
 
 ![](ht="33.9%" data-rt-dimensions="200:113" data-page-url="https://www.youtube.com/watch?v=Hjv0n_Qp9lQ&list=PLrTDw7ICfHFkvOFW_AERUTUbpmIPFccjS&index=3"><div><iframe width="200" height="113" src="https://www.youtube.com/embed/Hjv0n_Qp9lQ?feature=oembed&list=PLrTDw7ICfHFkvOFW_AERUTUbpmIPFccjS&index=3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Flutter Getx Rest API Tutorial - Fetching Data From Opensea Api"></ifr)
 
-<strong>Full Source Code:</strong>
+**Full Source Code:**
 <a href="https://bit.ly/3NkrvkZ" target="_blank" rel="noopener noreferrer">https://bit.ly/3NkrvkZ</a>
 
 ### Bonus Tip!

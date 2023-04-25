@@ -12,44 +12,184 @@ Tailwind CSS automatically removes any extraneous CSS, resulting in the shortest
 
 ## How to install Tailwind CSS into your project
 The Tailwind CLI tool is the quickest and easiest way to embed Tailwind CSS into your project from scratch. Check that you have Node.js installed before you begin.
-<strong>Step 1</strong>: Install Tailwind CSS into your project with the following command:
+**Step 1**: Install Tailwind CSS into your project with the following command:
 
-```npm install -D tailwindcss```
+```
+npm install -D tailwindcss
+```
 
-<p><em><a href="https://maryanda.pieces.cloud/?p=ba1446949e" target="_blank" rel="noopener noreferrer">Save this code</a></em>
+
+<p><a href="https://maryanda.pieces.cloud/?p=ba1446949e" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Step 2: Then, create a ```tailwind.config.js``` file with this command:
 
-e>npx tailwindcss init</pre><p><em><a href="https://maryanda.pieces.cloud/?p=56514faa4e" target="_blank" rel="noopener noreferrer">Save this code</a></em>
-<strong>Step 2</strong>: In your ```tailwind.config.js``` file, add the paths to all of your template files like this:
-e>/** @type {import('tailwindcss').Config} */<br>module.exports = {<br>  content: [&quot;./src/**/*.{html,js}&quot;],<br>  theme: {<br>    extend: {},<br>  },<br>  plugins: [],<br>}</pre><p><em><a href="https://maryanda.pieces.cloud/?p=59b84c9436" target="_blank" rel="noopener noreferrer">Save this code</a></em>
-<strong>Step 3</strong>: Add the ```@tailwind``` directives to your main CSS file to represent each of Tailwind's layers.
-e>@tailwind base;<br>@tailwind components;<br>@tailwind utilities;</pre><p><em><a href="https://maryanda.pieces.cloud/?p=7df64e9ef4" target="_blank" rel="noopener noreferrer">Save this code</a></em>
-<strong>Step 4</strong>: Add your compiled CSS file to the ```&lt;head&gt;``` of your markup file and begin styling your content with Tailwind's utility classes.
-e>&lt;!DOCTYPE html&gt;<br>&lt;<strong>html</strong> lang=&quot;en&quot;&gt;<br>&lt;<strong>head</strong>&gt;<br> &lt;<strong>meta</strong> charset=&quot;UTF-8&quot;&gt;<br> &lt;<strong>meta</strong> http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br> &lt;<strong>meta</strong> name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br> &lt;<strong>link</strong> href=&quot;/styles.css&quot; rel=&quot;stylesheet&quot;&gt;<br> &lt;<strong>title</strong>&gt;Tailwind CSS Tutorial&lt;/<strong>title</strong>&gt;<br>&lt;/<strong>head</strong>&gt;<br>&lt;<strong>body</strong>&gt;<br> &lt;<strong>div</strong> class=&quot;bg-gradient-to-t&quot;&gt;<br>  &lt;<strong>aside</strong> class=&quot;rounded-sm&quot;&gt;&lt;/<strong>aside</strong>&gt;<br>  &lt;<strong>img</strong> src=&quot;/images/pig.jpg&quot; alt=&quot;&quot;&gt;<br> &lt;/<strong>div</strong>&gt;<br>&lt;/<strong>body</strong>&gt;<br>&lt;/<strong>html</strong>&gt;</pre><p><em><a href="https://maryanda.pieces.cloud/?p=ea0940b9a8" target="_blank" rel="noopener noreferrer">Save this code</a></em>
+```
+npx tailwindcss init
+```
+<a href="https://maryanda.pieces.cloud/?p=56514faa4e" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Step 2**: In your ```tailwind.config.js``` file, add the paths to all of your template files like this:
+```
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [&quot;./src/**/*.{html,js}&quot;],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+
+```
+<a href="https://maryanda.pieces.cloud/?p=59b84c9436" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Step 3**: Add the ```@tailwind``` directives to your main CSS file to represent each of Tailwind's layers.
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities
+```
+<a href="https://maryanda.pieces.cloud/?p=7df64e9ef4" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Step 4**: Add your compiled CSS file to the ```&lt;head&gt;``` of your markup file and begin styling your content with Tailwind's utility classes.
+```
+&lt;!DOCTYPE html&gt;
+&lt;**html** lang=&quot;en&quot;&gt;
+&lt;**head**&gt;
+ &lt;**meta** charset=&quot;UTF-8&quot;&gt;
+ &lt;**meta** http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+ &lt;**meta** name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+ &lt;**link** href=&quot;/styles.css&quot; rel=&quot;stylesheet&quot;&gt;
+ &lt;**title**&gt;Tailwind CSS Tutorial&lt;/**title**&gt;
+&lt;/**head**&gt;
+&lt;**body**&gt;
+ &lt;**div** class=&quot;bg-gradient-to-t&quot;&gt;
+  &lt;**aside** class=&quot;rounded-sm&quot;&gt;&lt;/**aside**&gt;
+  &lt;**img** src=&quot;/images/pig.jpg&quot; alt=&quot;&quot;&gt;
+ &lt;/**div**&gt;
+&lt;/**body**&gt;
+&lt;/**html**&gt
+```
+<a href="https://maryanda.pieces.cloud/?p=ea0940b9a8" target="_blank" rel="noopener noreferrer">Save this code</a>
 ## Getting started with Tailwind CSS @apply
 Tailwind CSS’s ```@apply``` directive is a relatively new feature in the Tailwind CSS ecosystem that allows developers to “apply” existing utility classes in line with their custom CSS. It is convenient when you need to write custom CSS (for example, to override styles in a third-party library) but still want to work with your design tokens and use the same syntax as you would in HTML.
 Here’s a simple illustration:
-e>@tailwind base;<br>@tailwind components;<br>@tailwind utilities;<br><br>.class {<br> background-color: blue;<br> border-radius: 50%;<br>}<br><br>/* re-using the styling for the first class here */<br>.class-2 {<br> @apply class;<br>}<br><br>/* applying Tailwind CSS utility classes */<br>.another__class {<br> @apply border border=gray-300 rounded;<br>}</pre><p><em><a href="https://maryanda.pieces.cloud/?p=49594b8552" target="_blank" rel="noopener noreferrer">Save this code</a></em>
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.class {
+ background-color: blue;
+ border-radius: 50%;
+}
+/* re-using the styling for the first class here */
+.class-2 {
+ @apply class;
+}
+/* applying Tailwind CSS utility classes */
+.another__class {
+ @apply border border=gray-300 rounded;
+
+```
+<a href="https://maryanda.pieces.cloud/?p=49594b8552" target="_blank" rel="noopener noreferrer">Save this code</a>
 ## How to use the @apply directive in your next project
-```@apply``` allows you to reuse preset utility classes to style several components in your application. You can also combine its functionalities with other front-end frameworks, such as Bootstrap.
+```
+@apply``` allows you to reuse preset utility classes to style several components in your application. You can also combine its functionalities with other front-end frameworks, such as Bootstrap.
 Consider the code below:
-e>&lt;!DOCTYPE html&gt;<br>&lt;<strong>html</strong> lang=&quot;en&quot;&gt;<br>&lt;<strong>head</strong>&gt;<br> &lt;<strong>meta</strong> charset=&quot;UTF-8&quot;&gt;<br> &lt;<strong>meta</strong> http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br> &lt;<strong>meta</strong> name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br> &lt;!-- using Bootstrap CSS Classes --&gt;<br> &lt;<strong>link</strong> href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; integrity=&quot;sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi&quot; crossorigin=&quot;anonymous&quot;&gt;<br> &lt;<strong>title</strong>&gt;Tailwind CSS Tutorial&lt;/<strong>title</strong>&gt;<br><br> &lt;<strong>style</strong>&gt;<br>        @tailwind base;<br><br>        @tailwind components;<br><br>        /* applying utility classes to Bootstrap components */<br><br>        .btn-primary {<br>        @apply px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700;<br>        }<br>        .btn-success {<br>        @apply px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700;<br>        }<br>        .btn-danger {<br>        @apply px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700;<br>        }<br><br>        @tailwind utilities;<br> &lt;/<strong>style</strong>&gt;<br>&lt;/<strong>head</strong>&gt;<br><br>&lt;<strong>body</strong>&gt;<br> &lt;<strong>div</strong> class=&quot;m-1&quot;&gt;<br> &lt;<strong>button</strong> class=&quot;btn btn-primary&quot;&gt;Button&lt;/<strong>button</strong>&gt;<br> &lt;<strong>button</strong> class=&quot;btn btn-success&quot;&gt;Success Button&lt;/<strong>button</strong>&gt;<br> &lt;<strong>button</strong> class=&quot;btn btn-danger&quot;&gt;Danger Button&lt;/<strong>button</strong>&gt;<br> &lt;/<strong>div</strong>&gt;<br>&lt;/<strong>body</strong>&gt;<br>&lt;/<strong>html</strong>&gt;</pre><p><em><a href="https://maryanda.pieces.cloud/?p=fa2645bc66" target="_blank" rel="noopener noreferrer">Save this code</a></em>
+```
+&lt;!DOCTYPE html&gt;
+&lt;**html** lang=&quot;en&quot;&gt;
+&lt;**head**&gt;
+ &lt;**meta** charset=&quot;UTF-8&quot;&gt;
+ &lt;**meta** http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+ &lt;**meta** name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+ &lt;!-- using Bootstrap CSS Classes --&gt;
+ &lt;**link** href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; integrity=&quot;sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi&quot; crossorigin=&quot;anonymous&quot;&gt;
+ &lt;**title**&gt;Tailwind CSS Tutorial&lt;/**title**&gt;
+ &lt;**style**&gt;
+        @tailwind base;
+        @tailwind components;
+        /* applying utility classes to Bootstrap components */
+        .btn-primary {
+        @apply px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700;
+        }
+        .btn-success {
+        @apply px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700;
+        }
+        .btn-danger {
+        @apply px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700;
+        }
+        @tailwind utilities;
+ &lt;/**style**&gt;
+&lt;/**head**&gt;
+&lt;**body**&gt;
+ &lt;**div** class=&quot;m-1&quot;&gt;
+ &lt;**button** class=&quot;btn btn-primary&quot;&gt;Button&lt;/**button**&gt;
+ &lt;**button** class=&quot;btn btn-success&quot;&gt;Success Button&lt;/**button**&gt;
+ &lt;**button** class=&quot;btn btn-danger&quot;&gt;Danger Button&lt;/**button**&gt;
+ &lt;/**div**&gt;
+&lt;/**body**&gt;
+&lt;/**html**&gt
+```
+<a href="https://maryanda.pieces.cloud/?p=fa2645bc66" target="_blank" rel="noopener noreferrer">Save this code</a>
 In the code above, we created three buttons by using the ```@apply``` directive to import preset utility classes.
 Here’s the result:
 ![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ab13035036b13fe6d70925_image1_61391d9259e4dfd1acbb047c33d2ec85_800.p)
 You may discover that the buttons share various utility classes. These utility classes can be used for the base styling of any variant of our buttons. Consider an application with 25 buttons. We must then write the common utility classes (used for base styling) 25 times. This can lead to maintenance issues, because updating the common utility classes requires you to do so in 25 different places throughout the app, which quickly becomes complex and redundant.
 In such cases, you can use the ```@apply``` directive to convert standard utility classes into custom CSS classes. We can avoid duplicating the traditional utility classes this way.
 We've extracted our utility classes into the ```btn``` class below:
-e>&lt;style&gt;<br> @tailwind base;<br><br> @tailwind components;<br><br>        /* grouping similar custom utility classes */<br><br> @layer components {<br>        .btn {<br> @apply px-4 py-2 font-bold text-white rounded;<br>        }<br>      }<br><br> @tailwind utilities;<br> &lt;/style&gt;</pre><p><em><a href="https://maryanda.pieces.cloud/?p=2f474b9027" target="_blank" rel="noopener noreferrer">Save this code</a></em>
+```
+&lt;style&gt;
+ @tailwind base;
+ @tailwind components;
+        /* grouping similar custom utility classes */
+ @layer components {
+        .btn {
+ @apply px-4 py-2 font-bold text-white rounded;
+        }
+      }
+ @tailwind utilities;
+ &lt;/style&gt
+```
+<a href="https://maryanda.pieces.cloud/?p=2f474b9027" target="_blank" rel="noopener noreferrer">Save this code</a>
 We now have the appropriate level of abstraction for our utility classes after grouping the utility classes into the ```btn``` class.
-<strong>Note</strong>: To avoid specificity issues, you can use the ```@layer``` components directive to notify Tailwind which layer your custom component styles reside in. ```@layer``` allows you to control declaration order by automatically shifting your styles to the equivalent ```@tailwind``` directive, and it also allows you to use features like modifiers and tree-shaking in your own custom CSS. You can access <a href="https://tailwindcss.com/docs/functions-and-directives#layer" target="_blank" rel="noopener noreferrer">this guide</a> to get a better understanding of the ```@layer``` directive.
+**Note**: To avoid specificity issues, you can use the ```@layer``` components directive to notify Tailwind which layer your custom component styles reside in. ```@layer``` allows you to control declaration order by automatically shifting your styles to the equivalent ```@tailwind``` directive, and it also allows you to use features like modifiers and tree-shaking in your own custom CSS. You can access <a href="https://tailwindcss.com/docs/functions-and-directives#layer" target="_blank" rel="noopener noreferrer">this guide</a> to get a better understanding of the ```@layer``` directive.
 ## Using @apply with per-component CSS
 Component frameworks like Svelte and Vue allow per-component styling within a ```&lt;style&gt;``` block in each component file. If you try to ```@apply``` a custom class defined in your global CSS to one of these per-component ```&lt;style&gt;``` blocks, you will encounter an error.
-e>&lt;style&gt;<br> @tailwind base;<br> @tailwind components;<br> @tailwind utilities;<br><br> @layer components {<br>        .class {<br>            background-color: theme(colors.blue);<br>            border-radius: theme(borderRadius.lg);<br>            box-shadow: theme(boxShadow.xl);<br>        }<br>}<br><br>        div {<br> /* Won't work because the styles are processed separately and individually */<br> @apply class;<br>        }<br>    &lt;/style&gt;</pre><p><em><a href="https://maryanda.pieces.cloud/?p=bafb4a9950" target="_blank" rel="noopener noreferrer">Save this code</a></em>
+```
+&lt;style&gt;
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
+ @layer components {
+        .class {
+            background-color: theme(colors.blue);
+            border-radius: theme(borderRadius.lg);
+            box-shadow: theme(boxShadow.xl);
+        }
+}
+        div {
+ /* Won't work because the styles are processed separately and individually */
+ @apply class;
+        }
+    &lt;/style&gt
+```
+<a href="https://maryanda.pieces.cloud/?p=bafb4a9950" target="_blank" rel="noopener noreferrer">Save this code</a>
 The error appears because frameworks like Vue and Svelte process each ```&lt;style&gt;``` block independently and run your PostCSS plugin chain against each one in isolation. So, if you have 25 components, each with a ```&lt;style&gt;```  block, Tailwind will process the styles 25 times with no knowledge of the prior runs. As a result, when you try to ```@apply``` a predefined class from your global CSS, it fails, because Tailwind has no notion that the class exists as the styles are applied independently.
 The solution to this problem is to use the plugin system in ```tailwind.config.js``` to define any custom styles you want to ```@apply``` in your components.
-e>const plugin = require('tailwindcss/plugin')<br><br>module.exports = {<br> // ...<br>  plugins: [<br>    plugin(function ({ addComponents, theme }) {<br>      addComponents({<br> '.class': {<br>          backgroundColor: theme('colors.blue'),<br>          borderRadius: theme('borderRadius.lg'),<br>          boxShadow: theme('boxShadow.xl'),<br>        }<br>      })<br>    })<br>  ]<br>}</pre><p><em><a href="https://maryanda.pieces.cloud/?p=faea4d8221" target="_blank" rel="noopener noreferrer">Save this code</a></em>
+```
+const plugin = require('tailwindcss/plugin')
+module.exports = {
+ // ...
+  plugins: [
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+ '.class': {
+          backgroundColor: theme('colors.blue'),
+          borderRadius: theme('borderRadius.lg'),
+          boxShadow: theme('boxShadow.xl'),
+        }
+      })
+    })
+  ]
+
+```
+<a href="https://maryanda.pieces.cloud/?p=faea4d8221" target="_blank" rel="noopener noreferrer">Save this code</a>
 In this manner, any Tailwind file that utilizes this config file will have access to those styles.
 ## Conclusion
 This article discussed the Tailwind CSS ```@apply``` directive, emphasizing some of its capabilities, use cases, and modes of operation. Because it reduces repetition in your project code base and allows for easy maintenance, the ```@apply``` directive has shown to be a better alternative to using complex classes. Because of its simplicity and ease of application, this component can be applied to much larger real-world endeavors.

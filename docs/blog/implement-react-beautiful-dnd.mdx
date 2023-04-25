@@ -35,20 +35,55 @@ You’ll need a basic knowledge of React, and that’s it! Let's get started.
 
 ## Set Up the Application with React Beautiful Dnd
 First, create a boilerplate React.JS application:
-e>npx create-react-app drag-n-drop-demo</pre><p>Then, install the dependencies:
+```
+npx create-react-app drag-n-drop-demo
+```
+Then, install the dependencies:
 First, let’s make a simple list of tasks as a starting point:
-e>const initialTasks = [<br>  {<br>    id: 1,<br>    title: &quot;Task 1&quot;,<br>  },<br>  {<br>    id: 2,<br>    title: &quot;Task 2&quot;,<br>  },<br>  {<br>    id: 3,<br>    title: &quot;Task 3&quot;,<br>  },<br>];</pre><p><a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=048f4f9d14" target="_blank" rel="noopener noreferrer">Save this code</a> 
+```
+const initialTasks = [
+  {
+    id: 1,
+    title: &quot;Task 1&quot;,
+  },
+  {
+    id: 2,
+    title: &quot;Task 2&quot;,
+  },
+  {
+    id: 3,
+    title: &quot;Task 3&quot;,
+  },
+];```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=048f4f9d14" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ### 2. Create the Context
 The first step in using drag and drop functionality is to declare a particular area on the screen as droppable.
 The way we do this is by creating context. We will use this context to wrap the area on the screen where we want drag and drop:
-e>&lt;DragDropContext onDragEnd={onDragEnd}&gt;<br>  All drag-and-drop functionality happens inside this context<br>&lt;/DragDropContext&gt;</pre><p>You’ll notice a special function called ```onDragEnd``` passed into the context. We’ll use this function to update the state of our application.
+```
+&lt;DragDropContext onDragEnd={onDragEnd}&gt;
+  All drag-and-drop functionality happens inside this context
+&lt;/DragDropContext&gt
+```
+You’ll notice a special function called ```onDragEnd``` passed into the context. We’ll use this function to update the state of our application.
 For now, let’s use the following code:
-e>const onDragEnd = (result) =&gt; {<br> console.log(result);<br>};</pre><p>Basically, this function will be called after a user finishes a drag and drop operation.
+```
+const onDragEnd = (result) =&gt; {
+ console.log(result);
+}
+```
+Basically, this function will be called after a user finishes a drag and drop operation.
 
 ### 3. Create the Droppable Area
 Let's create a React Beautiful DnD component that will be used to wrap the area on the screen that will be droppable:
-e>&lt;Droppable droppableId=&quot;tasks&quot;&gt;<br>  {(provided) =&gt; (<br>    &lt;div ref={provided.innerRef} {...provided.droppableProps}&gt;<br>      { Your draggable items go here }<br>      {provided. placeholder} // This is a placeholder that will be used to show the space where the item will be dropped<br>    &lt;/div&gt;<br>  )}<br>&lt;/Droppable&gt;</pre><p><a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=60a2428c3b" target="_blank" rel="noopener noreferrer">Save this code </a>
+```
+&lt;Droppable droppableId=&quot;tasks&quot;&gt;
+  {(provided) =&gt; (
+    &lt;div ref={provided.innerRef} {...provided.droppableProps}&gt;
+      { Your draggable items go here }
+      {provided. placeholder} // This is a placeholder that will be used to show the space where the item will be dropped
+    &lt;/div&gt;
+  )}
+&lt;/Droppable&gt;```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=60a2428c3b" target="_blank" rel="noopener noreferrer">Save this code </a>
 The ```droppableId``` is a unique identifier for the droppable area. This is used to identify the area when a drag and drop operation is completed.
 The ```provided``` object contains two properties:
 - The ```innerRef``` refers to the <a href="https://code.pieces.app/blog/understanding-dom-and-virtual-dom-and-how-they-work-with-react" target="_blank" rel="noopener noreferrer">DOM element</a> that wraps the droppable area.
@@ -56,7 +91,22 @@ The ```provided``` object contains two properties:
 
 ### 4. Create the Draggable Items
 Now, let's go over the task items individually and make them draggable:
-e>{<br>  tasks.map((task, index) =&gt; (<br>    &lt;Draggable key={task.id} draggableId={task.id.toString()} index={index}&gt;<br>      {(provided) =&gt; (<br>        &lt;div<br>          {...provided.draggableProps}<br>          {...provided.dragHandleProps}<br>          ref={provided.innerRef}<br>        &gt;<br>          &lt;div&gt;{task.title}&lt;/div&gt;<br>        &lt;/div&gt;<br>      )}<br>    &lt;/Draggable&gt;<br>  ));<br>}</pre><p><a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=d6a944be79" target="_blank" rel="noopener noreferrer">Save this code</a> 
+```
+{
+  tasks.map((task, index) =&gt; (
+    &lt;Draggable key={task.id} draggableId={task.id.toString()} index={index}&gt;
+      {(provided) =&gt; (
+        &lt;div
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        &gt;
+          &lt;div&gt;{task.title}&lt;/div&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/Draggable&gt;
+  ));
+}```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=d6a944be79" target="_blank" rel="noopener noreferrer">Save this code</a>
 The React ```Draggable``` component takes in two props. The ```draggableId``` is a unique identifier for the draggable item, and the ```index``` is the position of the item in the list.
 The ```provided``` object contains three properties. The ```draggableProps``` is a set of props that will be applied to the DOM element. The ```dragHandleProps``` is a set of props applied to the DOM element used to drag the item. The ```innerRef``` refers to the DOM element that wraps the draggable item.
 
@@ -65,28 +115,111 @@ Let's solve that issue!
 
 ### 5. Update the State with React Beautiful Dnd
 The above issue occurs because the application's state is not updated when the drag and drop operation is completed. Let's do that:
-e>const onDragEnd = (result) =&gt; {<br> if (!result.destination) return;<br><br> const items = Array.from(tasks);<br> const [reorderedItem] = items.splice(result.source.index, 1);<br>  items.splice(result.destination.index, 0, reorderedItem);<br><br>  setTasks(items);<br>};</pre><p><a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=870142bf32" target="_blank" rel="noopener noreferrer">Save this code</a> 
+```
+const onDragEnd = (result) =&gt; {
+ if (!result.destination) return;
+ const items = Array.from(tasks);
+ const [reorderedItem] = items.splice(result.source.index, 1);
+  items.splice(result.destination.index, 0, reorderedItem);
+  setTasks(items);
+};```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=870142bf32" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 The ```result``` object contains the ```source``` and ```destination``` properties. The ```source``` property includes the ```index``` and ```droppableId``` of the dragged item.
 The ```destination``` property contains the ```index``` and ```droppableId``` of the dropped item.
 
 ### 6. Complete Code
-e>import React, { useState } from &quot;react&quot;;<br>import { DragDropContext, Droppable, Draggable } from &quot;react-beautiful-dnd&quot;;<br><br>const initialTasks = [<br>  {<br>    id: 1,<br>    title: &quot;Task 1&quot;,<br>  },<br>  {<br>    id: 2,<br>    title: &quot;Task 2&quot;,<br>  },<br>  {<br>    id: 3,<br>    title: &quot;Task 3&quot;,<br>  },<br>];<br><br>function App() {<br> const [tasks, setTasks] = useState(initialTasks);<br><br> const onDragEnd = (result) =&gt; {<br> if (!result.destination) return;<br><br> const items = Array.from(tasks);<br> const [reorderedItem] = items.splice(result.source.index, 1);<br>    items.splice(result.destination.index, 0, reorderedItem);<br><br>    setTasks(items);<br>  };<br><br> return (<br>    &lt;div className=&quot;App&quot;&gt;<br>      &lt;DragDropContext onDragEnd={onDragEnd}&gt;<br>        &lt;Droppable droppableId=&quot;tasks&quot;&gt;<br>          {(provided) =&gt; (<br>            &lt;div ref={provided.innerRef} {...provided.droppableProps}&gt;<br>              {tasks.map((task, index) =&gt; (<br>                &lt;Draggable<br>                  key={task.id}<br>                  draggableId={task.id.toString()}<br>                  index={index}<br>                &gt;<br>                  {(provided) =&gt; (<br>                    &lt;div<br>                      {...provided.draggableProps}<br>                      {...provided.dragHandleProps}<br>                      ref={provided.innerRef}<br>                    &gt;<br>                      &lt;div&gt;{task.title}&lt;/div&gt;<br>                    &lt;/div&gt;<br>                  )}<br>                &lt;/Draggable&gt;<br>              ))}<br>              {provided.placeholder}<br>            &lt;/div&gt;<br>          )}<br>        &lt;/Droppable&gt;<br>      &lt;/DragDropContext&gt;<br>    &lt;/div&gt;<br>  );<br>}<br><br>export default App;</pre><p><a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=a49f4186fa" target="_blank" rel="noopener noreferrer">Save this code</a> 
+```
+import React, { useState } from &quot;react&quot;;
+import { DragDropContext, Droppable, Draggable } from &quot;react-beautiful-dnd&quot;;
+const initialTasks = [
+  {
+    id: 1,
+    title: &quot;Task 1&quot;,
+  },
+  {
+    id: 2,
+    title: &quot;Task 2&quot;,
+  },
+  {
+    id: 3,
+    title: &quot;Task 3&quot;,
+  },
+];
+function App() {
+ const [tasks, setTasks] = useState(initialTasks);
+ const onDragEnd = (result) =&gt; {
+ if (!result.destination) return;
+ const items = Array.from(tasks);
+ const [reorderedItem] = items.splice(result.source.index, 1);
+    items.splice(result.destination.index, 0, reorderedItem);
+    setTasks(items);
+  };
+ return (
+    &lt;div className=&quot;App&quot;&gt;
+      &lt;DragDropContext onDragEnd={onDragEnd}&gt;
+        &lt;Droppable droppableId=&quot;tasks&quot;&gt;
+          {(provided) =&gt; (
+            &lt;div ref={provided.innerRef} {...provided.droppableProps}&gt;
+              {tasks.map((task, index) =&gt; (
+                &lt;Draggable
+                  key={task.id}
+                  draggableId={task.id.toString()}
+                  index={index}
+                &gt;
+                  {(provided) =&gt; (
+                    &lt;div
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                    &gt;
+                      &lt;div&gt;{task.title}&lt;/div&gt;
+                    &lt;/div&gt;
+                  )}
+                &lt;/Draggable&gt;
+              ))}
+              {provided.placeholder}
+            &lt;/div&gt;
+          )}
+        &lt;/Droppable&gt;
+      &lt;/DragDropContext&gt;
+    &lt;/div&gt;
+  );
+}
+export default App;```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=a49f4186fa" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ## Common Issues with React Beautiful Dnd Examples
 1. The draggable item is not moving.
 Sometimes, you’ll notice that the items are not moving. If you open the console, you’ll see errors like the following:
-```Unable to find draggable with id: 1```
+```
+Unable to find draggable with id: 1
+```
+
 This is a known issue and usually happens due to the use of ```React.StrictMode``` on your index.js file.
 To fix this issue, you have to remove the ```React.StrictMode```.
 
 Instead of this:
-e>ReactDOM.render(<br>  &lt;React.StrictMode&gt;<br>    &lt;App /&gt;<br>  &lt;/React.StrictMode&gt;,<br>  document.getElementById(&quot;root&quot;)<br>);</pre><p>Use this:
-e>ReactDOM.render(&lt;App /&gt;, document.getElementById(&quot;root&quot;));</pre><p>This should solve the issue.
+```
+ReactDOM.render(
+  &lt;React.StrictMode&gt;
+    &lt;App /&gt;
+  &lt;/React.StrictMode&gt;,
+  document.getElementById(&quot;root&quot;)
+)
+```
+Use this:
+```
+ReactDOM.render(&lt;App /&gt;, document.getElementById(&quot;root&quot;))
+```
+This should solve the issue.
 
 2. The draggable item is not moving smoothly.
 If you notice that the draggable item is not moving smoothly, you can try to add the following CSS to your application:
-e>.react-beautiful-dnd-draggable {<br>  transition: transform 0.2s;<br>}</pre><p>3. The draggable item is not moving to the correct position.
+```
+.react-beautiful-dnd-draggable {
+  transition: transform 0.2s;
+
+```
+3. The draggable item is not moving to the correct position.
 This is usually caused by the draggable item not having a designated height. You can fix this by adding a height value to the draggable object.
 
 ### References

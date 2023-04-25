@@ -38,65 +38,291 @@ In this section, we'll be looking at operations that are used to manipulate doub
 
 ### Creating
 Before learning how to manipulate a doubly linked list, it’s important to first understand its creation. Below is the code for a creating the struct of a single node in a doubly linked list in C:
-e>struct node {<br>  int data;<br>  struct node *next;<br>  struct node *prev;<br>};<br><br>typedef struct node;</pre><p>Here you can see that each node contains a variable to store an integer, a second variable to store the address of the next node, and a third variable to store the address of the previous node.
+```
+struct node {
+  int data;
+  struct node *next;
+  struct node *prev;
+};
+typedef struct node
+```
+Here you can see that each node contains a variable to store an integer, a second variable to store the address of the next node, and a third variable to store the address of the previous node.
 Now that the struct is declared, let's create our doubly linked list of nodes:
-e>/* creating our nodes */<br>node *head;<br>node *first = NULL;<br>node *second = NULL;<br>node *third = NULL;<br><br>/* Allocate memory */<br>first = malloc(sizeof(struct node));<br>second = malloc(sizeof(struct node));<br>third = malloc(sizeof(struct node));<br><br>/* store address of the first node in head */<br>head = first;<br><br>/* Assign data values */<br>first-&gt;data = 75;<br>second-&gt;data = 85;<br>third-&gt;data = 100;<br><br>/* linking our nodes */<br>first-&gt;next = two;<br>first-&gt;prev = NULL;<br>second-&gt;next = three;<br>second-&gt;prev = one;<br>third-&gt;next = NULL;<br>third-&gt;prev = two;</pre><p><a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=83e74d917c" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+/* creating our nodes */
+node *head;
+node *first = NULL;
+node *second = NULL;
+node *third = NULL;
+/* Allocate memory */
+first = malloc(sizeof(struct node));
+second = malloc(sizeof(struct node));
+third = malloc(sizeof(struct node));
+/* store address of the first node in head */
+head = first;
+/* Assign data values */
+first-&gt;data = 75;
+second-&gt;data = 85;
+third-&gt;data = 100;
+/* linking our nodes */
+first-&gt;next = two;
+first-&gt;prev = NULL;
+second-&gt;next = three;
+second-&gt;prev = one;
+third-&gt;next = NULL;
+third-&gt;prev = two;```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=83e74d917c" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ![](//uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b390f1818dc2_image1_96d03561fd3a48e44bb380389f375199_800.jp)
 
 ### Inserting a node
 Two of the advantages of using a linked list instead of an array is the list’s ability to change size and how easy it is to insert new nodes. In this section, we'll look at how to add a new node into our list. Since there are different locations where nodes can be inserted, we will look at each case individually to understand them all well.
 To insert a node at the beginning of our doubly linked list we'll first have to create it and give it some value to store as data:
-e>/* creating new node*/<br>node *new_node = NULL;<br><br>/* Allocating memory for new node */<br>new_node = malloc(sizeof(struct node));<br><br>/* assigning data */<br>new_node-&gt;data = 105;</pre><p>To insert our newly created node at the beginning, we'll have to set the ```prev``` pointer of the new node to ```null``` and then set the next pointer of the new node to the first node in the list.
-e>new_node-&gt;prev = NULL;<br>new_node-&gt;next = first;</pre><p>Now that there is a new node at the beginning of the list, set the ```prev``` pointer of the first node so that it points to the new node that was just created, and then set the head equal to the new node.
-e>first-&gt;prev = new_node;<br>head = new_node;</pre><p>The following function can be used to insert a new node at the beginning of a doubly linked list:
-e>void insert_at_beginning(node** head, int data)<br>{<br>  // allocate memory for new_node<br>  node* new_node = NULL;<br>  new_node = malloc(sizeof(struct node));<br><br>  // assign data to newNode<br>  new_node-&gt;data = data;<br><br>  // point next of new_node to the first node of the doubly linked list<br>  new_node-&gt;next = (*head);<br><br>  // point prev to NULL<br>  new_node-&gt;prev = NULL;<br><br>  // point previous of the first node (now the first node is the second node) to new_node<br>  if ((*head) != NULL)<br>  (*head)-&gt;prev = new_node;<br><br>  // head points to newNode<br>  (*head) = new_node;<br>}</pre><p><a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=a95f4182a0" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+/* creating new node*/
+node *new_node = NULL;
+/* Allocating memory for new node */
+new_node = malloc(sizeof(struct node));
+/* assigning data */
+new_node-&gt;data = 105
+```
+To insert our newly created node at the beginning, we'll have to set the ```prev``` pointer of the new node to ```null``` and then set the next pointer of the new node to the first node in the list.
+```
+new_node-&gt;prev = NULL;
+new_node-&gt;next = first
+```
+Now that there is a new node at the beginning of the list, set the ```prev``` pointer of the first node so that it points to the new node that was just created, and then set the head equal to the new node.
+```
+first-&gt;prev = new_node;
+head = new_node
+```
+The following function can be used to insert a new node at the beginning of a doubly linked list:
+```
+void insert_at_beginning(node** head, int data)
+{
+  // allocate memory for new_node
+  node* new_node = NULL;
+  new_node = malloc(sizeof(struct node));
+  // assign data to newNode
+  new_node-&gt;data = data;
+  // point next of new_node to the first node of the doubly linked list
+  new_node-&gt;next = (*head);
+  // point prev to NULL
+  new_node-&gt;prev = NULL;
+  // point previous of the first node (now the first node is the second node) to new_node
+  if ((*head) != NULL)
+  (*head)-&gt;prev = new_node;
+  // head points to newNode
+  (*head) = new_node;
+}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=a95f4182a0" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ![](ps://uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b35b45818dc6_image11_72830c61eba2296ca479929681c6f517_800.jp)
 To insert a node in between two nodes of our doubly linked list, we'll have to create the node before we place it:
-e>node *new_node = NULL;<br><br>/* Allocating memory for new node */<br>new_node = malloc(sizeof(struct node));<br><br>/* assigning data */<br>new_node-&gt;data = 124;</pre><p>We will then traverse through the list until we get to where we want to insert the new node. In the example below, we want to place our new node after the third node on the list.
-e>node *temp;<br>temp = *head;<br><br>for (i = 0; i &lt; 1; i++)<br>  {<br>    temp = temp-&gt;next;<br>    if(temp == NULL)<br>      return;<br>  }</pre><p>After traversing down the list, the temp pointer refers to the second node with an index of one (1). Now we'll make the next pointer of the new node point to the third node. We can access the next node via ```temp-&gt;next```.
-e>new_node-&gt;next = temp-&gt;next;</pre><p>We'll then set the ```prev``` pointer of our new node point to the second node, which is referenced by ```temp```:
-e>new_node-&gt;prev = temp;</pre><p>Our new node now points to the third and fourth nodes. Now let's make the next pointer of our third node point to our new node and the prev pointer of our third node point to our new node.
-e>temp-&gt;next = new_node;<br>temp-&gt;next-&gt;prev = new_node;</pre><p>```Temp``` refers to the second node while ```temp-&gt;next-&gt;prev``` refers to the ```prev``` pointer of the third node. With this done we have successfully inserted our new node in the second and third nodes of our list.
+```
+node *new_node = NULL;
+/* Allocating memory for new node */
+new_node = malloc(sizeof(struct node));
+/* assigning data */
+new_node-&gt;data = 124
+```
+We will then traverse through the list until we get to where we want to insert the new node. In the example below, we want to place our new node after the third node on the list.
+```
+node *temp;
+temp = *head;
+for (i = 0; i &lt; 1; i++)
+  {
+    temp = temp-&gt;next;
+    if(temp == NULL)
+      return;
+
+```
+After traversing down the list, the temp pointer refers to the second node with an index of one (1). Now we'll make the next pointer of the new node point to the third node. We can access the next node via ```temp-&gt;next```.
+```
+new_node-&gt;next = temp-&gt;next
+```
+We'll then set the ```prev``` pointer of our new node point to the second node, which is referenced by ```temp```:
+```
+new_node-&gt;prev = temp
+```
+Our new node now points to the third and fourth nodes. Now let's make the next pointer of our third node point to our new node and the prev pointer of our third node point to our new node.
+```
+temp-&gt;next = new_node;
+temp-&gt;next-&gt;prev = new_node
+```
+```
+Temp``` refers to the second node while ```temp-&gt;next-&gt;prev``` refers to the ```prev``` pointer of the third node. With this done we have successfully inserted our new node in the second and third nodes of our list.
 
 Here's the function for adding a new node at a specified position in a doubly linked list:
-e>void insertMid(node **head, int data)<br>{<br>  // allocate memory for the new node<br>  node *new_node, *temp;<br>  int i;<br><br>  new_node = malloc(sizeof(node));<br>  new_node-&gt;data = data;<br> <br>  // traversing through the list<br>  temp = *head;<br>  for (i = 0; i &lt; 2; i++)<br>  {<br>    temp = temp-&gt;next;<br>    if(temp == NULL)<br>      return;<br>  }<br><br>  // inserting our new node<br>  new_node-&gt;next = temp-&gt;next;<br>  new_node-&gt;prev = temp;<br>  temp-&gt;next = new_node;<br>  temp-&gt;next-&gt;prev = new_node;<br>}</pre><p><a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=647f4cb643" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+void insertMid(node **head, int data)
+{
+  // allocate memory for the new node
+  node *new_node, *temp;
+  int i;
+  new_node = malloc(sizeof(node));
+  new_node-&gt;data = data;
+
+  // traversing through the list
+  temp = *head;
+  for (i = 0; i &lt; 2; i++)
+  {
+    temp = temp-&gt;next;
+    if(temp == NULL)
+      return;
+  }
+  // inserting our new node
+  new_node-&gt;next = temp-&gt;next;
+  new_node-&gt;prev = temp;
+  temp-&gt;next = new_node;
+  temp-&gt;next-&gt;prev = new_node;
+}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=647f4cb643" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 ![](rc="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b37af3818dc0_image10_5e0823811b28858d36df3d125e6f76e8_800.jp)
 
 To insert our node at the end of our list, we'll first have to create it:
-e>node *new_node = NULL;<br><br>/* Allocating memory for new node */<br>new_node = malloc(sizeof(struct node));<br><br>/* assigning data */<br>new_node-&gt;data = 136;</pre><p>We'll then traverse down the list till we get to the end of the list:
-e>node *temp;<br>temp = *head;<br><br>while (temp-&gt;next != NULL)<br>{<br>  temp = temp-&gt;next;<br>}</pre><p>The ```temp``` variable now refers to the last node. Now let's make the next pointer of the last node point to our ```new_node``` instead of ```null```:
-e>temp-&gt;next = new_node;</pre><p>Let's make the next pointer of our new node point to ```null``` and the ```prev``` pointer point to the last node:
-e>new_node-&gt;prev = temp;<br>new_node-&gt;next = NULL;</pre><p>With all of those steps completed, we have successfully added our new node to the end of our list. Here's what an entire function for adding a new node to the end of a doubly linked list would look like:
-e>void insertAtEnd(node **head, int data)<br>{<br>  node *new_node, *temp, *buf;<br>  new_node = malloc(sizeof(node));<br>  new_node-&gt;data = data;<br>  temp = *head;<br>  while (temp-&gt;next != NULL)<br>  {<br>    temp = temp-&gt;next;<br>  }<br><br>  temp-&gt;next = new_node;<br>  new_node-&gt;prev = temp;<br>  new_node-&gt;next = NULL;<br>}</pre><p><a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=a8f8428fbe" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+node *new_node = NULL;
+/* Allocating memory for new node */
+new_node = malloc(sizeof(struct node));
+/* assigning data */
+new_node-&gt;data = 136
+```
+We'll then traverse down the list till we get to the end of the list:
+```
+node *temp;
+temp = *head;
+while (temp-&gt;next != NULL)
+{
+  temp = temp-&gt;next;
+
+```
+The ```temp``` variable now refers to the last node. Now let's make the next pointer of the last node point to our ```new_node``` instead of ```null```:
+```
+temp-&gt;next = new_node
+```
+Let's make the next pointer of our new node point to ```null``` and the ```prev``` pointer point to the last node:
+```
+new_node-&gt;prev = temp;
+new_node-&gt;next = NULL
+```
+With all of those steps completed, we have successfully added our new node to the end of our list. Here's what an entire function for adding a new node to the end of a doubly linked list would look like:
+```
+void insertAtEnd(node **head, int data)
+{
+  node *new_node, *temp, *buf;
+  new_node = malloc(sizeof(node));
+  new_node-&gt;data = data;
+  temp = *head;
+  while (temp-&gt;next != NULL)
+  {
+    temp = temp-&gt;next;
+  }
+  temp-&gt;next = new_node;
+  new_node-&gt;prev = temp;
+  new_node-&gt;next = NULL;
+}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=a8f8428fbe" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 ![](src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b3d425818db5_image9_852e9c2d907b48a38998cdcf630752a2_800.jp)
 
 ### Updating a node
 With our list created, let's look at how we update a specific node located inside of a doubly linked list. In the example below we'll be editing the 3rd node with an index of 2 in our list.
 First, we'll traverse down the list to the third node that we would like to update:
-e>node *temp;<br>temp = *head;<br>for (i = 0; i &lt; 2; i++)<br>{<br>  temp = temp-&gt;next;<br>  if(temp == NULL)<br>     return;<br>}</pre><p>Now, all we have to do is declare ```temp-&gt;data``` and set a specific value:
-e>temp-&gt;next = 36;</pre><p>Here's what the function for updating a node to the end of a doubly linked list would look like:
-e>void updateNode(node **head, int data)<br>{<br>  node *temp, *buf;<br>  int i;<br>  temp = *head;<br>  <br>  for (i = 0; i &lt; 2; i++)<br>  {<br>    temp = temp-&gt;next;<br>    if(temp == NULL)<br>      return;<br>  }<br><br>  temp-&gt;data = data;<br>}</pre><p><a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=dbfe43a132" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+node *temp;
+temp = *head;
+for (i = 0; i &lt; 2; i++)
+{
+  temp = temp-&gt;next;
+  if(temp == NULL)
+     return;
+
+```
+Now, all we have to do is declare ```temp-&gt;data``` and set a specific value:
+```
+temp-&gt;next = 36
+```
+Here's what the function for updating a node to the end of a doubly linked list would look like:
+```
+void updateNode(node **head, int data)
+{
+  node *temp, *buf;
+  int i;
+  temp = *head;
+
+  for (i = 0; i &lt; 2; i++)
+  {
+    temp = temp-&gt;next;
+    if(temp == NULL)
+      return;
+  }
+  temp-&gt;data = data;
+}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=dbfe43a132" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 ![](webflow.com/6143afec68f555387049efb3/639178e3c389b31125818dc4_image8_40e18fee2f3bf7c39bf1b22dcdd04ccb_800.jp)
 
 ### Deleting a node
 To delete a node after a specified node in our list, we'll first create a ```temp``` node for traversing down the list until we get to our node:
-e>node *temp;<br>temp = *head;</pre><p>Now we'll traverse down the list.
-e>while(temp-&gt;data != val)<br>temp = temp-&gt;next;</pre><p>This sets ```temp``` to the node before the node we intend to delete. Now we'll create a new pointer and point to the node we intend to delete:
-e>node *ptr;<br>ptr = temp-&gt;next;</pre><p>With this completed, the pointer now refers to the node that will be deleted. Now we'll make the next pointer of the specified node point to the node after the node we intend to delete:
-e>temp-&gt;next = ptr-&gt;next;</pre><p>To completely disconnect the node that we’re deleting from our list, we'll set the ```prev``` node of the pointer after the one we want to delete to the specified node:
-e>ptr-&gt;next-&gt;prev = temp;</pre><p>With everything completed, the ```ptr``` has been disconnected from our list and all we need to do is release the memory that was allocated to ```ptr```.
-e>free(ptr);</pre><p>Here's the entire function for deleting a node to the end of a doubly linked list. It can be used regardless of the list’s length:
-e>void deleteNode(node **head)<br>{<br>  node *ptr, *temp, *buf;<br><br>  int val;<br>  temp = *head;<br>  val = 75;<br>  <br>  while(temp -&gt; data != val)<br>    temp = temp-&gt;next;<br>    ptr = temp-&gt;next;<br>    temp-&gt;next = ptr-&gt;next;<br>    ptr-&gt;next-&gt;prev = temp;<br>  <br>  free(ptr);<br>}</pre><p><a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=1b8a499fc6" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+node *temp;
+temp = *head
+```
+Now we'll traverse down the list.
+```
+while(temp-&gt;data != val)
+temp = temp-&gt;next
+```
+This sets ```temp``` to the node before the node we intend to delete. Now we'll create a new pointer and point to the node we intend to delete:
+```
+node *ptr;
+ptr = temp-&gt;next
+```
+With this completed, the pointer now refers to the node that will be deleted. Now we'll make the next pointer of the specified node point to the node after the node we intend to delete:
+```
+temp-&gt;next = ptr-&gt;next
+```
+To completely disconnect the node that we’re deleting from our list, we'll set the ```prev``` node of the pointer after the one we want to delete to the specified node:
+```
+ptr-&gt;next-&gt;prev = temp
+```
+With everything completed, the ```ptr``` has been disconnected from our list and all we need to do is release the memory that was allocated to ```ptr```.
+```
+free(ptr)
+```
+Here's the entire function for deleting a node to the end of a doubly linked list. It can be used regardless of the list’s length:
+```
+void deleteNode(node **head)
+{
+  node *ptr, *temp, *buf;
+  int val;
+  temp = *head;
+  val = 75;
+
+  while(temp -&gt; data != val)
+    temp = temp-&gt;next;
+    ptr = temp-&gt;next;
+    temp-&gt;next = ptr-&gt;next;
+    ptr-&gt;next-&gt;prev = temp;
+
+  free(ptr);
+}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=1b8a499fc6" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 In the function above, we deleted the node directly after the node with a value of 75.
 ![](sl.webflow.com/6143afec68f555387049efb3/639178e3c389b3da04818dc3_image7_90a37ea18c8ca0796c6e99db5692c6f0_800.jp)
 
 ### Reversing a doubly linked list
 To reverse a doubly linked list, we'll start by taking the two pointers:
-e>node *temp, *buf;</pre><p>Now let ```buf``` point to ```NULL``` while ```temp``` points to our ```head``` pointer:
-e>buf = NULL;<br>temp = *head;</pre><p>In a loop using both pointers, swap the next and previous pointer for all nodes of the doubly linked list: 
-e>while (temp != NULL)<br>{<br>  buf = temp-&gt;prev;<br>  temp-&gt;prev = temp-&gt;next;<br>  temp-&gt;next = buf;<br>  temp = temp-&gt;prev;<br>}</pre><p><a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=92884295a2" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+node *temp, *buf
+```
+Now let ```buf``` point to ```NULL``` while ```temp``` points to our ```head``` pointer:
+```
+buf = NULL;
+temp = *head
+```
+In a loop using both pointers, swap the next and previous pointer for all nodes of the doubly linked list:
+```
+while (temp != NULL)
+{
+  buf = temp-&gt;prev;
+  temp-&gt;prev = temp-&gt;next;
+  temp-&gt;next = buf;
+  temp = temp-&gt;prev;
+}```<a href="https://user-a8d2af0a-e410-4d3e-985a-20f2fd9c570d-agyqaaz4hq-uc.a.run.app/?p=92884295a2" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 With these done, our previous and next pointers has been swapped. Now we'll set the head pointer to the last node of the list.
 ![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/639178e3c389b392e7818dc1_image2_51bf123530ce800c8531abc16cd26867_800.jp)
 
@@ -117,6 +343,6 @@ You can get the code for all our functions from the<a href="https://github.com/K
 
 ## Conclusion
 In this article, we looked at doubly linked lists and the different operations we can carry out on a doubly linked list to modify, create, and remove nodes to efficiently work with the data moving through them. Happy coding!
-<strong>Resources</strong>
+**Resources**
 <a href="https://github.com/King-AJr/doubly_linked_list" target="_blank" rel="noopener noreferrer">Code repo</a>
 <a href="https://en.wikipedia.org/wiki/Linked_list?wprov=sfla1" target="_blank" rel="noopener noreferrer">Linked list</a>

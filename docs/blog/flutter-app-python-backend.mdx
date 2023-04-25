@@ -5,7 +5,7 @@
 
 In this article will explore how to build a flutter app with a python backend. We will learn how to integrate the Flask-RESTful backend, a Python extension, with Flutter as our frontend. We can take advantage of a straightforward API and make some magic happen with a flask extension! 
 
-<em>Uniting the king of FRONTEND and the king of BACKEND.</em>
+Uniting the king of FRONTEND and the king of BACKEND.
 
 ## Flutter Python: Install Flask-RESTful and build a Flutter App with Python Backend
 Flutter is a user interface toolkit that allows developers to create high-performing and cross-platform apps. It was created by Google and offers great flexibility in app design and development. With Flutter, you can create stunning, smooth, and responsive apps that work on multiple platforms with a single codebase. The UI elements in Flutter are customizable and its hot reload feature helps in faster development and bug fixing.
@@ -17,53 +17,337 @@ A REST API (Representational State Transfer API) is a type of application progra
 ## Writing our first REST API
 In this project, we'll be utilizing the Flask-RESTful library, which is built with Python. To get started, the first step will be to install the library using  ```pip``` , the popular package manager for Python. With  ```pip``` ,it's easy to install the Flask-RESTful library and any other necessary packages for our project.&quot;
 
-e>pip install flask-restful</pre><p><em><strong>Mac OS: </strong>If<strong> </strong>```pip``` isn</em>’<em>t working for you and you’ve installed the latest Python version, then ```pip3``` will be your call. Same for the ```python``` to ```python3``` keyword.</em>
+```
+pip install flask-restful
+```
+**Mac OS: **If** **```pip``` isn’t working for you and you’ve installed the latest Python version, then ```pip3``` will be your call. Same for the ```python``` to ```python3``` keyword.
 We will start off by creating the file ```app.py``` and writing a simple ```hello world``` API response.
-e>import flask<br>from flask_restful import Resource, Api<br><br>app = flask.Flask(__name__)<br>api = Api(app)<br><br><br>class HelloWorld(Resource):<br> def get(self):<br> return {<br> 'hello': 'world',<br>        }<br><br><br>api.add_resource(HelloWorld, '/')<br><br>if __name__ == '__main__':<br>    app.run(debug=True, host='0.0.0.0', port=8080)</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=64f84096d6" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import flask
+from flask_restful import Resource, Api
+app = flask.Flask(__name__)
+api = Api(app)
+
+class HelloWorld(Resource):
+ def get(self):
+ return {
+ 'hello': 'world',
+        }
+
+api.add_resource(HelloWorld, '/')
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8080)```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=64f84096d6" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Run the command:
-e>python app.py</pre><p>And open <a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>
+```
+python app.py
+```
+And open <a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer">http://localhost:8080</a>
 
 ![](="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/634ee2fe66b1fa16482d3a66_image3_ddb02d8345cfd82fed0891d4ec66bd1e_800.p)
 
 Now, let's now make the API response a bit more complex so that we can effectively demonstrate it on the Flutter frontend. By adding additional information and features to the API response, we can create a more dynamic and interactive user experience in the Flutter app.
-e>import flask<br>from flask_restful import Resource, Api<br><br>app = flask.Flask(__name__)<br>api = Api(app)<br><br><br>class HelloWorld(Resource):<br> def get(self):<br><br>        data = [<br> 'first',<br> 'API',<br> 'Response',<br> 'with',<br> 'random List',<br> 'python',<br>        ]<br><br> return {<br> 'data': data,<br>        }<br><br><br>api.add_resource(HelloWorld, '/')<br><br>if __name__ == '__main__':<br>    app.run(debug=True, host='0.0.0.0', port=8080)</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=efb843a70d" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import flask
+from flask_restful import Resource, Api
+app = flask.Flask(__name__)
+api = Api(app)
+
+class HelloWorld(Resource):
+ def get(self):
+        data = [
+ 'first',
+ 'API',
+ 'Response',
+ 'with',
+ 'random List',
+ 'python',
+        ]
+ return {
+ 'data': data,
+        }
+
+api.add_resource(HelloWorld, '/')
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8080)```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=efb843a70d" target="_blank" rel="noopener noreferrer">Save this code</a>
 Following this, when you open the ```localhost``` it's going to look something like this:
 ![](end." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/634ee2fe66b1fa6c372d3aa2_image5_b29d81a5e0e9b05981bd924b6db18e9d_800.p)
 
 ## Integration in Flutter | Flutter App with Python Backend
-To example, I’m going to use <strong><a href="https://pub.dev/packages/flutter_bloc" target="_blank" rel="noopener noreferrer">flutter_bloc</a></strong> to handle the REST APIs, followed by cubits and states. The project structure is going to look like this screenshot:
+To example, I’m going to use **<a href="https://pub.dev/packages/flutter_bloc" target="_blank" rel="noopener noreferrer">flutter_bloc</a>** to handle the REST APIs, followed by cubits and states. The project structure is going to look like this screenshot:
 ![](oads-ssl.webflow.com/6143afec68f555387049efb3/634ee2fe66b1fa84e52d3a67_image2_4d1f3d17357fd084970a2799040ba916_800.p)
-We’ll start with a simple model class that holds a ```List&lt;String&gt;```
-e>import 'dart:convert';<br><br>class Data {<br> final List&lt;String&gt; words;<br> Data({<br>    required this.words,<br>  });<br><br> Data copyWith({<br>    List&lt;String&gt;? words,<br>  }) {<br> return Data(<br>      words: words ?? this.words,<br>    );<br>  }<br><br> Map&lt;String, dynamic&gt; toMap() {<br> return &lt;String, dynamic&gt;{<br>      'words': words,<br>    };<br>  }<br><br>  factory Data.fromMap(Map&lt;String, dynamic&gt; map) {<br> return Data(<br>      words: List&lt;String&gt;.from((map['words'] as List)),<br>    );<br>  }<br><br>  String toJson() =&gt; json.encode(toMap());<br><br>  factory Data.fromJson(String source) =&gt;<br>      Data.fromMap(json.decode(source) as Map&lt;String, dynamic&gt;);<br><br>  @override<br>  String toString() =&gt; 'Data(words: $words)';<br><br>  @override<br>  int get hashCode =&gt; words.hashCode;<br>}</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=9670418e31">Save this code</a>
+We’ll start with a simple model class that holds a ```List&lt;String&gt;
+```
+
+```
+import 'dart:convert';
+class Data {
+ final List&lt;String&gt; words;
+ Data({
+    required this.words,
+  });
+ Data copyWith({
+    List&lt;String&gt;? words,
+  }) {
+ return Data(
+      words: words ?? this.words,
+    );
+  }
+ Map&lt;String, dynamic&gt; toMap() {
+ return &lt;String, dynamic&gt;{
+      'words': words,
+    };
+  }
+  factory Data.fromMap(Map&lt;String, dynamic&gt; map) {
+ return Data(
+      words: List&lt;String&gt;.from((map['words'] as List)),
+    );
+  }
+  String toJson() =&gt; json.encode(toMap());
+  factory Data.fromJson(String source) =&gt;
+      Data.fromMap(json.decode(source) as Map&lt;String, dynamic&gt;);
+  @override
+  String toString() =&gt; 'Data(words: $words)';
+  @override
+  int get hashCode =&gt; words.hashCode;
+}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=9670418e31">Save this code</a>
 
 ### data_provider.dart
 Then, we’ll request the data from the API in the ```data_provider``` layer.
-<em>You may use <strong><a href="https://pub.dev/packages/dio" target="_blank" rel="noopener noreferrer">dio</a></strong> here as well, which is my preference.</em>
-e>part of 'cubit.dart';<br><br>class DataDataProvider {<br> static Future&lt;Data&gt; fetch() async {<br> try {<br> final request = await http.get(Uri.parse('http://localhost:8080'));<br><br> return Data.fromJson(request.body);<br>    } catch (e) {<br> throw Exception(&quot;Internal Server Error&quot;);<br>    }<br>  }<br>}</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=8a1c4b9d53" target="_blank" rel="noopener noreferrer">Save this code</a>
+You may use **<a href="https://pub.dev/packages/dio" target="_blank" rel="noopener noreferrer">dio</a>** here as well, which is my preference.
+```
+part of 'cubit.dart';
+class DataDataProvider {
+ static Future&lt;Data&gt; fetch() async {
+ try {
+ final request = await http.get(Uri.parse('http://localhost:8080'));
+ return Data.fromJson(request.body);
+    } catch (e) {
+ throw Exception(&quot;Internal Server Error&quot;);
+    }
+  }
+}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=8a1c4b9d53" target="_blank" rel="noopener noreferrer">Save this code</a>
 
     ### repository.dart
 Next, just pass the data from API to the ```cubits```:
-e>part of 'cubit.dart';<br><br>class DataRepository {<br> Future&lt;Data&gt; fetch() =&gt; DataDataProvider.fetch();<br>}</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=272a48bce2" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+part of 'cubit.dart';
+class DataRepository {
+ Future&lt;Data&gt; fetch() =&gt; DataDataProvider.fetch();
+}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=272a48bce2" target="_blank" rel="noopener noreferrer">Save this code</a>
 ### state.dart
 And we’re handling a few different states here:
 - Loading state
 - Success state
 - Failure state
-e>part of 'cubit.dart';<br><br>@immutable<br>class DataState extends Equatable {<br> final Data? data;<br> final String? message;<br><br> const DataState({<br>    this.data,<br>    this.message,<br>  });<br><br>  @override<br> List&lt;Object?&gt; get props =&gt; [<br> data,<br> message,<br>      ];<br>}<br><br>@immutable<br>class DataDefault extends DataState {}<br><br>@immutable<br>class DataFetchLoading extends DataState {<br> const DataFetchLoading() : super();<br>}<br><br>@immutable<br>class DataFetchSuccess extends DataState {<br> const DataFetchSuccess({Data? data}) : super(data: data);<br>}<br><br>@immutable<br>class DataFetchFailed extends DataState {<br> const DataFetchFailed({String? message}) : super(message: message);<br>}</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=f22d48a013" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+part of 'cubit.dart';
+@immutable
+class DataState extends Equatable {
+ final Data? data;
+ final String? message;
+ const DataState({
+    this.data,
+    this.message,
+  });
+  @override
+ List&lt;Object?&gt; get props =&gt; [
+ data,
+ message,
+      ];
+}
+@immutable
+class DataDefault extends DataState {}
+@immutable
+class DataFetchLoading extends DataState {
+ const DataFetchLoading() : super();
+}
+@immutable
+class DataFetchSuccess extends DataState {
+ const DataFetchSuccess({Data? data}) : super(data: data);
+}
+@immutable
+class DataFetchFailed extends DataState {
+ const DataFetchFailed({String? message}) : super(message: message);
+}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=f22d48a013" target="_blank" rel="noopener noreferrer">Save this code</a>
 ### cubit.dart
 Finally, we’re omitting states based on if we have the data or not.
-e>import 'dart:async';<br><br>import 'package:flutter/material.dart';<br>import 'package:flutter_bloc/flutter_bloc.dart';<br>import 'package:equatable/equatable.dart';<br>import 'package:http/http.dart' as http;<br><br>import 'package:jugaad/models/data.dart';<br><br>part 'data_provider.dart';<br>part 'repository.dart';<br>part 'state.dart';<br><br>class DataCubit extends Cubit&lt;DataState&gt; {<br> static DataCubit cubit(BuildContext context, [bool listen = false]) =&gt;<br> BlocProvider.of&lt;DataCubit&gt;(context, listen: listen);<br><br> DataCubit() : super(DataDefault());<br><br>  final repo = DataRepository();<br><br>  Future&lt;void&gt; fetch() async {<br>    emit(const DataFetchLoading());<br> try {<br>      final data = await repo.fetch();<br><br>      emit(DataFetchSuccess(data: data));<br>    } catch (e) {<br>      emit(DataFetchFailed(message: e.toString()));<br>    }<br>  }<br>}</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=9e954baf07" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import 'dart:async';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:http/http.dart' as http;
+import 'package:jugaad/models/data.dart';
+part 'data_provider.dart';
+part 'repository.dart';
+part 'state.dart';
+class DataCubit extends Cubit&lt;DataState&gt; {
+ static DataCubit cubit(BuildContext context, [bool listen = false]) =&gt;
+ BlocProvider.of&lt;DataCubit&gt;(context, listen: listen);
+ DataCubit() : super(DataDefault());
+  final repo = DataRepository();
+  Future&lt;void&gt; fetch() async {
+    emit(const DataFetchLoading());
+ try {
+      final data = await repo.fetch();
+      emit(DataFetchSuccess(data: data));
+    } catch (e) {
+      emit(DataFetchFailed(message: e.toString()));
+    }
+  }
+}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=9e954baf07" target="_blank" rel="noopener noreferrer">Save this code</a>
 Now let’s handle the flutter frontend using ```BlocBuilder```. The final product will be something like this:
-e>import 'package:flutter/material.dart';<br>import 'package:flutter_bloc/flutter_bloc.dart';<br>import 'package:jugaad/cubits/data/cubit.dart';<br><br>void main() {<br>  runApp(const MyApp());<br>}<br><br>class MyApp extends StatelessWidget {<br> const MyApp({Key? key}) : super(key: key);<br><br>  @override<br>  Widget build(BuildContext context) {<br> return MultiBlocProvider(<br>      providers: [<br>        BlocProvider(create: (_) =&gt; DataCubit()),<br>      ],<br>      child: const MaterialApp(<br>        debugShowCheckedModeBanner: false,<br>        title: 'flutter.py',<br>        home: DataScreen(),<br>      ),<br>    );<br>  }<br>}<br><br>class DataScreen extends StatefulWidget {<br> const DataScreen({Key? key}) : super(key: key);<br><br>  @override<br>  State&lt;DataScreen&gt; createState() =&gt; _DataScreenState();<br>}<br><br>class _DataScreenState extends State&lt;DataScreen&gt; {<br>  @override<br> void initState() {<br> super.initState();<br><br> DataCubit.cubit(context).fetch();<br>  }<br><br>  @override<br> Widget build(BuildContext context) {<br> return Scaffold(<br>      body: BlocBuilder&lt;DataCubit, DataState&gt;(<br>        builder: (context, state) {<br>          // loading<br>          if (state is DataFetchLoading) {<br>            return const Center(<br>              child: CircularProgressIndicator(),<br>            );<br>          }<br><br>          // success<br>          else if (state is DataFetchSuccess) {<br>            return ListView(<br>              children: state.data!.words<br>                  .map(<br>                    (word) =&gt; ListTile(<br>                      title: Text(word),<br>                    ),<br>                  )<br>                  .toList(),<br>            );<br>          }<br><br>          // failure<br>          else if (state is DataFetchFailed) {<br>            return Center(<br>              child: Text(state.message!),<br>            );<br>          }<br><br>          // something unexpected<br>          return const Center(<br>            child: Text('Something went wrong'),<br>          );<br>        },<br>      ),<br>    );<br>  }<br>}</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=b7b344a5a4" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:jugaad/cubits/data/cubit.dart';
+void main() {
+  runApp(const MyApp());
+}
+class MyApp extends StatelessWidget {
+ const MyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+ return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) =&gt; DataCubit()),
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'flutter.py',
+        home: DataScreen(),
+      ),
+    );
+  }
+}
+class DataScreen extends StatefulWidget {
+ const DataScreen({Key? key}) : super(key: key);
+  @override
+  State&lt;DataScreen&gt; createState() =&gt; _DataScreenState();
+}
+class _DataScreenState extends State&lt;DataScreen&gt; {
+  @override
+ void initState() {
+ super.initState();
+ DataCubit.cubit(context).fetch();
+  }
+  @override
+ Widget build(BuildContext context) {
+ return Scaffold(
+      body: BlocBuilder&lt;DataCubit, DataState&gt;(
+        builder: (context, state) {
+          // loading
+          if (state is DataFetchLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          // success
+          else if (state is DataFetchSuccess) {
+            return ListView(
+              children: state.data!.words
+                  .map(
+                    (word) =&gt; ListTile(
+                      title: Text(word),
+                    ),
+                  )
+                  .toList(),
+            );
+          }
+          // failure
+          else if (state is DataFetchFailed) {
+            return Center(
+              child: Text(state.message!),
+            );
+          }
+          // something unexpected
+          return const Center(
+            child: Text('Something went wrong'),
+          );
+        },
+      ),
+    );
+  }
+}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=b7b344a5a4" target="_blank" rel="noopener noreferrer">Save this code</a>
 And… 🥁🥁🥁
 ![](bflow.com/6143afec68f555387049efb3/634ee2fe66b1fadcc92d3aae_image1_c68eca2b783b1e0224faed40aa7c4250.g)
 ## Complexity++
 To improve our understanding, I will make the API response more complex and adjust the data.dart model class accordingly. This will illustrate the interaction between the API response and the data model and show us how to present the information effectively in the front end Flutter app.
 ### API response
-e>import flask<br>from flask_restful import Resource, Api<br><br>app = flask.Flask(__name__)<br>api = Api(app)<br><br><br>class HelloWorld(Resource):<br> def get(self):<br><br>        data = [<br>            {<br> 'word': 'cat',<br> 'type': 'animal',<br>            },<br>            {<br> 'word': 'football',<br> 'type': 'sports',<br>            },<br>            {<br> 'word': 'rice',<br> 'type': 'food',<br>            },<br>        ]<br><br> return {<br> 'data': data,<br>        }<br><br><br>api.add_resource(HelloWorld, '/')<br><br>if __name__ == '__main__':<br>    app.run(debug=True, host='0.0.0.0', port=8080)</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=5664458dc2" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import flask
+from flask_restful import Resource, Api
+app = flask.Flask(__name__)
+api = Api(app)
+
+class HelloWorld(Resource):
+ def get(self):
+        data = [
+            {
+ 'word': 'cat',
+ 'type': 'animal',
+            },
+            {
+ 'word': 'football',
+ 'type': 'sports',
+            },
+            {
+ 'word': 'rice',
+ 'type': 'food',
+            },
+        ]
+ return {
+ 'data': data,
+        }
+
+api.add_resource(HelloWorld, '/')
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0', port=8080)```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=5664458dc2" target="_blank" rel="noopener noreferrer">Save this code</a>
 ### Data.dart
-e>import 'dart:convert';<br><br>class Data {<br> final String word;<br> final String type;<br> Data({<br>    required this.word,<br>    required this.type,<br>  });<br><br> Data copyWith({<br>    String? word,<br>    String? type,<br>  }) {<br> return Data(<br>      word: word ?? this.word,<br>      type: type ?? this.type,<br>    );<br>  }<br><br> Map&lt;String, dynamic&gt; toMap() {<br> return &lt;String, dynamic&gt;{<br>      'word': word,<br> 'type': type,<br>    };<br>  }<br><br>  factory Data.fromMap(Map&lt;String, dynamic&gt; map) {<br> return Data(<br>      word: map['word'] as String,<br>      type: map['type'] as String,<br>    );<br>  }<br><br>  String toJson() =&gt; json.encode(toMap());<br><br>  factory Data.fromJson(String source) =&gt;<br>      Data.fromMap(json.decode(source) as Map&lt;String, dynamic&gt;);<br><br>  @override<br>  String toString() =&gt; 'Data(word: $word, type: $type)';<br><br>  @override<br>  int get hashCode =&gt; word.hashCode ^ type.hashCode;<br><br>  @override<br>  bool operator ==(covariant Data other) {<br> if (identical(this, other)) return true;<br><br> return other.word == word &amp;&amp; other.type == type;<br>  }<br>}</pre><p><a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=f48b469c5a" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import 'dart:convert';
+class Data {
+ final String word;
+ final String type;
+ Data({
+    required this.word,
+    required this.type,
+  });
+ Data copyWith({
+    String? word,
+    String? type,
+  }) {
+ return Data(
+      word: word ?? this.word,
+      type: type ?? this.type,
+    );
+  }
+ Map&lt;String, dynamic&gt; toMap() {
+ return &lt;String, dynamic&gt;{
+      'word': word,
+ 'type': type,
+    };
+  }
+  factory Data.fromMap(Map&lt;String, dynamic&gt; map) {
+ return Data(
+      word: map['word'] as String,
+      type: map['type'] as String,
+    );
+  }
+  String toJson() =&gt; json.encode(toMap());
+  factory Data.fromJson(String source) =&gt;
+      Data.fromMap(json.decode(source) as Map&lt;String, dynamic&gt;);
+  @override
+  String toString() =&gt; 'Data(word: $word, type: $type)';
+  @override
+  int get hashCode =&gt; word.hashCode ^ type.hashCode;
+  @override
+  bool operator ==(covariant Data other) {
+ if (identical(this, other)) return true;
+ return other.word == word &amp;&amp; other.type == type;
+  }
+}```<a href="https://user-ef1260fb-64b8-4440-986b-261489d319c9-fhcmbheklq-uc.a.run.app/?p=f48b469c5a" target="_blank" rel="noopener noreferrer">Save this code</a>
 The UI on our flutter app with python backend will look something like this:
 ![](fec68f555387049efb3/634ee2fe66b1fa20cd2d3b05_image4_9c268ad865f276e0256e4f1b78523340_800.p)
 That concludes our discussion. I hope you have gained new insights and information about integrating a Python backend with a Flutter app. It is common for individuals to inquire about the type of backends that can be used with Flutter. However, it is important to note that Flutter serves as a UI toolkit and can be paired with any backend of your choice, be it Flask-RESTful, Django, Node.js, or any other. 

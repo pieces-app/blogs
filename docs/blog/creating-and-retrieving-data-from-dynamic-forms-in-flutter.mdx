@@ -24,32 +24,206 @@ First, let’s run the command below to scaffold a Flutter application:
 
 In this section, we’ll be building our form screen and its components.
 Now, let’s create a ```home.dart``` file and paste the code block below into it:
-e>class HomeScreen extends StatefulWidget {<br>  const HomeScreen({super.key});<br> @override<br> State&lt;HomeScreen&gt; createState() =&gt; _HomeScreenState();<br>}<br><br>class _HomeScreenState extends State&lt;HomeScreen&gt; {<br> @override<br> Widget build(BuildContext context) {<br> return Container();<br>  }<br>}</pre><p>In the code block above, we’re adding the Stateful Widget to our ```home.dart``` file.
+```
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+ @override
+ State&lt;HomeScreen&gt; createState() =&gt; _HomeScreenState();
+}
+class _HomeScreenState extends State&lt;HomeScreen&gt; {
+ @override
+ Widget build(BuildContext context) {
+ return Container();
+  }
+
+```
+In the code block above, we’re adding the Stateful Widget to our ```home.dart``` file.
 
 Next, we’ll replace the entire code in the ```src/main.dart``` file with the code below:
-e>import 'package:flutter/material.dart';<br>import 'package:flutter_dynamic_forms/home.dart';<br><br>void main() {<br>  runApp(const MyApp());<br>}<br><br>class MyApp extends StatelessWidget {<br> const MyApp({super.key});<br>  @override<br>  Widget build(BuildContext context) {<br>  return MaterialApp(<br>      title: 'Flutter Dynamic Form',<br>      theme: ThemeData(<br>        primarySwatch: Colors.teal,<br>        useMaterial3: true,<br>        inputDecorationTheme: const InputDecorationTheme(<br>          contentPadding: EdgeInsets.symmetric(<br>            vertical: 15,<br>            horizontal: 20,<br>          ),<br>          border: OutlineInputBorder(<br>            gapPadding: 10,<br>          ),<br>        ),<br>      ),<br>      home: const HomeScreen(),<br>    );<br>  }<br>}</pre><p>The code block above is the entry code to our application. With this, we’re setting the initial route to our ```HomeScreen``` widget created earlier, and also customizing our input field.
+```
+import 'package:flutter/material.dart';
+import 'package:flutter_dynamic_forms/home.dart';
+void main() {
+  runApp(const MyApp());
+}
+class MyApp extends StatelessWidget {
+ const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+  return MaterialApp(
+      title: 'Flutter Dynamic Form',
+      theme: ThemeData(
+        primarySwatch: Colors.teal,
+        useMaterial3: true,
+        inputDecorationTheme: const InputDecorationTheme(
+          contentPadding: EdgeInsets.symmetric(
+            vertical: 15,
+            horizontal: 20,
+          ),
+          border: OutlineInputBorder(
+            gapPadding: 10,
+          ),
+        ),
+      ),
+      home: const HomeScreen(),
+    );
+  }
+
+```
+The code block above is the entry code to our application. With this, we’re setting the initial route to our ```HomeScreen``` widget created earlier, and also customizing our input field.
 
 Let’s start developing our home screen by populating it with a dynamic form. To do this, let’s head over to the ```home.dart``` file and add the following private variables below to the  ```_HomeScreenState```:
-e>class _HomeScreenState extends State&lt;HomeScreen&gt; {<br>  int _formCount = 0;                                  //add this<br>  final List&lt;Map&lt;String, dynamic&gt;&gt; _dataArray = [];    //add this<br>  String? _data = '';                                  //add this<br><br> @override<br> ...        // other code blocks here<br>}</pre><p>In the code block above, we’re initializing some private variables that will help manage our app state internally and store some state data.
+```
+class _HomeScreenState extends State&lt;HomeScreen&gt; {
+  int _formCount = 0;                                  //add this
+  final List&lt;Map&lt;String, dynamic&gt;&gt; _dataArray = [];    //add this
+  String? _data = '';                                  //add this
+ @override
+ ...        // other code blocks here
+
+```
+In the code block above, we’re initializing some private variables that will help manage our app state internally and store some state data.
 Next, let’s build our form widget. We’ll add the code block below at the end of the override build widget before the   ```_HomeScreenState``` closing braces:
-e>class _HomeScreenState extends State&lt;HomeScreen&gt; {<br><br>  . . .      // other code blocks here<br><br>  Widget form(int key) =&gt; Padding(<br>        padding: const EdgeInsets.only(bottom: 10.0),<br>        child: TextFormField(<br>          decoration: InputDecoration(hintText: 'Form ${key + 1}'),<br>        ),<br>      );<br><br>}   // closing curly braces for _HomeScreenState</pre><p>In the code block above, we’re creating our ```TextFormField``` widget with a ```hintText``` of one plus the key parameter to know the form’s number. We’re also giving our ```TextFormField``` some padding at the bottom.
+```
+class _HomeScreenState extends State&lt;HomeScreen&gt; {
+  . . .      // other code blocks here
+  Widget form(int key) =&gt; Padding(
+        padding: const EdgeInsets.only(bottom: 10.0),
+        child: TextFormField(
+          decoration: InputDecoration(hintText: 'Form ${key + 1}'),
+        ),
+      );
+}   // closing curly braces for _HomeScreenState
+```
+In the code block above, we’re creating our ```TextFormField``` widget with a ```hintText``` of one plus the key parameter to know the form’s number. We’re also giving our ```TextFormField``` some padding at the bottom.
 
 Let’s make our form dynamic by giving users the flexibility of adding and removing forms manually. To do this, we’ll copy and paste the code below directly under the ```form()``` created in the previous section:
-e>Widget buttonRow() =&gt; Row(<br> mainAxisAlignment: MainAxisAlignment.spaceBetween,<br>        crossAxisAlignment: CrossAxisAlignment.center,<br>        children: [<br>          Visibility(<br>            visible: _formCount &gt; 0,<br>            child: IconButton(<br>              onPressed: () {<br>                  if (_dataArray.isNotEmpty) {<br>                    _dataArray.removeAt(_dataArray.length - 1);<br>                  }<br>                  setState(() {<br>                    _data = _dataArray.toString();<br>                    _formCount--;<br>                  });<br>                },<br>                icon: const CircleAvatar(<br>                  backgroundColor: Colors.red,<br>                  child: Icon(<br>                    Icons.remove,<br>                  ),<br>                )),<br>          ),<br>          IconButton(<br>              onPressed: () {<br>                setState(() =&gt; _formCount++);<br>              },<br>              icon: const CircleAvatar(<br>                  backgroundColor: Colors.teal,<br>                child: Icon(<br>                  Icons.add,<br>                ),<br>              )),<br>        ],<br>      );</pre><p>Based on the code block above, we’ve created two icon buttons to add and remove the ```_formCount```. We’ve achieved this by incrementing the ```_formCount``` in the add button and decrementing it in the remove button. We’re also controlling the button’s visibility by checking and making sure it only displays when the ```_formCount``` is more than zero (0).
+```
+Widget buttonRow() =&gt; Row(
+ mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Visibility(
+            visible: _formCount &gt; 0,
+            child: IconButton(
+              onPressed: () {
+                  if (_dataArray.isNotEmpty) {
+                    _dataArray.removeAt(_dataArray.length - 1);
+                  }
+                  setState(() {
+                    _data = _dataArray.toString();
+                    _formCount--;
+                  });
+                },
+                icon: const CircleAvatar(
+                  backgroundColor: Colors.red,
+                  child: Icon(
+                    Icons.remove,
+                  ),
+                )),
+          ),
+          IconButton(
+              onPressed: () {
+                setState(() =&gt; _formCount++);
+              },
+              icon: const CircleAvatar(
+                  backgroundColor: Colors.teal,
+                child: Icon(
+                  Icons.add,
+                ),
+              )),
+        ],
+      )
+```
+Based on the code block above, we’ve created two icon buttons to add and remove the ```_formCount```. We’ve achieved this by incrementing the ```_formCount``` in the add button and decrementing it in the remove button. We’re also controlling the button’s visibility by checking and making sure it only displays when the ```_formCount``` is more than zero (0).
 In the remove button, we’re also removing the last input object from the ```_dataArray``` whenever the remove button is clicked, and setting the remaining values of the ```_dataArray``` to the ```_data string```.
 
 Lastly, let’s add all of our components together to see what we’ve achieved so far. We’ll update the build context with the code below:
-e>class _HomeScreenState extends State&lt;HomeScreen&gt; {<br>  ...    // other code blocks here<br><br>  @override<br> Widget build(BuildContext context) {<br>    return Scaffold(<br>      appBar: AppBar(title: const Text('Home')),<br>      body: SingleChildScrollView(<br>      child: Padding(<br>          padding: const EdgeInsets.symmetric(horizontal: 25.0),<br>          child: Column(<br>          crossAxisAlignment: CrossAxisAlignment.center,<br>          children: &lt;Widget&gt;[<br>              const SizedBox(height: 19),<br>              const Text('Names of Programming Languages',<br>                style: TextStyle(<br>                fontWeight: FontWeight.bold,<br>                color: Colors.teal,<br>                fontSize: 22)),<br>              const SizedBox(height: 20),<br>              ...List.generate(_formCount, (index) =&gt; form(index)),<br>              buttonRow(),<br>              const SizedBox(height: 10),<br>              Visibility(visible: _dataArray.isNotEmpty, child: Text(_data!)),<br>              const SizedBox(height: 30),<br>            ],<br>          ),<br>        ),<br>      ),<br>    );<br>  }<br><br>  ...   // other code blocks here<br>}</pre><p>In the code block above, we’re generating our ```form()``` widget using the number of ```_formCount```s we have. We’re also making our ```_data``` string only visible when the ```_dataArray``` has a value.
+```
+class _HomeScreenState extends State&lt;HomeScreen&gt; {
+  ...    // other code blocks here
+  @override
+ Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Home')),
+      body: SingleChildScrollView(
+      child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+          child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: &lt;Widget&gt;[
+              const SizedBox(height: 19),
+              const Text('Names of Programming Languages',
+                style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.teal,
+                fontSize: 22)),
+              const SizedBox(height: 20),
+              ...List.generate(_formCount, (index) =&gt; form(index)),
+              buttonRow(),
+              const SizedBox(height: 10),
+              Visibility(visible: _dataArray.isNotEmpty, child: Text(_data!)),
+              const SizedBox(height: 30),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+  ...   // other code blocks here
+
+```
+In the code block above, we’re generating our ```form()``` widget using the number of ```_formCount```s we have. We’re also making our ```_data``` string only visible when the ```_dataArray``` has a value.
 
 With our progress so far, we should be able to achieve the result below:
 ![](rc="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d015f0567fcc94adfc6b4c_image2_3cd9670de9a941cb73c7471287012fca.g)
 
 ## Retrieving Data From Forms
 The trickiest part of creating a dynamic form is retrieving its real-time data. In this section, we’ll be creating our logic for retrieving real-time data from our dynamic form. Now, let’s add the function below to the base of the ```_HomeScreenState``` below the ```buttonRow()``` widget created earlier:
-e>void _onUpdate(int key, String val) {<br><br> void addData() {<br>      Map&lt;String, dynamic&gt; json = {'id': key, 'value': val};<br>      _dataArray.add(json);<br>      setState(() {<br>        _data = _dataArray.toString();<br>      });<br>    }<br><br> if (_dataArray.isEmpty) {<br>      addData();<br>    } else {<br>     for (var map in _dataArray) {<br>        if (map[&quot;id&quot;] == key) {<br>          _dataArray[key]['value'] = val;<br>          setState(() {<br>            _data = _dataArray.toString();<br>          });<br>        break;<br>        }<br>      }<br><br> for (var map in _dataArray) {<br> if (map[&quot;id&quot;] == key) {<br> return;<br>          }<br>        }<br>        addData();<br>      }<br>    }<br>  }</pre><p>In the code block above, we're adding our JSON object, which contains the key and value of our ```TextFormField``` to the ```_dataArray``` if it's empty. However, if the ```_dataArray``` isn't empty, we're updating the value of our object to the value from the ```TextFormField```. We're also doing a check by looping through our ```_dataArray``` to see if a particular key doesn't match an id, and then we're creating a new JSON object for it.
+```
+void _onUpdate(int key, String val) {
+ void addData() {
+      Map&lt;String, dynamic&gt; json = {'id': key, 'value': val};
+      _dataArray.add(json);
+      setState(() {
+        _data = _dataArray.toString();
+      });
+    }
+ if (_dataArray.isEmpty) {
+      addData();
+    } else {
+     for (var map in _dataArray) {
+        if (map[&quot;id&quot;] == key) {
+          _dataArray[key]['value'] = val;
+          setState(() {
+            _data = _dataArray.toString();
+          });
+        break;
+        }
+      }
+ for (var map in _dataArray) {
+ if (map[&quot;id&quot;] == key) {
+ return;
+          }
+        }
+        addData();
+      }
+    }
+
+```
+In the code block above, we're adding our JSON object, which contains the key and value of our ```TextFormField``` to the ```_dataArray``` if it's empty. However, if the ```_dataArray``` isn't empty, we're updating the value of our object to the value from the ```TextFormField```. We're also doing a check by looping through our ```_dataArray``` to see if a particular key doesn't match an id, and then we're creating a new JSON object for it.
 
 Lastly, let’s call the function in our ```TextFormForm```. We’ll add the code block below to the form’s ```TextFormField()``` widget:
-e>Widget form(int key) =&gt; Padding(<br> padding: const EdgeInsets.only(bottom: 10.0),<br>        child: TextFormField(<br>        decoration: InputDecoration(hintText: 'Form ${key + 1}'),<br>          onChanged: (val) =&gt; _onUpdate(key, val),       // add this<br>        ),<br>      );</pre><p>In the code block above, we’re passing the key (passed into the form widget) and the value from the ```onChanged``` property. The value contains the input typed into the ```TextFormField``` as we type.
+```
+Widget form(int key) =&gt; Padding(
+ padding: const EdgeInsets.only(bottom: 10.0),
+        child: TextFormField(
+        decoration: InputDecoration(hintText: 'Form ${key + 1}'),
+          onChanged: (val) =&gt; _onUpdate(key, val),       // add this
+        ),
+      )
+```
+In the code block above, we’re passing the key (passed into the form widget) and the value from the ```onChanged``` property. The value contains the input typed into the ```TextFormField``` as we type.
 
 Finally, let’s see our fully built dynamic form app:
 ![](tons." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d015f0567fcc7b06fc6b4d_image1_92de8fdae2401a1dd55681dfd7fbda7f.g)

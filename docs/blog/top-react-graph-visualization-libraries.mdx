@@ -14,9 +14,46 @@ This article contains a list of the best ReactJS chart libraries, arranged in or
 This React data visualization library is composable, reliable, powerful, and trusted by many professional developers.
 
 Installation:
-e>$ npm i recharts</pre><p>Sample data:
-e>const data = [<br> {<br>  name: &quot;Page A&quot;,<br>  uv: 4000,<br>  pv: 2400,<br>  amt: 2400,<br> },<br> {<br>  name: &quot;Page B&quot;,<br>  uv: 3000,<br>  pv: 1398,<br>  amt: 2210,<br> },<br> {<br>  name: &quot;Page C&quot;,<br>  uv: 2000,<br>  pv: 9800,<br>  amt: 2290,<br> },<br>];</pre><p>Example:
-e>function App() {<br> return (<br>  &lt;LineChart width={500} height={300} data={data}&gt;<br>   &lt;XAxis dataKey=&quot;name&quot; /&gt;<br>   &lt;YAxis /&gt;<br>   &lt;Line type=&quot;monotone&quot; dataKey=&quot;pv&quot; stroke=&quot;#8884d8&quot; activeDot={{ r: 8 }} /&gt;<br>   &lt;Line type=&quot;monotone&quot; dataKey=&quot;uv&quot; stroke=&quot;#82ca9d&quot; /&gt;<br>  &lt;/LineChart&gt;<br> );<br>}</pre><p>Result:
+```
+$ npm i recharts
+```
+Sample data:
+```
+const data = [
+ {
+  name: &quot;Page A&quot;,
+  uv: 4000,
+  pv: 2400,
+  amt: 2400,
+ },
+ {
+  name: &quot;Page B&quot;,
+  uv: 3000,
+  pv: 1398,
+  amt: 2210,
+ },
+ {
+  name: &quot;Page C&quot;,
+  uv: 2000,
+  pv: 9800,
+  amt: 2290,
+ },
+]
+```
+Example:
+```
+function App() {
+ return (
+  &lt;LineChart width={500} height={300} data={data}&gt;
+   &lt;XAxis dataKey=&quot;name&quot; /&gt;
+   &lt;YAxis /&gt;
+   &lt;Line type=&quot;monotone&quot; dataKey=&quot;pv&quot; stroke=&quot;#8884d8&quot; activeDot={{ r: 8 }} /&gt;
+   &lt;Line type=&quot;monotone&quot; dataKey=&quot;uv&quot; stroke=&quot;#82ca9d&quot; /&gt;
+  &lt;/LineChart&gt;
+ );
+
+```
+Result:
 ![](m/6143afec68f555387049efb3/638e2bc410794b775dfc8aab_wRYx6xu_58bee68fba859cc22afc1088e0e16dd2_800.p)
 
 Rechart averages <a href="https://www.npmjs.com/package/recharts" target="_blank" rel="noopener noreferrer">1,100,000+ weekly downloads</a>, and has 18.8k stars and 1.4k forks on <a href="https://github.com/recharts/recharts" target="_blank" rel="noopener noreferrer">Github</a>.
@@ -27,8 +64,43 @@ Rechart averages <a href="https://www.npmjs.com/package/recharts" target="_blank
 This library offers nine <a href="https://react-chartjs-2.js.org/components" target="_blank" rel="noopener noreferrer">components</a>: ```&lt;Chart /&gt;```, ```&lt;Bar /&gt;```, ```&lt;Line /&gt;```, ```&lt;Pie /&gt;```, ```&lt;Doughnut /&gt;```, ```&lt;PolarArea /&gt;```, ```&lt;Radar /&gt;```, ```&lt;Scatter /&gt;``` and ```&lt;Bubble /&gt;```. Each component can be utilized to build powerful, responsive charts, depending on your chart preference.
 
 Installation:
-e>npm i chart.js react-chartjs-2</pre><p>Example:
-e>import { Bar } from &quot;react-chartjs-2&quot;;<br>import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from &quot;chart.js&quot;;<br><br>ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);<br><br>const App = () =&gt; {<br> const data = {<br>  labels: [&quot;Item 1&quot;, &quot;Item 2&quot;],<br>  datasets: [<br>   {<br>    label: &quot;Item 1&quot;,<br>    data: [82, 100],<br>    borderColor: &quot;black&quot;,<br>    backgroundColor: &quot;rgba(255, 99, 132, 0.5)&quot;,<br>   },<br>   {<br>    label: &quot;Item 2&quot;,<br>    data: [40, 80],<br>    borderColor: &quot;black&quot;,<br>    backgroundColor: &quot;rgba(53, 162, 235, 0.5)&quot;,<br>   },<br>    ],<br>   };<br>    return (<br>     &lt;Bar<br>      data={data}<br>      options={{<br>       responsive: true,<br>     }}<br>    /&gt;<br>   );<br>  };</pre><p>Result:
+```
+npm i chart.js react-chartjs-2
+```
+Example:
+```
+import { Bar } from &quot;react-chartjs-2&quot;;
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from &quot;chart.js&quot;;
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+const App = () =&gt; {
+ const data = {
+  labels: [&quot;Item 1&quot;, &quot;Item 2&quot;],
+  datasets: [
+   {
+    label: &quot;Item 1&quot;,
+    data: [82, 100],
+    borderColor: &quot;black&quot;,
+    backgroundColor: &quot;rgba(255, 99, 132, 0.5)&quot;,
+   },
+   {
+    label: &quot;Item 2&quot;,
+    data: [40, 80],
+    borderColor: &quot;black&quot;,
+    backgroundColor: &quot;rgba(53, 162, 235, 0.5)&quot;,
+   },
+    ],
+   };
+    return (
+     &lt;Bar
+      data={data}
+      options={{
+       responsive: true,
+     }}
+    /&gt;
+   );
+  }
+```
+Result:
 
 ![](c="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/638e2bc410794bdeb2fc8aa9_Jqm2opb_5c21a564b37fa310f8e19d7ab58607e5_800.p)
 
@@ -40,8 +112,27 @@ The React ChartJS 2 library averages <a href="https://www.npmjs.com/package/reac
 Victory has a number of charting widgets and a standard API across all projects. This powerful charting tool for React graph visualization also allows users to effortlessly add line, bar, pie, and candlestick charts into their projects.
 
 Installation:
-e>npm install victory</pre><p>Example:
-e>const data=[<br> {x: new Date(2016, 6, 1), open: 5, close: 10, high: 15, low: 0},<br> {x: new Date(2016, 6, 2), open: 10, close: 15, high: 20, low: 5},<br> {x: new Date(2016, 6, 4), open: 20, close: 10, high: 25, low: 7},<br>]<br><br>const App = () =&gt; {<br> return (<br>  &lt;VictoryChart theme={VictoryTheme.material} domainPadding={{ x: 25 }} scale={{ x: &quot;time&quot; }}&gt;<br>  &lt;VictoryAxis tickFormat={(t) =&gt; &#x60;${t.getDate()}/${t.getMonth()}&#x60;} /&gt;<br>  &lt;VictoryAxis dependentAxis /&gt;<br>  &lt;VictoryCandlestick candleColors={{ positive: &quot;#5f5c5b&quot;, negative: &quot;#c43a31&quot; }} data={data} /&gt;<br> &lt;/VictoryChart&gt;<br> );<br>};</pre><p>Result:
+```
+npm install victory
+```
+Example:
+```
+const data=[
+ {x: new Date(2016, 6, 1), open: 5, close: 10, high: 15, low: 0},
+ {x: new Date(2016, 6, 2), open: 10, close: 15, high: 20, low: 5},
+ {x: new Date(2016, 6, 4), open: 20, close: 10, high: 25, low: 7},
+]
+const App = () =&gt; {
+ return (
+  &lt;VictoryChart theme={VictoryTheme.material} domainPadding={{ x: 25 }} scale={{ x: &quot;time&quot; }}&gt;
+  &lt;VictoryAxis tickFormat={(t) =&gt; &#x60;${t.getDate()}/${t.getMonth()}&#x60;} /&gt;
+  &lt;VictoryAxis dependentAxis /&gt;
+  &lt;VictoryCandlestick candleColors={{ positive: &quot;#5f5c5b&quot;, negative: &quot;#c43a31&quot; }} data={data} /&gt;
+ &lt;/VictoryChart&gt;
+ );
+}
+```
+Result:
 ![](ibrary." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/638e2bc410794b27befc8aac_3nmvGFt_78a66742145196bc7cfafaca95cfbe4e_800.p)
 
 Victory averages <a href="https://www.npmjs.com/package/victory" target="_blank" rel="noopener noreferrer">180,000+ weekly downloads</a> and has 9.9k stars and 517 forks on <a href="https://github.com/FormidableLabs/victory" target="_blank" rel="noopener noreferrer">Github</a>.
@@ -50,9 +141,30 @@ Victory averages <a href="https://www.npmjs.com/package/victory" target="_blank"
 <a href="https://uber.github.io/react-vis/" target="_blank" rel="noopener noreferrer">React Vis</a> is a React graph visualization library built by Uber. It is an easy-to-use library that offers components that render data visualization charts including line, area, bar, pie, or donut charts, as well as heat maps, hexagon heatmaps, sunbursts, radar charts, scatterplots, contour plots, parallel coordinates, and tree maps.
 
 Installation:
-e>npm i react-vis</pre><p>Sample data:
-e>const data = [<br> {x: 0, y: 8},<br> {x: 1, y: 5},<br> {x: 2, y: 4},<br> {x: 3, y: 9},<br> {x: 4, y: 1},<br>];</pre><p>Example:
-e>&lt;XYPlot height={600} width={600}&gt;<br> &lt;LineSeries data={data} /&gt;<br> &lt;VerticalGridLines /&gt;<br> &lt;HorizontalGridLines /&gt;<br> &lt;XAxis /&gt;<br> &lt;YAxis /&gt;<br>&lt;/XYPlot&gt;</pre><p>Result:
+```
+npm i react-vis
+```
+Sample data:
+```
+const data = [
+ {x: 0, y: 8},
+ {x: 1, y: 5},
+ {x: 2, y: 4},
+ {x: 3, y: 9},
+ {x: 4, y: 1},
+]
+```
+Example:
+```
+&lt;XYPlot height={600} width={600}&gt;
+ &lt;LineSeries data={data} /&gt;
+ &lt;VerticalGridLines /&gt;
+ &lt;HorizontalGridLines /&gt;
+ &lt;XAxis /&gt;
+ &lt;YAxis /&gt;
+&lt;/XYPlot&gt
+```
+Result:
 
 ![](.webflow.com/6143afec68f555387049efb3/638e2bc410794bf4bbfc8aad_2NQT4qM_2ff099e1cd9622009fdc3b9657dcdfaa_800.p)
 
@@ -64,8 +176,77 @@ React Vis averages <a href="https://www.npmjs.com/package/react-vis" target="_bl
 visx is divided into several packages, keeping the bundle size down and allows you to download only the packages needed. It has great <a href="https://airbnb.io/visx/docs" target="_blank" rel="noopener noreferrer">documentation</a> and a <a href="https://airbnb.io/visx/gallery" target="_blank" rel="noopener noreferrer">gallery</a> of React graph visualization examples to get you started.
 
 Installation:
-e>npm i @visx/visx</pre><p>Example:
-e>import React, { useMemo } from 'react';<br>import { Bar } from '@visx/shape';<br>import { Group } from '@visx/group';<br>import { GradientTealBlue } from '@visx/gradient';<br>import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency';<br>import { scaleBand, scaleLinear } from '@visx/scale';<br><br>const data = letterFrequency.slice(2);<br>const verticalMargin = 120;<br><br>// accessors<br>const getLetter = (d) =&gt; d.letter;<br>const getLetterFrequency = (d) =&gt; Number(d.frequency) * 100;<br><br>function App({ width = 1000, height = 500, events = false }) {<br> // bounds<br> const xMax = width;<br> const yMax = height - verticalMargin;<br><br>// scales, memoize for performance<br>const xScale = useMemo(<br> () =&gt;<br>  scaleBand({<br>   range: [0, xMax],<br>   round: true,<br>   domain: data.map(getLetter),<br>   padding: 0.4,<br>  }),<br> [xMax],<br>);<br>const yScale = useMemo(<br> () =&gt;<br>  scaleLinear({<br>   range: [yMax, 0],<br>   round: true,<br>   domain: [0, Math.max(...data.map(getLetterFrequency))],<br>  }),<br> [yMax],<br>);<br><br>return width &lt; 10 ? null : (<br> &lt;svg width={width} height={height}&gt;<br>  &lt;GradientTealBlue id=&quot;teal&quot; /&gt;<br>  &lt;rect width={width} height={height} fill=&quot;url(#teal)&quot; rx={14} /&gt;<br>  &lt;Group top={verticalMargin / 2}&gt;<br>   {data.map((d) =&gt; {<br>    const letter = getLetter(d);<br>    const barWidth = xScale.bandwidth();<br>    const barHeight = yMax - (yScale(getLetterFrequency(d)) ?? 0);<br>    const barX = xScale(letter);<br>    const barY = yMax - barHeight;<br>    return (<br>     &lt;Bar<br>      key={&#x60;bar-${letter}&#x60;}<br>      x={barX}<br>      y={barY}<br>      width={barWidth}<br>      height={barHeight}<br>      fill=&quot;rgba(23, 233, 217, .5)&quot;<br>      onClick={() =&gt; {<br>       if (events) alert(&#x60;clicked: ${JSON.stringify(Object.values(d))}&#x60;);<br>      }}<br>     /&gt;<br>    );<br>   })}<br>   &lt;/Group&gt;<br>  &lt;/svg&gt;<br> );<br>}</pre><p>Result:
+```
+npm i @visx/visx
+```
+Example:
+```
+import React, { useMemo } from 'react';
+import { Bar } from '@visx/shape';
+import { Group } from '@visx/group';
+import { GradientTealBlue } from '@visx/gradient';
+import letterFrequency from '@visx/mock-data/lib/mocks/letterFrequency';
+import { scaleBand, scaleLinear } from '@visx/scale';
+const data = letterFrequency.slice(2);
+const verticalMargin = 120;
+// accessors
+const getLetter = (d) =&gt; d.letter;
+const getLetterFrequency = (d) =&gt; Number(d.frequency) * 100;
+function App({ width = 1000, height = 500, events = false }) {
+ // bounds
+ const xMax = width;
+ const yMax = height - verticalMargin;
+// scales, memoize for performance
+const xScale = useMemo(
+ () =&gt;
+  scaleBand({
+   range: [0, xMax],
+   round: true,
+   domain: data.map(getLetter),
+   padding: 0.4,
+  }),
+ [xMax],
+);
+const yScale = useMemo(
+ () =&gt;
+  scaleLinear({
+   range: [yMax, 0],
+   round: true,
+   domain: [0, Math.max(...data.map(getLetterFrequency))],
+  }),
+ [yMax],
+);
+return width &lt; 10 ? null : (
+ &lt;svg width={width} height={height}&gt;
+  &lt;GradientTealBlue id=&quot;teal&quot; /&gt;
+  &lt;rect width={width} height={height} fill=&quot;url(#teal)&quot; rx={14} /&gt;
+  &lt;Group top={verticalMargin / 2}&gt;
+   {data.map((d) =&gt; {
+    const letter = getLetter(d);
+    const barWidth = xScale.bandwidth();
+    const barHeight = yMax - (yScale(getLetterFrequency(d)) ?? 0);
+    const barX = xScale(letter);
+    const barY = yMax - barHeight;
+    return (
+     &lt;Bar
+      key={&#x60;bar-${letter}&#x60;}
+      x={barX}
+      y={barY}
+      width={barWidth}
+      height={barHeight}
+      fill=&quot;rgba(23, 233, 217, .5)&quot;
+      onClick={() =&gt; {
+       if (events) alert(&#x60;clicked: ${JSON.stringify(Object.values(d))}&#x60;);
+      }}
+     /&gt;
+    );
+   })}
+   &lt;/Group&gt;
+  &lt;/svg&gt;
+ );
+
+```
+Result:
 
 ![](bflow.com/6143afec68f555387049efb3/638e2bc410794b42abfc8aae_0vxM0vt_0b188ae847b645524a42e39657475e16_800.p)
 
@@ -76,8 +257,59 @@ visx averages <a href="https://www.npmjs.com/package/@visx/visx" target="_blank"
 <a href="https://nivo.rocks/about/" target="_blank" rel="noopener noreferrer">Features</a> of Nivo include support for motion/transitions (React motion), HTML, <a href="https://code.pieces.app/blog/drawing-interactive-shapes-with-canvas-elements-in-a-react-application" target="_blank" rel="noopener noreferrer">Canvas</a>, and SVG charts, isomorphic rendering, and a component playground.
 
 Installation:
-e>npm i @nivo/core @nivo/pie</pre><p>Example:
-e>import { Pie } from &quot;@nivo/pie&quot;;<br>import { ThemeProvider, SvgWrapper } from &quot;@nivo/core&quot;;<br><br>const data = [<br> {<br>  id: &quot;Item1&quot;,<br>  value: 410,<br>  color: &quot;hsl(19, 70%, 50%)&quot;<br> },<br> {<br>  id: &quot;Item2&quot;,<br>  value: 175,<br>  color: &quot;hsl(213, 70%, 50%)&quot;<br> },<br> {<br>  id: &quot;Item3&quot;,<br>  value: 128,<br>  color: &quot;hsl(58, 70%, 50%)&quot;<br> }<br>];<br><br>const App = () =&gt; (<br> &lt;div&gt;<br>  &lt;Pie<br>   width={400}<br>   height={400}<br>   data={data}<br>   margin={{<br>    top: 40,<br>    right: 80,<br>    bottom: 80,<br>    left: 80<br>   }}<br>   innerRadius={0.5}<br>   padAngle={0.7}<br>   cornerRadius={3}<br>   borderColor=&quot;inherit:darker(0.6)&quot;<br>  /&gt;<br>  &lt;ThemeProvider&gt;<br>   &lt;SvgWrapper<br>    height={100}<br>    width={400}<br>    margin={{ left: 0, right: 0, top: 0, bottom: 0 }}<br>   &gt;<br>   &lt;/SvgWrapper&gt;<br>  &lt;/ThemeProvider&gt;<br> &lt;/div&gt;<br>);</pre><p>Result:
+```
+npm i @nivo/core @nivo/pie
+```
+Example:
+```
+import { Pie } from &quot;@nivo/pie&quot;;
+import { ThemeProvider, SvgWrapper } from &quot;@nivo/core&quot;;
+const data = [
+ {
+  id: &quot;Item1&quot;,
+  value: 410,
+  color: &quot;hsl(19, 70%, 50%)&quot;
+ },
+ {
+  id: &quot;Item2&quot;,
+  value: 175,
+  color: &quot;hsl(213, 70%, 50%)&quot;
+ },
+ {
+  id: &quot;Item3&quot;,
+  value: 128,
+  color: &quot;hsl(58, 70%, 50%)&quot;
+ }
+];
+const App = () =&gt; (
+ &lt;div&gt;
+  &lt;Pie
+   width={400}
+   height={400}
+   data={data}
+   margin={{
+    top: 40,
+    right: 80,
+    bottom: 80,
+    left: 80
+   }}
+   innerRadius={0.5}
+   padAngle={0.7}
+   cornerRadius={3}
+   borderColor=&quot;inherit:darker(0.6)&quot;
+  /&gt;
+  &lt;ThemeProvider&gt;
+   &lt;SvgWrapper
+    height={100}
+    width={400}
+    margin={{ left: 0, right: 0, top: 0, bottom: 0 }}
+   &gt;
+   &lt;/SvgWrapper&gt;
+  &lt;/ThemeProvider&gt;
+ &lt;/div&gt;
+)
+```
+Result:
 
 ![](w.com/6143afec68f555387049efb3/638e2bc410794b2c0ffc8aaa_PA97NmT_1bd9a2bc0d0de50d8c1574986e821f66_800.p)
 

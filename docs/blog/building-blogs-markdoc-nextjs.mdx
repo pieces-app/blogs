@@ -29,9 +29,9 @@ With Markdoc, we can manage our content in markdown files and provide it to the 
 The Markdoc syntax is a superset of Markdown. This features markdown syntax with a few extensions to the syntax, such as tags and annotations.
 
 Markdoc features several core concepts which include:
-- <strong>Nodes: </strong>These are the elements that Markdoc inherits from Markdown.
-- <strong>Tags: </strong>Tags are the main syntactic extension that Markdoc adds on top of Markdown. Similar to HTML, each tag is enclosed with ```{%``` and ```%}``` and includes the tag name, attributes, and content.
-- <strong>Annotations: </strong>These can be added to nodes to customize how they are rendered.
+- **Nodes: **These are the elements that Markdoc inherits from Markdown.
+- **Tags: **Tags are the main syntactic extension that Markdoc adds on top of Markdown. Similar to HTML, each tag is enclosed with ```{%``` and ```%}``` and includes the tag name, attributes, and content.
+- **Annotations: **These can be added to nodes to customize how they are rendered.
 
 You can always view the full list of core concepts in the<a href="https://markdoc.dev/docs/syntax" target="_blank" rel="noopener noreferrer"> syntax docs</a>.
 
@@ -48,36 +48,149 @@ To follow along, you should have:
 ### Seting up Next.js with Markdoc
 Let’s follow<a href="https://nextjs.org/docs#automatic-setup" target="_blank" rel="noopener noreferrer"> the steps to build a Next.js app</a>.
 First, navigate to the folder of choice and run the command:
-e>npx create-next-app@latest<br># or<br>yarn create next-app<br># or<br>pnpm create next-app</pre><p>Once installed, navigate to the newly created directory to install the Markdoc package. We’ll be installing ```@markdoc/next.js``` and ```@markdoc/markdoc```:
-e>cd &lt;name of app&gt;<br>npm install @markdoc/next.js @markdoc/markdoc</pre><p>Next, we update our ```next.config.js```
-e>const withMarkdoc = require('@markdoc/next.js');<br><br>module.exports = withMarkdoc(/*<a href="https://markdoc.dev/docs/nextjs#options"> options</a> */)({<br> pageExtensions: ['md', 'mdoc', 'js', 'jsx', 'ts', 'tsx']<br>});</pre><p>Also, we’ll set up TailwindCSS and Tailwind Typography to style our application. To do that, we’ll follow the steps in the<a href="https://tailwindcss.com/docs/guides/nextjs" target="_blank" rel="noopener noreferrer"> Tailwind docs</a>.
+```
+npx create-next-app@latest
+# or
+yarn create next-app
+# or
+pnpm create next-app
+```
+Once installed, navigate to the newly created directory to install the Markdoc package. We’ll be installing ```@markdoc/next.js``` and ```@markdoc/markdoc```:
+```
+cd &lt;name of app&gt;
+npm install @markdoc/next.js @markdoc/markdoc
+```
+Next, we update our ```next.config.js
+```
+
+```
+const withMarkdoc = require('@markdoc/next.js');
+module.exports = withMarkdoc(/*<a href="https://markdoc.dev/docs/nextjs#options"> options</a> */)({
+ pageExtensions: ['md', 'mdoc', 'js', 'jsx', 'ts', 'tsx']
+})
+```
+Also, we’ll set up TailwindCSS and Tailwind Typography to style our application. To do that, we’ll follow the steps in the<a href="https://tailwindcss.com/docs/guides/nextjs" target="_blank" rel="noopener noreferrer"> Tailwind docs</a>.
 
 Install ```tailwindcss``` and its peer dependencies via ```npm```, and then run the ```init``` command to generate both ```tailwind.config.js``` and ```postcss.config.js```.
-e>npm install -D tailwindcss postcss autoprefixer @tailwindcss/typography<br>npx tailwindcss init -p</pre><p>Add the paths to all of our template files in your ```tailwind.config.js``` file. We’ll also add the Tailwind typography plugin:
-e><em>// ./tailwind.config.js<br>/** @type {import('tailwindcss').Config} */<br></em>module.exports = {<br> content: [<br>  &quot;./pages/**/*.{js,ts,jsx,tsx}&quot;,<br>  &quot;./components/**/*.{js,ts,jsx,tsx}&quot;,<br>  &quot;./layouts/**/*.{js,ts,jsx,tsx}&quot;,<br>],<br>theme: {<br>  extend: {},<br> },<br> plugins: [require(&quot;@tailwindcss/typography&quot;)],<br>};</pre><p>Add the ```@tailwind``` directives for each of Tailwind’s layers to your ```./styles/globals.css``` file.
-e>// ./styles/globals.css<br><br>@tailwind base;<br>@tailwind components;<br>@tailwind utilities;</pre><p><em>To keep this tutorial short, the styling that will be applied to this application can be accessed on<a href="https://github.com/miracleonyenma/markdoc-app/blob/main/styles/globals.css" target="_blank" rel="noopener noreferrer"> GitHub</a>. You can copy the contents and enter them in your ```./styles.globals.css``` file.</em>
+```
+npm install -D tailwindcss postcss autoprefixer @tailwindcss/typography
+npx tailwindcss init -p
+```
+Add the paths to all of our template files in your ```tailwind.config.js``` file. We’ll also add the Tailwind typography plugin:
+```
+// ./tailwind.config.js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+ content: [
+  &quot;./pages/**/*.{js,ts,jsx,tsx}&quot;,
+  &quot;./components/**/*.{js,ts,jsx,tsx}&quot;,
+  &quot;./layouts/**/*.{js,ts,jsx,tsx}&quot;,
+],
+theme: {
+  extend: {},
+ },
+ plugins: [require(&quot;@tailwindcss/typography&quot;)],
+}
+```
+Add the ```@tailwind``` directives for each of Tailwind’s layers to your ```./styles/globals.css``` file.
+```
+// ./styles/globals.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities
+```
+To keep this tutorial short, the styling that will be applied to this application can be accessed on<a href="https://github.com/miracleonyenma/markdoc-app/blob/main/styles/globals.css" target="_blank" rel="noopener noreferrer"> GitHub</a>. You can copy the contents and enter them in your ```./styles.globals.css``` file.
 
 ## Creating our First Post
 Create a new .md file within /pages/articles and name it getting-started.md:
-e>---<br>title: Get started with Markdoc<br>description: How to get started with Markdoc<br>---<br># Get started with Markdoc</pre><p>Now, if we simply start the development server with the following command:
-e>npm run dev</pre><p>We should have something like the image below when we navigate to ```/articles/getting-started/```.
+```
+---
+title: Get started with Markdoc
+description: How to get started with Markdoc
+---
+# Get started with Markdoc
+```
+Now, if we simply start the development server with the following command:
+```
+npm run dev
+```
+We should have something like the image below when we navigate to ```/articles/getting-started/```.
 
 ![](src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb739f94da413097574ea_image11_30057ec79a7ac3e33c4ac289835f8f2c_800.p)
 
 Here, we can see that the content of our markdown file has been rendered, but it’s pretty bare.
 We need to display the data (i.e., the ```title``` and ```description```) included in the front matter of the ```.md``` file:
-e>---<br>title: Get started with Markdoc<br>description: How to get started with Markdoc<br>---</pre><p>The front matter data will be displayed on the article page and also added to the site’s metadata. In the following sections, we’ll cover how we can achieve that.
+```
+---
+title: Get started with Markdoc
+description: How to get started with Markdoc
+---```
+The front matter data will be displayed on the article page and also added to the site’s metadata. In the following sections, we’ll cover how we can achieve that.
 
 ## Creating a SiteHeader Component
 First, we have to create a global site header component which will be included in our layouts.
 Create a new file— ```./components/SiteHeader.jsx```:
-e><em>// ./components/SiteHeader.jsx<br></em>const { default: Link } = require(&quot;next/link&quot;);<br>const SiteHeader = () =&gt; {<br>  return (<br>    &lt;header className=&quot;site-header&quot;&gt;<br>      &lt;div className=&quot;wrapper&quot;&gt;<br>        &lt;Link href={&quot;/&quot;}&gt;<br>          &lt;figure title=&quot;Site header&quot;&gt;<br>            &lt;h1&gt;My site&lt;/h1&gt;<br>          &lt;/figure&gt;<br>        &lt;/Link&gt;<br>        &lt;nav className=&quot;site-nav&quot;&gt;<br>          &lt;ul className=&quot;links&quot;&gt;<br>            &lt;li className=&quot;link&quot;&gt;<br>          &lt;Link href={&quot;/articles&quot;}&gt;Articles&lt;/Link&gt;<br>        &lt;/li&gt;<br>       &lt;/ul&gt;<br>     &lt;/nav&gt;<br>   &lt;/div&gt;<br> &lt;/header&gt;<br> );<br>};<br><br>export default SiteHeader;</pre><p>Next, we’ll create our layouts.
+```
+// ./components/SiteHeader.jsx
+const { default: Link } = require(&quot;next/link&quot;);
+const SiteHeader = () =&gt; {
+  return (
+    &lt;header className=&quot;site-header&quot;&gt;
+      &lt;div className=&quot;wrapper&quot;&gt;
+        &lt;Link href={&quot;/&quot;}&gt;
+          &lt;figure title=&quot;Site header&quot;&gt;
+            &lt;h1&gt;My site&lt;/h1&gt;
+          &lt;/figure&gt;
+        &lt;/Link&gt;
+        &lt;nav className=&quot;site-nav&quot;&gt;
+          &lt;ul className=&quot;links&quot;&gt;
+            &lt;li className=&quot;link&quot;&gt;
+          &lt;Link href={&quot;/articles&quot;}&gt;Articles&lt;/Link&gt;
+        &lt;/li&gt;
+       &lt;/ul&gt;
+     &lt;/nav&gt;
+   &lt;/div&gt;
+ &lt;/header&gt;
+ );
+};
+export default SiteHeader
+```
+Next, we’ll create our layouts.
 
 ## Creating a SiteLayout in Markdoc
 The ```&lt;SiteLayout /&gt;``` layout component will be responsible for displaying all pages that are not rendered by Markdoc. We’ll also create another ```&lt;ArticleLayout /&gt;``` component which will be responsible for displaying pages rendered by Markdoc, e.g., ```.md``` files.
 Now, let’s create the layout. Create a new file ```./layouts/SiteLayout.jsx```:
 Create a new file— ```./layouts/ArticleLayout.jsx```:
-e><em>// ./layouts/ArticleLayout.jsx<br><br></em>import Head from &quot;next/head&quot;;<br>import SiteHeader from &quot;../components/SiteHeader&quot;;<br><br>const ArticleLayout = ({ markdoc, children }) =&gt; {<br>  const { title, description } = markdoc?.frontmatter;<br>  return (<br>   &lt;&gt;<br>    &lt;Head&gt;<br>     &lt;title&gt;{title}&lt;/title&gt;<br>     &lt;meta name=&quot;description&quot; content={description} /&gt;<br>    &lt;/Head&gt;<br>    &lt;SiteHeader /&gt;<br>    &lt;article className=&quot;site-article&quot;&gt;<br>     &lt;div className=&quot;wrapper&quot;&gt;<br>      &lt;header className=&quot;article-header&quot;&gt;<br>       &lt;div className=&quot;wrapper&quot;&gt;<br>        &lt;h1 className=&quot;font-extrabold text-6xl&quot;&gt;{title}&lt;/h1&gt;<br>        &lt;p className=&quot;text-2xl&quot;&gt;{description}&lt;/p&gt;<br>       &lt;/div&gt;<br>      &lt;/header&gt;<br>      &lt;div className=&quot;article-content prose&quot;&gt;{children}&lt;/div&gt;<br>     &lt;/div&gt;<br>    &lt;/article&gt;<br>   &lt;/&gt;<br>  );<br>};<br><br>export default ArticleLayout;</pre><p>Here, we have ```markdoc``` as a prop in this component. With that, we get ```title``` and ```description``` by destructuring.
+```
+// ./layouts/ArticleLayout.jsx
+import Head from &quot;next/head&quot;;
+import SiteHeader from &quot;../components/SiteHeader&quot;;
+const ArticleLayout = ({ markdoc, children }) =&gt; {
+  const { title, description } = markdoc?.frontmatter;
+  return (
+   &lt;&gt;
+    &lt;Head&gt;
+     &lt;title&gt;{title}&lt;/title&gt;
+     &lt;meta name=&quot;description&quot; content={description} /&gt;
+    &lt;/Head&gt;
+    &lt;SiteHeader /&gt;
+    &lt;article className=&quot;site-article&quot;&gt;
+     &lt;div className=&quot;wrapper&quot;&gt;
+      &lt;header className=&quot;article-header&quot;&gt;
+       &lt;div className=&quot;wrapper&quot;&gt;
+        &lt;h1 className=&quot;font-extrabold text-6xl&quot;&gt;{title}&lt;/h1&gt;
+        &lt;p className=&quot;text-2xl&quot;&gt;{description}&lt;/p&gt;
+       &lt;/div&gt;
+      &lt;/header&gt;
+      &lt;div className=&quot;article-content prose&quot;&gt;{children}&lt;/div&gt;
+     &lt;/div&gt;
+    &lt;/article&gt;
+   &lt;/&gt;
+  );
+};
+export default ArticleLayout
+```
+Here, we have ```markdoc``` as a prop in this component. With that, we get ```title``` and ```description``` by destructuring.
 Using the Next.js ```&lt;Head&gt;``` component, we add the ```title``` and ```description``` to our page meta.
 To display the data within the page, we add it to the ```.article-header``` element.
 Finally, to display the actual markdown content, we pass ```children``` to the ```article-content.prose``` element.
@@ -86,13 +199,60 @@ Now that we have created these components, let’s see how we can add them to ou
 ## Setting up Dynamic Layouts in Next.js
 So far, we’ve created two different layouts for our application. We want to display the ```&lt;SiteLayout /&gt;``` component on normal pages while we use the ```&lt;ArticleLayout /&gt;``` component on article pages, that is, pages rendered with Markdoc.
 
-Next.js allows us to define layouts on a <em>per-page basis </em>by adding the ```getLayout``` property to our page.
+Next.js allows us to define layouts on a per-page basis by adding the ```getLayout``` property to our page.
 Since we cannot easily add a ```getLayout``` property to a ```.md``` file to define which layout will be used for the page, we can define a default layout for such pages. Then ```.js``` pages can define their layouts using the ```getLayout``` property.
 To get this working, we’ll modify our ```./pages/_app.js``` file:
-e><em>// ./pages/_app.js<br></em>import ArticleLayout from &quot;../layouts/ArticleLayout&quot;;<br>import &quot;../styles/globals.css&quot;;<br><br>function MyApp({ Component, pageProps }) {<br> <em>// configure default article layout<br> </em>const articleLayout = (page) =&gt; {<br>  <em>// pass &#x60;markdoc&#x60; props to ArticleLayout<br>  </em>return (<br>   page.props.markdoc &amp;&amp; (<br>    &lt;ArticleLayout markdoc={page.props.markdoc}&gt; {page}&lt;/ArticleLayout&gt;<br>   )<br>  );<br>};<br><br><em>// Use the layout defined at the page level, if available<br></em>const getLayout = Component.getLayout || articleLayout;<br><br>  return getLayout(&lt;Component {...pageProps} /&gt;);<br>}<br><br>export default MyApp;</pre><p>In order to make ```&lt;ArticleLayout /&gt;``` the default layout, we create a function ```articleLayout()``` which accepts page as a parameter. Within this function, we return the ```&lt;ArticleLayout /&gt;``` component while passing the ```page``` and ```markdoc``` props.
+```
+// ./pages/_app.js
+import ArticleLayout from &quot;../layouts/ArticleLayout&quot;;
+import &quot;../styles/globals.css&quot;;
+function MyApp({ Component, pageProps }) {
+ // configure default article layout
+ const articleLayout = (page) =&gt; {
+  // pass &#x60;markdoc&#x60; props to ArticleLayout
+  return (
+   page.props.markdoc &amp;&amp; (
+    &lt;ArticleLayout markdoc={page.props.markdoc}&gt; {page}&lt;/ArticleLayout&gt;
+   )
+  );
+};
+// Use the layout defined at the page level, if available
+const getLayout = Component.getLayout || articleLayout;
+  return getLayout(&lt;Component {...pageProps} /&gt;);
+}
+export default MyApp
+```
+In order to make ```&lt;ArticleLayout /&gt;``` the default layout, we create a function ```articleLayout()``` which accepts page as a parameter. Within this function, we return the ```&lt;ArticleLayout /&gt;``` component while passing the ```page``` and ```markdoc``` props.
 Next, we initialize ```getLayout``` and assign the layout defined in ```Component``` (the current page) or ```articleLayout``` if the page does not define a layout.
 Now that we’ve set up dynamic layouts in our application, let’s define the layout for our home page(```./pages/index.js```):
-e><em>// ./pages/index.js<br></em>import Head from &quot;next/head&quot;;<br>import styles from &quot;../styles/Home.module.css&quot;;<br>import SiteLayout from &quot;../layouts/SiteLayout&quot;;<br>export default function Home() {<br>  return (<br>   &lt;div className={styles.container}&gt;<br>    &lt;Head&gt;<br>     &lt;title&gt;My Site&lt;/title&gt;<br>     &lt;meta name=&quot;description&quot; content=&quot;This is my Next.js site&quot; /&gt;<br>     &lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; /&gt;<br>    &lt;/Head&gt;<br>    &lt;section&gt;<br>     &lt;header className=&quot;flex flex-col items-center justify-center min-h-screen&quot;&gt;<br>      &lt;h1 className=&quot;font-extrabold text-7xl&quot;&gt;Welcome to my site&lt;/h1&gt;<br>      &lt;p className=&quot;text-2xl&quot;&gt;I&amp;apos;m glad you&amp;apos;re here&lt;/p&gt;<br>     &lt;/header&gt;<br>    &lt;/section&gt;<br>   &lt;/div&gt;<br>  );<br>}<br><em>// define layout for home page<br></em>Home.getLayout = (page) =&gt; {<br>  return &lt;SiteLayout&gt; {page} &lt;/SiteLayout&gt;;<br>};</pre><p>Now, if we go to ```http://localhost:3000```  in our browser, we should have something like this:
+```
+// ./pages/index.js
+import Head from &quot;next/head&quot;;
+import styles from &quot;../styles/Home.module.css&quot;;
+import SiteLayout from &quot;../layouts/SiteLayout&quot;;
+export default function Home() {
+  return (
+   &lt;div className={styles.container}&gt;
+    &lt;Head&gt;
+     &lt;title&gt;My Site&lt;/title&gt;
+     &lt;meta name=&quot;description&quot; content=&quot;This is my Next.js site&quot; /&gt;
+     &lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; /&gt;
+    &lt;/Head&gt;
+    &lt;section&gt;
+     &lt;header className=&quot;flex flex-col items-center justify-center min-h-screen&quot;&gt;
+      &lt;h1 className=&quot;font-extrabold text-7xl&quot;&gt;Welcome to my site&lt;/h1&gt;
+      &lt;p className=&quot;text-2xl&quot;&gt;I&amp;apos;m glad you&amp;apos;re here&lt;/p&gt;
+     &lt;/header&gt;
+    &lt;/section&gt;
+   &lt;/div&gt;
+  );
+}
+// define layout for home page
+Home.getLayout = (page) =&gt; {
+  return &lt;SiteLayout&gt; {page} &lt;/SiteLayout&gt;;
+}
+```
+Now, if we go to ```http://localhost:3000```  in our browser, we should have something like this:
 ![]( &quot;Welcome to my site. I&#39;m glad you&#39;re here.&quot;" src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb739f94da4adc97574e8_image9_cc492533c3ee7246105a654503cd7fd5_800.p)
 Also, if we go to ```http://localhost:3000/articles/getting-started```, we should see our content with the heading contained in the front matter:
 ![]( src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb739f94da490d37574e9_image1_84c335582a015b972b8585b2a2f89f2f_800.p)
@@ -108,25 +268,114 @@ The Markdoc syntax is built on Markdown with a few additions or extensions to th
 According to the Markdoc docs, tags are the main syntactic extension that Markdoc adds on top of Markdown. Each tag is enclosed with ```{%``` and ```%}```, and includes the tag name,<a href="https://markdoc.dev/docs/syntax#attributes" target="_blank" rel="noopener noreferrer"> attributes</a>, and the content body.
 Markdoc comes out-of-the-box with four built-in tags: ```if```, ```else```, ```table```, and ```partial```. However, we can also create custom tags of our own. To illustrate this, we’ll create a custom ```infobox``` tag.
 First, we can create the component that will be rendered. Create a new file, ```./components/Infobox.jsx```:
-e><em>// ./components/Infobox.jsx<br><br></em>const Infobox = ({ type, title, children }) =&gt; {<br>  return (<br>   &lt;div className={&#x60;info-box ${type}&#x60;}&gt;<br>    &lt;details&gt;<br>     &lt;summary&gt;{title}&lt;/summary&gt;<br>     &lt;div&gt;{children}&lt;/div&gt;<br>    &lt;/details&gt;<br>   &lt;/div&gt;<br>  );<br>};<br><br>export default Infobox;</pre><p>Here, we dynamically include the type value in the element class. This way, we can define styles for the ```.info-box``` element depending on the type.
+```
+// ./components/Infobox.jsx
+const Infobox = ({ type, title, children }) =&gt; {
+  return (
+   &lt;div className={&#x60;info-box ${type}&#x60;}&gt;
+    &lt;details&gt;
+     &lt;summary&gt;{title}&lt;/summary&gt;
+     &lt;div&gt;{children}&lt;/div&gt;
+    &lt;/details&gt;
+   &lt;/div&gt;
+  );
+};
+export default Infobox
+```
+Here, we dynamically include the type value in the element class. This way, we can define styles for the ```.info-box``` element depending on the type.
 
 ### Creating a Custom Infobox
 Next, we’ll create a custom ```infobox``` tag definition in our Markdoc schema by creating a new file, ```./markdoc/tags/infobox.markdoc.js```:
-e><em>// ./markdoc/tags/infobox.markdoc.js<br></em>import Infobox from &quot;../../components/Infobox&quot;;<br><br>export const infobox = {<br>  render: Infobox,<br>  attributes: {<br>   type: {<br>    type: String,<br>    default: &quot;info&quot;,<br>    matches: [&quot;warning&quot;, &quot;info&quot;, &quot;error&quot;],<br>   },<br>   title: {<br>    type: String,<br>   },<br>  },<br>};</pre><p>Here, in our ```infobox``` declaration, we import and define the component that will be rendered with the ```render``` property.
+```
+// ./markdoc/tags/infobox.markdoc.js
+import Infobox from &quot;../../components/Infobox&quot;;
+export const infobox = {
+  render: Infobox,
+  attributes: {
+   type: {
+    type: String,
+    default: &quot;info&quot;,
+    matches: [&quot;warning&quot;, &quot;info&quot;, &quot;error&quot;],
+   },
+   title: {
+    type: String,
+   },
+  },
+}
+```
+Here, in our ```infobox``` declaration, we import and define the component that will be rendered with the ```render``` property.
 We also define the attributes that our tag accepts using the ```attributes``` property and they include ```type``` and ```title```.
 For the ```type``` attribute, we defined the type of value it accepts, the default value (```'info'```) and other acceptable matches, including ```'warning'``` and ```'error'```.
-Next, we will create a ```./markdoc/tags/index.js``` file to<em> </em>export our Markdoc tags:
-e><em>// ./markdoc/tags/index.js<br>/* Use this file to export your markdoc tags */<br></em>export * from './infobox.markdoc';</pre><p>Great! With that, we can add our ```infobox``` to our Markdoc document. Back in ```./pages/articles/getting-started.md```, we’ll add some more content with our new infobox tag:
-e>---<br><em>title</em>: <em>Get started with Markdoc<br>description</em>: <em>How to get started with Markdoc<br></em>---<br>## Get started with Markdoc<br>Markdoc is a static site generator that uses Markdown files as input and outputs HTML files.<br>Markdoc features several core concepts which include:<br>- <strong>**Nodes**</strong>:<br> These are the elements that Markdoc inherits from Markdown<br>- <strong>**Tags**</strong>:<br> Tags are the main syntactic extension that Markdoc adds on top of Markdown.   Similar to HTML, each tag is enclosed with &#x60;{%&#x60; and &#x60;%}&#x60; and includes the tag name, attributes, and the content body.<br>- <strong>**Annotations**</strong>:<br> These can be added to nodes to customize how they are rendered<br>### Installation<br>To install markdoc in Next.js, run the following command:<br>&#x60;&#x60;&#x60;bash<br>npm install @markdoc/next.js @markdoc/markdoc<br>&#x60;&#x60;&#x60;<br>### Background<br>Markdoc was built by [Stripe](https://stripe.com/) to power their developer documentation.<br><br>{%infobox title=&quot;Hey there!&quot; type=&quot;info&quot;%}<br>Here's some info for you!<br>{%/infobox%}<br><br>{%infobox title=&quot;Hey there!&quot; type=&quot;warning&quot;%}<br>Here's a warning for you!<br>{%/infobox%}<br><br>{%infobox title=&quot;Hey there!&quot; type=&quot;error&quot;%}<br>Here's an error for you!<br>{%/infobox%}</pre><p>Here, in the ```{% infobox %}``` tag, we define the title and type attributes for each. When we run the app, we should see something like this:
+Next, we will create a ```./markdoc/tags/index.js``` file to export our Markdoc tags:
+```
+// ./markdoc/tags/index.js
+/* Use this file to export your markdoc tags */
+export * from './infobox.markdoc'
+```
+Great! With that, we can add our ```infobox``` to our Markdoc document. Back in ```./pages/articles/getting-started.md```, we’ll add some more content with our new infobox tag:
+```
+---
+title: Get started with Markdoc
+description: How to get started with Markdoc
+---
+## Get started with Markdoc
+Markdoc is a static site generator that uses Markdown files as input and outputs HTML files.
+Markdoc features several core concepts which include:
+- ****Nodes****:
+ These are the elements that Markdoc inherits from Markdown
+- ****Tags****:
+ Tags are the main syntactic extension that Markdoc adds on top of Markdown.   Similar to HTML, each tag is enclosed with &#x60;{%&#x60; and &#x60;%}&#x60; and includes the tag name, attributes, and the content body.
+- ****Annotations****:
+ These can be added to nodes to customize how they are rendered
+### Installation
+To install markdoc in Next.js, run the following command:
+&#x60;&#x60;&#x60;bash
+npm install @markdoc/next.js @markdoc/markdoc
+&#x60;&#x60;&#x60;
+### Background
+Markdoc was built by [Stripe](https://stripe.com/) to power their developer documentation.
+{%infobox title=&quot;Hey there!&quot; type=&quot;info&quot;%}
+Here's some info for you!
+{%/infobox%}
+{%infobox title=&quot;Hey there!&quot; type=&quot;warning&quot;%}
+Here's a warning for you!
+{%/infobox%}
+{%infobox title=&quot;Hey there!&quot; type=&quot;error&quot;%}
+Here's an error for you!
+{%/infobox%
+```
+Here, in the ```{% infobox %}``` tag, we define the title and type attributes for each. When we run the app, we should see something like this:
 
 ![](rmation sections. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb739f94da4604f7574eb_image6_29d7c927532ebb2c26bb9ba823cb6b07_800.p)
 Sweet! With custom Markdoc tags, we’re able to add components that can do just about anything to our ```.md``` files.
 
 ### Customizing Default Nodes in Markdoc
 Next, we’ll be looking at how to customize Nodes. To illustrate this, we’ll be customizing the default blockquote node.
-First, we create a new ```Blockquote``` component that will be used. Create a new file: ```./components/Blockquote.jsx```
-e><em>// ./components/Blockquote.jsx<br></em>const Blockquote = ({ children }) =&gt; {<br>  return &lt;blockquote className=&quot;blockquote&quot;&gt;{children}&lt;/blockquote&gt;;<br>};<br>export default Blockquote;<br><br>Create a new file: ./markdoc/nodes.js<br><br><em>// ./markdoc/nodes.js<br></em>import Blockquote from &quot;../components/Blockquote&quot;;<br>export const blockquote = {<br>  render: Blockquote,<br>  attributes: {<br>   author: {<br>    type: String,<br>  },<br> }<br>}</pre><p>Now, by styling the ```.blockquote``` class that was attached to the ```&lt;Blockquote /&gt;``` component, we can add the following to our article:
-e>&gt; Is there such an element as a &quot;blockquote&quot;?</pre><p>And have something like this:
+First, we create a new ```Blockquote``` component that will be used. Create a new file: ```./components/Blockquote.jsx
+```
+
+```
+// ./components/Blockquote.jsx
+const Blockquote = ({ children }) =&gt; {
+  return &lt;blockquote className=&quot;blockquote&quot;&gt;{children}&lt;/blockquote&gt;;
+};
+export default Blockquote;
+Create a new file: ./markdoc/nodes.js
+// ./markdoc/nodes.js
+import Blockquote from &quot;../components/Blockquote&quot;;
+export const blockquote = {
+  render: Blockquote,
+  attributes: {
+   author: {
+    type: String,
+  },
+ }
+
+```
+Now, by styling the ```.blockquote``` class that was attached to the ```&lt;Blockquote /&gt;``` component, we can add the following to our article:
+```
+&gt; Is there such an element as a &quot;blockquote&quot;?```
+And have something like this:
 
 ![](te." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb739f94da40b0f7574ed_image3_25f44a953623e3a2795d57da9b8d979f_800.p)
 Now we’ve seen how to customize a node with a custom component. In the next section, we’ll take a look at another handy Markdoc feature, Partials, and how we can use variables in Markdoc.
@@ -145,8 +394,20 @@ You can pass variables in a few ways:
 Markdoc uses ```partials``` to reuse content across documents. A separate Markdoc file stores the content, and it's referenced from within the ```partial``` tag.
 We can create a ```partial``` that displays a particular promotional content in any page we add it to.
 To create a ```partial```, create a new file, ```./markdoc/partials/BikePromo.md```:
-e>----<br>It seems you’re enjoying this article on <strong>**{% $title %}**</strong>. I'm sure you'll be interested in the following offer:<br>## Buy a bike and get two wheels free!<br>What do you get when you buy a bike?<br><em>_Two wheels!_<br></em>Well, for a limited time only, you can get two new bike wheels for free when you purchase one of our bikes!<br>Find out more [here](/), or maybe not, <em>*I'm not your boss*</em>.<br>----</pre><p>Partials automatically load from the ```/markdoc/partials/``` directory. Now, if we add the following to our document:
-e>{% partial file=&quot;bike-promo.md&quot; /%}</pre><p>It will load and render the variables and contents of ```markdoc/partials/bike-promo.md```:
+```
+----
+It seems you’re enjoying this article on ****{% $title %}****. I'm sure you'll be interested in the following offer:
+## Buy a bike and get two wheels free!
+What do you get when you buy a bike?
+_Two wheels!_
+Well, for a limited time only, you can get two new bike wheels for free when you purchase one of our bikes!
+Find out more [here](/), or maybe not, *I'm not your boss*.
+----```
+Partials automatically load from the ```/markdoc/partials/``` directory. Now, if we add the following to our document:
+```
+{% partial file=&quot;bike-promo.md&quot; /%
+```
+It will load and render the variables and contents of ```markdoc/partials/bike-promo.md```:
 
 ![](ps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb73af94da47f517574ef_image5_ad23d7fc2114d2a4c9c2700516cd4d77_800.p)
 Next, we’re going to see how we can use another Markdoc feature: Functions.
@@ -155,19 +416,76 @@ Next, we’re going to see how we can use another Markdoc feature: Functions.
 Functions in Markdoc allow us to extend Markdoc with custom utilities, which lets us transform our content and<a href="https://markdoc.dev/docs/syntax#variables" target="_blank" rel="noopener noreferrer"> variables</a> at runtime.
 Markdoc comes out-of-the-box with six built-in functions: ```equals```, ```and```, ```or```, ```not```, ```default```, and ```debug```. You can learn more about these<a href="https://markdoc.dev/docs/functions" target="_blank" rel="noopener noreferrer"> functions in the Markdoc docs</a>.
 Custom function registrations are almost identical to tags and nodes, except you create a ```./markdoc/functions.js``` file instead. Within this file, we’ll create an ```includes``` function that checks if a string contains a defined sub-string.
-e>// ./markdoc/functions.js<br><br><em>// ./markdoc/functions.js<br></em>export const includes = {<br> transform(parameters) {<br>  const [string, value] = Object.values(parameters);<br>  return string.includes(value);<br> },<br>};</pre><p>Now, we can add our custom function to our document:
-e>{% if includes($markdoc.frontmatter.title, &quot;Llamas&quot;) %}<br> &gt; This page is about Llamas<br> {% else /%}<br> &gt; This page is not about Llamas<br>{% /if %}</pre><p>With that, we should have something like this:
+```
+// ./markdoc/functions.js
+// ./markdoc/functions.js
+export const includes = {
+ transform(parameters) {
+  const [string, value] = Object.values(parameters);
+  return string.includes(value);
+ },
+}
+```
+Now, we can add our custom function to our document:
+```
+{% if includes($markdoc.frontmatter.title, &quot;Llamas&quot;) %}
+ &gt; This page is about Llamas
+ {% else /%}
+ &gt; This page is not about Llamas
+{% /if %
+```
+With that, we should have something like this:
 ![](ional blockquote." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb73af94da45b2b7574f0_image10_13cd337fab4bf79c53957e984f7f4d68_800.p)
 So far, we’ve explored the basic features of Markdoc and seen how we can use it to build out an impressive article page. In the next section, we’ll quickly cover how to add images to our content.
 
 ## Working with Images in Markdoc
 We can simply use the markdown syntax to add any image that is in our ```/public``` directory to our article. For example, if we add the following to ```./pages/articles/getting-started.md```:
-e>![image](/vercel.svg)</pre><p>We should see that the image shows up in the rendered page:
+```
+![image](/vercel.svg)```
+We should see that the image shows up in the rendered page:
 ![](rc="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb739f94da40faf7574ec_image7_4d544f1b67dbc586924289aabbe6df41_800.p)
 We can also do something similar in the front matter section of the document and add a cover image for our article.
 To do that, first add the path to the image in the front matter section:
-e>---<br><em>title</em>: <em>Get started with Markdoc<br>description</em>: <em>How to get started with Markdoc<br>cover</em>: <em>/images/martin-sanchez-gD3dUQpMlvk-unsplash.jpg<br></em>---</pre><p>Next, in ```./layouts/ArticleLayout.jsx```, we’ll add the image:
-e><em>// ./layouts/ArticleLayout.jsx<br><br></em>import Head from &quot;next/head&quot;;<br>import Image from &quot;next/image&quot;;<br>import SiteHeader from &quot;../components/SiteHeader&quot;;<br>const ArticleLayout = ({ markdoc, children }) =&gt; {<br> const { title, description, cover } = markdoc.frontmatter;<br> return (<br>  &lt;&gt;<br>   {/* ... */}<br>   &lt;article className=&quot;site-article&quot;&gt;<br>    &lt;div className=&quot;wrapper&quot;&gt;<br>     &lt;header className=&quot;article-header&quot;&gt;<br>      {<em>/* render image */</em>}<br>      &lt;div className=&quot;img-cont relative h-56&quot;&gt;<br>       &lt;Image<br>        src={cover}<br>        fill={true}<br>        alt=&quot;cover&quot;<br>        className=&quot;object-cover rounded-b-2xl&quot;<br>       /&gt;<br>      &lt;/div&gt;<br>      {/* ... */}<br>     &lt;/header&gt;<br>     {/* ... */}<br>    &lt;/div&gt;<br>   &lt;/article&gt;<br>  &lt;/&gt;<br> );<br>};<br><br>export default ArticleLayout;</pre><p>With that, we should see our image:
+```
+---
+title: Get started with Markdoc
+description: How to get started with Markdoc
+cover: /images/martin-sanchez-gD3dUQpMlvk-unsplash.jpg
+---```
+Next, in ```./layouts/ArticleLayout.jsx```, we’ll add the image:
+```
+// ./layouts/ArticleLayout.jsx
+import Head from &quot;next/head&quot;;
+import Image from &quot;next/image&quot;;
+import SiteHeader from &quot;../components/SiteHeader&quot;;
+const ArticleLayout = ({ markdoc, children }) =&gt; {
+ const { title, description, cover } = markdoc.frontmatter;
+ return (
+  &lt;&gt;
+   {/* ... */}
+   &lt;article className=&quot;site-article&quot;&gt;
+    &lt;div className=&quot;wrapper&quot;&gt;
+     &lt;header className=&quot;article-header&quot;&gt;
+      {/* render image */}
+      &lt;div className=&quot;img-cont relative h-56&quot;&gt;
+       &lt;Image
+        src={cover}
+        fill={true}
+        alt=&quot;cover&quot;
+        className=&quot;object-cover rounded-b-2xl&quot;
+       /&gt;
+      &lt;/div&gt;
+      {/* ... */}
+     &lt;/header&gt;
+     {/* ... */}
+    &lt;/div&gt;
+   &lt;/article&gt;
+  &lt;/&gt;
+ );
+};
+export default ArticleLayout
+```
+With that, we should see our image:
 
 ![](ttps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ebb739f94da4161f7574e6_image2_0ed93de2f1d4b5d701cbbcbf5271e4fa_800.jp)
 
@@ -179,8 +497,95 @@ First, we’ll have to install a few packages, namely:
 - ```gray-matter``` so we can extract the title from the Markdown frontmatter
 
 To install, run:
-e>npm install gray-matter glob-promise</pre><p>Now, create a new file: ```./pages/articles/index.js```
-e><em>// ./pages/articles/index.js<br><br>import fs from &quot;fs&quot;;<br>import glob from &quot;glob-promise&quot;;<br>import matter from &quot;gray-matter&quot;;<br>import Head from &quot;next/head&quot;;<br>import Image from &quot;next/image&quot;;<br>import Link from &quot;next/link&quot;;<br>import path from &quot;path&quot;;<br>import SiteLayout from &quot;../../layouts/SiteLayout&quot;;<br><br>export const getStaticProps = async () =&gt; {<br>  // Find all Markdown files in the /articles directory<br>  const ARTICLES_DIR = path.join(process.cwd(), &quot;pages/articles&quot;);<br>  const articlesPaths = await glob(&quot;**/*.md&quot;, { cwd: ARTICLES_DIR });<br><br>  const articles = articlesPaths.map((articlePath) =&gt; {<br>    // get the slug from the markdown file name<br>    const slug = path.basename(articlePath, path.extname(articlePath));<br>    // read the markdown files<br>    const source = fs.readFileSync(<br>      path.join(process.cwd(), &quot;pages/articles&quot;, articlePath),<br>      &quot;utf8&quot;<br>    );<br>    // use gray-matter to parse the article frontmatter section<br>    const { data } = matter(source);<br>    const { title, description, cover } = data;<br><br>    return {<br>      title,<br>      description,<br>      cover,<br>      slug,<br>    };<br>  });<br>  return {<br>    props: {<br>      articles,<br>    },<br>  };<br>};<br><br>const Articles = ({ articles }) =&gt; {<br>  return (<br>    &lt;&gt;<br>      &lt;Head&gt;<br>        &lt;title&gt;My articles&lt;/title&gt;<br>        &lt;meta name=&quot;description&quot; content=&quot;View all my articles&quot; /&gt;<br>      &lt;/Head&gt;<br>      &lt;section&gt;<br>        &lt;header className=&quot;articles-header&quot;&gt;<br>          &lt;div className=&quot;wrapper&quot;&gt;<br>            &lt;h1 className=&quot;font-extrabold text-5xl&quot;&gt;<br>              Hey there, view all my articles<br>            &lt;/h1&gt;<br>          &lt;/div&gt;<br>        &lt;/header&gt;<br>        &lt;ul className=&quot;articles&quot;&gt;<br>          {articles.map((article) =&gt; (<br>            &lt;li key={article.slug} className=&quot;article&quot;&gt;<br>              &lt;Link href={&#x60;/articles/${article.slug}&#x60;}&gt;<br>                &lt;header className=&quot;article-item-header&quot;&gt;<br>                  &lt;Image<br>                    src={article.cover}<br>                    width={300}<br>                    height={200}<br>                    alt=&quot;cover&quot;<br>                  /&gt;<br>                  &lt;div className=&quot;details&quot;&gt;<br>                    &lt;h2 className=&quot;font-bold text-3xl&quot;&gt;{article.title}&lt;/h2&gt;<br>                    &lt;p&gt; {article.description} &lt;/p&gt;<br>                  &lt;/div&gt;<br>                &lt;/header&gt;<br>              &lt;/Link&gt;<br>            &lt;/li&gt;<br>          ))}<br>        &lt;/ul&gt;<br>      &lt;/section&gt;<br>    &lt;/&gt;<br>  );<br>};<br>export default Articles;<br><br>// define layout for articles page<br>Articles.getLayout = (page) =&gt; {<br>  return &lt;SiteLayout&gt; {page} &lt;/SiteLayout&gt;;<br>};</em></pre><p>Here, we’re using ```getStaticProps``` to do the following:
+```
+npm install gray-matter glob-promise
+```
+Now, create a new file: ```./pages/articles/index.js
+```
+
+```
+// ./pages/articles/index.js
+import fs from &quot;fs&quot;;
+import glob from &quot;glob-promise&quot;;
+import matter from &quot;gray-matter&quot;;
+import Head from &quot;next/head&quot;;
+import Image from &quot;next/image&quot;;
+import Link from &quot;next/link&quot;;
+import path from &quot;path&quot;;
+import SiteLayout from &quot;../../layouts/SiteLayout&quot;;
+export const getStaticProps = async () =&gt; {
+  // Find all Markdown files in the /articles directory
+  const ARTICLES_DIR = path.join(process.cwd(), &quot;pages/articles&quot;);
+  const articlesPaths = await glob(&quot;**/*.md&quot;, { cwd: ARTICLES_DIR });
+  const articles = articlesPaths.map((articlePath) =&gt; {
+    // get the slug from the markdown file name
+    const slug = path.basename(articlePath, path.extname(articlePath));
+    // read the markdown files
+    const source = fs.readFileSync(
+      path.join(process.cwd(), &quot;pages/articles&quot;, articlePath),
+      &quot;utf8&quot;
+    );
+    // use gray-matter to parse the article frontmatter section
+    const { data } = matter(source);
+    const { title, description, cover } = data;
+    return {
+      title,
+      description,
+      cover,
+      slug,
+    };
+  });
+  return {
+    props: {
+      articles,
+    },
+  };
+};
+const Articles = ({ articles }) =&gt; {
+  return (
+    &lt;&gt;
+      &lt;Head&gt;
+        &lt;title&gt;My articles&lt;/title&gt;
+        &lt;meta name=&quot;description&quot; content=&quot;View all my articles&quot; /&gt;
+      &lt;/Head&gt;
+      &lt;section&gt;
+        &lt;header className=&quot;articles-header&quot;&gt;
+          &lt;div className=&quot;wrapper&quot;&gt;
+            &lt;h1 className=&quot;font-extrabold text-5xl&quot;&gt;
+              Hey there, view all my articles
+            &lt;/h1&gt;
+          &lt;/div&gt;
+        &lt;/header&gt;
+        &lt;ul className=&quot;articles&quot;&gt;
+          {articles.map((article) =&gt; (
+            &lt;li key={article.slug} className=&quot;article&quot;&gt;
+              &lt;Link href={&#x60;/articles/${article.slug}&#x60;}&gt;
+                &lt;header className=&quot;article-item-header&quot;&gt;
+                  &lt;Image
+                    src={article.cover}
+                    width={300}
+                    height={200}
+                    alt=&quot;cover&quot;
+                  /&gt;
+                  &lt;div className=&quot;details&quot;&gt;
+                    &lt;h2 className=&quot;font-bold text-3xl&quot;&gt;{article.title}&lt;/h2&gt;
+                    &lt;p&gt; {article.description} &lt;/p&gt;
+                  &lt;/div&gt;
+                &lt;/header&gt;
+              &lt;/Link&gt;
+            &lt;/li&gt;
+          ))}
+        &lt;/ul&gt;
+      &lt;/section&gt;
+    &lt;/&gt;
+  );
+};
+export default Articles;
+// define layout for articles page
+Articles.getLayout = (page) =&gt; {
+  return &lt;SiteLayout&gt; {page} &lt;/SiteLayout&gt;;
+};```
+Here, we’re using ```getStaticProps``` to do the following:
 - Retrieve all of the ```.md``` files in the ```./pages/articles``` folder
 - Read the contents of each file and obtain the ```slug``` and ```frontmatter``` data
 

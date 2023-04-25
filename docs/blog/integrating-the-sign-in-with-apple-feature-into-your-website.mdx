@@ -19,7 +19,9 @@ I prefer the second solution, which is much more flexible, particularly in today
 
 You can have a component that will be busy dealing with the SDK download, so the SDK will download only when necessary.
 - HTML based loading
-e>await loadScript(&quot;&lt;https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js&gt;&quot;)</pre><p>Note that the implementation of the ```loadScript()``` function can be found in the following<a href="https://gist.github.com/PaulRosset/4f51b1206ff368f3f0cb59a7ad3e28a3" target="_blank" rel="noopener noreferrer"> gist</a> or at the following<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=ae8d4983b2" target="_blank" rel="noopener noreferrer"> Pieces link</a>.
+```
+await loadScript(&quot;&lt;https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js&gt;&quot;)```
+Note that the implementation of the ```loadScript()``` function can be found in the following<a href="https://gist.github.com/PaulRosset/4f51b1206ff368f3f0cb59a7ad3e28a3" target="_blank" rel="noopener noreferrer"> gist</a> or at the following<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=ae8d4983b2" target="_blank" rel="noopener noreferrer"> Pieces link</a>.
 
 The Apple SDK is now loaded. Thanks to the window object, we can use it anywhere in our app.
 
@@ -36,7 +38,16 @@ The good news is that it’s straightforward to set up in terms of code.
 
 ### Initialization()
 The first thing we need to do is to implement the init method:
-e>window.AppleID.auth.init({<br> clientId : 'myapp.myapp.signin',<br> scope : 'email name',<br> redirectURI : window.location.origin,<br> state : 'SignInUserAuthenticationRequest',<br> usePopup : true<br>});</pre><p><em><a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=546c4bb5c1" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a></em>
+```
+window.AppleID.auth.init({
+ clientId : 'myapp.myapp.signin',
+ scope : 'email name',
+ redirectURI : window.location.origin,
+ state : 'SignInUserAuthenticationRequest',
+ usePopup : true
+})
+```
+<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=546c4bb5c1" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a>
 Here, we passed several important fields:
 - ```clientId``` → The ```clientId``` is the identifier that will help Apple identify the request to the Apple app you created. To get it from Apple, you must go through several steps we will define in the next section.
 - ```scope``` → The ```scope``` is essential. You can ask Apple to return the name or/and email of the user that got authenticated. However, it is also important to specify it as Apple will also insert it inside the payload of the ```JsonWebToken``` that we’ll use to auth the user. It’s also handy for the backend, which will create the user in the database with an email associated.
@@ -50,10 +61,15 @@ As stated previously, you can find the interface and the method at the following
 
 ### Sign-in()
 Once we initialize the SDK, we need to create a button that will react to a click event and start the Apple authentication flow:
-e>button.addEventListener('click', async () =&gt; {<br> await window.AppleID.auth.signIn();<br>});</pre><p><em><a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=15ac48b3a6" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a></em>
+```
+button.addEventListener('click', async () =&gt; {
+ await window.AppleID.auth.signIn();
+})
+```
+<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=15ac48b3a6" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a>
 Here, the ```signIn()``` method will trigger a popup where users will be able to enter their credentials. During that phase, we no longer control anything. It's Apple's job.
 
-- <strong><a href="https://developer.apple.com/documentation/sign_in_with_apple/authi/3261300-signin" target="_blank" rel="noopener noreferrer">signIn()</a> method</strong>
+- **<a href="https://developer.apple.com/documentation/sign_in_with_apple/authi/3261300-signin" target="_blank" rel="noopener noreferrer">signIn()</a> method**
 
 ## Listening to Success and Error Events to Authenticate Users
 
@@ -63,7 +79,22 @@ It’s our job to listen to those events and react in consequence.
 We need to handle two events: ```success``` and ```error```.
 
 ### Success
-e>document.addEventListener(&quot;AppleIDSignInOnSuccess&quot;, this._onAppleSignInOnSuccess);<br><br>_onAppleSignInOnSuccess(event) {<br> const { state } = event.detail.authorization;<br> const { email, name } = event.detail.user;<br> // We are checking that the request we send matches the one we receive.<br> if (state === &quot;SignInUserAuthenticationRequest&quot;) {<br>  const { code, id_token } = event.detail.authorization;<br>               // Do something with id_token and code...<br> // User details email, name...<br>} else {<br>  this.onError(new Error('state property is not the one expected'));<br> }<br>}</pre><p><em><a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=a70e48b2a6" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a></em>
+```
+document.addEventListener(&quot;AppleIDSignInOnSuccess&quot;, this._onAppleSignInOnSuccess);
+_onAppleSignInOnSuccess(event) {
+ const { state } = event.detail.authorization;
+ const { email, name } = event.detail.user;
+ // We are checking that the request we send matches the one we receive.
+ if (state === &quot;SignInUserAuthenticationRequest&quot;) {
+  const { code, id_token } = event.detail.authorization;
+               // Do something with id_token and code...
+ // User details email, name...
+} else {
+  this.onError(new Error('state property is not the one expected'));
+ }
+
+```
+<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=a70e48b2a6" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a>
 Here, we’re listening to the ```AppleIDSignInOnSuccess``` event that Apple triggers when the user successfully authenticates.
 
 Apple gives back multiples elements:
@@ -73,15 +104,25 @@ Apple gives back multiples elements:
 - ```state``` → Do you remember? It’s the one we passed earlier in the<a href="https://developer.apple.com/documentation/sign_in_with_apple/clientconfigi" target="_blank" rel="noopener noreferrer"> ClientConfigI</a> interface. The condition makes sure that we receive the one we sent earlier.
 - ```code``` → A single-use authorization code.
 - ```id_token``` → This is the most precious piece of information we get back from Apple here. We will use the ```JsonWebToken``` to authenticate the user on the Back-end.
-- user<a href="https://developer.apple.com/documentation/sign_in_with_apple/useri" target="_blank" rel="noopener noreferrer"> <strong>UserI</strong></a> interface
+- user<a href="https://developer.apple.com/documentation/sign_in_with_apple/useri" target="_blank" rel="noopener noreferrer"> **UserI**</a> interface
 - email
 - name
 - Error
-e>document.addEventListener(&quot;AppleIDSignInOnFailure&quot;, this._onAppleSignInOnFailure);<br><br>_onAppleSignInOnFailure(event) {<br> let { error } = event.detail;<br> this.onError(new Error(error));<br>}</pre><p><em><a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=b1c7488afb" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a></em>
+```
+document.addEventListener(&quot;AppleIDSignInOnFailure&quot;, this._onAppleSignInOnFailure);
+_onAppleSignInOnFailure(event) {
+ let { error } = event.detail;
+ this.onError(new Error(error));
+
+```
+<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=b1c7488afb" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a>
 
 We get back an error from Apple when, for some reason, the user did not successfully register. Errors rarely happen because if the user enters the wrong credentials, the error will be on Apple's side and not ours. Note that when the user closes the popup explicitly, Apple triggers an error:
 
-e>popup_closed_by_user</pre><p>In your perception, it may not be a proper error, but a potential situation to leverage tracking, for example.
+```
+popup_closed_by_user
+```
+In your perception, it may not be a proper error, but a potential situation to leverage tracking, for example.
 
 ## Setting up an App Through the Apple Developer Interface
 
@@ -95,7 +136,11 @@ You can follow the video below:
 <a href="https://youtu.be/9J5vgxspMhQ" target="_blank" rel="noopener noreferrer">https://youtu.be/9J5vgxspMhQ</a>
 
 The crucial part is the identifier highlighted at the end of the video:
-e>```com.example.signin.test.with.apple.identifier```</pre><p>That identifier is mandatory to have and use as the <a href="https://developer.apple.com/documentation/sign_in_with_apple/clientconfigi/3230948-clientid" target="_blank" rel="noopener noreferrer">clientId</a>.
+```
+```com.example.signin.test.with.apple.identifier``
+```
+
+That identifier is mandatory to have and use as the <a href="https://developer.apple.com/documentation/sign_in_with_apple/clientconfigi/3230948-clientid" target="_blank" rel="noopener noreferrer">clientId</a>.
 
 The domains, subdomains, and return URLs are also essential, as your application won’t work if you don’t specify the URL it will run on. Indeed, many misconfigurations can lead to hours of debugging.
 
@@ -106,14 +151,17 @@ In the previous section, we configured the app, so we made sure that Apple would
 
 Again, that information is critical because a problem with this configuration alone could prevent your app from working.
 When we integrated the &quot;Sign-in with Apple&quot; feature, we needed to make sure that it would work inside a WebView. Since the app is misconfigured, though, the Apple SDK was returning an error from the error event with the following payload:
-e>popup_closed_by_browser</pre><p>The error was not too explicit, so we thought it was related to the property we specified: <a href="https://developer.apple.com/documentation/sign_in_with_apple/clientconfigi/3530376-usepopup" target="_blank" rel="noopener noreferrer">usePopup</a>.
+```
+popup_closed_by_browser
+```
+The error was not too explicit, so we thought it was related to the property we specified: <a href="https://developer.apple.com/documentation/sign_in_with_apple/clientconfigi/3530376-usepopup" target="_blank" rel="noopener noreferrer">usePopup</a>.
 
 So, we tried to set it to false, and it worked since the error was gone. However, the misconfiguration triggered another error on the Apple side. The redirect URL parameter was misconfigured at that time, so we went to the developer tools interface and configured the correct redirects. Then, we thought that everything would work, but it wasn’t the case. Apple was reloading the page because of the misuse of the property usePopup. So, we went back to this property to set it to true – that time with the correct configuration – and finally, it worked.
 To debug the WebView inside the app, we used Safari and the IOS simulator inside XCode.
 
 Here are the steps for debugging:
 - Then, head to XCode, and create a new IOS project from Storyboard. Insert the following code into the ViewController file:
-- <a href="https://gist.github.com/PaulRosset/cea982e09d09e609679b7e848e397674" target="_blank" rel="noopener noreferrer">https://gist.github.com/PaulRosset/cea982e09d09e609679b7e848e397674</a> or the following Pieces link:<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=5e8440bf8a" target="_blank" rel="noopener noreferrer"> <em>Click to save this command to Pieces</em></a>
+- <a href="https://gist.github.com/PaulRosset/cea982e09d09e609679b7e848e397674" target="_blank" rel="noopener noreferrer">https://gist.github.com/PaulRosset/cea982e09d09e609679b7e848e397674</a> or the following Pieces link:<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=5e8440bf8a" target="_blank" rel="noopener noreferrer"> Click to save this command to Pieces</a>
 - Once you’ve built and started the project inside the simulator, you can return to Safari. At the top of the screen in the top bar, click “Develop.” You should see the simulator devices appearing. Click on your simulator, and finally, click on the WebView to spawn the Safari developer tool.
 
 ## Conclusion

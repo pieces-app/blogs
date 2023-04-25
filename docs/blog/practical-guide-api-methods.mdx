@@ -13,9 +13,22 @@ REST APIs use HTTP requests to access data from API endpoints. These requests ar
 Assume Stripe needs to retrieve your friend's account details from Bank X.
 Stripe sends a request (also known as payload) to an API endpoint (e.g., ```https://bankx.api.com/accounts```) provided by Bank X using a ```GET``` method. The request body will look like this:
 
-e>// Stripe sends a request to https://bankx.api.com/accounts<br>{<br> accountNumber: 2974044820<br>}</pre><p>If successful, Bank X's API returns a response containing your friend's details. Otherwise, it returns an error indicating that your request wasn't successful. Here's what a typical API response looks like:
+```
+// Stripe sends a request to https://bankx.api.com/accounts
+{
+ accountNumber: 2974044820
 
-e>// Bank X replies with a response<br>{<br> name: &quot;Oyindamola Rowaiye&quot;<br> accountNumber: 2974044820<br>}</pre><p>In JavaScript, the ```fetch()``` function can be used to communicate with the API server. It basically accepts two arguments—a URL and an object which is used to specify the request method and other necessary information. You can read more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener noreferrer">```fetch()``` method</a> if you’d like to learn more.
+```
+If successful, Bank X's API returns a response containing your friend's details. Otherwise, it returns an error indicating that your request wasn't successful. Here's what a typical API response looks like:
+
+```
+// Bank X replies with a response
+{
+ name: &quot;Oyindamola Rowaiye&quot;
+ accountNumber: 2974044820
+
+```
+In JavaScript, the ```fetch()``` function can be used to communicate with the API server. It basically accepts two arguments—a URL and an object which is used to specify the request method and other necessary information. You can read more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch" target="_blank" rel="noopener noreferrer">```fetch()``` method</a> if you’d like to learn more.
 
 ## Base URLs and Endpoints
 An API’s base URL is a consistent URL to which all endpoints are attached. Endpoints, on the other hand, are various resource locations to which you can send requests and get responses. Think of endpoints as doors to rooms with various resources. Different endpoints return different kinds of data. In the example above, ```<a href="https://bankx.api.com/" target="_blank" rel="noopener noreferrer">https://bankx.api.com</a>``` is the base URL while ```/accounts``` is the endpoint that returns user account details and together they form the API endpoint. Without one, the other will yield an error; therefore, every endpoint must have a relative base URL. Typically, an API has several endpoints, e.g., ```<a href="https://bankx.api.com/USSD">https://bankx.api.com/USSD</a>```, ```<a href="https://bankx.api.com/users">https://bankx.api.com/users</a>```, ```<a href="https://bankx.api.com/cards">https://bankx.api.com/cards</a>```, etc.
@@ -31,16 +44,48 @@ Using the ```GET``` method, you can get the list of users available from the ```
 
 Please note that the default API method used when calling an API using the ```fetch()``` method is the ```GET``` method. Therefore, it doesn't have to be defined explicitly, unlike other methods.
 Here's how API data is retrieved using the ```GET``` method:
-e>const baseURL = &quot;https://62ab0faba62365888bd3aea0.mockapi.io/api/v1&quot;;<br><br>fetch(&#x60;${baseURL}/users&#x60;)<br>.then(res =&gt; res.json())<br>.then(data =&gt; console.log(data)) // logs list of users<br>.catch(error =&gt; console.log(error.message));</pre><p>If you noticed, the ```GET``` method isn't specified like so:
-e>fetch(&#x60;${baseURL}/users&#x60;, { method: &quot;GET&quot; })</pre><p>But, it’s still able to fetch the list of users from the ```/users``` endpoint.
+```
+const baseURL = &quot;https://62ab0faba62365888bd3aea0.mockapi.io/api/v1&quot;;
+fetch(&#x60;${baseURL}/users&#x60;)
+.then(res =&gt; res.json())
+.then(data =&gt; console.log(data)) // logs list of users
+.catch(error =&gt; console.log(error.message))
+```
+If you noticed, the ```GET``` method isn't specified like so:
+```
+fetch(&#x60;${baseURL}/users&#x60;, { method: &quot;GET&quot; })```
+But, it’s still able to fetch the list of users from the ```/users``` endpoint.
 
 Also, you can fetch data for a single user by attaching the ID of the user to the end of the endpoint URL, e.g., ```users/1```, like so:
-e>fetch(&#x60;${baseURL}/users/1&#x60;)</pre><p>The ```fetch()``` method returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreferrer">promise</a> and using the ```then()``` method, the response can be converted to JSON. This is done using the ```json()``` method, which also returns a promise and finally, the data can be accessed using the ```then()``` method again. The ```catch()``` method at the last line is used to handle errors should any occur.
+```
+fetch(&#x60;${baseURL}/users/1&#x60;)```
+The ```fetch()``` method returns a <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="noopener noreferrer">promise</a> and using the ```then()``` method, the response can be converted to JSON. This is done using the ```json()``` method, which also returns a promise and finally, the data can be accessed using the ```then()``` method again. The ```catch()``` method at the last line is used to handle errors should any occur.
 
 ### POST Method
 The ```POST``` method is also one of the most commonly used API methods. It is used to send or push data to the API server. It often requires a request body (payload) and is explicitly defined when using the JavaScript ```fetch()``` method.
 Here's how data is sent to the API server using the ```POST``` method:
-e>// new user data to be created in the API server<br>const newUser = {<br>  fname: &quot;Paul&quot;,<br>  paymentMethod: &quot;Direct Deposit&quot;,<br>  rate: &quot;750&quot;,<br>  hours: 40,<br>  overtimeHours: 4,<br>  salaryAmount: &quot;1500.55&quot;,<br>  lname: &quot;Ibeabuchi&quot;,<br>  compType: &quot;Salaried&quot;,<br>}<br><br>const baseURL = &quot;https://62ab0faba62365888bd3aea0.mockapi.io/api/v1&quot;;<br><br>fetch(&#x60;${baseURL}/users&#x60;, {<br>  method: &quot;POST&quot;,<br>  body: JSON.stringify(newUser)<br>})<br>.then(res =&gt; res.json())<br>.then(data =&gt; console.log(data))<br>.catch(error =&gt; console.log(error));</pre><p>Note that the ```newUser``` object was converted to JSON string using the ```JSON.stringify``` method, else it will throw an error.
+```
+// new user data to be created in the API server
+const newUser = {
+  fname: &quot;Paul&quot;,
+  paymentMethod: &quot;Direct Deposit&quot;,
+  rate: &quot;750&quot;,
+  hours: 40,
+  overtimeHours: 4,
+  salaryAmount: &quot;1500.55&quot;,
+  lname: &quot;Ibeabuchi&quot;,
+  compType: &quot;Salaried&quot;,
+}
+const baseURL = &quot;https://62ab0faba62365888bd3aea0.mockapi.io/api/v1&quot;;
+fetch(&#x60;${baseURL}/users&#x60;, {
+  method: &quot;POST&quot;,
+  body: JSON.stringify(newUser)
+})
+.then(res =&gt; res.json())
+.then(data =&gt; console.log(data))
+.catch(error =&gt; console.log(error))
+```
+Note that the ```newUser``` object was converted to JSON string using the ```JSON.stringify``` method, else it will throw an error.
 
 ### DELETE Method
 This method is as straightforward as the name implies. It is used to delete a resource (data) from the API server. For this, the method is set to ```DELETE``` and the ID of the resource to be deleted is affixed to the end of the endpoint URL like so:

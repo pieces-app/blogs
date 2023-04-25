@@ -34,14 +34,39 @@ The CSS positioning property has several values that influence how it works. The
 All HTML elements are static by default. Using this position, you cannot change the placement of elements on a page.
 Let’s look at this example of a single ```div``` element with a static position:
 
-<strong>Example:</strong>
-e>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br><br>&lt;head&gt;<br>  &lt;style&gt;<br>    body {<br>      background-color: #73AD21;<br>    }<br><br>    .box {<br>      width: 400px;<br>      height: 200px;<br>      background-color: white;<br>    }<br>  &lt;/style&gt;<br>&lt;/head&gt;<br><br>&lt;body&gt;<br>  &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;<br><br>&lt;/body&gt;<br><br>&lt;/html&gt;</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=871f4db05c" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Example:**
+```
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    body {
+      background-color: #73AD21;
+    }
+    .box {
+      width: 400px;
+      height: 200px;
+      background-color: white;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;box&quot;&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=871f4db05c" target="_blank" rel="noopener noreferrer">Save this code</a>
 
     Here is the result of the above code:
 ![](reen rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dda3fb6f7c99_image11_246d95e27620e14f55e4fa18d722c9cb_800.p)
 
     Now, let's try to move it around with the left property:
-e> .box {<br>      width: 400px;<br>      height: 200px;<br>      background-color: white;<br>      position: static;<br>      left: 70px;<br>    }</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=4b4f468499" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+ .box {
+      width: 400px;
+      height: 200px;
+      background-color: white;
+      position: static;
+      left: 70px;
+    }```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=4b4f468499" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the result of the above:
 ![](green rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dda3fb6f7c99_image11_246d95e27620e14f55e4fa18d722c9cb_800.p)
 Notice that there is no difference in the image. Static positioning is not affected by the ```top```, ```bottom```, ```left```, and ```right``` properties.
@@ -53,21 +78,116 @@ Note that changing the position property does nothing. It only starts doing some
 - Set the positive value for the ```bottom``` property to move an element up.
 - Set the positive value for the ```top``` property to move an element down.
 We’ll be centering the parent element in order to explain relative positioning. With this, it’s easier to understand the movement of what we will be doing:
-e>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br><br>&lt;head&gt;<br>  &lt;style&gt;<br>    .parent {<br>      background-color: #73AD21;<br>      border: solid 3px blue;<br>      display: flex;<br>      align-items: center;<br>      justify-content: center;<br>      height: 500px;<br>    }<br><br>    .box1 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: white;<br>    }<br><br>    .box2 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: yellow;<br>    }<br><br>    .box3 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: red;<br>    }<br>  &lt;/style&gt;<br>&lt;/head&gt;<br><br>&lt;body&gt;<br>  &lt;div class=&quot;parent&quot;&gt;<br>    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;<br>    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;<br>    &lt;div class=&quot;box3&quot;&gt;&lt;/div&gt;<br>  &lt;/div&gt;<br><br><br>&lt;/body&gt;<br><br>&lt;/html&gt;</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=0e5d47ac0b" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    .parent {
+      background-color: #73AD21;
+      border: solid 3px blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 500px;
+    }
+    .box1 {
+      width: 200px;
+      height: 100px;
+      background-color: white;
+    }
+    .box2 {
+      width: 200px;
+      height: 100px;
+      background-color: yellow;
+    }
+    .box3 {
+      width: 200px;
+      height: 100px;
+      background-color: red;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;parent&quot;&gt;
+    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box3&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=0e5d47ac0b" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the result:
 ![](larger green rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dda3d76f7c9a_image12_c720d43eca90a247c1df32b730937796_800.p)
 Now, let’s add the position property relative to our code to move the box around:
-e>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br><br>&lt;head&gt;<br>  &lt;style&gt;<br>    .parent {<br>      background-color: #73AD21;<br>      border: solid 3px blue;<br>      display: flex;<br>      align-items: center;<br>      justify-content: center;<br>      height: 500px;<br>    }<br><br>    .box1 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: white;<br>      position: relative;<br>    }<br><br>    .box2 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: yellow;<br>      position: relative;<br>    }<br><br>    .box3 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: red;<br>      position: relative;<br>    }<br>  &lt;/style&gt;<br>&lt;/head&gt;<br><br>&lt;body&gt;<br>  &lt;div class=&quot;parent&quot;&gt;<br>    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;<br>    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;<br>    &lt;div class=&quot;box3&quot;&gt;&lt;/div&gt;<br>  &lt;/div&gt;<br><br><br>&lt;/body&gt;<br><br>&lt;/html&gt;</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=6e784f8759" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+    .parent {
+      background-color: #73AD21;
+      border: solid 3px blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 500px;
+    }
+    .box1 {
+      width: 200px;
+      height: 100px;
+      background-color: white;
+      position: relative;
+    }
+    .box2 {
+      width: 200px;
+      height: 100px;
+      background-color: yellow;
+      position: relative;
+    }
+    .box3 {
+      width: 200px;
+      height: 100px;
+      background-color: red;
+      position: relative;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;parent&quot;&gt;
+    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box3&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=6e784f8759" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the outcome:
 ![](larger green rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd07876f7c8d_image9_215669f96df219354d9fc04ce7e44456_800.p)
 Observe that nothing changes. This is because the position property relative does nothing to the elements. You can effect change by adding any coordinating properties: left, right, top and bottom.
 Next, let's move the element (```box1```) to the left and bottom:
-e> .box1 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: white;<br>      position: relative;<br>      right: 250px;<br>      top: 90px;<br>    }</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=295345984b" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+ .box1 {
+      width: 200px;
+      height: 100px;
+      background-color: white;
+      position: relative;
+      right: 250px;
+      top: 90px;
+    }```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=295345984b" target="_blank" rel="noopener noreferrer">Save this code</a>
 Let's look at the result to better understand how to set the value of the properties:
 ![]( and red rectangles in the middle of a larger green rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd7f836f7c96_image13_830fbba71d13e9fbe69f0b6fb248d0f7_800.p)
 Notice that to move the element to the left, you need to set the value to the right; to move it to the bottom, you set it to the top. Also, it is as if the element kept its position on the screen.
 Now, let’s move the element (```box2```) to the right and top:
-e>.box2 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: yellow;<br>      position: relative;<br>      left: 100px;<br>      bottom: 70px;<br>    }</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=21cb459ba7" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+.box2 {
+      width: 200px;
+      height: 100px;
+      background-color: yellow;
+      position: relative;
+      left: 100px;
+      bottom: 70px;
+    }```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=21cb459ba7" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the result:
 ![](angle. Two of the rectangles overlap." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd501e6f7cb2_image3_6e2d3b4cb762604d73b6050d92a6a96f_800.p)
 Remember that the value was set to left to enable the element to move right; to move it to the top, you set it to the bottom. In addition, the movement of the element did not push down or influence the other elements on the screen.
@@ -75,27 +195,96 @@ Remember that the value was set to left to enable the element to move right; to 
 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#:~:text=An%20absolutely%20positioned%20element%20is,which%20the%20element%20is%20positioned.)" target="_blank" rel="noopener noreferrer">Absolute position</a> is an element with its position relative to its parent element. In this case, you remove the element from the normal document flow and do not create any gap for it in the page layout. Instead, the ```left```, ```top```, ```bottom``` and ```right``` values determine the element's final position.
 Note that an absolute positioned element uses the document body and moves along with page scrolling. In addition, if it has no positioned ancestors, it can overlap.
 For better understanding, we’ll work with these elements to explain how absolute positioning works:
-e>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br><br>&lt;head&gt;<br>  &lt;style&gt;<br>  body{<br>    background-color: #73AD21;<br>  }<br>    .container {<br>      background-color: red;<br>      border: solid 3px blue;<br>      display: flex;<br>      align-items: center;<br>      justify-content: center;<br>      width: 500px;<br>      height: 400px;<br>      position: relative;<br>    }<br><br>    .box1 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: white;<br>    }<br>    .box2 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: yellow;<br><br>    }<br>  &lt;/style&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>  &lt;div class=&quot;container&quot;&gt;<br>    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;<br>    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;<br>  &lt;/div&gt;<br><br><br>&lt;/body&gt;<br><br>&lt;/html&gt;</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=d98f48bcad" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;style&gt;
+  body{
+    background-color: #73AD21;
+  }
+    .container {
+      background-color: red;
+      border: solid 3px blue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 500px;
+      height: 400px;
+      position: relative;
+    }
+    .box1 {
+      width: 200px;
+      height: 100px;
+      background-color: white;
+    }
+    .box2 {
+      width: 200px;
+      height: 100px;
+      background-color: yellow;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;box1&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;box2&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=d98f48bcad" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the outcome:
 ![](ow rectangles in the middle of the red square." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd0a606f7c7e_image2_944cb9e5c4effdd38c508128c838be79_800.p)
 Now, we’ll move the box. As mentioned earlier, that absolute position is an element with its position relative to its parent element.
 Let’s move ```box1``` to the left 50px from the parent element and down 40px from the parent element:
-e> .box1 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: white;<br>      position: absolute;<br>      left: 50px;<br>      top: 40px;<br>    }</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=bd784dab70" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+ .box1 {
+      width: 200px;
+      height: 100px;
+      background-color: white;
+      position: absolute;
+      left: 50px;
+      top: 40px;
+    }```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=bd784dab70" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the result:
 ![](of a red square in a green rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd41de6f7c7c_image5_d099265ddb211095c803d0d8b53f6dcb_800.p)
 Notice that the element was taken out of the document's normal flow, unlike the relative positioning, which leaves a space for a ghost element.
 Next, let’s move the ```box1``` element to the left of 50px and the top margin of 0 relative to its parent element:
-e>.box1 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: white;<br>      position: absolute;<br>      left: 50px;<br>      top: 0;<br>    }</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=50ee41a237" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+.box1 {
+      width: 200px;
+      height: 100px;
+      background-color: white;
+      position: absolute;
+      left: 50px;
+      top: 0;
+    }```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=50ee41a237" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the outcome:
 ![](n rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dddcd16f7c7d_image14_13adc1871909c9407051417329aa4511_800.p)
 The above image shows how ```box1``` is positioned relative to its parent element.
 Now, let’s move the ```box2``` element to the right 50px from the parent element, and down 40px from the parent element:
-e>.box2 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: yellow;<br>      position: absolute;<br>      right: 50px;<br>      bottom: 40px;<br>    }</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=3905459324" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+.box2 {
+      width: 200px;
+      height: 100px;
+      background-color: yellow;
+      position: absolute;
+      right: 50px;
+      bottom: 40px;
+    }```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=3905459324" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the effect of the code:
 ![]( of a red square inside a green rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd18626f7c94_image1_606b7319294f035c5e74c600c2d0fd2c_800.p)
 Notice that the element affects the flow on the page. Also, the coordinating properties work as rendered, unlike relative positioning, where you have to set ```right``` to move left.
 Next, let’s move the ```box2``` element to the right 50px and to the bottom margin of 0 relative to its parent element:
-e>.box2 {<br>      width: 200px;<br>      height: 100px;<br>      background-color: yellow;<br>      position: absolute;<br>      right: 50px;<br>      bottom: 0;<br>    }</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=8297449705" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+.box2 {
+      width: 200px;
+      height: 100px;
+      background-color: yellow;
+      position: absolute;
+      right: 50px;
+      bottom: 0;
+    }```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=8297449705" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the result:
 ![](n rectangle." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd409e6f7c98_image8_7672ee93047287793f7e822601999029_800.p)
 This shows that ```box2``` element is positioned relative to its parent element, which has a bottom margin of 0.
@@ -104,14 +293,59 @@ An element with <a href="https://www.w3.org/wiki/CSS_absolute_and_fixed_position
 We’ll use this image to explain the fixed position, white element and yellow element before we scroll down:
 ![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd54d06f7caf_image10_d8bdc65195f7b16ab0f023798d1f8bc1_800.p)
 Now, let’s use two box elements to explain the fixed position. To do this, we’ll set the ```box1``` (white) element as the absolute position and the ```box2``` (yellow) element as the fixed position:
-e>&lt;style&gt;<br>  body{<br>    background-color: #73AD21;<br>  }<br>    .container {<br>      background-color: red;<br>      border: solid 3px blue;<br>      display: flex;<br>      overflow: scroll;<br>      align-items: center;<br>      justify-content: center;<br>      width: 500px;<br>      height: 400px;<br>      position: relative;<br>    }<br><br>    .box1 {<br>      width: 100px;<br>      height: 100px;<br>      background-color: white;<br>      position: absolute;<br>      left: 50px;<br>    }<br>    .box2 {<br>      width: 100px;<br>      height: 100px;<br>      background-color: yellow;<br>      position: fixed;<br>  }<br>  &lt;/style&gt;</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=464a4f8dc0" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;style&gt;
+  body{
+    background-color: #73AD21;
+  }
+    .container {
+      background-color: red;
+      border: solid 3px blue;
+      display: flex;
+      overflow: scroll;
+      align-items: center;
+      justify-content: center;
+      width: 500px;
+      height: 400px;
+      position: relative;
+    }
+    .box1 {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      position: absolute;
+      left: 50px;
+    }
+    .box2 {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+      position: fixed;
+  }
+  &lt;/style&gt;```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=464a4f8dc0" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here is the result:
 ![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470ddbc906f7c95_image7_c21d580cf1dec47521cb4ef2884fc30b_800.p)
 Notice that the ```box2``` (yellow) element was not affected by the scrolling, rather, it remains fixed in the same position on the screen.
 ### Sticky Position
 <a href="https://blog.hubspot.com/website/css-position-sticky" target="_blank" rel="noopener noreferrer">A sticky position</a> occurs when an element is positioned based on the user's scroll position. The sticky position combines the relative and fixed positions, depending on the part of the scroll. In this way, it acts like a relatively positioned element. In addition, it maintains a relative position until a given offset position is met in the viewport, and then it &quot;sticks&quot; in place like a fixed position.
 Let’s look at this example for a better understanding of how the sticky position works:
-e>&lt;style&gt;<br>  .container {<br>    background-color: grey;<br>    border: solid 3px blue;<br>    width: 600px;<br>    height: 400px;<br>    overflow: scroll;<br>  }<br><br>.sticky {<br>  background-color: white;<br>  width: 100px;<br>  height: 100px;<br>  position: sticky;<br>  top:0;<br>}<br>&lt;/style&gt;</pre><p><a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=af3c48b4dc" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;style&gt;
+  .container {
+    background-color: grey;
+    border: solid 3px blue;
+    width: 600px;
+    height: 400px;
+    overflow: scroll;
+  }
+.sticky {
+  background-color: white;
+  width: 100px;
+  height: 100px;
+  position: sticky;
+  top:0;
+}
+&lt;/style&gt;```<a href="https://user-96a93fbe-468f-4504-b52f-78e91ab5ec81-agyqaaz4hq-uc.a.run.app/?p=af3c48b4dc" target="_blank" rel="noopener noreferrer">Save this code</a>
 Below are the results of the element before and after we scroll.
 The image before the scrolling:
 ![](uploads-ssl.webflow.com/6143afec68f555387049efb3/63bee44c2470dd23b16f7cb0_image6_83218c1e92a976b9367436571dec9c79_800.p)

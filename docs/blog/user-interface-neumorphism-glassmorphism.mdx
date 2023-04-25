@@ -53,37 +53,121 @@ The box-shadow property is responsible for a neumorphic effect. It is relatively
 First, let’s look at how the box-shadow property works, and then we’ll add neumorphic effects on elements, form fields, and buttons.
 
 ### The Syntax
-- <strong>Vertical offset</strong>: A positive value puts the shadow below the box, and a negative value puts the shadow above the box.
-- <strong>Blur radius</strong>: The higher the number, the more blurred the shadow will be, and the lower the number, the less blurred it will be.
-- <strong>Spread radius</strong>: A positive value increases the size of the shadow, and a negative value decreases the size of the shadow.
-- <strong>Color</strong>: If the color is not specified, the shadow will not b displayed.
-- <strong>Inset</strong>: Changes the shadow from an outer shadow to an inner shadow
-- <strong>Initial</strong>: Sets the property to its default value.
-- <strong>Inherit</strong>: Inherits the property from its parent element.
+- **Vertical offset**: A positive value puts the shadow below the box, and a negative value puts the shadow above the box.
+- **Blur radius**: The higher the number, the more blurred the shadow will be, and the lower the number, the less blurred it will be.
+- **Spread radius**: A positive value increases the size of the shadow, and a negative value decreases the size of the shadow.
+- **Color**: If the color is not specified, the shadow will not b displayed.
+- **Inset**: Changes the shadow from an outer shadow to an inner shadow
+- **Initial**: Sets the property to its default value.
+- **Inherit**: Inherits the property from its parent element.
 
 The box-shadow property can be written in the following ways:
-<strong>HTML</strong>
+**HTML**
 
-e>&lt;div class=&quot;element&quot;&gt;<br>&lt;/div&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=27954d91a1" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>.element {<br> align-items: center;<br> background-color: #ecf0f3;<br> box-shadow: 12px 12px 16px 0 #b5bbc2, -8px -8px 12px 0 #f8fbff;<br> border-radius: 20px;<br> display: flex;<br> height: 410px;<br> justify-content: center;<br> margin-right: 4rem;<br> width: 547px;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=d45343a12e" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>Output</strong>
+```
+&lt;div class=&quot;element&quot;&gt;
+&lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=27954d91a1" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+.element {
+ align-items: center;
+ background-color: #ecf0f3;
+ box-shadow: 12px 12px 16px 0 #b5bbc2, -8px -8px 12px 0 #f8fbff;
+ border-radius: 20px;
+ display: flex;
+ height: 410px;
+ justify-content: center;
+ margin-right: 4rem;
+ width: 547px;
+}```<a href="https://aleru.pieces.cloud/?p=d45343a12e" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Output**
 
     ![](er interface design. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ee4919aab1c71bbe022b43_image20_3f2a8618ca6c24eab6020e89133725cd_800.p)
 
     ## Buttons
 The code sample below shows how to style a user interface button in the neumorphic method.
-<strong>HTML</strong>
-e>&lt;div class=&quot;element&quot;&gt;<br>  &lt;div class=&quot;enter&quot;&gt;<br>    &lt;p&gt;Subscribe&lt;/p&gt;<br>  &lt;/div&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=c41f4f8429" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>body {<br> align-items: center;<br> display: flex;<br> height: 100vh;<br> justify-content: center;<br>}<br>.enter {<br> align-items: center;<br>font-weight: bold;<br> background-color: #ecf0f3;<br> box-shadow: 5px 5px 10px 0 #b5bbc2, -5px -5px 20px 0 #f8fbff;<br> border-radius: 10px;<br> display: flex;<br> height: 10px;<br> width: 100px;<br> color: #545454;<br> padding: 1.3rem;<br> justify-content: center;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=e83049ae6f" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>Output</strong>
+**HTML**
+```
+&lt;div class=&quot;element&quot;&gt;
+  &lt;div class=&quot;enter&quot;&gt;
+    &lt;p&gt;Subscribe&lt;/p&gt;
+  &lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=c41f4f8429" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+body {
+ align-items: center;
+ display: flex;
+ height: 100vh;
+ justify-content: center;
+}
+.enter {
+ align-items: center;
+font-weight: bold;
+ background-color: #ecf0f3;
+ box-shadow: 5px 5px 10px 0 #b5bbc2, -5px -5px 20px 0 #f8fbff;
+ border-radius: 10px;
+ display: flex;
+ height: 10px;
+ width: 100px;
+ color: #545454;
+ padding: 1.3rem;
+ justify-content: center;
+}```<a href="https://aleru.pieces.cloud/?p=e83049ae6f" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Output**
 ![](.com/6143afec68f555387049efb3/63ee4919aab1c7dbb1022b45_image18_f4d87fc32b51d91f223ccdcc2b014216_800.jp)
-<strong>HTML</strong>
-e>&lt;div class=&quot;buttons&quot;&gt;<br>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;<br>  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z&quot; /&gt;<br>&lt;/svg&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;buttons&quot;&gt;<br>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;<br>  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5&quot; /&gt;<br>&lt;/svg&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;buttons&quot;&gt;<br>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;<br>  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z&quot; /&gt;<br>&lt;/svg&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;buttons&quot;&gt;<br>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;<br>  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z&quot; /&gt;<br>&lt;/svg&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;buttons&quot;&gt;<br>&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;<br>  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z&quot; /&gt;<br>  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M15 12a3 3 0 11-6 0 3 3 0 016 0z&quot; /&gt;<br>&lt;/svg&gt;<br>&lt;/div&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=6c0e479fa5" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>body {<br> align-items: center;<br> display: flex;<br> height: 100vh;<br> justify-content: center;<br>}<br>.buttons{<br> margin-top:100px;<br> border-radius:50%;<br> width:48px;<br> height:48px;<br> background-color:#E0E5EC;<br> box-shadow: 9px 9px 16px #b5bbc2 , -9px -9px 16px #f8fbff;<br> display: flex;<br>margin: 20px;<br>}<br>.icon{<br> color: #545454;<br> width: 24px;<br> height: 24px;<br> margin: auto;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=2f7048a279" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>Output</strong>
+**HTML**
+```
+&lt;div class=&quot;buttons&quot;&gt;
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;
+  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z&quot; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;div class=&quot;buttons&quot;&gt;
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;
+  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5&quot; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;div class=&quot;buttons&quot;&gt;
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;
+  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z&quot; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;div class=&quot;buttons&quot;&gt;
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;
+  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z&quot; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;
+&lt;div class=&quot;buttons&quot;&gt;
+&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;icon&quot;&gt;
+  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 011.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.56.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.893.149c-.425.07-.765.383-.93.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 01-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.397.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 01-.12-1.45l.527-.737c.25-.35.273-.806.108-1.204-.165-.397-.505-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.107-1.204l-.527-.738a1.125 1.125 0 01.12-1.45l.773-.773a1.125 1.125 0 011.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894z&quot; /&gt;
+  &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M15 12a3 3 0 11-6 0 3 3 0 016 0z&quot; /&gt;
+&lt;/svg&gt;
+&lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=6c0e479fa5" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+body {
+ align-items: center;
+ display: flex;
+ height: 100vh;
+ justify-content: center;
+}
+.buttons{
+ margin-top:100px;
+ border-radius:50%;
+ width:48px;
+ height:48px;
+ background-color:#E0E5EC;
+ box-shadow: 9px 9px 16px #b5bbc2 , -9px -9px 16px #f8fbff;
+ display: flex;
+margin: 20px;
+}
+.icon{
+ color: #545454;
+ width: 24px;
+ height: 24px;
+ margin: auto;
+}```<a href="https://aleru.pieces.cloud/?p=2f7048a279" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Output**
 ![]( src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ee4919aab1c744eb022b41_image1_946c5316c01a92f435cae5178b87806f_800.jp)
 Combining the various elements above makes for a cooler and much more user-friendly User Interface when used correctly by combining the right colors, shadows, and tints, as discussed earlier.
 ## More Use Cases of Neumorphism in User Interface
@@ -112,47 +196,336 @@ Glassmorphism solely depends on the blur effect, so borders give the design more
 ![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ee4919aab1c76760022b47_image14_33400e414fd91def5d5935657c865ec7_800.jp)
 ## Attributes/Properties of Glassmorphism
 The purpose of implementing glassmorphism is to make a balance between these elements in your user interface:
-- <strong>Transparency: </strong>The key requirement for implementing glassmorphism is transparency. The element must be made for the top to attract more light and give a transparent effect to improve transparency.
-- <strong>Blurred background: </strong>The blur makes the background image seamlessly blend into the background while still giving an aesthetically pleasing appearance; this is what is remarkable about the idea of glassmorphism. The transparent layers are carefully and correctly positioned over the blurred background. The blurred background also helps give the foreground a glassy look.
-- <strong>Border: </strong>A border surrounding the glassmorphic element highlights it.
+- **Transparency: **The key requirement for implementing glassmorphism is transparency. The element must be made for the top to attract more light and give a transparent effect to improve transparency.
+- **Blurred background: **The blur makes the background image seamlessly blend into the background while still giving an aesthetically pleasing appearance; this is what is remarkable about the idea of glassmorphism. The transparent layers are carefully and correctly positioned over the blurred background. The blurred background also helps give the foreground a glassy look.
+- **Border: **A border surrounding the glassmorphic element highlights it.
 ## Implementing Glassmorphism with CSS
 The key to creating an ideal glassmorphism effect is choosing the appropriate transparency. Only the fill should be translucent; the form itself shouldn't be. You will achieve a true background blur in this manner.
 The following properties are employed to create the glassmorphism effect:
-e>background: linear-gradient()<br>box-shadow:(values) rgba();<br>backdrop-filter: blur();</pre><p>Glassmorphism needs a compelling aesthetic element in the user interface to provide the greatest visual impact. This element might be a picture or a shape.
+```
+background: linear-gradient()
+box-shadow:(values) rgba();
+backdrop-filter: blur()
+```
+Glassmorphism needs a compelling aesthetic element in the user interface to provide the greatest visual impact. This element might be a picture or a shape.
 ## Creating a Glass Pane for Your User Interface Design
-<strong>HTML</strong>
-e>&lt;div class=&quot;card&quot;&gt;<br>  &lt;/div&gt;<br>  &lt;h1&gt;eureka&lt;/h1&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=2918468c8a" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>body {<br> display: flex;<br> align-items: center;<br> justify-content: center;<br> height: 100vh;<br> background-image: linear-gradient(120deg, #72C6EF 0%, #6DD5ED 100%);<br> font-family:squada one;<br>}<br><br>h1 {<br> position: absolute;<br> z-index: 1;<br> font-size: 200px;<br> letter-spacing: 15px;<br> color: #fff;<br>}<br>.card {<br> width:250px;<br> height: 350px;<br> z-index: 2;<br> background: rgba(255, 255, 255, 0.05);<br> box-shadow: 0 8px 32px 0 #1f26875e;<br> box-shadow: inset 1px 1px 0.12px #ffffff66,<br> 1px 1px 3px #0000001a;<br> backdrop-filter: blur(5px);<br> -webkit-backdrop-filter: blur(10px);<br> border-radius:5px;<br> border: 0.5px #ffffff2e;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=4f454e9181" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>Output</strong>
+**HTML**
+```
+&lt;div class=&quot;card&quot;&gt;
+  &lt;/div&gt;
+  &lt;h1&gt;eureka&lt;/h1&gt;```<a href="https://aleru.pieces.cloud/?p=2918468c8a" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+body {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ height: 100vh;
+ background-image: linear-gradient(120deg, #72C6EF 0%, #6DD5ED 100%);
+ font-family:squada one;
+}
+h1 {
+ position: absolute;
+ z-index: 1;
+ font-size: 200px;
+ letter-spacing: 15px;
+ color: #fff;
+}
+.card {
+ width:250px;
+ height: 350px;
+ z-index: 2;
+ background: rgba(255, 255, 255, 0.05);
+ box-shadow: 0 8px 32px 0 #1f26875e;
+ box-shadow: inset 1px 1px 0.12px #ffffff66,
+ 1px 1px 3px #0000001a;
+ backdrop-filter: blur(5px);
+ -webkit-backdrop-filter: blur(10px);
+ border-radius:5px;
+ border: 0.5px #ffffff2e;
+}```<a href="https://aleru.pieces.cloud/?p=4f454e9181" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Output**
 ![]( in a user interface. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ee4919aab1c748f8022b4a_image4_4f499e632a53627e4f7a2e80438097fe_800.jp)
 ## Pagination
 Another great way to implement glassmorphism is in pagination; glassmorphic objects partially allow you to see the image or colors behind them. The object or element is kept from merging into the background by adding a blur behind it. This blurriness is necessary to keep the text readable, one of the more important elements of user interface design.
-<strong>HTML</strong>
-e>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot;&gt;<br>&lt;head&gt;<br>  &lt;meta charset=&quot;UTF-8&quot;&gt;<br>  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br>  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;<br>  &lt;title&gt;Pagination&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>  &lt;div class=&quot;element&quot;&gt;<br>    &lt;ul class=&quot;pagination&quot;&gt;<br>      &lt;li&gt;<br>        &lt;a href=&quot;link&quot;&gt;&lt;&lt;&lt;/a&gt;<br>      &lt;/li&gt;<br>      &lt;li&gt;<br>        &lt;a href=&quot;link&quot;&gt;1&lt;/a&gt;<br>      &lt;/li&gt;<br>      &lt;li&gt;<br>        &lt;a href=&quot;link&quot;&gt;2&lt;/a&gt;<br>      &lt;/li&gt;<br>      &lt;li&gt;<br>        &lt;a href=&quot;link&quot;&gt;3&lt;/a&gt;<br>      &lt;/li&gt;<br>      &lt;li&gt;<br>        &lt;a href=&quot;link&quot;&gt;4&lt;/a&gt;<br>      &lt;/li&gt;<br>      &lt;li class=&quot;active&quot;&gt;<br>        &lt;a href=&quot;link&quot;&gt;5&lt;/a&gt;<br>      &lt;/li&gt;<br>      &lt;li&gt;<br>        &lt;a href=&quot;link&quot;&gt;&gt;&gt;&lt;/a&gt;<br>      &lt;/li&gt;<br>    &lt;/ul&gt;<br>  &lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=4c584cb499" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>* {<br> margin: 0;<br> padding: 0;<br> font-family: sans-serif;<br>}<br>.element{<br> position: relative;<br> height: 50vh;<br> width: 100%;<br> background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),<br> url(leonhard-niederwimmer-rdVmRUlD0p8-unsplash.jpg);<br> background-size: cover;<br> background-position: center;<br> display: flex;<br> align-items: center;<br> justify-content: center;<br>}<br>.element .pagination {<br> position: relative;<br> height: 60px;<br> background: rgba(255, 255, 255, 0.05);<br> box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);<br> display: flex;<br> align-items: center;<br> justify-content: center;<br> backdrop-filter: blur(3px);<br> border-radius: 2px;<br>}<br>.element .pagination li {<br> list-style-type: none;<br> display: inline-block;<br>}<br>.element .pagination li a {<br> position: relative;<br> padding: 20px 25px;<br> text-decoration: none;<br> color: #fff;<br> font-weight: 500;<br>}<br>.element .pagination li a:hover,<br>.element .pagination li.active a {<br> background: rgba(255, 255, 255, 0.2);}</pre><p><a href="https://aleru.pieces.cloud/?p=5ff84e8138" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>Output</strong>
+**HTML**
+```
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
+  &lt;title&gt;Pagination&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;element&quot;&gt;
+    &lt;ul class=&quot;pagination&quot;&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;link&quot;&gt;&lt;&lt;&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;link&quot;&gt;1&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;link&quot;&gt;2&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;link&quot;&gt;3&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;link&quot;&gt;4&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class=&quot;active&quot;&gt;
+        &lt;a href=&quot;link&quot;&gt;5&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li&gt;
+        &lt;a href=&quot;link&quot;&gt;&gt;&gt;&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;```<a href="https://aleru.pieces.cloud/?p=4c584cb499" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+* {
+ margin: 0;
+ padding: 0;
+ font-family: sans-serif;
+}
+.element{
+ position: relative;
+ height: 50vh;
+ width: 100%;
+ background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+ url(leonhard-niederwimmer-rdVmRUlD0p8-unsplash.jpg);
+ background-size: cover;
+ background-position: center;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.element .pagination {
+ position: relative;
+ height: 60px;
+ background: rgba(255, 255, 255, 0.05);
+ box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.3);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ backdrop-filter: blur(3px);
+ border-radius: 2px;
+}
+.element .pagination li {
+ list-style-type: none;
+ display: inline-block;
+}
+.element .pagination li a {
+ position: relative;
+ padding: 20px 25px;
+ text-decoration: none;
+ color: #fff;
+ font-weight: 500;
+}
+.element .pagination li a:hover,
+.element .pagination li.active a {
+ background: rgba(255, 255, 255, 0.2);}```<a href="https://aleru.pieces.cloud/?p=5ff84e8138" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Output**
 ![]( black bear. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ee4919aab1c7d74a022b4e_image7_a0be0f8289601754d9b5944b5798e235_800.jp)
 ## More Use Cases of Glassmorphism in User Interface Design
 Glassmorphism needs a compelling aesthetic element to provide the greatest visual impact. This might be a picture or a shape.
-<strong>Call-to-Action Cards</strong>
+**Call-to-Action Cards**
 ![](sm. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ee4919aab1c71e0a022b3f_image16_003f6ab4b68d7c37edd3fbbcc290ca2a_800.jp)
 ![](//uploads-ssl.webflow.com/6143afec68f555387049efb3/63ee4919aab1c72a7d022b44_image19_2362a04b1e5f901b1fd10e7b4a1bcc30_800.jp)
 As shown above, the glassmorphic effect is over two photos, or on a bright background made of shapes that are clear and compelling and makes the glassy effect more pronounced.
 Let’s look at another example of the glassmorphic concept with the frosted glass effect used in the user interface of a credit card application page.
 First, let's create the background using the ```background``` property:
-<strong>HTML</strong>
-e>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot;&gt;<br>&lt;head&gt;<br>  &lt;meta charset=&quot;UTF-8&quot;&gt;<br>  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br>  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;<br>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;<br>&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;<br>  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;<br>  &lt;title&gt;GLASSMORPHISM&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=8ced4f9c06" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>* {<br> margin: 0;<br> padding: 0;<br> box-sizing: border-box;<br>}<br>body {<br> background: linear-gradient(to right, #bbd2c5, #536976, #292e49);<br> height: 100vh;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=cefe42a371" target="_blank" rel="noopener noreferrer">Save this code</a>
+**HTML**
+```
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
+  &lt;title&gt;GLASSMORPHISM&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;```<a href="https://aleru.pieces.cloud/?p=8ced4f9c06" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+body {
+ background: linear-gradient(to right, #bbd2c5, #536976, #292e49);
+ height: 100vh;
+}```<a href="https://aleru.pieces.cloud/?p=cefe42a371" target="_blank" rel="noopener noreferrer">Save this code</a>
 Let’s add the glassmorphism effect as we create the credit card. But first, let’s add a few more details to the HTML.
-<strong>HTML</strong>
-e>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot;&gt;<br>&lt;head&gt;<br>  &lt;meta charset=&quot;UTF-8&quot;&gt;<br>  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;<br>  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;<br>  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;<br>&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;<br>&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;<br>  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;<br>  &lt;title&gt;GLASSMORPHISM&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>&lt;div class=&quot;container&quot;&gt;<br> <br>    &lt;div class=&quot;card&quot;&gt;<br>      &lt;form&gt;<br>        &lt;div class=&quot;logo&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;w-6 h-6&quot;&gt;<br>          &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z&quot; /&gt;<br>        &lt;/svg&gt;<br>        &lt;/div&gt;<br>        &lt;div class=&quot;number&quot;&gt;<br>          &lt;input id=&quot;number&quot; placeholder=&quot;Enter card number&quot; type=&quot;text&quot; required maxlength=&quot;19&quot;&gt;<br> <br>        &lt;/div&gt;<br>        &lt;br&gt;<br>        &lt;div &gt;<br>          &lt;div class=&quot;name&quot;&gt;<br>            &lt;u&gt;&lt;input id=&quot;name&quot; placeholder=&quot;Enter name&quot; type=&quot;text&quot; required&gt;<br>            &lt;/u&gt;<br>          &lt;/div&gt;<br>          &lt;div class=&quot;expiry&quot;&gt;<br> <br>            &lt;label&gt;VALID THRU&lt;/label&gt;<br>            &lt;u&gt;&lt;input id=&quot;card-exp&quot; placeholder=&quot;Enter expiry&quot; type=&quot;text&quot; required maxlength=&quot;17&quot; &gt;<br>            &lt;/u&gt;<br>          &lt;/div&gt;<br> <br>        &lt;/div&gt;<br>      &lt;/form&gt;<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>&lt;/div&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=3c144e977c" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
+**HTML**
+```
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot;&gt;
+&lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin&gt;
+&lt;link href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot; /&gt;
+  &lt;title&gt;GLASSMORPHISM&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&quot;container&quot;&gt;
+
+    &lt;div class=&quot;card&quot;&gt;
+      &lt;form&gt;
+        &lt;div class=&quot;logo&quot;&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; fill=&quot;none&quot; viewBox=&quot;0 0 24 24&quot; stroke-width=&quot;1.5&quot; stroke=&quot;currentColor&quot; class=&quot;w-6 h-6&quot;&gt;
+          &lt;path stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot; d=&quot;M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z&quot; /&gt;
+        &lt;/svg&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;number&quot;&gt;
+          &lt;input id=&quot;number&quot; placeholder=&quot;Enter card number&quot; type=&quot;text&quot; required maxlength=&quot;19&quot;&gt;
+
+        &lt;/div&gt;
+        &lt;br&gt;
+        &lt;div &gt;
+          &lt;div class=&quot;name&quot;&gt;
+            &lt;u&gt;&lt;input id=&quot;name&quot; placeholder=&quot;Enter name&quot; type=&quot;text&quot; required&gt;
+            &lt;/u&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;expiry&quot;&gt;
+
+            &lt;label&gt;VALID THRU&lt;/label&gt;
+            &lt;u&gt;&lt;input id=&quot;card-exp&quot; placeholder=&quot;Enter expiry&quot; type=&quot;text&quot; required maxlength=&quot;17&quot; &gt;
+            &lt;/u&gt;
+          &lt;/div&gt;
+
+        &lt;/div&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;```<a href="https://aleru.pieces.cloud/?p=3c144e977c" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
 To implement it with CSS, we do the following:
-e>body {<br> background: linear-gradient(to right, #bbd2c5, #536976, #292e49);<br> height: 100vh;<br> display: flex;<br> align-items: center;<br> justify-content: center;<br> color: #ffffff;<br>}<br><br>.card {<br> height: 260px;<br> width: 420px;<br> border-radius: 20px;<br> background: rgba(255, 255, 255, 0.1);<br> backdrop-filter: blur(35px);<br> border: 2px solid rgba(255, 255, 255, 0.1);<br> box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);<br> padding: 30px 30px 30px 30px;<br> overflow: hidden;<br> <br>}<br>.logo{<br> padding-bottom: 40px;<br> opacity: 0.9;<br> width: 50px;<br>}<br>.group{<br> display: inline-flex;<br> margin: 0;<br> padding: 0;<br> <br>}<br>.number{ <br> position:relative; <br> display: inline-block;<br> overflow: hidden;<br> margin-bottom:70px; <br>}<br>.underline{<br> transition: all 0.3s;<br> display: inline-block;<br> bottom: 0;<br> left: -100%;<br> position: absolute;<br> width: 100%;<br> height: 2px;<br> background-color: #ffffff;<br>}<br><br><br>.name{ <br>padding: 0px 80px 0px 0px;<br> margin-right: 40px;<br> width: 100px;<br> position:relative; <br> display: inline-block;<br> overflow: hidden;<br>}<br>.expiry{<br> padding: 0px 0px 0px 0px; <br> margin-right: 60px;<br> width: 80px;<br> /* position:relative;  */<br> display: inline-block;<br> overflow: hidden;<br>}<br>label {<br> color: white; <br> font-size:12px;<br> font-weight:normal;<br> pointer-events:none;<br> display: block;<br> padding-bottom: 2px;<br>}<br><br>input {<br> border: none;<br> font-size: 16px;<br> height: 26px;<br> color: #ffffff;<br> background: 0;<br>}<br>input:focus{ <br> border-bottom: 2px solid;<br> outline: none;<br> border: none;<br> font-size: 16px;<br> height: 30px;<br> margin-bottom: -2px;<br>}<br>input:hover{<br> border-bottom: 2px solid;<br> color: none;<br> margin-bottom: -2px;<br> font-size: 16px;<br> height: 30px;<br>}<br><br>input[id=&quot;number&quot;]{<br> font-size: 30px;<br> width: 100%;<br> height: 50px;<br>}<br>input[id=&quot;number&quot;]::placeholder{<br> font-size: 30px;<br>}<br>input::placeholder{<br> color: #ffffff;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=af854989d2" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>Output</strong>
+```
+body {
+ background: linear-gradient(to right, #bbd2c5, #536976, #292e49);
+ height: 100vh;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: #ffffff;
+}
+.card {
+ height: 260px;
+ width: 420px;
+ border-radius: 20px;
+ background: rgba(255, 255, 255, 0.1);
+ backdrop-filter: blur(35px);
+ border: 2px solid rgba(255, 255, 255, 0.1);
+ box-shadow: 0 0 80px rgba(0, 0, 0, 0.25);
+ padding: 30px 30px 30px 30px;
+ overflow: hidden;
+
+}
+.logo{
+ padding-bottom: 40px;
+ opacity: 0.9;
+ width: 50px;
+}
+.group{
+ display: inline-flex;
+ margin: 0;
+ padding: 0;
+
+}
+.number{
+ position:relative;
+ display: inline-block;
+ overflow: hidden;
+ margin-bottom:70px;
+}
+.underline{
+ transition: all 0.3s;
+ display: inline-block;
+ bottom: 0;
+ left: -100%;
+ position: absolute;
+ width: 100%;
+ height: 2px;
+ background-color: #ffffff;
+}
+
+.name{
+padding: 0px 80px 0px 0px;
+ margin-right: 40px;
+ width: 100px;
+ position:relative;
+ display: inline-block;
+ overflow: hidden;
+}
+.expiry{
+ padding: 0px 0px 0px 0px;
+ margin-right: 60px;
+ width: 80px;
+ /* position:relative;  */
+ display: inline-block;
+ overflow: hidden;
+}
+label {
+ color: white;
+ font-size:12px;
+ font-weight:normal;
+ pointer-events:none;
+ display: block;
+ padding-bottom: 2px;
+}
+input {
+ border: none;
+ font-size: 16px;
+ height: 26px;
+ color: #ffffff;
+ background: 0;
+}
+input:focus{
+ border-bottom: 2px solid;
+ outline: none;
+ border: none;
+ font-size: 16px;
+ height: 30px;
+ margin-bottom: -2px;
+}
+input:hover{
+ border-bottom: 2px solid;
+ color: none;
+ margin-bottom: -2px;
+ font-size: 16px;
+ height: 30px;
+}
+input[id=&quot;number&quot;]{
+ font-size: 30px;
+ width: 100%;
+ height: 50px;
+}
+input[id=&quot;number&quot;]::placeholder{
+ font-size: 30px;
+}
+input::placeholder{
+ color: #ffffff;
+}```<a href="https://aleru.pieces.cloud/?p=af854989d2" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Output**
 ![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63ee4919aab1c76760022b47_image14_33400e414fd91def5d5935657c865ec7_800.jp)
 ## Browser Compatibility
 Neumorphism is compatible with the latest forms of Chrome, Edge, Firefox, and Safari, and according to <a href="https://caniuse.com/" target="_blank" rel="noopener noreferrer">caniuse.com</a>, glassmorphism is supported by most, if not all, browsers.

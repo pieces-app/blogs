@@ -3,7 +3,8 @@
 # Flutter Game: Build a Pong Game with Flutter Flame
 > Wed Apr 05 2023 16:53:15 GMT+0000 (Coordinated Universal Time)
 
-Building apps with Flutter is really cool. You know what’s cooler? <br>Building games. This article will show you how to build a Flutter game from start to finish with a Flutter Flame tutorial.
+Building apps with Flutter is really cool. You know what’s cooler?
+Building games. This article will show you how to build a Flutter game from start to finish with a Flutter Flame tutorial.
 Let’s create a Flutter game! We can build the classic pong game in Flutter using the 🔥<a href="https://flame-engine.org/" target="_blank" rel="noopener noreferrer">Flame</a> game engine.
 
 Flame is a 2D game engine built for Flutter. It’s built on top of the framework and simplifies game development. Flame provides us with everything we’ll need to build a flutter game.
@@ -14,23 +15,59 @@ Some of the concepts we’ll learn are: flutter game development
 - Building a simple AI opponent
 - Using Flame audio flutter
 
-<strong>Note:</strong> Knowledge of the basics of Flutter and Flame are required for this tutorial. Check out the <a href="https://docs.flame-engine.org/1.3.0/index.html#">Flutter Flame docs</a> if you’re new to the engine.
+**Note:** Knowledge of the basics of Flutter and Flame are required for this tutorial. Check out the <a href="https://docs.flame-engine.org/1.3.0/index.html#">Flutter Flame docs</a> if you’re new to the engine.
 
 Grab a coffee; let’s get started! Flutter game on! 🎮
 ## Flutter Game: Getting Started with game development in flutter
 Let’s create a new flutter project and enter the folder with the following commands:
-e>flutter create pong_game<br>cd pong_game</pre><p>Next, add the required Flame dependencies:
-e>flutter pub add flame</pre><p>For the game, our file structure will look like this:
-e>-lib/<br>··|---main.dart<br>··|---pong_game.dart<br>··|---player_paddle.dart<br>··|---ball.dart<br>··|---ai_paddle.dart<br>··|---scoretext.dart</pre><p><a href="https://takrutvik.pieces.cloud/?p=fc3248810b" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+flutter create pong_game
+cd pong_game
+```
+Next, add the required Flame dependencies:
+```
+flutter pub add flame
+```
+For the game, our file structure will look like this:
+```
+-lib/
+··|---main.dart
+··|---pong_game.dart
+··|---player_paddle.dart
+··|---ball.dart
+··|---ai_paddle.dart
+··|---scoretext.dart```<a href="https://takrutvik.pieces.cloud/?p=fc3248810b" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 We’ll update our main.dart with the following code:
-e>void main() {<br>  final game = PongGame();<br>  runApp(GameWidget(game: game));<br>}</pre><p><a href="https://takrutvik.pieces.cloud/?p=310c4baaa2" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+void main() {
+  final game = PongGame();
+  runApp(GameWidget(game: game));
+}```<a href="https://takrutvik.pieces.cloud/?p=310c4baaa2" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Now, in the pong_game.dart file, we’ll add the the following:
-e>class PongGame extends FlameGame<br> with HasCollisionDetection, HasKeyboardHandlerComponents {<br> PongGame();<br> <br> @override<br> Future&lt;void&gt; onLoad() async {}<br> <br> @override<br> @mustCallSuper<br> KeyEventResult onKeyEvent(<br>   RawKeyEvent event,<br> Set&lt;LogicalKeyboardKey&gt; keysPressed,<br> ) {<br> super.onKeyEvent(event, keysPressed);<br> <br> return KeyEventResult.handled;<br> }<br>}</pre><p><a href="https://takrutvik.pieces.cloud/?p=bc43458be4" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+class PongGame extends FlameGame
+ with HasCollisionDetection, HasKeyboardHandlerComponents {
+ PongGame();
 
-Here, we have the ```PongGame```<em> </em>declared. Notice that it has two mixings: ```HasCollisionDetection``` and ```HasKeyboardHandlerComponents```. This will let Flame know that our game is going to use these two things and allow us to work with collision detection and take keyboard inputs at the component level.
-We’re also overriding the ```onKeyEvent``` here and returning ```KeyEventResult.handled```. This is because if you’re on macOS, then you’ll notice key press sounds as you’re receiving keyboard inputs in the game. Returning ```KeyEventResult.handled```<em> </em>will disable those sounds.
+ @override
+ Future&lt;void&gt; onLoad() async {}
+
+ @override
+ @mustCallSuper
+ KeyEventResult onKeyEvent(
+   RawKeyEvent event,
+ Set&lt;LogicalKeyboardKey&gt; keysPressed,
+ ) {
+ super.onKeyEvent(event, keysPressed);
+
+ return KeyEventResult.handled;
+ }
+}```<a href="https://takrutvik.pieces.cloud/?p=bc43458be4" target="_blank" rel="noopener noreferrer">Save this code</a>
+
+Here, we have the ```PongGame``` declared. Notice that it has two mixings: ```HasCollisionDetection``` and ```HasKeyboardHandlerComponents```. This will let Flame know that our game is going to use these two things and allow us to work with collision detection and take keyboard inputs at the component level.
+We’re also overriding the ```onKeyEvent``` here and returning ```KeyEventResult.handled```. This is because if you’re on macOS, then you’ll notice key press sounds as you’re receiving keyboard inputs in the game. Returning ```KeyEventResult.handled``` will disable those sounds.
 Build &amp; run:
 
 ![](ow.com/6143afec68f555387049efb3/632b2d002e460d860b3f4970_image4_72ed6baeec79e636ccc5b099718d2d57_800.p)
@@ -42,18 +79,36 @@ Before moving on to building our game, let’s take a look at how collision dete
 In many game systems, collision detection works by having a HitBox around the game object. HitBoxes react to collisions and can send callbacks with the collision information.
 Flame supports adding different HitBoxes to our components like ```PolygonHitBox```, ```RectangleHitBox```, ```CircleHitBox``` or ```ScreenHitBox```, which is usually used for declaring the world boundaries/screen edges that components may collide with.
 
-<strong>Note:</strong> We can use multiple HitBoxes on a component to provide more accurate collision detection for it. For example, a game character can have separate HitBoxes around its arms, its legs, and so on.
+**Note:** We can use multiple HitBoxes on a component to provide more accurate collision detection for it. For example, a game character can have separate HitBoxes around its arms, its legs, and so on.
 
-### <strong>Enable Collision Detection</strong>
-For this, we first need to add the ```HasCollisionDetection```<em> </em>mixing to our Flame game.
+### **Enable Collision Detection**
+For this, we first need to add the ```HasCollisionDetection``` mixing to our Flame game.
 
 ![](//uploads-ssl.webflow.com/6143afec68f555387049efb3/632b2cff2e460d6b313f4948_image9_dea7a62fbd18753619d0050c38babbb5_800.p)
 For the components, we want to get notified when they collide with other bodies that are capable of collision. For this, we’ll add the ```CollisionCallbacks``` mixing to those components.
-e>class MyComponent extends PositionComponent with CollisionCallbacks {<br><br><br> @override<br> void onCollision(Set&lt;Vector2&gt; intersectionPoints, PositionComponent other) {<br> // TODO: implement onCollision<br> super.onCollision(intersectionPoints, other);<br>  }  <br><br> @override<br> void onCollisionStart(Set&lt;Vector2&gt; intersectionPoints, PositionComponent other) {<br> // TODO: implement onCollisionStart<br> super.onCollisionStart(intersectionPoints, other);<br>  }<br><br> @override<br> void onCollisionEnd(PositionComponent other) {<br> // TODO: implement onCollisionEnd<br> super.onCollisionEnd(other);<br>  }<br><br>}</pre><p><a href="https://takrutvik.pieces.cloud/?p=959d4ca464" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+class MyComponent extends PositionComponent with CollisionCallbacks {
 
-Adding this mixing allows us to be notified when a body collides with other bodies through callbacks such as ```onCollision```, ```onCollisionStart```<em> </em>and<em> </em>```onCollisionEnd```. These callbacks also provide the intersection points and the reference to the other body the component is colliding with.
+ @override
+ void onCollision(Set&lt;Vector2&gt; intersectionPoints, PositionComponent other) {
+ // TODO: implement onCollision
+ super.onCollision(intersectionPoints, other);
+  }
+ @override
+ void onCollisionStart(Set&lt;Vector2&gt; intersectionPoints, PositionComponent other) {
+ // TODO: implement onCollisionStart
+ super.onCollisionStart(intersectionPoints, other);
+  }
+ @override
+ void onCollisionEnd(PositionComponent other) {
+ // TODO: implement onCollisionEnd
+ super.onCollisionEnd(other);
+  }
+}```<a href="https://takrutvik.pieces.cloud/?p=959d4ca464" target="_blank" rel="noopener noreferrer">Save this code</a>
 
-<strong>Note:</strong> The <a href="https://docs.flame-engine.org/1.0.0/collision_detection.html" target="_blank" rel="noopener noreferrer">Collision Detection API</a> only lets us know when two bodies collide. What happens upon collision is up to us!
+Adding this mixing allows us to be notified when a body collides with other bodies through callbacks such as ```onCollision```, ```onCollisionStart``` and ```onCollisionEnd```. These callbacks also provide the intersection points and the reference to the other body the component is colliding with.
+
+**Note:** The <a href="https://docs.flame-engine.org/1.0.0/collision_detection.html" target="_blank" rel="noopener noreferrer">Collision Detection API</a> only lets us know when two bodies collide. What happens upon collision is up to us!
 
 Now, let’s move on to the different components of our game.
 
@@ -68,18 +123,75 @@ Our Pong game mainly consists of the following components:
 ### Game Boundaries
 Our ball is going to collide with the boundaries of our game/screen. We need to know when this happens so that we can either bounce it off of the top or bottom of the screen or update the players’ score if it’s colliding with the left or right of the screen.
 For this, we’ll declare game boundaries by adding the ```ScreenHitBox``` component.
-Replace the ```onload```<em> </em>method within ```PongGame``` with the following:
-e>@override<br> Future&lt;void&gt; onLoad() async {<br>   addAll([<br>     ScreenHitbox()<br>   ]);<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=fce246ae92" target="_blank" rel="noopener noreferrer">Save this code</a>
-```ScreenHitBox``` will represent the edges of our game screen. If any other components collide with the edges, we’ll be notified of the collision.
+Replace the ```onload``` method within ```PongGame``` with the following:
+```
+@override
+ Future&lt;void&gt; onLoad() async {
+   addAll([
+     ScreenHitbox()
+   ]);
+ }```<a href="https://takrutvik.pieces.cloud/?p=fce246ae92" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+ScreenHitBox``` will represent the edges of our game screen. If any other components collide with the edges, we’ll be notified of the collision.
 
 ### Player Paddle
 Now, we’ll add the player paddle to the flutter game tutorial.
 Create a new file called ```player_paddle.dart``` and add the following to it:
-e>// TODO: add key event enum<br> <br>class PlayerPaddle extends PositionComponent<br> with HasGameRef&lt;FlameGame&gt;, CollisionCallbacks {<br> late final RectangleHitbox paddleHitBox;<br> late final RectangleComponent paddle;<br> <br> // TODO: add variable key event and speed variables<br> <br> @override<br> Future&lt;void&gt;? onLoad() {<br> // TODO: implement onLoad<br> <br> final worldRect = gameRef.size.toRect();<br> <br>   size = Vector2(10, 100);<br>   position.x = worldRect.width * 0.9 - 10;<br>   position.y = worldRect.height / 2 - size.y / 2;<br>   paddle = RectangleComponent(<br>     size: size,<br>     paint: Paint()..color = Colors.blue,<br>   );<br> <br>   paddleHitBox = RectangleHitbox(<br>     size: size,<br>   );<br> <br>   addAll([<br>     paddle,<br>     paddleHitBox,<br>   ]);<br> <br> // TODO: add keyboard listener component<br> <br> return super.onLoad();<br> }<br> <br> //TODO: add update code for moving paddle<br>}</pre><p><a href="https://takrutvik.pieces.cloud/?p=d72c49a5a3" target="_blank" rel="noopener noreferrer">Save this code</a>
-Our ```PlayerPaddle```<em> </em>is a ```PositionComponent``` with the ```HasGameRef``` and ```CollisionCallbacks``` mixing. The ```HasGameRef``` mixing will allow us to get the game reference and check for any values in our game world. ```CollisionCallbacks``` mixing, as we discussed, will add support for setting collision callbacks.
-In the ```onLoad``` method, we’re setting the size for our paddle component and positioning it at the center-right of the screen. We also added a ```RectangleHitBox```<em> </em>of the same size as our paddle so that it can detect collisions.
-Within the ```onload``` method of the ```PongGame```<em> </em>component<em>, </em>add the ```PlayerPaddle```:
-e>@override<br> Future&lt;void&gt; onLoad() async {<br>   addAll(<br>     [<br>       ...<br>       .....<br>       PlayerPaddle(),<br> <br>     ],<br>   );<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=432c44aadd" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+// TODO: add key event enum
+
+class PlayerPaddle extends PositionComponent
+ with HasGameRef&lt;FlameGame&gt;, CollisionCallbacks {
+ late final RectangleHitbox paddleHitBox;
+ late final RectangleComponent paddle;
+
+ // TODO: add variable key event and speed variables
+
+ @override
+ Future&lt;void&gt;? onLoad() {
+ // TODO: implement onLoad
+
+ final worldRect = gameRef.size.toRect();
+
+   size = Vector2(10, 100);
+   position.x = worldRect.width * 0.9 - 10;
+   position.y = worldRect.height / 2 - size.y / 2;
+   paddle = RectangleComponent(
+     size: size,
+     paint: Paint()..color = Colors.blue,
+   );
+
+   paddleHitBox = RectangleHitbox(
+     size: size,
+   );
+
+   addAll([
+     paddle,
+     paddleHitBox,
+   ]);
+
+ // TODO: add keyboard listener component
+
+ return super.onLoad();
+ }
+
+ //TODO: add update code for moving paddle
+}```<a href="https://takrutvik.pieces.cloud/?p=d72c49a5a3" target="_blank" rel="noopener noreferrer">Save this code</a>
+Our ```PlayerPaddle``` is a ```PositionComponent``` with the ```HasGameRef``` and ```CollisionCallbacks``` mixing. The ```HasGameRef``` mixing will allow us to get the game reference and check for any values in our game world. ```CollisionCallbacks``` mixing, as we discussed, will add support for setting collision callbacks.
+In the ```onLoad``` method, we’re setting the size for our paddle component and positioning it at the center-right of the screen. We also added a ```RectangleHitBox``` of the same size as our paddle so that it can detect collisions.
+Within the ```onload``` method of the ```PongGame``` component, add the ```PlayerPaddle```:
+```
+@override
+ Future&lt;void&gt; onLoad() async {
+   addAll(
+     [
+       ...
+       .....
+       PlayerPaddle(),
+
+     ],
+   );
+ }```<a href="https://takrutvik.pieces.cloud/?p=432c44aadd" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Build &amp; run:
 ![](-ssl.webflow.com/6143afec68f555387049efb3/632b2d002e460d0cb63f496e_image3_483dd41fd525dca771cdff4be556f607_800.p)
@@ -89,13 +201,49 @@ Flame offers two different ways to take keyboard inputs; one at the game level a
 Let’s take a look at receiving keyboard inputs at the component level. You can learn more about other ways of taking keyboard input <a href="https://docs.flame-engine.org/1.3.0/flame/inputs/keyboard-input.html" target="_blank" rel="noopener noreferrer">here</a>.
 We’ll make sure our ```PongGame``` component has the ```HasKeyboardHandlerComponents``` mixing. Within our ```PlayerPaddle``` component, we’ll use the ```KeyboardListenerComponent```, through which we can set callbacks for different key events.
 Add the following component within your ```onload``` method:
-e>add(<br>     KeyboardListenerComponent(<br>       keyDown: {<br>         LogicalKeyboardKey.arrowDown: (keysPressed) {<br> <br> return true;<br>         },<br>         LogicalKeyboardKey.arrowUp: (keysPressed) {<br> <br> return true;<br>         },<br>       },<br>       keyUp: {<br>         LogicalKeyboardKey.arrowDown: (keysPressed) {<br> <br> return true;<br>         },<br>         LogicalKeyboardKey.arrowUp: (keysPressed) {<br> <br> return true;<br>         },<br>       },<br>     ),<br>   );</pre><p><a href="https://takrutvik.pieces.cloud/?p=1cc447b348" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+add(
+     KeyboardListenerComponent(
+       keyDown: {
+         LogicalKeyboardKey.arrowDown: (keysPressed) {
+
+ return true;
+         },
+         LogicalKeyboardKey.arrowUp: (keysPressed) {
+
+ return true;
+         },
+       },
+       keyUp: {
+         LogicalKeyboardKey.arrowDown: (keysPressed) {
+
+ return true;
+         },
+         LogicalKeyboardKey.arrowUp: (keysPressed) {
+
+ return true;
+         },
+       },
+     ),
+   );```<a href="https://takrutvik.pieces.cloud/?p=1cc447b348" target="_blank" rel="noopener noreferrer">Save this code</a>
 This adds the ```KeyboardListenerComponent```. We’ll be registering callbacks for ```arrowDown``` and ```arrowUp``` events when the respective keys are either pressed or released.
 
 ### Moving Player Paddle
 Now that we’re receiving keyboard events, let’s see how we can move our paddle.
 Let’s try updating our paddle position along the y-axis by 50 when the down arrow is pressed and by -50 when the up arrow is pressed. Update ```keyDown``` within the ```KeyboardListenerComponent``` with the following (you may need to hot restart your game to reflect the new changes):
-e>keyDown: {<br>         LogicalKeyboardKey.arrowDown: (keysPressed) {<br>           position.y += 50;<br> <br> return true;<br>         },<br>         LogicalKeyboardKey.arrowUp: (keysPressed) {<br>           position.y -= 50;<br> <br> return true;<br>         },<br>       },</pre><p><a href="https://takrutvik.pieces.cloud/?p=bb6849bba2" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+keyDown: {
+         LogicalKeyboardKey.arrowDown: (keysPressed) {
+           position.y += 50;
+
+ return true;
+         },
+         LogicalKeyboardKey.arrowUp: (keysPressed) {
+           position.y -= 50;
+
+ return true;
+         },
+       },```<a href="https://takrutvik.pieces.cloud/?p=bb6849bba2" target="_blank" rel="noopener noreferrer">Save this code</a>
 Build &amp; run:
 ![](s-ssl.webflow.com/6143afec68f555387049efb3/632b2cff2e460d18683f4963_image5_7a88eabd1389017369b8a6a57a00c072.g)
 
@@ -104,18 +252,66 @@ This is because the position is not updated consistently with the passage of tim
 
 Currently, in Flame, there’s no possible way to know which keys are pressed within the ```update``` method. For this, we’ll first set up a variable that’ll tell us which key was pressed so we can update the position accordingly.
 Replace the ```// TODO: add key event enum``` within ```player_paddle.dart``` with the following code:
-e>enum KeyEventEnum {<br>  up,<br>  down,<br>  none,<br>}</pre><p><a href="https://takrutvik.pieces.cloud/?p=8aee42a78b" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+enum KeyEventEnum {
+  up,
+  down,
+  none,
+}```<a href="https://takrutvik.pieces.cloud/?p=8aee42a78b" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Declare the following variables within the paddle component:
-e>KeyEventEnum keyPressed = KeyEventEnum.none;<br> static const double speed = 400;</pre><p><a href="https://takrutvik.pieces.cloud/?p=7c044eb7b0" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+KeyEventEnum keyPressed = KeyEventEnum.none;
+ static const double speed = 400;```<a href="https://takrutvik.pieces.cloud/?p=7c044eb7b0" target="_blank" rel="noopener noreferrer">Save this code</a>
 - ```speed```: Paddle moving speed.
-e>add(<br>      KeyboardListenerComponent(<br>        keyDown: {<br>          LogicalKeyboardKey.arrowDown: (keysPressed) {<br>            keyPressed = KeyEventEnum.down;<br><br> return true;<br>          },<br>          LogicalKeyboardKey.arrowUp: (keysPressed) {<br>            keyPressed = KeyEventEnum.up;<br><br> return true;<br>          },<br>        },<br>        keyUp: {<br>          LogicalKeyboardKey.arrowDown: (keysPressed) {<br>            keyPressed = KeyEventEnum.none;<br><br> return true;<br>          },<br>          LogicalKeyboardKey.arrowUp: (keysPressed) {<br>            keyPressed = KeyEventEnum.none;<br><br> return true;<br>          },<br>        },<br>      ),<br>    );</pre><p><a href="https://takrutvik.pieces.cloud/?p=a14248b436" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+add(
+      KeyboardListenerComponent(
+        keyDown: {
+          LogicalKeyboardKey.arrowDown: (keysPressed) {
+            keyPressed = KeyEventEnum.down;
+ return true;
+          },
+          LogicalKeyboardKey.arrowUp: (keysPressed) {
+            keyPressed = KeyEventEnum.up;
+ return true;
+          },
+        },
+        keyUp: {
+          LogicalKeyboardKey.arrowDown: (keysPressed) {
+            keyPressed = KeyEventEnum.none;
+ return true;
+          },
+          LogicalKeyboardKey.arrowUp: (keysPressed) {
+            keyPressed = KeyEventEnum.none;
+ return true;
+          },
+        },
+      ),
+    );```<a href="https://takrutvik.pieces.cloud/?p=a14248b436" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Here, we’re doing two things:
 - Resetting it to ```KeyEventEnum.none``` when the key is released.
-e>@override<br> void update(double dt) {<br> // TODO: implement update<br> super.update(dt);<br> if (keyPressed == KeyEventEnum.down) {<br> final updatedPosition = position.y + speed * dt;<br> if (updatedPosition &lt; gameRef.size.y - paddle.height) {<br>       position.y = updatedPosition;<br>     }<br>   }<br> if (keyPressed == KeyEventEnum.up) {<br> final updatedPosition = position.y - speed * dt;<br> if (updatedPosition &gt; 0) {<br>       position.y = updatedPosition;<br>     }<br>   }<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=39e043aef0" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+@override
+ void update(double dt) {
+ // TODO: implement update
+ super.update(dt);
+ if (keyPressed == KeyEventEnum.down) {
+ final updatedPosition = position.y + speed * dt;
+ if (updatedPosition &lt; gameRef.size.y - paddle.height) {
+       position.y = updatedPosition;
+     }
+   }
+ if (keyPressed == KeyEventEnum.up) {
+ final updatedPosition = position.y - speed * dt;
+ if (updatedPosition &gt; 0) {
+       position.y = updatedPosition;
+     }
+   }
+ }```<a href="https://takrutvik.pieces.cloud/?p=39e043aef0" target="_blank" rel="noopener noreferrer">Save this code</a>
 
-Here, we update the paddle position based on the key pressed. This time, instead of passing a fixed displacement, we’re updating the position by the <em>speed*dt(=distance) </em>value.
+Here, we update the paddle position based on the key pressed. This time, instead of passing a fixed displacement, we’re updating the position by the speed*dt(=distance) value.
 We also check if our paddle is going out of the bounds of the game window. If it is, then we stop updating the position.
 
 We can test our updates by holding down the up or down arrow keys and seeing the paddle move smoothly.
@@ -123,33 +319,142 @@ We can test our updates by holding down the up or down arrow keys and seeing the
 Build &amp; run:
 ![](com/6143afec68f555387049efb3/632b2cff2e460d46093f496c_image14_a3e95eae1aab106b4125b790cc9095b6.g)
 
-## Flutter Game: <strong>Adding the Ball</strong>
+## Flutter Game: **Adding the Ball**
 Create a new file called ball.dart and add the following code to it:
-e>import 'dart:math' as math;<br> <br>class Ball extends CircleComponent<br> with HasGameRef&lt;PongGame&gt;, CollisionCallbacks {<br> Ball() {<br>   paint = Paint()..color = Colors.white;<br>   radius = 10;<br> }<br> <br> // 1.<br> late Vector2 velocity;<br> // 2.<br> static const double speed = 500;<br> // 3.<br> static const degree = math.pi / 180;<br> <br> // 6.<br> @override<br> Future&lt;void&gt;? onLoad() {<br>   _resetBall;<br> final hitBox = CircleHitbox(<br>     radius: radius,<br>   );<br> <br>   addAll([<br>     hitBox,<br>   ]);<br> <br> return super.onLoad();<br> }<br> <br> @override<br> void update(double dt) {<br> super.update(dt);<br>    position += velocity * dt;<br>  }<br> <br> <br> // 4.<br> void get _resetBall {<br>   position = gameRef.size / 2;<br> final spawnAngle = getSpawnAngle;<br> <br> final vx = math.cos(spawnAngle * degree) * speed;<br> final vy = math.sin(spawnAngle * degree) * speed;<br>   velocity = Vector2(<br>     vx,<br>     vy,<br>   );<br> }<br> <br> // 5.<br> double get getSpawnAngle {<br> final sideToThrow = math.Random().nextBool();<br> <br> final random = math.Random().nextDouble();<br> final spawnAngle = sideToThrow<br>       ? lerpDouble(-35, 35, random)!<br>       : lerpDouble(145, 215, random)!;<br> <br> return spawnAngle;<br> }<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=1b4245b15f" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import 'dart:math' as math;
+
+class Ball extends CircleComponent
+ with HasGameRef&lt;PongGame&gt;, CollisionCallbacks {
+ Ball() {
+   paint = Paint()..color = Colors.white;
+   radius = 10;
+ }
+
+ // 1.
+ late Vector2 velocity;
+ // 2.
+ static const double speed = 500;
+ // 3.
+ static const degree = math.pi / 180;
+
+ // 6.
+ @override
+ Future&lt;void&gt;? onLoad() {
+   _resetBall;
+ final hitBox = CircleHitbox(
+     radius: radius,
+   );
+
+   addAll([
+     hitBox,
+   ]);
+
+ return super.onLoad();
+ }
+
+ @override
+ void update(double dt) {
+ super.update(dt);
+    position += velocity * dt;
+  }
+
+
+ // 4.
+ void get _resetBall {
+   position = gameRef.size / 2;
+ final spawnAngle = getSpawnAngle;
+
+ final vx = math.cos(spawnAngle * degree) * speed;
+ final vy = math.sin(spawnAngle * degree) * speed;
+   velocity = Vector2(
+     vx,
+     vy,
+   );
+ }
+
+ // 5.
+ double get getSpawnAngle {
+ final sideToThrow = math.Random().nextBool();
+
+ final random = math.Random().nextDouble();
+ final spawnAngle = sideToThrow
+       ? lerpDouble(-35, 35, random)!
+       : lerpDouble(145, 215, random)!;
+
+ return spawnAngle;
+ }
+ }```<a href="https://takrutvik.pieces.cloud/?p=1b4245b15f" target="_blank" rel="noopener noreferrer">Save this code</a>
 Our ball is a ```CircleComponent```, which is a ```PositionedComponent``` but circular with ```HasGameRef``` and ```CollisionCallbacks``` mixing. We also defined the color and radius of the ball within its constructor.
-Along with defining the HitBox for our ball in the ```onload```<em> </em>method, we have some other things here:
+Along with defining the HitBox for our ball in the ```onload``` method, we have some other things here:
 - ```speed```: A constant value that will calculate the ball's velocity.
 - ```degree```: The degree to radian constant.
 - ```_resetBall```: Spawns (positions) the ball at the center of the screen and launches it in a random direction with some initial velocity.
 - ```getSpawnAngle```: Calculates the angle at which the ball will be thrown upon spawning.
 
 Let’s add the ball component to our ```PongGame``` component:
-e>@override<br> Future&lt;void&gt; onLoad() async {<br>   addAll(<br>     [<br>       ...<br>       .....<br>       Ball(),<br>     ],<br>   );<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=3bd642b823" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+@override
+ Future&lt;void&gt; onLoad() async {
+   addAll(
+     [
+       ...
+       .....
+       Ball(),
+     ],
+   );
+ }```<a href="https://takrutvik.pieces.cloud/?p=3bd642b823" target="_blank" rel="noopener noreferrer">Save this code</a>
 Build &amp; run:
 ![](e." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/632b2cff2e460d4f7e3f495f_image2_9b36be6ed231327334326d9aae2c124b.g)
 
 ### Collision Detection with the Ball
 Now that we have our ```Ball``` spawning in the center of the screen and moving, let's get to the interesting part of the game: making the ball bounce when it collides with a ```PlayerPaddle``` or the top and bottom edges of the game.
-Add the following code, which overrides the ```onCollisionStart```<em> </em>method within the ```Ball``` component.
-e>@override<br> @mustCallSuper<br> void onCollisionStart(<br> Set&lt;Vector2&gt; intersectionPoints,<br>   PositionComponent other,<br> ) {<br> super.onCollisionStart(intersectionPoints, other);<br> final collisionPoint = intersectionPoints.first;<br><br> // TODO: add edges collision update<br> <br>  // TODO: add player paddle collision update<br> <br> // TODO: add ai paddle collision update<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=8aa94480c9" target="_blank" rel="noopener noreferrer">Save this code</a>
+Add the following code, which overrides the ```onCollisionStart``` method within the ```Ball``` component.
+```
+@override
+ @mustCallSuper
+ void onCollisionStart(
+ Set&lt;Vector2&gt; intersectionPoints,
+   PositionComponent other,
+ ) {
+ super.onCollisionStart(intersectionPoints, other);
+ final collisionPoint = intersectionPoints.first;
+ // TODO: add edges collision update
+
+  // TODO: add player paddle collision update
+
+ // TODO: add ai paddle collision update
+ }```<a href="https://takrutvik.pieces.cloud/?p=8aa94480c9" target="_blank" rel="noopener noreferrer">Save this code</a>
 This callback provides us with the intersection/collision points for our component and the ref to the component we are colliding with. These will be useful in the next section, where we deal with collision logic for different bodies.
 
 ### Edge Collision Update
 We’ll first update the ball velocity to bounce off of the top and bottom edges of the screen. Replace the ```// TODO: add edge collision update``` with the following code:
-e>if (other is ScreenHitbox) {<br> // Left Side Collision<br> if (collisionPoint.x == 0) {<br> // TODO: update player score<br>     }<br> // Right Side Collision<br> if (collisionPoint.x == gameRef.size.x) {<br> // TODO: update ai score<br>     }<br> // Top Side Collision<br> if (collisionPoint.y == 0) {<br>       velocity.x = velocity.x;<br>       velocity.y = -velocity.y;<br>   // TODO: play the collision sound<br>     }<br> // Bottom Side Collision<br> if (collisionPoint.y == gameRef.size.y) {<br>       velocity.x = velocity.x;<br>       velocity.y = -velocity.y;<br>  // TODO: play the collision sound<br>     }<br>   }</pre><p><a href="https://takrutvik.pieces.cloud/?p=afa941beb6" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+if (other is ScreenHitbox) {
+ // Left Side Collision
+ if (collisionPoint.x == 0) {
+ // TODO: update player score
+     }
+ // Right Side Collision
+ if (collisionPoint.x == gameRef.size.x) {
+ // TODO: update ai score
+     }
+ // Top Side Collision
+ if (collisionPoint.y == 0) {
+       velocity.x = velocity.x;
+       velocity.y = -velocity.y;
+   // TODO: play the collision sound
+     }
+ // Bottom Side Collision
+ if (collisionPoint.y == gameRef.size.y) {
+       velocity.x = velocity.x;
+       velocity.y = -velocity.y;
+  // TODO: play the collision sound
+     }
+   }```<a href="https://takrutvik.pieces.cloud/?p=afa941beb6" target="_blank" rel="noopener noreferrer">Save this code</a>
 Here, we’re first checking if the body that our ball collided with is ```ScreenHitBox``` or not. If it is, we check for the edge with which our ball collided.
 We don’t want the ball to bounce off of the left and right edges. We’ll later add some code there to update the players’ scores.
-If it’s the top or bottom edge, we reverse the ball’s ```velocity``` in the y direction. Test it by changing the ball’s ```spawnAngle```<em> </em>to <strong>90 </strong>such that it’ll be thrown towards the top or bottom edges.
+If it’s the top or bottom edge, we reverse the ball’s ```velocity``` in the y direction. Test it by changing the ball’s ```spawnAngle``` to **90 **such that it’ll be thrown towards the top or bottom edges.
 
 Build &amp; run:
 
@@ -157,10 +462,34 @@ Build &amp; run:
 
 ### Paddle Collision Update
 Replace the ```// TODO: paddle collision update``` with the following:
-e>if (other is PlayerPaddle) {<br> final paddleRect = other.paddle.toAbsoluteRect();<br> <br>     updateBallTrajectory(collisionPoint, paddleRect);<br> // TODO: play the collision sound<br>   }</pre><p><a href="https://takrutvik.pieces.cloud/?p=82044fa5e4" target="_blank" rel="noopener noreferrer">Save this code</a>
-If the collided object is the ```PlayerPaddle```<em>, </em>we first calculate the ```paddleRect```, which is the bounding rectangle of the component in the global coordinate space.
+```
+if (other is PlayerPaddle) {
+ final paddleRect = other.paddle.toAbsoluteRect();
+
+     updateBallTrajectory(collisionPoint, paddleRect);
+ // TODO: play the collision sound
+   }```<a href="https://takrutvik.pieces.cloud/?p=82044fa5e4" target="_blank" rel="noopener noreferrer">Save this code</a>
+If the collided object is the ```PlayerPaddle```, we first calculate the ```paddleRect```, which is the bounding rectangle of the component in the global coordinate space.
 Within the ```Ball``` component, add the following method:
-e>void updateBallTrajectory(Vector2 collisionPoint, Rect paddleRect) {<br> final isLeftHit = collisionPoint.x == paddleRect.left;<br> final isRightHit = collisionPoint.x == paddleRect.right;<br> final isTopHit = collisionPoint.y == paddleRect.bottom;<br> final isBottomHit = collisionPoint.y == paddleRect.top;<br> <br> final isLeftOrRight = isLeftHit || isRightHit;<br> final isTopOrBottom = isTopHit || isBottomHit;<br> <br> if (isLeftOrRight) {<br>     velocity.x = -velocity.x;<br>     velocity.y = velocity.y;<br>   }<br> if (isTopOrBottom) {<br>     velocity.x = velocity.x;<br>     velocity.y = -velocity.y;<br>   }<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=24ab4e95b7" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+void updateBallTrajectory(Vector2 collisionPoint, Rect paddleRect) {
+ final isLeftHit = collisionPoint.x == paddleRect.left;
+ final isRightHit = collisionPoint.x == paddleRect.right;
+ final isTopHit = collisionPoint.y == paddleRect.bottom;
+ final isBottomHit = collisionPoint.y == paddleRect.top;
+
+ final isLeftOrRight = isLeftHit || isRightHit;
+ final isTopOrBottom = isTopHit || isBottomHit;
+
+ if (isLeftOrRight) {
+     velocity.x = -velocity.x;
+     velocity.y = velocity.y;
+   }
+ if (isTopOrBottom) {
+     velocity.x = velocity.x;
+     velocity.y = -velocity.y;
+   }
+ }```<a href="https://takrutvik.pieces.cloud/?p=24ab4e95b7" target="_blank" rel="noopener noreferrer">Save this code</a>
 This method will reverse the ball’s ```velocity``` along the x- or y-axis, depending on where it touches the paddle, which is known by checking the ```collisionPoint``` with the ```paddleRect``` position. If the collision is on the left or right side, we reverse the ```velocity``` along the x-axis. If the collision is on the top or bottom, we reverse the velocity along the y-axis.
 Build &amp; run:
 ![](game." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/632b2cff2e460d35593f4960_image12_b4d9343f319966c1b84e562634bdd4dd.g)
@@ -169,10 +498,51 @@ Build &amp; run:
 Now that we’ve got the ball bouncing off the edges and the paddle, let’s add the AI opponent 🤖 you can play against.
 It’ll be very similar to how we did the ```PlayerPaddle```; the only part that’s going to be different is how it moves.
 Add the following code to a new file called ai_paddle.dart:
-e>class AIPaddle extends PositionComponent<br> with HasGameRef&lt;FlameGame&gt;, CollisionCallbacks {<br> late final RectangleHitbox paddleHitBox;<br> late final RectangleComponent paddle;<br> <br> @override<br> Future&lt;void&gt;? onLoad() {<br> // TODO: implement onLoad<br> <br> final worldRect = gameRef.size.toRect();<br> <br>   size = Vector2(10, 100);<br>   position.x = worldRect.width * 0.1;<br>   position.y = worldRect.height / 2 - size.y / 2;<br>   paddle = RectangleComponent(<br>     size: size,<br>     paint: Paint()..color = Colors.red,<br>   );<br> <br>   paddleHitBox = RectangleHitbox(<br>     size: size,<br>   );<br> <br>   addAll([<br>     paddle,<br>     paddleHitBox,<br>   ]);<br> <br> return super.onLoad();<br> }<br>}</pre><p><a href="https://takrutvik.pieces.cloud/?p=6be148818d" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+class AIPaddle extends PositionComponent
+ with HasGameRef&lt;FlameGame&gt;, CollisionCallbacks {
+ late final RectangleHitbox paddleHitBox;
+ late final RectangleComponent paddle;
+
+ @override
+ Future&lt;void&gt;? onLoad() {
+ // TODO: implement onLoad
+
+ final worldRect = gameRef.size.toRect();
+
+   size = Vector2(10, 100);
+   position.x = worldRect.width * 0.1;
+   position.y = worldRect.height / 2 - size.y / 2;
+   paddle = RectangleComponent(
+     size: size,
+     paint: Paint()..color = Colors.red,
+   );
+
+   paddleHitBox = RectangleHitbox(
+     size: size,
+   );
+
+   addAll([
+     paddle,
+     paddleHitBox,
+   ]);
+
+ return super.onLoad();
+ }
+}```<a href="https://takrutvik.pieces.cloud/?p=6be148818d" target="_blank" rel="noopener noreferrer">Save this code</a>
 Construction of our AI paddle is very similar to the ```PlayerPaddle```, except we position it at the center on the left side.
 Don’t forget to add the ```AIPaddle``` component to our ```PongGame``` component:
-e>@override<br> Future&lt;void&gt; onLoad() async {<br>   addAll(<br>     [<br>       ...<br>       .....<br>       AIPaddle(),<br>     ],<br>   );<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=67934c853f" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+@override
+ Future&lt;void&gt; onLoad() async {
+   addAll(
+     [
+       ...
+       .....
+       AIPaddle(),
+     ],
+   );
+ }```<a href="https://takrutvik.pieces.cloud/?p=67934c853f" target="_blank" rel="noopener noreferrer">Save this code</a>
 Build &amp; run:
 ![](l.webflow.com/6143afec68f555387049efb3/632b2cff2e460def233f4961_image13_083c18d17fe4f03312785c10f6d9cae4_800.p)
 
@@ -181,12 +551,40 @@ There are many different ways to build this AI opponent, control its behavior, d
 For our game, we won’t be building an AI that will be literally impossible to beat, just a simple AI that we can play against peacefully. ✌️
 Our AI Paddle will follow two rules depending on the ball's position:
 - If the ```AIPaddle``` is above the ```Ball```, it should move down towards the ball.
-e>@override<br> void update(double dt) {<br> // TODO: implement update<br> super.update(dt);<br> <br> final ball = gameRef.children.singleWhere((child) =&gt; child is Ball) as Ball;<br> <br> if (ball.y &gt; position.y) {<br>     position.y += (400 * dt);<br>   }<br> <br> if (ball.y &lt; position.y) {<br>     position.y -= (400 * dt);<br>   }<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=970440b656" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+@override
+ void update(double dt) {
+ // TODO: implement update
+ super.update(dt);
 
-Here, we first get the reference to the ball from our game world. Depending on the earlier rules we defined, we move the ```AIPaddle```<em> </em>up or down.
+ final ball = gameRef.children.singleWhere((child) =&gt; child is Ball) as Ball;
+
+ if (ball.y &gt; position.y) {
+     position.y += (400 * dt);
+   }
+
+ if (ball.y &lt; position.y) {
+     position.y -= (400 * dt);
+   }
+ }```<a href="https://takrutvik.pieces.cloud/?p=970440b656" target="_blank" rel="noopener noreferrer">Save this code</a>
+
+Here, we first get the reference to the ball from our game world. Depending on the earlier rules we defined, we move the ```AIPaddle``` up or down.
 
 In some cases, the ```AIPaddle``` will follow the ball even if it goes outside the game boundaries; to prevent this, replace the code after we query/get the ball with the following:
-e>final ballPositionWrtPaddleHeight = ball.y + (size.y);<br> final isOutOfBounds =<br>       ballPositionWrtPaddleHeight &gt; gameRef.size.y || ball.y &lt; 0;<br> <br> if (!isOutOfBounds) {<br> if (ball.y &gt; position.y) {<br>       position.y += (400 * dt);<br>     }<br> <br> if (ball.y &lt; position.y) {<br>       position.y -= (400 * dt);<br>     }<br>   }</pre><p><a href="https://takrutvik.pieces.cloud/?p=80b54181a3" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+final ballPositionWrtPaddleHeight = ball.y + (size.y);
+ final isOutOfBounds =
+       ballPositionWrtPaddleHeight &gt; gameRef.size.y || ball.y &lt; 0;
+
+ if (!isOutOfBounds) {
+ if (ball.y &gt; position.y) {
+       position.y += (400 * dt);
+     }
+
+ if (ball.y &lt; position.y) {
+       position.y -= (400 * dt);
+     }
+   }```<a href="https://takrutvik.pieces.cloud/?p=80b54181a3" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Here, we check if the updated position will be within the boundaries of our game world. If it isn’t, we don’t update the position of the paddle.
 Build &amp; run:
@@ -194,8 +592,13 @@ Build &amp; run:
 ![]( src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/632b2cff2e460d51623f4964_image11_3b66b431322d9f152fabf7d7051480ce.g)
 
 ### AI Collision Update
-Within the ```Ball``` component’s ```update``` method, replace<em> </em>```// TODO: add AI paddle collision update``` with the following:
-e>if (other is AIPaddle) {<br> final paddleRect = other.paddle.toAbsoluteRect();<br><br>      updateBallTrajectory(collisionPoint, paddleRect);<br><br> // TODO: play the collision sound<br>    }</pre><p><a href="https://takrutvik.pieces.cloud/?p=c2944ca779" target="_blank" rel="noopener noreferrer">Save this code</a>
+Within the ```Ball``` component’s ```update``` method, replace ```// TODO: add AI paddle collision update``` with the following:
+```
+if (other is AIPaddle) {
+ final paddleRect = other.paddle.toAbsoluteRect();
+      updateBallTrajectory(collisionPoint, paddleRect);
+ // TODO: play the collision sound
+    }```<a href="https://takrutvik.pieces.cloud/?p=c2944ca779" target="_blank" rel="noopener noreferrer">Save this code</a>
 Now, our ball will also collide with the ```AIPaddle``` and bounce off of it after a collision.
 
 Build &amp; run:
@@ -204,25 +607,82 @@ Build &amp; run:
 ## Add the Scoring System
 
 Now onto the final part of the game— adding the scoring system. Create a new file called score_text.dart and add the following to it:
-e>class ScoreText extends TextComponent with HasGameRef&lt;PongGame&gt; {<br> late int score;<br> <br> ScoreText.aiScore({<br> this.score = 0,<br> })  : _textPaint = TextPaint(textDirection: TextDirection.ltr),<br> super(<br>         anchor: Anchor.center,<br>       );<br> <br> ScoreText.playerScore({<br> this.score = 0,<br> })  : _textPaint = TextPaint(textDirection: TextDirection.rtl),<br> super(<br>         anchor: Anchor.center,<br>       );<br> <br> late final TextPaint _textPaint;<br> <br> @override<br> Future&lt;void&gt;? onLoad() {<br>   score = 0;<br> final textOffset =<br>       (_textPaint.textDirection == TextDirection.ltr ? -1 : 1) * 50;<br>   position.setValues(gameRef.size.x / 2 + textOffset, gameRef.size.y * 0.1);<br>   text = score.toString();<br> <br> return super.onLoad();<br> }<br> <br> @override<br> void render(Canvas canvas) {<br>   _textPaint.render(canvas, '$score', Vector2.zero());<br> }<br>}</pre><p><a href="https://takrutvik.pieces.cloud/?p=50b444a1e9" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+class ScoreText extends TextComponent with HasGameRef&lt;PongGame&gt; {
+ late int score;
+
+ ScoreText.aiScore({
+ this.score = 0,
+ })  : _textPaint = TextPaint(textDirection: TextDirection.ltr),
+ super(
+         anchor: Anchor.center,
+       );
+
+ ScoreText.playerScore({
+ this.score = 0,
+ })  : _textPaint = TextPaint(textDirection: TextDirection.rtl),
+ super(
+         anchor: Anchor.center,
+       );
+
+ late final TextPaint _textPaint;
+
+ @override
+ Future&lt;void&gt;? onLoad() {
+   score = 0;
+ final textOffset =
+       (_textPaint.textDirection == TextDirection.ltr ? -1 : 1) * 50;
+   position.setValues(gameRef.size.x / 2 + textOffset, gameRef.size.y * 0.1);
+   text = score.toString();
+
+ return super.onLoad();
+ }
+
+ @override
+ void render(Canvas canvas) {
+   _textPaint.render(canvas, '$score', Vector2.zero());
+ }
+}```<a href="https://takrutvik.pieces.cloud/?p=50b444a1e9" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 This ```ScoreText``` will hold and display the score for each player. It has two factory constructors; one for ```aiScore``` and one for ```player```. Within its ```onLoad``` method, we position our scores at the top center and offset them a little in the left or right direction based on whether it’s the player’s or the AI’s score.
 
-We’ve also overridden the ```render```<em> </em>method to show the latest score as it’s updated.
+We’ve also overridden the ```render``` method to show the latest score as it’s updated.
 
-Now, within our ```PongGame```<em> </em>component, add the following ```aiScore``` and ```playerScore``` variables which will hold the ```ScoreText``` component:
-e>late final ScoreText aiPlayer;<br>late final ScoreText player;</pre><p><a href="https://takrutvik.pieces.cloud/?p=d927459402" target="_blank" rel="noopener noreferrer">Save this code</a>
+Now, within our ```PongGame``` component, add the following ```aiScore``` and ```playerScore``` variables which will hold the ```ScoreText``` component:
+```
+late final ScoreText aiPlayer;
+late final ScoreText player;```<a href="https://takrutvik.pieces.cloud/?p=d927459402" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Update the ```addAll``` method by adding these two components:
-e>aiPlayer = ScoreText.aiScore(),<br>player = ScoreText.playerScore(),</pre><p><a href="https://takrutvik.pieces.cloud/?p=0e0443b912" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+aiPlayer = ScoreText.aiScore(),
+player = ScoreText.playerScore(),```<a href="https://takrutvik.pieces.cloud/?p=0e0443b912" target="_blank" rel="noopener noreferrer">Save this code</a>
 Now that we have the score components in place, the next thing we want to do is update the scores whenever the player or the AI scores.
 
 ### Update the Score
-Within the ```onCollisionStart``` method of our ```Ball```<em> </em>component<em>, </em>replace the code from ```// Left Side Collision```<em> </em>to<em> </em>```// Right Side Collision```<em> </em>with the following:
-e>// Left Side Collision<br> if (collisionPoint.x == 0) {<br> final player = gameRef.player;<br>       updatePlayerScore(player);<br>     }<br> // Right Side Collision<br> if (collisionPoint.x == gameRef.size.x) {<br> final player = gameRef.aiPlayer;<br>       updatePlayerScore(player);<br>     }</pre><p><a href="https://takrutvik.pieces.cloud/?p=11ae4abbb5" target="_blank" rel="noopener noreferrer">Save this code</a>
+Within the ```onCollisionStart``` method of our ```Ball``` component, replace the code from ```// Left Side Collision``` to ```// Right Side Collision``` with the following:
+```
+// Left Side Collision
+ if (collisionPoint.x == 0) {
+ final player = gameRef.player;
+       updatePlayerScore(player);
+     }
+ // Right Side Collision
+ if (collisionPoint.x == gameRef.size.x) {
+ final player = gameRef.aiPlayer;
+       updatePlayerScore(player);
+     }```<a href="https://takrutvik.pieces.cloud/?p=11ae4abbb5" target="_blank" rel="noopener noreferrer">Save this code</a>
 
-Add the following ```updatePlayerScore``` method in the ```Ball```<em> </em>component:
-e>import 'dart:async' as dartAsync;<br> <br>void updatePlayerScore(ScoreText player) {<br>   player.score += 1;<br>   dartAsync.Timer(const Duration(seconds: 1), () {<br>     _resetBall;<br>   });<br> }</pre><p><a href="https://takrutvik.pieces.cloud/?p=5e5c4ebd3b" target="_blank" rel="noopener noreferrer">Save this code</a>
+Add the following ```updatePlayerScore``` method in the ```Ball``` component:
+```
+import 'dart:async' as dartAsync;
+
+void updatePlayerScore(ScoreText player) {
+   player.score += 1;
+   dartAsync.Timer(const Duration(seconds: 1), () {
+     _resetBall;
+   });
+ }```<a href="https://takrutvik.pieces.cloud/?p=5e5c4ebd3b" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 This method takes in the ```ScoreText``` object and increments its ```score``` by 1. After that, we set up a timer for 1 second to respawn the ball in the center by calling ```_resetBall```.
 Now as you or the AI opponent misses the ball, the opposite player will get the point and their score will be updated.
@@ -233,16 +693,23 @@ Build &amp; run:
 ## Flutter Game: Adding Collision Audio
 A game without audio is definitely not something you would play. So, let’s add a collision sound whenever the ball collides with other game bodies.
 
-Run the following command to add the <strong>flame_audio</strong> dependency:
-e>flutter pub add flame_audio</pre><p>Once that’s done, download the audio file for the collision sound <a href="https://github.com/rutvik110/Pong-Game/tree/master/assets/audio">here</a>. Add the audio files to the ```assets/audio``` folder. Make sure to add the audio folder to the assets section in the pubspec as shown:
+Run the following command to add the **flame_audio** dependency:
+```
+flutter pub add flame_audio
+```
+Once that’s done, download the audio file for the collision sound <a href="https://github.com/rutvik110/Pong-Game/tree/master/assets/audio">here</a>. Add the audio files to the ```assets/audio``` folder. Make sure to add the audio folder to the assets section in the pubspec as shown:
 
 ![](our flutter game." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/632b2cff2e460d0e7f3f4949_image10_f4efcd935651f61d65259dd48d73cfc5_800.p)
 
 Let’s add the following method in our ```Ball``` component:
-e>void get _playCollisionAudio {<br>  FlameAudio.play(&quot;ball_hit.wav&quot;);<br>}</pre><p><a href="https://takrutvik.pieces.cloud/?p=6b35449a4c" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+void get _playCollisionAudio {
+  FlameAudio.play(&quot;ball_hit.wav&quot;);
+}```<a href="https://takrutvik.pieces.cloud/?p=6b35449a4c" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 We’ll need to play the collision sound after every collision. Within the ```onCollisionStart``` method of the ```Ball``` component, replace the ```//TODO: play the collision sound``` with:
-e>_playCollisionAudio</pre><p><a href="https://takrutvik.pieces.cloud/?p=f9454e864c" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+_playCollisionAudio```<a href="https://takrutvik.pieces.cloud/?p=f9454e864c" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Final demo:
 ![](loads-ssl.webflow.com/6143afec68f555387049efb3/641a021b177c3b6221a9b66e_ezgifcom-video-to-gif_2e3e5f6d95abb88dfaea4fc6ad782656.g)

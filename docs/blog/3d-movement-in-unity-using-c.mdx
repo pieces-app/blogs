@@ -32,12 +32,12 @@ A rigidbody component added to a game object puts it under the influence of Unit
 ### Properties
 - ```Rigidbody.drag```: Sets the drag of a game object.
 - ```Rigidbody.isKinematic```: Determines if a rigidbody attached to a game object is affected by physics.
-- ```Rigidbody.mass```:<em> </em>Specifies the mass of the rigidbody component.
+- ```Rigidbody.mass```: Specifies the mass of the rigidbody component.
 - ```Rigidbody.rotation```: Allows programmers to get and set the rotation of the rigidbody using Unity's physics engine.
 - ```Rigidbody.velocity```: Represents the velocity vector of the rigidbody. It is used to alter the rate of change of rigidbody position in world space.
 
 ### Methods
-- ```Rigidbody.AddExplosiveForce()```<em>: </em>Used to apply a force that simulates an explosion to a rigidbody.
+- ```Rigidbody.AddExplosiveForce()```: Used to apply a force that simulates an explosion to a rigidbody.
 - ```Rigidbody.AddForce()```: Applies a force continuously to the rigidbody along the specified axis.
 - ```Rigidbody.AddTorque()```: Applies torque to the rigidbody component.
 - ```Rigidbody.Sleep()```: Forces a rigidbody to sleep for at least one frame.
@@ -53,65 +53,243 @@ Unity can use one of the five methods or properties from the transform or rigidb
 ### Transform.Translate()
 As we learned above, this method moves a game object's transform in the direction and distance specified. This section will discuss how to use it in a code block.
 
-```public void Translate(Vector3 translation);```
+```
+public void Translate(Vector3 translation);
+```
+
 
 The parameter translation of datatype <a href="https://docs.unity3d.com/ScriptReference/Vector3.html" target="_blank" rel="noopener noreferrer">Vector3</a> specifies the direction in which the game object needs to move. By multiplying this parameter with a <a href="https://docs.unity3d.com/ScriptReference/Time-deltaTime.html" target="_blank" rel="noopener noreferrer">Time.deltaTime</a>, we'll be able to achieve constant change in distance in the specified direction over time. Note that the frame rate of your PC determines this time.
 To program a simple movement script using the translate function, let’s start by declaring four variables: a float for speed, two floats to store the vertical and horizontal movements of controls, and a vector3 for direction. The speed variable adjusts how fast the game object moves in the game world:
-e>private float speed = 10.0f;<br>private float horizontalInput;<br>private float verticalInput;<br>private Vector3 movedirection;</pre><p>Next, we’ll initialize the directions by assigning inputs to each variable in the Update method:
-e>horizontalInput = Input.GetAxis(“Horizontal”);<br>verticalInput = Input.GetAxis(“Vertical”);</pre><p>Now, let’s assign the horizontal and vertical variables to the ```movedirection``` variable:
 
-```movedirection = new Vector3(horizontalInput , 0 ,verticalInput);```
+```
+private float speed = 10.0f;
+private float horizontalInput;
+private float verticalInput;
+private Vector3 movedirection
+```
+Next, we’ll initialize the directions by assigning inputs to each variable in the Update method:
+
+```
+horizontalInput = Input.GetAxis(“Horizontal”);
+verticalInput = Input.GetAxis(“Vertical”);
+```
+
+Now, let’s assign the horizontal and vertical variables to the ```movedirection``` variable:
+
+```
+movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
+```
+
 
 We call the translate method and assign parameters:
-```transform.Translate(movedirection * speed * Time.deltaTime);```
+```
+transform.Translate(movedirection * speed * Time.deltaTime);
+```
+
 
 The entire code block is as so:
-e>using UnityEngine;<br>using System.Collections;<br><br>public class TestClass : MonoBehaviour<br>{<br>private float speed = 10.0f;<br>private float horizontalInput;<br>private float verticalInput;<br>private Vector3 movedirection;<br><br>   Void Update()<br>   {<br>        horizontalInput = Input.GetAxis(“Horizontal”);<br>        VerticalInput = Input.GetAxis(“Vertical”);<br>        movedirection = new Vector3(horizontalInput , 0 ,verticalInput);<br>        transform.Translate(movedirection * speed * Time.deltaTime);|<br>   }<br>}</pre><p><a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=a90f48a69c" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+using UnityEngine;
+using System.Collections;
+public class TestClass : MonoBehaviour
+{
+private float speed = 10.0f;
+private float horizontalInput;
+private float verticalInput;
+private Vector3 movedirection;
+   Void Update()
+   {
+        horizontalInput = Input.GetAxis(“Horizontal”);
+        VerticalInput = Input.GetAxis(“Vertical”);
+        movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
+        transform.Translate(movedirection * speed * Time.deltaTime);|
+   }
+}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=a90f48a69c" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Transform.position
 The position property is used to specify the location of a game object in the 3D world space, and it is accessible in the unity editor and through scripts. By steadily altering this value, we can achieve the movement mechanic.
 
-```public Vector3 position;```
+```
+public Vector3 position;
+```
+
 
 To implement this in code, we’ll follow the first three steps in the ```Transform.Translate() ```section, and then add the following code in the ```Update() ```method:
 
-```transform.position += movedirection * speed * Time.deltaTime;```
+```
+transform.position += movedirection * speed * Time.deltaTime;
+```
+
 
 Here is the entire code block:
-e>using UnityEngine;<br>using System.Collections;<br><br>public class TestClass : MonoBehaviour<br>{<br>private float speed = 10.0f;<br>private float horizontalInput;<br>private float verticalInput;<br>private Vector3 movedirection;<br><br>    Void Update()<br>    {<br>         horizontalInput = Input.GetAxis(“Horizontal”);<br>         VerticalInput = Input.GetAxis(“Vertical”);<br>         movedirection = new Vector3(horizontalInput , 0 ,verticalInput);<br>         transform.position += movedirection * speed * Time.deltaTime;<br><br>    }<br>}</pre><p><a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=24224b91be" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+using UnityEngine;
+using System.Collections;
+public class TestClass : MonoBehaviour
+{
+private float speed = 10.0f;
+private float horizontalInput;
+private float verticalInput;
+private Vector3 movedirection;
+    Void Update()
+    {
+         horizontalInput = Input.GetAxis(“Horizontal”);
+         VerticalInput = Input.GetAxis(“Vertical”);
+         movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
+         transform.position += movedirection * speed * Time.deltaTime;
+    }
+}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=24224b91be" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Rigidbody.AddForce()
 A previous section showed us that this method applies force to a game object using the built-in Unity physics engine. Next, we'll achieve controlled movement by integrating the inputs with this method and adjusting the amount of force applied using a variable.
 
-```public void AddForce(Vector3 force, Force mode mode);```
+```
+public void AddForce(Vector3 force, Force mode mode);
+```
+
 
 The force parameter is used to specify the direction and amount of force added in that direction, while the force mode dictates what type of force to apply. To use this method, we need to start by declaring and initializing several variables as well as a variable to store the ```rigidbody```. It is important to note that before any code is written regarding the ```rigidbody```, a ```rigidbody``` component must first be added to the game object to be used in the unity editor:
 
-e>private float force = 5.0f;<br>private float horizontalInput;<br>private float verticalInput;<br>private Vector3 movedirection;<br>private Rigidbody objRb;</pre><p><br>The ```rigidbody``` is initialized within the ```Start()``` method in the class:
-e>Start()<br>{<br>     objRb = GetComponent&lt;Rigidbody&gt;();<br>}</pre><p>The ```GetComponent&lt;Rigidbody&gt;()``` code above fetches the Rigidbody from the game object that it is attached to. After initialization, we’ll call the ```AddForce``` method in the ```FixedUpdate()``` method:
-e><em>    void FixedUpdate()<br>    {<br>         objRb.AddForce(movedirection * force);<br>    }</em></pre><p><em><br></em>The entire code block looks like this:
-e>using UnityEngine;<br>using System.Collections;<br><br>public class TestClass : MonoBehaviour<br>{<br><br>     private float force = 5.0f;<br>     private float horizontalInput;<br>     private float verticalInput;<br>     private Vector3 movedirection;<br>     private Rigidbody objRb;<br><br>     void Start()<br>     {<br>          objRb = GetComponent&lt;Rigidbody&gt;();<br>     }<br> <br>     void Update()<br>     {<br>          horizontalInput = Input.GetAxis(“Horizontal”);<br>          verticalInput = Input.GetAxis(“Vertical”);<br>          movedirection = new Vector3(horizontalInput , 0 ,verticalInput);<br>     }<br><br>     void FixedUpdate()<br>     {<br>          objRb.AddForce(movedirection * force);<br>     }<br>}</pre><p><a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=6bbe4e9555" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+private float force = 5.0f;
+private float horizontalInput;
+private float verticalInput;
+private Vector3 movedirection;
+private Rigidbody objRb
+```
+
+The ```rigidbody``` is initialized within the ```Start()``` method in the class:
+```
+Start()
+{
+     objRb = GetComponent&lt;Rigidbody&gt;();
+
+```
+The ```GetComponent&lt;Rigidbody&gt;()``` code above fetches the Rigidbody from the game object that it is attached to. After initialization, we’ll call the ```AddForce``` method in the ```FixedUpdate()``` method:
+```
+    void FixedUpdate()
+    {
+         objRb.AddForce(movedirection * force);
+    }```
+
+The entire code block looks like this:
+```
+using UnityEngine;
+using System.Collections;
+public class TestClass : MonoBehaviour
+{
+     private float force = 5.0f;
+     private float horizontalInput;
+     private float verticalInput;
+     private Vector3 movedirection;
+     private Rigidbody objRb;
+     void Start()
+     {
+          objRb = GetComponent&lt;Rigidbody&gt;();
+     }
+
+     void Update()
+     {
+          horizontalInput = Input.GetAxis(“Horizontal”);
+          verticalInput = Input.GetAxis(“Vertical”);
+          movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
+     }
+     void FixedUpdate()
+     {
+          objRb.AddForce(movedirection * force);
+     }
+}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=6bbe4e9555" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Rigidbody.velocity
 This property represents the rate of change in a rigidbody's position. It gives a much quicker movement than the other listed methods in the rigidbody class.
 Just like every other property or method in the rigidbody class, we must add a rigidbody component to the game object used in the project to use this property.
 Let’s begin by declaring the following variables in the script file we’ve created:
 
-e>  private float horizontalInput;<br>  private float verticalInput;<br>  private Vector3 movedirection;<br>  private Rigidbody objRb;<br>  public float speed ;</pre><p>Next, we’ll initialize the inputs, rigidbody and movedirection.
-e>  void Start()<br>  {<br>       objRb = GetComponent&lt;Rigidbody&gt;();<br>  }<br><br>  void Update()<br>  {<br>       horizontalInput = Input.GetAxis(“Horizontal”);<br>       verticalInput = Input.GetAxis(“Vertical”);<br>       movedirection = new Vector3(horizontalInput , 0 ,verticalInput);<br>  }</pre><p>Finally, let’s add the following code to the FixedUpdate() method:
-```objRb.velocity = movedirection * speed;```
+```
+  private float horizontalInput;
+  private float verticalInput;
+  private Vector3 movedirection;
+  private Rigidbody objRb;
+  public float speed
+```
+Next, we’ll initialize the inputs, rigidbody and movedirection.
+```
+  void Start()
+  {
+       objRb = GetComponent&lt;Rigidbody&gt;();
+  }
+  void Update()
+  {
+       horizontalInput = Input.GetAxis(“Horizontal”);
+       verticalInput = Input.GetAxis(“Vertical”);
+       movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
+
+```
+Finally, let’s add the following code to the FixedUpdate() method:
+```
+objRb.velocity = movedirection * speed;
+```
+
 In the Unity editor, we can adjust the speed value once the script finishes compiling.
 
 The entire code block looks like this:
 
-e>using UnityEngine;<br>using System.Collections;<br><br>public class TestClass : MonoBehaviour<br>{<br>     private float horizontalInput;<br>     private float verticalInput;<br>     private Vector3 movedirection;<br>     private Rigidbody objRb;<br>     public float speed ;<br><br>     void Start()<br>     {<br>          objRb = GetComponent&lt;Rigidbody&gt;();<br>     }<br><br>     void Update()<br>     {<br>          horizontalInput = Input.GetAxis(“Horizontal”);<br>          verticalInput = Input.GetAxis(“Vertical”);<br>          movedirection = new Vector3(horizontalInput , 0 ,verticalInput);<br>     }<br>     void FixedUpdate()<br>     {<br>          objRb.velocity = movedirection * speed;<br>     }<br>}</pre><p><a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=813e4a8e94" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+using UnityEngine;
+using System.Collections;
+public class TestClass : MonoBehaviour
+{
+     private float horizontalInput;
+     private float verticalInput;
+     private Vector3 movedirection;
+     private Rigidbody objRb;
+     public float speed ;
+     void Start()
+     {
+          objRb = GetComponent&lt;Rigidbody&gt;();
+     }
+     void Update()
+     {
+          horizontalInput = Input.GetAxis(“Horizontal”);
+          verticalInput = Input.GetAxis(“Vertical”);
+          movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
+     }
+     void FixedUpdate()
+     {
+          objRb.velocity = movedirection * speed;
+     }
+}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=813e4a8e94" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ### Rigidbody.MovePosition()
 Another way to program movement in Unity is by using this method call. It moves the kinematic rigidbody towards a specified position, factoring interpolation, thus creating a smooth transition between frames.
 
-```public void MovePosition(Vector3 position);```
+```
+public void MovePosition(Vector3 position);
+```
+
 
 The position parameter provides the new position for the rigidbody object. To illustrate this alternative means of coding movement, let’s look at a quick example below:
-e><em>using UnityEngine;<br>using System.Collections;<br><br>public class TestClass : MonoBehaviour<br>{<br>     Vector3 movedirection;<br>     float horizontalInput;<br>     float verticalInput;<br>     Rigidbody m_Rigidbody;<br>     public float speed = 5f ;<br><br>     void Start()<br>     {<br>          objRb = GetComponent&lt;Rigidbody&gt;();<br>     }<br><br>     void FixedUpdate()<br>     {<br>          horizontalInput = Input.GetAxis(“Horizontal”);<br>          verticalInput = Input.GetAxis(“Vertical”);<br>          movedirection = new Vector3(horizontalInput , 0 ,verticalInput);<br>          m_Rigidbody.MovePosition(transform.position + movedirection * Time.deltaTime * speed);<br>     }<br>}</em></pre><p><a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=68b04aa56f" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
+```
+using UnityEngine;
+using System.Collections;
+public class TestClass : MonoBehaviour
+{
+     Vector3 movedirection;
+     float horizontalInput;
+     float verticalInput;
+     Rigidbody m_Rigidbody;
+     public float speed = 5f ;
+     void Start()
+     {
+          objRb = GetComponent&lt;Rigidbody&gt;();
+     }
+     void FixedUpdate()
+     {
+          horizontalInput = Input.GetAxis(“Horizontal”);
+          verticalInput = Input.GetAxis(“Vertical”);
+          movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
+          m_Rigidbody.MovePosition(transform.position + movedirection * Time.deltaTime * speed);
+     }
+}```<a href="https://user-ea6365ad-4c77-4915-a1c3-6e167c524a47-agyqaaz4hq-uc.a.run.app/?p=68b04aa56f" target="_blank" rel="noopener noreferrer">Save to Pieces</a>
 
 ## Conclusion

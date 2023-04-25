@@ -7,12 +7,12 @@ SolidJS is a JavaScript declarative User Interface (UI) library for web applicat
 Almost all of SolidJS's principles align with those of other frameworks, with a few exceptions. For instance, the components are rendered only once, and there is no virtual DOM. These characteristics help explain why apps created with SolidJS run at lightning speeds, making it one of the fastest JavaScript frameworks on the market right now.
 
 ## Features of SolidJS
-- <strong>Fine-grained updates</strong> to the real DOM.
-- <strong>Declarative data:</strong> Model your state as a system with reactive primitives.
-- <strong>Render-once mental model:</strong> Your components are regular JavaScript functions that run once to set up your view.
-- <strong>Automatic dependency tracking:</strong> Accessing your reactive state subscribes to it.
-- <strong>Small and fast.</strong>
-- <strong>Simple:</strong> Learn a few powerful concepts that can be reused, combined, and built on in development.
+- **Fine-grained updates** to the real DOM.
+- **Declarative data:** Model your state as a system with reactive primitives.
+- **Render-once mental model:** Your components are regular JavaScript functions that run once to set up your view.
+- **Automatic dependency tracking:** Accessing your reactive state subscribes to it.
+- **Small and fast.**
+- **Simple:** Learn a few powerful concepts that can be reused, combined, and built on in development.
 
 ## Understanding SolidJS
 Developers tend to say that SolidJS's performance is great, given the fact that its reactivity concept (at the cost of Virtual DOM) is a puzzle for this performance improvement. For us to fully understand the dynamics of SolidJS, we have to take a close look at the components level, state management (signals and stores), routing, etc.
@@ -20,15 +20,43 @@ Developers tend to say that SolidJS's performance is great, given the fact that 
 ### Components
 Like all JavaScript frameworks, SolidJS is made up of components, and is built on the idea of components. These components are little segmented sections of an application, such as a page, a certain task, an input field, or a footer.
 Let’s have a look at an exemplary component based on SolidJS:
-e>function Component(props) {<br> return &lt;div&gt;Hello {props.name}&lt;/div&gt;;<br>}<br>&lt;Component name=&quot;Ejiro&quot; /&gt;;</pre><p>SolidJS components are essentially JavaScript functions that output JSX, a hybrid of HTML and JavaScript.
+```
+function Component(props) {
+ return &lt;div&gt;Hello {props.name}&lt;/div&gt;;
+}
+&lt;Component name=&quot;Ejiro&quot; /&gt;
+```
+SolidJS components are essentially JavaScript functions that output JSX, a hybrid of HTML and JavaScript.
 
 ### Rendering
 The syntax is similar to React.js for rendering components, so it might look familiar:
-e>import { render } from 'solid-js/web';<br>import './index.css';<br>import App from './App';<br><br>render(() =&gt; &lt;App /&gt;, document.getElementById('root'));</pre><p>The render function must first be imported before we can proceed. After creating a ```div``` with some ```text``` and a ```prop```, we then render the component and the container element:
+```
+import { render } from 'solid-js/web';
+import './index.css';
+import App from './App';
+render(() =&gt; &lt;App /&gt;, document.getElementById('root'))
+```
+The render function must first be imported before we can proceed. After creating a ```div``` with some ```text``` and a ```prop```, we then render the component and the container element:
 Like every other framework, SolidJS has its own method for handling routing, which lets users jump between different web pages.
 Installing routing in SolidJS is the first step in implementing it:
-e>npm i @solidjs/router</pre><p>Wrap your root component in the ```@solidjs/router``` component after installation:
-e>import { render } from &quot;solid-js/web&quot;;<br>import { Router } from &quot;@solidjs/router&quot;;<br>import App from &quot;./App&quot;;<br><br>render(<br> () =&gt; (<br>   &lt;Router&gt;<br>     &lt;App /&gt;<br>   &lt;/Router&gt;<br>  ),<br> document.getElementById(&quot;app&quot;)<br>);</pre><p>By wrapping the root component, we can then display the routes anywhere in the app.
+```
+npm i @solidjs/router
+```
+Wrap your root component in the ```@solidjs/router``` component after installation:
+```
+import { render } from &quot;solid-js/web&quot;;
+import { Router } from &quot;@solidjs/router&quot;;
+import App from &quot;./App&quot;;
+render(
+ () =&gt; (
+   &lt;Router&gt;
+     &lt;App /&gt;
+   &lt;/Router&gt;
+  ),
+ document.getElementById(&quot;app&quot;)
+)
+```
+By wrapping the root component, we can then display the routes anywhere in the app.
 
 ### Signals
 An observable piece of data that automatically tracks the computations on which it depends is represented by a signal. The signal's subscription list is expanded whenever a computation (such as an effect or a memo) invokes the getter method. All of the signal's subscribers will be notified if the data changes. In a nutshell, signals are just ways one can manage state in SolidJS.
@@ -41,14 +69,94 @@ With SolidJS, there are two ways to start. The first is via their online<a href=
 ### Installation
 There are two versions of templates: the TypeScript template and the JavaScript template. For this introduction, we'll use the JavaScript version; later, we'll talk about the TypeScript version.
 We'll develop a ```Todolist.jsx``` component, which will have an input field and a list of every task the user has ever logged:
-e>import styles from &quot;./Todolist.module.css&quot;<br>import { TiDeleteOutline } from 'solid-icons/ti'<br>import { createStore } from &quot;solid-js/store&quot;<br>function TodoList() {<br> let input;<br> const addTodo = (input) =&gt; {<br> const title = input.value;<br> if (!title.trim()) return;<br>        setTodos({<br>            objects: [{ text: title, id: todos.counter }, ...todos.objects],<br>            counter: todos.counter + 1<br>        });<br>        input.value = &quot;&quot;;<br>    }<br><br> const deleteTodo = (output) =&gt; {<br>        setTodos('objects', (t) =&gt; t.filter((object) =&gt; object.id !== output))<br>    }<br> const [todos, setTodos] = createStore({<br>        objects: [],<br>        counter: 0,<br>    })<br> return (<br> &lt;/&gt;<br> &lt;div class={styles.container}&gt;<br> &lt;input type=&quot;text&quot; ref={input} <br>                    placeholder=&quot;What do you have in mind today?&quot; name=&quot;todo&quot;<br>                    onKeyDown={(e) =&gt; {<br>                        if (e.key === &quot;Enter&quot;) {<br>                            addTodo(input);<br>                        }<br>                    }}&gt;<br> &lt;/input&gt;<br> &lt;ul class={styles.todoList}&gt;<br> &lt;For each={todos.objects}&gt;{(todo) =&gt;<br> &lt;li&gt;<br> &lt;div class={styles.todoItem}&gt;<br>                                {todo.text}<br> &lt;TiDeleteOutline onClick={() =&gt; {<br>                                    deleteTodo(todo.id)}}&gt;&lt;/TiDeleteOutline&gt;<br> &lt;/div&gt;<br> &lt;/li&gt;<br>                    }<br> &lt;/For&gt;<br> &lt;/ul&gt;<br> &lt;/div&gt;<br> &lt;/&gt;<br>    );<br>}<br>export default TodoList</pre><p>Next, we’ll have to style our application by creating the ```Todolist.module.css``` component and updating our code block below:
-e>.todoList li {<br> padding: 20px;<br> font-size: 1.3em;<br> background-color: #f09560;<br> border-left: 5px solid #88f63e;<br> margin-bottom: 2px;<br> color: #3E5252;<br> border-radius: 50px;<br>  }<br> input {<br> width: calc(100% - 40px);<br> border-radius: 50px;<br> padding: 20px;<br> font-size: 1.3em;<br> background-color: #c7d6d6;<br> color: #4e5c5c;<br>  }<br> li .todoItem{<br> display:flex;<br> justify-content: space-between;<br>  }</pre><p>This is how our application currently appears:
+```
+import styles from &quot;./Todolist.module.css&quot;
+import { TiDeleteOutline } from 'solid-icons/ti'
+import { createStore } from &quot;solid-js/store&quot;
+function TodoList() {
+ let input;
+ const addTodo = (input) =&gt; {
+ const title = input.value;
+ if (!title.trim()) return;
+        setTodos({
+            objects: [{ text: title, id: todos.counter }, ...todos.objects],
+            counter: todos.counter + 1
+        });
+        input.value = &quot;&quot;;
+    }
+ const deleteTodo = (output) =&gt; {
+        setTodos('objects', (t) =&gt; t.filter((object) =&gt; object.id !== output))
+    }
+ const [todos, setTodos] = createStore({
+        objects: [],
+        counter: 0,
+    })
+ return (
+ &lt;/&gt;
+ &lt;div class={styles.container}&gt;
+ &lt;input type=&quot;text&quot; ref={input}
+                    placeholder=&quot;What do you have in mind today?&quot; name=&quot;todo&quot;
+                    onKeyDown={(e) =&gt; {
+                        if (e.key === &quot;Enter&quot;) {
+                            addTodo(input);
+                        }
+                    }}&gt;
+ &lt;/input&gt;
+ &lt;ul class={styles.todoList}&gt;
+ &lt;For each={todos.objects}&gt;{(todo) =&gt;
+ &lt;li&gt;
+ &lt;div class={styles.todoItem}&gt;
+                                {todo.text}
+ &lt;TiDeleteOutline onClick={() =&gt; {
+                                    deleteTodo(todo.id)}}&gt;&lt;/TiDeleteOutline&gt;
+ &lt;/div&gt;
+ &lt;/li&gt;
+                    }
+ &lt;/For&gt;
+ &lt;/ul&gt;
+ &lt;/div&gt;
+ &lt;/&gt;
+    );
+}
+export default TodoList
+```
+Next, we’ll have to style our application by creating the ```Todolist.module.css``` component and updating our code block below:
+```
+.todoList li {
+ padding: 20px;
+ font-size: 1.3em;
+ background-color: #f09560;
+ border-left: 5px solid #88f63e;
+ margin-bottom: 2px;
+ color: #3E5252;
+ border-radius: 50px;
+  }
+ input {
+ width: calc(100% - 40px);
+ border-radius: 50px;
+ padding: 20px;
+ font-size: 1.3em;
+ background-color: #c7d6d6;
+ color: #4e5c5c;
+  }
+ li .todoItem{
+ display:flex;
+ justify-content: space-between;
+
+```
+This is how our application currently appears:
 ![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6392097986f8d9a38842a378_image1_6c9356abc388aa250190378377f85fe3_800.p)
 
 ## SolidJS With TypeScript
 Solid is made to be simple to use with TypeScript. It uses standard JSX, which creates code that TypeScript can understand, and it has advanced built-in types for its API. This article offers some helpful hints for using TypeScript and writing SolidJS code.
 Installing the TypeScript template is quite similar to installing the JavaScript template: 
-e>npx degit solidjs/templates/ts my-app<br>cd my-app<br>npm i <br>npm run dev</pre><p>We won’t be going into too much detail, but to run TypeScript with the SolidJS Compiler, the TypeScript function in the ```tsconfig.json``` file has to be configured. Aside from that, for API, signals, context, and component types, you can look at the <a href="https://www.solidjs.com/guides/typescript" target="_blank" rel="noopener noreferrer">TypeScript</a> documentation.
+```
+npx degit solidjs/templates/ts my-app
+cd my-app
+npm i
+npm run dev
+```
+We won’t be going into too much detail, but to run TypeScript with the SolidJS Compiler, the TypeScript function in the ```tsconfig.json``` file has to be configured. Aside from that, for API, signals, context, and component types, you can look at the <a href="https://www.solidjs.com/guides/typescript" target="_blank" rel="noopener noreferrer">TypeScript</a> documentation.
 
 ## Comparison
 If you have experience with other frameworks, creating a CRUD app might come easily to you. This is due to Solid's significant similarity to libraries in terms of syntax and architecture. It employs the same structure, including one-way data binding, fragments, returning JSX, and functional components.
@@ -58,5 +166,5 @@ Performance, developer experience, rendering technique, and reactivity are all a
 ## Conclusion
 We've gone over some of the fundamental features of SolidJS and created a simple Todo application that successfully showcases some of its functionality. Chew over SolidJS and TypeScript, and you’ll see that SolidJS has demonstrated certain encouraging traits. This is why SolidJS is counted among the dependable frameworks like React.
 
-<strong>Resources</strong>
+**Resources**
 - <a href="https://www.solidjs.com/guides/getting-started" target="_blank" rel="noopener noreferrer">SolidJS</a>

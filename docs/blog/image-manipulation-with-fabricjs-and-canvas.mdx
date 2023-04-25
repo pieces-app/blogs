@@ -28,23 +28,69 @@ Just like every JavaScript library, setting up Fabric.js is quite easy and can b
 A second way to set up Fabric.js is to copy the CDN link<a href="https://cdnjs.com/libraries/fabric.js" target="_blank" rel="noopener noreferrer"> HERE</a> and include it in your project. Then, you can create an HTML file, for example, index.html:
 
 On the other hand, if you want to integrate Fabric.js into React or a similar project, you have to install Fabric.js by using the following:
-e>$ npm install fabric</pre><p>After this, you can import Fabric.js with this command:
+```
+$ npm install fabric
+```
+After this, you can import Fabric.js with this command:
 The canvas element is used to draw 2-dimensional graphics on websites. It has an API called<a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank" rel="noopener noreferrer"> Canvas API</a>, which is used to illustrate basic geometrical shapes like rectangles, triangles, and other objects. However, adding interactions to them or drawing complex shapes becomes very difficult. Fabric.js tends to fix this problem.
 
 Next, we’ll be creating some Canvas objects like rectangles and circles. Because Fabric.js works with the Canvas API, we must make the ```&lt;canvas&gt;``` element tag in the HTML and give it an id. Further, we must pass that id to the Fabric.js API to initialize the Fabric.js Canvas instance on the ```&lt;canvas&gt;``` tag with a bit of CSS to center it:
-e>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br> &lt;head&gt;<br> <em>&lt;!-- Adding the fabric.js library --&gt;</em><br>    &lt;script src=&quot;https://unpkg.com/fabric@5.2.1/dist/fabric.min.js&quot; &gt;&lt;/script&gt;<br>    &lt;style&gt;<br>      body{<br>             display:flex;<br>              flex-direction:column;<br>              align-items:center;<br>           }<br>    &lt;/styles&gt;<br> &lt;/head&gt;<br>  &lt;body&gt;<br>      &lt;h2&gt;Learning Fabric&lt;/h2&gt;<br>      &lt;canvas id=&quot;canvas&quot;&gt;&lt;/Canvas&gt;<br>  &lt;/body&gt;<br>&lt;/html&gt;</pre><p>Next, we initiate a Canvas instance in our script tag:
+```
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+ &lt;!-- Adding the fabric.js library --&gt;
+    &lt;script src=&quot;https://unpkg.com/fabric@5.2.1/dist/fabric.min.js&quot; &gt;&lt;/script&gt;
+    &lt;style&gt;
+      body{
+             display:flex;
+              flex-direction:column;
+              align-items:center;
+           }
+    &lt;/styles&gt;
+ &lt;/head&gt;
+  &lt;body&gt;
+      &lt;h2&gt;Learning Fabric&lt;/h2&gt;
+      &lt;canvas id=&quot;canvas&quot;&gt;&lt;/Canvas&gt;
+  &lt;/body&gt;
+&lt;/html&gt
+```
+Next, we initiate a Canvas instance in our script tag:
 
 ### Syntax
-e>new fabric.Canvas(element: HTMLElement|String, options: Object)</pre><p>This allows Fabric.js to create this class instance so that we can use the provided methods of Fabric.js:
-e>const canvas = new fabric.Canvas(&quot;canvas&quot;, {})</pre><p>Now, we’ll go ahead and give our canvas different properties, such as width, height, and background color:
+```
+new fabric.Canvas(element: HTMLElement|String, options: Object)```
+This allows Fabric.js to create this class instance so that we can use the provided methods of Fabric.js:
+```
+const canvas = new fabric.Canvas(&quot;canvas&quot;, {})```
+Now, we’ll go ahead and give our canvas different properties, such as width, height, and background color:
 ![](/6143afec68f555387049efb3/63861e8af0215d272b11a3e2_image10_231e8afd527405407bcf6619ee00df81_800.jp)
 
 ## Creating a Rectangle with Fabric.js
 Now that we’ve initialized a canvas and given it various properties, we’re going to create a rectangle using the Fabric.js object<a href="http://fabricjs.com/docs/fabric.Rect.html" target="_blank" rel="noopener noreferrer"> fabric.Rect</a>:
 
 ### Syntax
-e>new fabric.Rect({object})</pre><p>Here the object houses the rectangle properties:
-e>const canvas = new fabric.Canvas(&quot;canvas&quot;, {<br> width:500,<br> height:500,<br> backgroundColor:green<br>});<br><br>const rectangle = new fabric.Rect({<br> width:200,<br> height:200,<br> <em>/* fill is used to define the background color*/</em><br>    fill:'red'<br>})<br><em>/*the add method is used to add objects to the canvas element */</em><br>canvas.add(rectangle)<br><em>/*the renderAll method used to render the canvas*/</em><br>canvas.renderAll();</pre><p>The ```add()``` method is used to add objects to the Canvas element. In this case, it adds the rectangle we created to the canvas:
+```
+new fabric.Rect({object})```
+Here the object houses the rectangle properties:
+```
+const canvas = new fabric.Canvas(&quot;canvas&quot;, {
+ width:500,
+ height:500,
+ backgroundColor:green
+});
+const rectangle = new fabric.Rect({
+ width:200,
+ height:200,
+ /* fill is used to define the background color*/
+    fill:'red'
+})
+/*the add method is used to add objects to the canvas element */
+canvas.add(rectangle)
+/*the renderAll method used to render the canvas*/
+canvas.renderAll()
+```
+The ```add()``` method is used to add objects to the Canvas element. In this case, it adds the rectangle we created to the canvas:
 
 ### Output
 ![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215dd9c911a3e4_image9_5bc747c322ef6bb7bfc23cf83d270ac1.g)
@@ -63,10 +109,25 @@ The<a href="http://fabricjs.com/docs/fabric.Image.html" target="_blank" rel="noo
 Using the Fabric.Image constructor requires us to create an image element in our HTML and then insert it into the constructor:
 
 ### Syntax
-e>fabric.Image(image_element)</pre><p>HTML
-e>&lt;canvas id='canvas'&gt;&lt;/canvas&gt;<br>&lt;img src='my_image.png' id='image' style='display:none'/&gt;<br><em>&lt;!-- giving the image the css property of display none makes it not to show outside the canvas --&gt;</em></pre><p>JS
-e>const image_element = document.querySelector('#image');<br>const image = new fabric.Image(image_element)<br>canvas.add(image);<br>canvas.renderAll();</pre><p>However, Fabric.Image.fromURL requires only the image URL (the URL can be retrieved from a website or your local folder), and is simpler than the former:
-e>fabric.Image.fromURL(URL, function());</pre><p>After passing the URL, the callback function after the image is loaded. The first default parameter of the callback function is the fabric.Image object. Now, we can modify the image properties and then add it to the canvas:
+```
+fabric.Image(image_element)```
+HTML
+```
+&lt;canvas id='canvas'&gt;&lt;/canvas&gt;
+&lt;img src='my_image.png' id='image' style='display:none'/&gt;
+&lt;!-- giving the image the css property of display none makes it not to show outside the canvas --&gt;```
+JS
+```
+const image_element = document.querySelector('#image');
+const image = new fabric.Image(image_element)
+canvas.add(image);
+canvas.renderAll()
+```
+However, Fabric.Image.fromURL requires only the image URL (the URL can be retrieved from a website or your local folder), and is simpler than the former:
+```
+fabric.Image.fromURL(URL, function())
+```
+After passing the URL, the callback function after the image is loaded. The first default parameter of the callback function is the fabric.Image object. Now, we can modify the image properties and then add it to the canvas:
 
 ![](com/6143afec68f555387049efb3/63861e8af0215ddbd911a3e1_image4_57f3c11b88057c0a201128da02ac55e2_800.jp)
 
@@ -104,7 +165,16 @@ Blending is mixing two or more images to create a new image. Fabric.js gives us 
 ### Image Clipping
 A very popular effect used today is image clipping, or rather image cropping, which is done to remove parts of an image that we don’t want. With Fabric.js, we can achieve this by using the ```clipPath``` method.
 First, we have to create our own ```clipPath``` using any Fabric.js object. Then, we’ll assign it to the ```clipPath``` property of the object we want to clip. Here, we’ll use a circle object:
-e>const clipPath = new fabric.Circle({<br> radius:150,<br> top:200,<br> left:250,<br> <em>// The originY and originX helps to center the image and the clipPath</em><br>    originY:&quot;center&quot;,<br> originX:&quot;center&quot;<br>})</pre><p>After that, we add it to the image that we want to clip using the filter method:
+```
+const clipPath = new fabric.Circle({
+ radius:150,
+ top:200,
+ left:250,
+ // The originY and originX helps to center the image and the clipPath
+    originY:&quot;center&quot;,
+ originX:&quot;center&quot;
+})```
+After that, we add it to the image that we want to clip using the filter method:
 
 ![](rc="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215dbd6811a3e8_image7_781bad333e3f317af8ac23487094122d.g)
 

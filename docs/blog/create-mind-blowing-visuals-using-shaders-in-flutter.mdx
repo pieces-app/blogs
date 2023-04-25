@@ -20,10 +20,10 @@ id="">For a gentle introduction to writing a GLSL shader, we will be coding a si
 id="">‍
 
 id="">Let’s go over the code step-by-step :
-- id="">GLSL has built-in variables like <em id="">gl_FragCoord</em> and <em id="">gl_FragColor</em>. <em id="">gl_FragCoord</em> gives you the pixel vector position, and you set the pixel color through the <em id="">gl_FragColor</em>. When you specify a vec4, you’re actually setting the rgba values of the color for that pixel.
-- id="">GLSL allows us to create conditional compilation blocks and defining values in the pre-compilation stage. These blocks or values start with <em id="">#</em>. <em id="">#ifdef(if defined)#endif</em> is a conditional operation block that is checked before compilation. The 2nd line executes if the GL_ES is defined, which is a version of GLSL for embedded systems like mobile devices and video game consoles.
-- id="">Level of precision is everything when you’re dealing with colors. The more precise you are, the better quality you get. The 2nd line sets the float precision to <em id="">mediump</em>. You can also change it to <em id="">lowp</em> or <em id="">highp</em> if you want.
-- id="">Inputs for GLSL shaders are defined by adding a <em id="">uniform</em> in front of them at the top of your code. One of the most important inputs is the <em id="">u_resolution</em> (also called the <em id="">iResolution</em>) of <em id="">type vec2</em> which gives you the resolution of the screen.
+- id="">GLSL has built-in variables like <em id="">gl_FragCoord and <em id="">gl_FragColor. <em id="">gl_FragCoord gives you the pixel vector position, and you set the pixel color through the <em id="">gl_FragColor. When you specify a vec4, you’re actually setting the rgba values of the color for that pixel.
+- id="">GLSL allows us to create conditional compilation blocks and defining values in the pre-compilation stage. These blocks or values start with <em id="">#. <em id="">#ifdef(if defined)#endif is a conditional operation block that is checked before compilation. The 2nd line executes if the GL_ES is defined, which is a version of GLSL for embedded systems like mobile devices and video game consoles.
+- id="">Level of precision is everything when you’re dealing with colors. The more precise you are, the better quality you get. The 2nd line sets the float precision to <em id="">mediump. You can also change it to <em id="">lowp or <em id="">highp if you want.
+- id="">Inputs for GLSL shaders are defined by adding a <em id="">uniform in front of them at the top of your code. One of the most important inputs is the <em id="">u_resolution (also called the <em id="">iResolution) of <em id="">type vec2 which gives you the resolution of the screen.
 
 ## Implementing Shaders in Flutter
 id="">With the release of Flutter 3.0, initial support for creating custom shaders was moved to stable. Therefore, it’s important to make sure you’re running the latest version.
@@ -38,11 +38,11 @@ id="">To make things easier, we’ll be taking a look at a tool that will automa
 
 ## Compiling Shaders Using Umbra
 id="">To make your life a little easier, there’s an amazing tool from the community called Umbra that handles shader compilation and creation for Flutter.
-id=""><strong id="">1. Activate the Umbra CLI.</strong>
+id=""><strong id="">1. Activate the Umbra CLI.**
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bb4ac5d3bdde0f0f9acbec_Activate%20Umbra%20CLI.png" loading="lazy" width="auto" height="auto" id="" alt="Code snippet with an Umbra CLI comman)
 id="">‍
-id=""><strong id="">2. Once activated, download the Umbra dependencies.</strong>
+id=""><strong id="">2. Once activated, download the Umbra dependencies.**
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bb4aeb48ec4a3e86c436d7_Install%20Umbra%20Dependencies.png" loading="lazy" width="auto" height="auto" id="" alt="Code snippet with an Umbra CLI command)
 id="">‍
@@ -53,48 +53,48 @@ id="">‍
 
 ![](8f555387049efb3/62bb4b2176d06c5faea11303_dwight.gif" loading="lazy" width="auto" height="auto" id="" alt="A gif that says, &quot;Let's do This!&quo)
 id="">You’ll learn how to add <a href="https://www.shadertoy.com/view/fsGcWz" target="_blank" id="">this cool shader,</a> which kind of resembles the waves in water, but a bit fancier. To create it, follow these steps:
-id=""><strong id="">1. Add the umbra_flutter package in your <em id="">pubspec.yaml</em></strong>
+id=""><strong id="">1. Add the umbra_flutter package in your <em id="">pubspec.yaml**
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bb4b4dbf492964b7518103_Umbra%20Flutter.png" loading="lazy" width="auto" height="auto" id="" alt="A code snippet with and Umbra CLI Comman)
 id="">Or add it with the CLI by running:
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bb4b5e74324d1f2a0fb4cc_Umbra%20Flutter%20CLI.png" loading="lazy" width="auto" height="auto" id="" alt="A code snippet with an Umbra CLI comman)
-id=""><strong id="">2. Create a new shader project with the Umbra CLI by running:</strong>
+id=""><strong id="">2. Create a new shader project with the Umbra CLI by running:**
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bb4b77a64092178110c64f_Umbra%20Create%20Shader.png" loading="lazy" width="auto" height="auto" id="" alt="A code snippet with an Umbra CLI command)
 id="">‍
 
 id="">This will generate a GLSL file at the root of your project where you can add your GLSL code.
 
-id=""><strong id="">3. Add the following GLSL code to the <em id="">hello_world.glsl</em> file</strong>
+id=""><strong id="">3. Add the following GLSL code to the <em id="">hello_world.glsl file**
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bb4b9159a5e711d0dd11ae_GLSL%20Hello%20World.png" loading="lazy" width="auto" height="auto" id="" alt="A code snippet with GLSL shader cod)
 id="">‍
 id="">As you can see, some of the configurations we saw in the earlier example of the GLSL code are abstracted by Umbra.
 
-id="">The <em id="">main()</em> function is replaced by a <em id="">fragment</em> function which gives us the <em id="">uv</em> (normalized coordinates of the pixel) and <em id="">fragCoord</em> (coordinates of the pixel without <em id="">normalization-gl_FragCoord</em>), and returns the pixel color instead of assigning it to <em id="">gl_FragColor</em>.
-id="">We also added another input called <em id="">u_time</em>, which represents the time since we started. It’s crucial when you want to animate your Flutter shaders with respect to time.
-id=""><strong id="">4. Create a folder named "shaders" in your lib folder. Now, run the following command, which takes the path of the GLSL shader file and the output location:</strong>
+id="">The <em id="">main() function is replaced by a <em id="">fragment function which gives us the <em id="">uv (normalized coordinates of the pixel) and <em id="">fragCoord (coordinates of the pixel without <em id="">normalization-gl_FragCoord), and returns the pixel color instead of assigning it to <em id="">gl_FragColor.
+id="">We also added another input called <em id="">u_time, which represents the time since we started. It’s crucial when you want to animate your Flutter shaders with respect to time.
+id=""><strong id="">4. Create a folder named "shaders" in your lib folder. Now, run the following command, which takes the path of the GLSL shader file and the output location:**
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bb4bdbe96581b62feee680_Generate%20Dart%20Files%20and%20SPIR-V%20binaries.png" loading="lazy" width="auto" height="auto" id="" alt="A code snippet with GLSL cod)
 
 id="">This generates the Dart files and the SPIR-V binaries at the given output location for your shader.
-id=""><strong id="">5. Create a <em id="">my_shader.dart</em> file somewhere in your lib folder. Add the following code within that file and import your <em id="">HelloWorld</em> shader in this file:</strong>
+id=""><strong id="">5. Create a <em id="">my_shader.dart file somewhere in your lib folder. Add the following code within that file and import your <em id="">HelloWorld shader in this file:**
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bb868e1654043e10a666d5_Final%20Shader%20Code.png" loading="lazy" width="auto" height="auto" id="" alt="A code snippet with Flutter shader cod)
 
-id="">What you’re doing here, in short, is compiling your shader. As the process is async, you use <em id="">FutureBuilder</em> to load it. Once it’s compiled, you then use the <em id="">.shader()</em> method on your <em id="">UmbraShader</em> object and pass it the required inputs.
-id="">The <em id="">resolution</em> is the size you want for your shader, and the <em id="">uTime</em> is the <em id="">delta</em> (time since we started). <em id="">delta</em> is calculated with the help of Ticker. Ticker triggers a callback for every frame that increments the <em id="">delta</em> by 1/60 ms.
+id="">What you’re doing here, in short, is compiling your shader. As the process is async, you use <em id="">FutureBuilder to load it. Once it’s compiled, you then use the <em id="">.shader() method on your <em id="">UmbraShader object and pass it the required inputs.
+id="">The <em id="">resolution is the size you want for your shader, and the <em id="">uTime is the <em id="">delta (time since we started). <em id="">delta is calculated with the help of Ticker. Ticker triggers a callback for every frame that increments the <em id="">delta by 1/60 ms.
 
 id="">Finally, you pass the created Flutter shader to the CustomPainter to paint.
-id="">Awesome! You just created your first shader in Flutter! Isn’t that <em id="">exciting?</em>
+id="">Awesome! You just created your first shader in Flutter! Isn’t that <em id="">exciting?
 
 id="">The source code for the project can be found <a href="https://github.com/rutvik110/Flutter-Shaders-Hello-World" target="_blank" id="">here</a>.
 
 ## Limitations of Flutter Shaders
 id="">There are a few limitations and constraints when writing your GLSL shader code for Flutter. Some of the limitations are from Skia, and some are related to the current integration of shaders into Flutter itself.
 id="">The following are some of the specific limitations of the <a href="https://github.com/KhronosGroup/SPIRV-Tools/blob/master/README.md" target="_blank" id="">SPIR-V library</a>:
-- id="">It does not support <em id="">while</em> and <em id="">switch</em> statements
+- id="">It does not support <em id="">while and <em id="">switch statements
 - id="">The types that are supported sampler2D, bool, float, float-vector types, and square float-matrix types
 - id="">It only uses the built-in functions present in GLSL ES 100
 

@@ -29,7 +29,11 @@ That’s why we’re here.
 ## Create a NestJS app to host our REST APIs
 
 It’s not super important to fully understand NestJS; having a general idea of what’s happening will suffice because we are using NestJS as an example. APIs can be written in any server side programming language. We will use the <a href="https://www.npmjs.com/package/@nestjs/cli" target="_blank" rel="noopener noreferrer">NestJS CLI</a> to bootstrap a NestJS project and get us up and running.
-e>```npx @nestjs/cli new open-api-nestjs-server```</pre><p>Once the project is initialized, we will add some APIs for user management. NestJS works on an <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">MVC</a> pattern. We are adding a controller to host the APIs, a service to do the heavy lifting and <a href="https://en.wikipedia.org/wiki/Data_transfer_object" target="_blank" rel="noopener noreferrer">DTOs</a> for our models. This is how the user module would look:
+```
+```npx @nestjs/cli new open-api-nestjs-server``
+```
+
+Once the project is initialized, we will add some APIs for user management. NestJS works on an <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller" target="_blank" rel="noopener noreferrer">MVC</a> pattern. We are adding a controller to host the APIs, a service to do the heavy lifting and <a href="https://en.wikipedia.org/wiki/Data_transfer_object" target="_blank" rel="noopener noreferrer">DTOs</a> for our models. This is how the user module would look:
 
 ![](flow.com/6143afec68f555387049efb3/630f8ce2c64700f586af9778_StubbeduserAPI_cfc9a855c2753297c640748d8d0af1ce_800.p)
 
@@ -47,7 +51,7 @@ Because we’ve already added the annotations to our methods, there is no reason
 
 ![](w.com/6143afec68f555387049efb3/630f8ce2c647006693af977a_SwaggerJSONgenerator_b4e996db762702ce1e22f7fbfe9a987b_800.p)
 
-<em>Note: Swagger has plugins/libraries for almost every server side programming language. There is always a way to generate ```swagger.json```.</em>
+Note: Swagger has plugins/libraries for almost every server side programming language. There is always a way to generate ```swagger.json```.
 
 Since we need the TypeScript files to be compiled, we’ll point the script to the ```dist``` directory. The wiring inside ```package.json``` will look like this:
 ![](uploads-ssl.webflow.com/6143afec68f555387049efb3/630f8ce2c647009bd8af9774_Swaggergeneratorscript_8c4e760b80d531c2f2053ae3c741de1c_800.p)
@@ -74,7 +78,7 @@ For instance, an auth token can be injected for all the requests like this:
 
 ## Publish the package using GitHub actions
 We have looked into how the client can be consumed, but there is still one piece pending. We have to publish the client to an npm repository. We will use <a href="https://github.com/features/actions" target="_blank" rel="noopener noreferrer">GitHub Actions</a> to automate the entire workflow.
-<em>Remember that we already have all the scripts ready in our ```package.json```. So, if you plan to automate this with any other CI, that should be straightforward.</em>
+Remember that we already have all the scripts ready in our ```package.json```. So, if you plan to automate this with any other CI, that should be straightforward.
 To begin, we’ll have to configure an npm to point to the GitHub npm repository. That can be done by adding a ```.npmrc``` file.
 ![](low.com/6143afec68f555387049efb3/630f8ce2c647006d0baf9779_image_61d77e179d75a0ffb2d61f30ed3b2e07_800.p)
 
@@ -89,7 +93,7 @@ In production-grade applications, we will have unit + integration + smoke tests 
 
 ## The workflow
 ![](ads-ssl.webflow.com/6143afec68f555387049efb3/630f8ce2c64700e025af9782_GitHubAction_cf8d6dfec093f381393611491b6efab2_800.p)
-<em>Note: Since we do not have integration tests or an actual deployment, they are commented in the above snippet.</em>
+Note: Since we do not have integration tests or an actual deployment, they are commented in the above snippet.
 
 ## Final thoughts and summary
 

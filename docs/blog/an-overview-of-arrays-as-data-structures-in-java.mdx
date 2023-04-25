@@ -29,7 +29,7 @@ Stacks are data structures that follow a specific order. The order could either 
 Queues are a linear data structure that opens at both ends and operations occur in a First In, First Out (FIFO) order.
 
 ### Trees
-Similar to a family tree, trees are a collection of nodes. Each node of the tree stores a value and links to other nodes (<em>children</em>). This type of data structure, called a hierarchical structure, specializes in efficiently organizing and storing data.
+Similar to a family tree, trees are a collection of nodes. Each node of the tree stores a value and links to other nodes (children). This type of data structure, called a hierarchical structure, specializes in efficiently organizing and storing data.
 
 ### Heaps
 Heaps are unique data structures— they’re entirely binary tree. There are two types of heaps:
@@ -38,16 +38,21 @@ Graphs are data structures involving vertices (each shape's angular point) and e
 
 ## Arrays as a Data Structure
 As mentioned earlier, arrays are a collection of values stored in multiple values in a single variable instead of storing each value in a separate variable. To declare an array in Java, define the variable type followed by square brackets.
-e>String[] books:</pre><p><a href="https://sophyia.pieces.cloud/?p=c38743878e" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+String[] books:```<a href="https://sophyia.pieces.cloud/?p=c38743878e" target="_blank" rel="noopener noreferrer">Save this code</a>
 An example of an array is a carton of eggs, because a carton has eggs lined up in a sequence and each section holds an egg.
 Arrays are commonly used to build other, more complicated data structures. They are also used for sorting algorithms.
 
 ### Multi-dimensional arrays
 These are simply arrays of arrays, which means one array inside another—multi-dimensional arrays store values/elements in a tabular form.
 The syntax of multi-dimensional arrays:
-e>data_type[1st dimension][2nd dimension][]..[Nth dimension]<br>array_name = new data_type[size1][size2]….[sizeN];</pre><p><a href="https://sophyia.pieces.cloud/?p=2a1b459dc1" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+data_type[1st dimension][2nd dimension][]..[Nth dimension]
+array_name = new data_type[size1][size2]….[sizeN];```<a href="https://sophyia.pieces.cloud/?p=2a1b459dc1" target="_blank" rel="noopener noreferrer">Save this code</a>
 
-- ```data_type``` represents the data type, e.g., ```int```, ```String```, ```char```
+- ```data_type``` represents the data type, e.g., ```int```, ```String```, ```char
+```
+
 - ```dimension``` represents the dimension of arrays you want to create, e.g., 1D, 2D, etc.
 - ```array_name``` represents the name of the array
 - ```size1```, ```size2``` represent the size of the dimensions
@@ -56,17 +61,51 @@ e>data_type[1st dimension][2nd dimension][]..[Nth dimension]<br>array_name = new
 A two-dimensional array is an array of one-dimensional arrays. It is the simplest form of any multi-dimensional array.
 An example of two multi-dimensional arrays:
 
-e>class example {<br>    public static void main(String[] args)<br>    {<br> <br>        int[][] arr = { { 5, 0 }, { 1, 7 } };<br><br>        for (int i = 0; i &lt; 2; i++) {<br>            for (int j = 0; j &lt; 2; j++) {<br>                System.out.print(arr[i][j] + &quot; &quot;);<br>            }<br><br>             System.out.println();<br>        }<br>    }<br>}</pre><p><strong>Output:</strong>
+```
+class example {
+    public static void main(String[] args)
+    {
+
+        int[][] arr = { { 5, 0 }, { 1, 7 } };
+        for (int i = 0; i &lt; 2; i++) {
+            for (int j = 0; j &lt; 2; j++) {
+                System.out.print(arr[i][j] + &quot; &quot;);
+            }
+             System.out.println();
+        }
+    }
+
+```
+**Output:**
 
 A three-dimensional array is a complex form of multi-dimensional array because it has three sides/dimensions. An easy way to understand it is that this form of a multi-dimensional array is an array of two-dimensional arrays.
 
 An example of three multi-dimensional arrays:
-e>class example {<br>  public static void main(String[] args) {<br><br>    int[][][] arr = {{{ 5, 0 }, { 1, 7 },{2 , 9}},};<br>        for(int i=0; i &lt; arr.length; i++){<br>      for(int j=0; j &lt; arr[i].length; j++){<br>         for(int k=0; k &lt; arr[i][j].length; k++){<br>            System.out.print( arr[i][j][k] + &quot; &quot;);<br>         }<br>         System.out.println(); <br>      }<br>      System.out.println(); <br>    }<br>  }<br><br>}</pre><p><a href="https://sophyia.pieces.cloud/?p=9f534cab37" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+class example {
+  public static void main(String[] args) {
+    int[][][] arr = {{{ 5, 0 }, { 1, 7 },{2 , 9}},};
+        for(int i=0; i &lt; arr.length; i++){
+      for(int j=0; j &lt; arr[i].length; j++){
+         for(int k=0; k &lt; arr[i][j].length; k++){
+            System.out.print( arr[i][j][k] + &quot; &quot;);
+         }
+         System.out.println();
+      }
+      System.out.println();
+    }
+  }
+}```<a href="https://sophyia.pieces.cloud/?p=9f534cab37" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 If we execute the code above, the output is:
-e>5 0<br>1 7<br>2 9</pre><p>In Java, the size of a multi-dimensional array is the total number of elements stored, which means multi-dimensional arrays can be calculated by multiplying the dimensions' length.
+```
+5 0
+1 7
+2 9
+```
+In Java, the size of a multi-dimensional array is the total number of elements stored, which means multi-dimensional arrays can be calculated by multiplying the dimensions' length.
 
-<strong>Note:</strong> The best way to display the data in a multi-dimensional array is by using nested or double nested for-loops, as the case may be.
+**Note:** The best way to display the data in a multi-dimensional array is by using nested or double nested for-loops, as the case may be.
 
 ## ArrayLists &amp; Lists Interface
 
@@ -77,35 +116,97 @@ Sometimes, ArrayLists may be slower than standard arrays. Still, they’re helpf
 One key advantage of an ArrayList is that, unlike an array, you can declare an ArrayList regardless of size. If you do not know the extent of elements to be stored, you can use an ArrayList.
 
 This is a code snippet of an ArrayList without declaring the size:
-e>import java.io.*;<br>import java.util.*;<br><br>class example {<br>        public static void main(String[] args)<br>        {<br>                ArrayList&lt;Integer&gt; bags = new ArrayList&lt;&gt;();<br><br>                for (int i = 1; i &lt;= 7; i++)<br>                        bags.add(i);<br><br>                System.out.println(bags);<br>                bags.remove(3);<br><br>                System.out.println(bags);<br><br>                for (int i = 0; i &lt; bags.size(); i++)<br>                        System.out.print(bags.get(i) + &quot; &quot;);<br>        }<br>}</pre><p><a href="https://sophyia.pieces.cloud/?p=ebcf4e8043" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>Output:</strong>
+```
+import java.io.*;
+import java.util.*;
+class example {
+        public static void main(String[] args)
+        {
+                ArrayList&lt;Integer&gt; bags = new ArrayList&lt;&gt;();
+                for (int i = 1; i &lt;= 7; i++)
+                        bags.add(i);
+                System.out.println(bags);
+                bags.remove(3);
+                System.out.println(bags);
+                for (int i = 0; i &lt; bags.size(); i++)
+                        System.out.print(bags.get(i) + &quot; &quot;);
+        }
+}```<a href="https://sophyia.pieces.cloud/?p=ebcf4e8043" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Output:**
 In Java, Lists are interfaces that provide a way to store an ordered<a href="https://www.javatpoint.com/collections-in-java" target="_blank" rel="noopener noreferrer"> collection</a>. They are a child interface of Collection. Lists are ordered collections of objects/elements where duplicate values are stored. Similar to Arrays and ArrayLists, Lists allow for the insertion of elements and access to the position of elements. Also, the Lists interface is seen in the ```java.util``` package and inherits the ```Collection``` interface.
 Since Lists are interface inheritors, Lists can't create objects. You will need a class to create an object; that is where ArrayList comes into play.
 
 Here is an example of using an ArrayList to create a List object:
-e>List&lt;Obj&gt; list = new ArrayList&lt;Obj&gt; ();</pre><p><a href="https://sophyia.pieces.cloud/?p=9d18439d79" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+List&lt;Obj&gt; list = new ArrayList&lt;Obj&gt; ();```<a href="https://sophyia.pieces.cloud/?p=9d18439d79" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Some of the operations in a List Interface include:
-- <strong>add(),</strong> adds elements to the List Interface; it takes two parameters.
-- <strong>add(Object),</strong> adds an element at the end of a List.
-- <strong>add(int index, Object)</strong>, adds an element at a specific index in the List.
+- **add(),** adds elements to the List Interface; it takes two parameters.
+- **add(Object),** adds an element at the end of a List.
+- **add(int index, Object)**, adds an element at a specific index in the List.
 
 Here is a code snippet showing how to add an element at a specific index:
 
-e>import java.util.*;<br><br>class example {<br><br>        public static void main(String args[])<br>        {<br>                List&lt;String&gt; txt = new ArrayList&lt;&gt;();<br><br><br>                txt.add(&quot;Pieces&quot;);<br>                txt.add(&quot;Pieces&quot;);<br>                txt.add(2, &quot;Code&quot;);<br><br>                System.out.println(txt);<br>        }<br>}</pre><p><a href="https://sophyia.pieces.cloud/?p=26c84ea8aa" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>Output:</strong>
+```
+import java.util.*;
+class example {
+        public static void main(String args[])
+        {
+                List&lt;String&gt; txt = new ArrayList&lt;&gt;();
+
+                txt.add(&quot;Pieces&quot;);
+                txt.add(&quot;Pieces&quot;);
+                txt.add(2, &quot;Code&quot;);
+                System.out.println(txt);
+        }
+}```<a href="https://sophyia.pieces.cloud/?p=26c84ea8aa" target="_blank" rel="noopener noreferrer">Save this code</a>
+**Output:**
 
 Here is a code snippet:
-e>import java.util.*;<br><br>class example {<br><br><br>        public static void main(String args[])<br>        {<br><br>                List&lt;String&gt; txt = new ArrayList&lt;&gt;();<br><br><br>                txt.add(&quot;Pieces&quot;);<br>                txt.add(&quot;Pieces&quot;);<br>                txt.add(2, &quot;Code&quot;);<br><br>                System.out.println(&quot;Initial ArrayList &quot; + txt);<br><br>        txt.set(1, &quot;Random&quot;);<br>          System.out.println(&quot;Updated ArrayList &quot; + txt);<br>    }<br>}</pre><p><a href="https://sophyia.pieces.cloud/?p=656148ba92" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import java.util.*;
+class example {
 
-<strong>Output:</strong>
-- <strong>remove(Object): </strong> removes an element at the end of a List. If there is more than one Object, the method will remove the first Object.
-- <strong>remove(int index, Object):</strong>  removes an element at a specific index in the List.
+        public static void main(String args[])
+        {
+                List&lt;String&gt; txt = new ArrayList&lt;&gt;();
+
+                txt.add(&quot;Pieces&quot;);
+                txt.add(&quot;Pieces&quot;);
+                txt.add(2, &quot;Code&quot;);
+                System.out.println(&quot;Initial ArrayList &quot; + txt);
+        txt.set(1, &quot;Random&quot;);
+          System.out.println(&quot;Updated ArrayList &quot; + txt);
+    }
+}```<a href="https://sophyia.pieces.cloud/?p=656148ba92" target="_blank" rel="noopener noreferrer">Save this code</a>
+
+**Output:**
+- **remove(Object): ** removes an element at the end of a List. If there is more than one Object, the method will remove the first Object.
+- **remove(int index, Object):**  removes an element at a specific index in the List.
 
 Here is a code snippet explaining how the ```remove()``` method works:
-e>import java.util.*;<br><br>class example {<br><br><br>        public static void main(String args[])<br>        {<br><br>                List&lt;String&gt; txt = new ArrayList&lt;&gt;();<br><br><br>                txt.add(&quot;Pieces&quot;);<br>                txt.add(&quot;Pieces&quot;);<br>                txt.add(2, &quot;Code&quot;);<br><br><br>                System.out.println(&quot;Initial ArrayList &quot; + txt);<br><br>        txt.remove(1);<br>        System.out.println(&quot;After the Index Removal &quot; + txt);<br>        txt.remove(&quot;Pieces&quot;);<br><br>        System.out.println(&quot;After the Object Removal &quot;<br>                           + txt);<br>    }<br>}</pre><p><a href="https://sophyia.pieces.cloud/?p=49de48aae4" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+import java.util.*;
+class example {
 
-<strong>Output:</strong>
+        public static void main(String args[])
+        {
+                List&lt;String&gt; txt = new ArrayList&lt;&gt;();
+
+                txt.add(&quot;Pieces&quot;);
+                txt.add(&quot;Pieces&quot;);
+                txt.add(2, &quot;Code&quot;);
+
+                System.out.println(&quot;Initial ArrayList &quot; + txt);
+        txt.remove(1);
+        System.out.println(&quot;After the Index Removal &quot; + txt);
+        txt.remove(&quot;Pieces&quot;);
+        System.out.println(&quot;After the Object Removal &quot;
+                           + txt);
+    }
+}```<a href="https://sophyia.pieces.cloud/?p=49de48aae4" target="_blank" rel="noopener noreferrer">Save this code</a>
+
+**Output:**
 Now that you know the basics of an Array, an ArrayList, Multi-dimensional arrays and Lists, it’s time to test your knowledge! This section will create an identity matrix in Java to give you a visual understanding of how Arrays in Java work.
 Before you start, remember that the identity matrix is a square matrix where all elements of the main diagonal are 1s, and other elements are 0s. Also, a key note about the identity matrix is that it remains unchanged if multiplied by itself.
 Let’s begin!
@@ -113,13 +214,60 @@ Let’s begin!
 The logic of creating an identity matrix is simple. You will need to print 1 in positions where rows are equal to the column of the matrix and make the other position 0. This guide will create an identity matrix of 8; you may use any size you see fit.
 
 1. First, create an instance variable for the row and column.
-e>class Matrix {     <br>      static int identity_matrix(int num)<br>        {<br>                int row, col; <br>}</pre><p><a href="https://sophyia.pieces.cloud/?p=a05840a01a" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+class Matrix {
+      static int identity_matrix(int num)
+        {
+                int row, col;
+}```<a href="https://sophyia.pieces.cloud/?p=a05840a01a" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 2. Next, use nested for-loops to fill the matrix with 1s and 0s; if your row is equal to your column, add 1, otherwise, add 0. Then, print your matrix.
-e>class Matrix {<br><br>        static int identity_matrix(int num)<br>        {<br>                int row, col;<br><br>                for (row = 0; row &lt; num; row++)<br>                {<br>                        for (col = 0; col &lt; num; col++)<br>                        {<br>                                if (row == col)<br>                                        System.out.print( 1+&quot; &quot;);<br>                                else<br>                                        System.out.print( 0+&quot; &quot;);<br>                        }<br>                        System.out.println();<br>                }<br>                return 0;<br>        }<br>}</pre><p><a href="https://sophyia.pieces.cloud/?p=cef146a6c0" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+class Matrix {
+        static int identity_matrix(int num)
+        {
+                int row, col;
+                for (row = 0; row &lt; num; row++)
+                {
+                        for (col = 0; col &lt; num; col++)
+                        {
+                                if (row == col)
+                                        System.out.print( 1+&quot; &quot;);
+                                else
+                                        System.out.print( 0+&quot; &quot;);
+                        }
+                        System.out.println();
+                }
+                return 0;
+        }
+}```<a href="https://sophyia.pieces.cloud/?p=cef146a6c0" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 3. Finally, define the size of your identity matrix.  The final result will look like this:
-e>class matrix {<br><br>        static int identity_matrix(int num)<br>        {<br>                int row, col;<br>                <br>                for (row = 0; row &lt; num; row++)<br>                {<br>                        for (col = 0; col &lt; num; col++)<br>                        {<br>                                if (row == col)<br>                                        System.out.print( 1+&quot; &quot;);<br>                                else<br>                                        System.out.print( 0+&quot; &quot;);<br>                        }<br>                        System.out.println();<br>                }<br>                return 0;<br>        }<br><br>        public static void main(String args[])<br>        {<br>                int size = 8;<br>                identity_matrix(size);<br>        }<br>}</pre><p><a href="https://sophyia.pieces.cloud/?p=063e438dcf" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+class matrix {
+        static int identity_matrix(int num)
+        {
+                int row, col;
+
+                for (row = 0; row &lt; num; row++)
+                {
+                        for (col = 0; col &lt; num; col++)
+                        {
+                                if (row == col)
+                                        System.out.print( 1+&quot; &quot;);
+                                else
+                                        System.out.print( 0+&quot; &quot;);
+                        }
+                        System.out.println();
+                }
+                return 0;
+        }
+        public static void main(String args[])
+        {
+                int size = 8;
+                identity_matrix(size);
+        }
+}```<a href="https://sophyia.pieces.cloud/?p=063e438dcf" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Your output should be similar to this.
 Arrays are index sequences of values of the same data types and are fixed, which limits their methods. Unlike arrays, ArrayLists are not restricted by size and flexibility.

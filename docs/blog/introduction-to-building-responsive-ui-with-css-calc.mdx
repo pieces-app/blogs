@@ -8,81 +8,254 @@ This tutorial guide explores using the CSS ```calc()``` function. Perhaps you’
 
 ## A Quick Introduction to CSS calc()
 The CSS ```calc()``` function is a built-in CSS function that allows us to perform calculations when specifying CSS property values. For example, it simplifies the positioning of an item with an already predetermined margin.
-```calc()``` is a native CSS method for doing basic math correctly in CSS as a substitute for any longitudinal value or almost any number. Simple CSS calculations are carried out using this function by using the operators for addition (+), subtraction (-), multiplication (*) and division (/).
+```
+calc()``` is a native CSS method for doing basic math correctly in CSS as a substitute for any longitudinal value or almost any number. Simple CSS calculations are carried out using this function by using the operators for addition (+), subtraction (-), multiplication (*) and division (/).
 
 Additionally, wherever length, percentage, time, numbers, integers, frequencies, and angles are specified, this function can be used.
 
 ### The calc() function syntax:
-e>width: calc(100% / 6);<br>width: calc(100% * 6);<br>font-size: calc(7vw + 4px);<br>font-size: calc(7vw - 4px);</pre><p><a href="https://aleru.pieces.cloud/?p=7f424a8b61" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+width: calc(100% / 6);
+width: calc(100% * 6);
+font-size: calc(7vw + 4px);
+font-size: calc(7vw - 4px);```<a href="https://aleru.pieces.cloud/?p=7f424a8b61" target="_blank" rel="noopener noreferrer">Save this code</a>
 The only input for ```calc()``` is one expression. The expression's calculated outcome then determines the value. It may use any of the following operators, while adhering to the usual precedence rules of the operators: +, -, *, and /.
 
 ### Key Notes on calc()
-- This function can be <strong>nested</strong>.
+- This function can be **nested**.
 - Only the usage of the variant with the unit is acceptable for addition and subtraction.
 
-<strong>For example:</strong>
+**For example:**
 
-e><em>- margin-top: calc(0px + 35px); is acceptable, however <br>- margin-top: calc(0 + 35px); /* is not acceptable and is considered invalid */</em></pre><p><a href="https://aleru.pieces.cloud/?p=4ef44582e2" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+- margin-top: calc(0px + 35px); is acceptable, however
+- margin-top: calc(0 + 35px); /* is not acceptable and is considered invalid */```<a href="https://aleru.pieces.cloud/?p=4ef44582e2" target="_blank" rel="noopener noreferrer">Save this code</a>
 - Multiplication and division require the second number to be unitless, or it will be invalid.
-<strong>For example:</strong>
-e> .box {<br>   margin: calc(50px * 2);<br>   /* and */<br>   margin: calc(50px / 3);<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=07eb4b9ba0" target="_blank" rel="noopener noreferrer">Save this code</a>
-- HTML generates an <strong>error</strong> when you <strong>divide by zero</strong>.
-- <strong>Whitespace</strong> must be used around the + and - operators, but is not mandatory for the * and / operators. However, it is both permitted and advised to add whitespace for uniformity.
-<strong>For example:</strong>
-e> .box {<br>   font-size: calc(7vw + 4px);<br> <br>   /* Instead of */<br> <br>   font-size: calc(7vw+4px);</pre><p><a href="https://aleru.pieces.cloud/?p=86d84f97b8" target="_blank" rel="noopener noreferrer">Save this code</a>
+**For example:**
+```
+ .box {
+   margin: calc(50px * 2);
+   /* and */
+   margin: calc(50px / 3);
+}```<a href="https://aleru.pieces.cloud/?p=07eb4b9ba0" target="_blank" rel="noopener noreferrer">Save this code</a>
+- HTML generates an **error** when you **divide by zero**.
+- **Whitespace** must be used around the + and - operators, but is not mandatory for the * and / operators. However, it is both permitted and advised to add whitespace for uniformity.
+**For example:**
+```
+ .box {
+   font-size: calc(7vw + 4px);
+
+   /* Instead of */
+
+   font-size: calc(7vw+4px);```<a href="https://aleru.pieces.cloud/?p=86d84f97b8" target="_blank" rel="noopener noreferrer">Save this code</a>
 - We can use the ```calc()``` function to check that form fields are sized appropriately without extending past the edge of the container while retaining the correct margin.
 For example:
-<strong>HTML</strong>
-e>&lt;form&gt;<br>    &lt;div class=&quot;email-box&quot;&gt;<br>      &lt;label&gt;Enter email:&lt;/label&gt;<br>      &lt;input type=&quot;text&quot;/&gt;<br>    &lt;/div&gt;<br>  &lt;/form&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=b65145a75b" target="_blank" rel="noopener noreferrer">Share this code</a>
-<strong>CSS</strong>
-e>input {<br> padding: 5px;<br> display: block;<br> width: calc(100% - 1em);<br>}<br>.email-box {<br> width: calc(100% / 6);<br> border: 1px solid #000;<br> padding: 4px;<br> background-color:#000;<br> color: #FFF;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=3ee64ca5f2" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>OUTPUT</strong>
+**HTML**
+```
+&lt;form&gt;
+    &lt;div class=&quot;email-box&quot;&gt;
+      &lt;label&gt;Enter email:&lt;/label&gt;
+      &lt;input type=&quot;text&quot;/&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;```<a href="https://aleru.pieces.cloud/?p=b65145a75b" target="_blank" rel="noopener noreferrer">Share this code</a>
+**CSS**
+```
+input {
+ padding: 5px;
+ display: block;
+ width: calc(100% - 1em);
+}
+.email-box {
+ width: calc(100% / 6);
+ border: 1px solid #000;
+ padding: 4px;
+ background-color:#000;
+ color: #FFF;
+}```<a href="https://aleru.pieces.cloud/?p=3ee64ca5f2" target="_blank" rel="noopener noreferrer">Save this code</a>
+**OUTPUT**
 ![](flow.com/6143afec68f555387049efb3/63b444427e2b10d7d25a4772_image3_0df3bbf95086684be1c935668cc072a7_800.p)
 ## Unit Conversion in CSS
 Using ```calc()```, a value without an assigned unit can be converted to a value with a unit. This can be achieved by multiplying the value by the number and unit type that you want to convert it to. Also, this is incredibly helpful if you have CSS variables set without the unit.
-e>html{<br> --num: 2;<br>}<br><br>.color {<br> background-color: #000;<br> height: 22px;<br> width: calc(var(--num) * 11px);<br> display: inline-block;<br> margin-right: 10px;<br> margin: 50px;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=f09a47814c" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>OUTPUT</strong>
+```
+html{
+ --num: 2;
+}
+.color {
+ background-color: #000;
+ height: 22px;
+ width: calc(var(--num) * 11px);
+ display: inline-block;
+ margin-right: 10px;
+ margin: 50px;
+}```<a href="https://aleru.pieces.cloud/?p=f09a47814c" target="_blank" rel="noopener noreferrer">Save this code</a>
+**OUTPUT**
 ![](w.com/6143afec68f555387049efb3/63b444427e2b105e1a5a4773_image1_a3d7af995f7d5726fe8f2d0d04be13ff_800.p)
 
 ## Using calc() to Convert Font Sizes
 We can increase our font size based on the viewport or screen size. For example, consider a situation where we need our paragraph's font to be large on a desktop, but small on a mobile device. In this case, the c```alc()``` method is well suited for the job.
 
 This will enable us to have smaller fonts in mobile views and larger fonts in desktop views, respectively:
-e>html{font-size: 10px;<br>}<br><br>section{<br> color: #ffffff;<br> font-size: calc(1rem + 1vw);<br>}<br>h1{<br> text-transform: uppercase;<br>}<br>body{<br> background-color: #800080;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=3ab54abfb3" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+html{font-size: 10px;
+}
+section{
+ color: #ffffff;
+ font-size: calc(1rem + 1vw);
+}
+h1{
+ text-transform: uppercase;
+}
+body{
+ background-color: #800080;
+}```<a href="https://aleru.pieces.cloud/?p=3ab54abfb3" target="_blank" rel="noopener noreferrer">Save this code</a>
 Above, ```rem``` = root element’s font-size, which has been set to ```10px```;
-```VW``` = viewport width, which helps adjust the entire page depending on the screen type or size.
+```
+VW``` = viewport width, which helps adjust the entire page depending on the screen type or size.
 The units above can be divided, multiplied, added and subtracted.
 ## Adjusting HTML Elements (Position, Length and Height)
 To position the boxes inside the container perfectly, the complete width of the screen (100%) was divided by 5 using the nested CSS method and 20px was subtracted from the resulting number to determine the final value for our minimum width.
-<strong>HTML</strong>
-e>&lt;div class=&quot;container&quot;&gt;<br>  &lt;div class=&quot;box&quot;&gt;<br>    &lt;p&gt;Books&lt;/p&gt;<br>  &lt;/div&gt;<br>  &lt;div class=&quot;box&quot;&gt;<br>    &lt;p&gt;Hats&lt;/p&gt;<br>  &lt;/div&gt;<br>  &lt;div class=&quot;box&quot;&gt;<br>    &lt;p&gt;Shoes&lt;/p&gt;<br>  &lt;/div&gt;<br>  &lt;div class=&quot;box&quot;&gt;<br>&lt;p&gt;Clothes&lt;/p&gt;<br>&lt;/div&gt;<br>&lt;/div&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=999c42a668" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>*{<br> margin: 0;<br> padding: 0;<br> box-sizing: border-box;<br>}<br>body{<br> display: flex;<br> justify-content: center;<br> align-items: center;<br> min-height: 100vh;<br>}<br>.container{<br> position: relative;<br> display: flex;<br> width: 350px;<br> height: 200px;<br> background:#ccc<br>}<br>.box{<br> position: relative; <br> min-width: calc((100% / 5) - 20px);<br> height: calc(100% - 20px);<br> background:#ffffff;<br> margin: 10px;<br> color: #1f1d1d;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=bf0a41ab3c" target="_blank" rel="noopener noreferrer">Save this code</a>
+**HTML**
+```
+&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;box&quot;&gt;
+    &lt;p&gt;Books&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;box&quot;&gt;
+    &lt;p&gt;Hats&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;box&quot;&gt;
+    &lt;p&gt;Shoes&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;box&quot;&gt;
+&lt;p&gt;Clothes&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=999c42a668" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+}
+body{
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 100vh;
+}
+.container{
+ position: relative;
+ display: flex;
+ width: 350px;
+ height: 200px;
+ background:#ccc
+}
+.box{
+ position: relative;
+ min-width: calc((100% / 5) - 20px);
+ height: calc(100% - 20px);
+ background:#ffffff;
+ margin: 10px;
+ color: #1f1d1d;
+}```<a href="https://aleru.pieces.cloud/?p=bf0a41ab3c" target="_blank" rel="noopener noreferrer">Save this code</a>
 OUTPUT
 ![](" src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b1034a35a4774_image4_06cdc4fbd16454cdd4568234698248ee_800.p)
 Also, you can set overflow to scroll if the contents do not fit.
 ## Using CSS calc() to Fix Gutters Without Parents
 We can make two boxes or columns adjacent to one another. A fixed gap separates the columns, with the first being 40% wide and the second 60%. Also, we want the gap to be set to 1em. The columns are produced by internal padding within those columns, and they bump straight into one another.
 We can use ```calc()``` to set the first column to be 40% wide with a 1em right margin, and the second column to be 60% wide,  minus the initial 40% margin we just set the first column to.
-<strong>HTML</strong>
-e>&lt;div class=&quot;container&quot;&gt;<br>        &lt;div class=&quot;books&quot;&gt;<br>          &lt;h1&gt;BOOKS&lt;/h1&gt;<br>          &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium facilis quibusdam dolores magni maxime quasi unde laboriosam officia exercitationem! Magnam iusto illo fugiat enim ducimus modi voluptatibus adipisci error nesciunt.&lt;/p&gt;<br>        &lt;/div&gt;<br>        &lt;div class=&quot;hats&quot;&gt;<br>          &lt;h1&gt;HATS&lt;/h1&gt;<br>          &lt;p&gt;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem commodi doloribus nesciunt eaque, error ab consequatur consequuntur excepturi aspernatur, quos mollitia, natus delectus qui dolorum expedita illum atque maiores. Vitae?&lt;/p&gt;<br>        &lt;/div&gt;<br>      &lt;/div&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=dad1459172" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>.books{<br> <br> width: 40%;<br> float: left;<br> margin-right: 1em;<br> background-color: #2cbe8e;<br> color: #ffffff;<br>}<br>.hats{<br> display: block;<br> width: calc(60% - 1em);<br> float: right;<br> background-color: #000000;<br> color: #ffffff;<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=b2eb4191d5" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>OUTPUT</strong>
+**HTML**
+```
+&lt;div class=&quot;container&quot;&gt;
+        &lt;div class=&quot;books&quot;&gt;
+          &lt;h1&gt;BOOKS&lt;/h1&gt;
+          &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium facilis quibusdam dolores magni maxime quasi unde laboriosam officia exercitationem! Magnam iusto illo fugiat enim ducimus modi voluptatibus adipisci error nesciunt.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;hats&quot;&gt;
+          &lt;h1&gt;HATS&lt;/h1&gt;
+          &lt;p&gt;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem commodi doloribus nesciunt eaque, error ab consequatur consequuntur excepturi aspernatur, quos mollitia, natus delectus qui dolorum expedita illum atque maiores. Vitae?&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=dad1459172" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+.books{
+
+ width: 40%;
+ float: left;
+ margin-right: 1em;
+ background-color: #2cbe8e;
+ color: #ffffff;
+}
+.hats{
+ display: block;
+ width: calc(60% - 1em);
+ float: right;
+ background-color: #000000;
+ color: #ffffff;
+}```<a href="https://aleru.pieces.cloud/?p=b2eb4191d5" target="_blank" rel="noopener noreferrer">Save this code</a>
+**OUTPUT**
 ![](with a dummy paragraph." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b109ca45a4777_image2_422bc5f0da1416546d585857cfb864f2_800.p)
 ## Using CSS calc() to Improve Background Positioning to the Right Bottom
 With the help of the ```calc()``` function, we can better determine the relative width of the right bottom of the background of our element as follows:
-e>background-image: linear-gradient(rgb(34, 34, 34, 0.6),<br> rgba(34, 34, 34, 0.6)), <br>url(christophe-rollando-Couy-PRl448-unsplash.jpg);<br> background-position: calc(100% - 20px) calc(100% - 20px);</pre><p><a href="https://aleru.pieces.cloud/?p=d25f4fb37f" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+background-image: linear-gradient(rgb(34, 34, 34, 0.6),
+ rgba(34, 34, 34, 0.6)),
+url(christophe-rollando-Couy-PRl448-unsplash.jpg);
+ background-position: calc(100% - 20px) calc(100% - 20px);```<a href="https://aleru.pieces.cloud/?p=d25f4fb37f" target="_blank" rel="noopener noreferrer">Save this code</a>
 Also, let's imagine a case where the parent element gets too small to fit the entire module's content. This is a perfect use for the ```calc()``` function.
 ## Using CSS calc() for Animations
 Specifying variables in the HTML element can utilize the ```calc()``` function to achieve the border and width.
 For example, one of our margin tops comes from multiplying the variable (```--size```), which multiplies the value 5px in our HTML element by 50. This makes determining the value easier:
-e>margin-top: calc(var(--size) * 50)</pre><p>Also:
-e>border: var(--size) solid #777474</pre><p><strong>HTML</strong>
-e>&lt;div class=&quot;load&quot;&gt;<br>    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;<br>    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;<br>    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;<br>&lt;/div&gt;</pre><p><a href="https://aleru.pieces.cloud/?p=46e84ca327" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>CSS</strong>
-e>.load {<br> overflow: hidden;<br> width: 100%;<br> height: 100%;<br> position: float;<br> top: 0;<br> left: 0;<br> display: flex;<br> align-items: center;<br> align-content: center;<br> justify-content: center;<br> margin-top: calc(var(--size) * 50);<br>}<br>.loading {<br> border-radius: 100%;<br> margin: calc(var(--size) * 2);<br>}<br>.loading:nth-child(1) {<br> animation: css-calc-animation 0.6s ease-in-out alternate infinite;<br> border: var(--size) solid #ffffff;<br>}<br>.loading:nth-child(2) {<br> animation: css-calc-animation 0.6s ease-in-out alternate 0.3s infinite;<br> border: var(--size) solid #b8b2b2;<br>}<br>.loading:nth-child(3) {<br> animation: css-calc-animation 0.6s ease-in-out alternate 0.4s infinite;<br> border: var(--size) solid #777474;<br>}<br>@keyframes css-calc-animation {<br>  100% {<br> transform: scale(2);<br>  }<br>}</pre><p><a href="https://aleru.pieces.cloud/?p=53d74fb9fd" target="_blank" rel="noopener noreferrer">Save this code</a>
-<strong>OUTPUT</strong>
+```
+margin-top: calc(var(--size) * 50)```
+Also:
+```
+border: var(--size) solid #777474
+```
+**HTML**
+```
+&lt;div class=&quot;load&quot;&gt;
+    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;
+    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;
+&lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=46e84ca327" target="_blank" rel="noopener noreferrer">Save this code</a>
+**CSS**
+```
+.load {
+ overflow: hidden;
+ width: 100%;
+ height: 100%;
+ position: float;
+ top: 0;
+ left: 0;
+ display: flex;
+ align-items: center;
+ align-content: center;
+ justify-content: center;
+ margin-top: calc(var(--size) * 50);
+}
+.loading {
+ border-radius: 100%;
+ margin: calc(var(--size) * 2);
+}
+.loading:nth-child(1) {
+ animation: css-calc-animation 0.6s ease-in-out alternate infinite;
+ border: var(--size) solid #ffffff;
+}
+.loading:nth-child(2) {
+ animation: css-calc-animation 0.6s ease-in-out alternate 0.3s infinite;
+ border: var(--size) solid #b8b2b2;
+}
+.loading:nth-child(3) {
+ animation: css-calc-animation 0.6s ease-in-out alternate 0.4s infinite;
+ border: var(--size) solid #777474;
+}
+@keyframes css-calc-animation {
+  100% {
+ transform: scale(2);
+  }
+}```<a href="https://aleru.pieces.cloud/?p=53d74fb9fd" target="_blank" rel="noopener noreferrer">Save this code</a>
+**OUTPUT**
 ![](ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b10bbc05a4775_image5_2dda6836b954013952e4a0a35b0d1fbf.g)
 ## Browser Compatibility With the calc() Function
 The ```calc()``` function is browser compatible, with some limitations. Below is a list of the browser compatibility of the CSS ```calc()```:

@@ -5,9 +5,18 @@
 
 As you know, HTML (HyperText Markup Language) is the essential building block of the web. All web applications use HTML to create structured documents for web pages. HTML indicates texts, images, and other contents on a web page using unique tags such as ```&lt;img /&gt;```, ```&lt;head&gt;&lt;/head&gt;```, ```&lt;body&gt;&lt;/body&gt;```, ```&lt;p&gt;&lt;/p&gt;```, and ```&lt;ul&gt;&lt;/ul&gt;```.
 There are specific guidelines and rules for using HTML, and one of these rules is specifying the doctype for the HTML file. This is declared at the top of the file with ```&lt;!DOCTYPE &gt;```. The doctype informs the browser of the HTML document type, ensuring that the browser renders the file using the relevant specification for the document. You can see the doctype declaration for HTML5 below:
-e>&lt;!DOCTYPE html&gt;</pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=180f479277" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!DOCTYPE html&gt;```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=180f479277" target="_blank" rel="noopener noreferrer">Save this code</a>
 Guidelines for writing HTML documents ensure that the browser correctly renders the document. These guidelines are followed by writing semantic HTML. However, the browser does not enforce HTML rules. For example, when a div element is used to render what should be a button, the browser will still render the file:
-e>&lt;!-- A div styled as a button --&gt;<br>&lt;div&gt;<br>    Click Me <br>&lt;/div&gt;<br><br>&lt;!-- A proper button --&gt;<br>&lt;button&gt;<br>    Click Me<br>&lt;/button&gt;</pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=56004da566" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!-- A div styled as a button --&gt;
+&lt;div&gt;
+    Click Me
+&lt;/div&gt;
+&lt;!-- A proper button --&gt;
+&lt;button&gt;
+    Click Me
+&lt;/button&gt;```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=56004da566" target="_blank" rel="noopener noreferrer">Save this code</a>
 In the HTML code above, you can style the two tags using <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer">Cascading Style Sheet (CSS)</a> to look like and function as a button.
 
 ## What is Semantic HTML?
@@ -18,7 +27,25 @@ Writing semantic HTML improves the browser readability of HTML documents, ensuri
 
 ### Structure
 Semantic HTML provides a better structure for web pages, whereas a code block describes what it presents. An example with appropriate tags can be seen here:
-e>&lt;!-- Ordered List --&gt;<br>&lt;ol&gt;<br>    &lt;li&gt;<br>        Item 1<br>    &lt;/li&gt;<br>    &lt;li&gt;<br>        Item 2<br>    &lt;/li&gt;<br>&lt;/ol&gt;<br><br>&lt;!-- Unordered List --&gt;<br>&lt;ul&gt;<br>    &lt;li&gt;<br>        Item<br>    &lt;/li&gt;<br>    &lt;li&gt;<br>        Another Item<br>    &lt;/li&gt;<br>&lt;/ul&gt;</pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=6fd540b91e" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!-- Ordered List --&gt;
+&lt;ol&gt;
+    &lt;li&gt;
+        Item 1
+    &lt;/li&gt;
+    &lt;li&gt;
+        Item 2
+    &lt;/li&gt;
+&lt;/ol&gt;
+&lt;!-- Unordered List --&gt;
+&lt;ul&gt;
+    &lt;li&gt;
+        Item
+    &lt;/li&gt;
+    &lt;li&gt;
+        Another Item
+    &lt;/li&gt;
+&lt;/ul&gt;```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=6fd540b91e" target="_blank" rel="noopener noreferrer">Save this code</a>
 The code block uses the ```&lt;ol&gt;&lt;/ol&gt;``` tag to represent a group of ordered list items, while the ```&lt;li&gt;&lt;/li&gt;``` tag is used to distinguish each list item in the code. The ```&lt;ul&gt;&lt;/ul&gt;``` tag groups a list of unordered items in the code block. Semantic HTML suggests to developers the type of data to put into the element/what will be displayed.
 
 ### Accessibility
@@ -31,18 +58,48 @@ Semantic HTML allows your web page to apply the user agent stylesheet properly; 
 ## How to Write Semantic HTML
 In general, writing semantic HTML code goes beyond presentation and focuses on writing meaningful codes that describe its functionalities. To do this, we’ll use some unique tags and elements to describe sections of a web page.
 The first building block in a web page is the doctype declared at the top of the document. Following this, we have the ```&lt;html&gt;&lt;/html&gt;``` tag, which wraps other elements in the document. Within the HTML tag, we have the ```&lt;head&gt;&lt;/head&gt;``` and ```&lt;body&gt;&lt;/body&gt;``` tag, respectively. The head tags hold information about the web page, while the body tag holds the web page contents:
-e>&lt;!DOCTYPE html&gt;<br>&lt;html lang=&quot;en&quot;&gt;<br>&lt;head&gt;<br>  &lt;!-- Web page information --&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br>    &lt;!-- Web page content --&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=732747be71" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;!-- Web page information --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Web page content --&gt;
+&lt;/body&gt;
+&lt;/html&gt;```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=732747be71" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ### Semantic Elements and Non-semantic Elements
 Semantic elements are HTML elements that describe their content, while non-semantic elements hold no meaning for their content (e.g. ```&lt;div&gt;&lt;/div&gt;```, ```&lt;span&gt;&lt;/span&gt;```). When writing HTML documents, you need to think carefully about the content of an element before choosing the tag that properly represents the content. For example, is it an article, section, ordered list, or unordered list? Thinking in this way helps you write meaningful HTML codes.
 There are a handful of semantic HTML elements, but for this article, we’ll be covering the ones mentioned below;
 
-```&lt;header&gt;```, ```&lt;nav&gt;```, ```&lt;main&gt;```, ```&lt;aside&gt;```, ```&lt;article&gt;```, ```&lt;section&gt;```, ```&lt;summary&gt;```, ```&lt;figcaption&gt;```, ```&lt;details&gt;```, ```&lt;abbr&gt;```, ```&lt;code&gt;```, heading groups ```&lt;h1&gt;``` - ```&lt;h6&gt;``` and ```&lt;picture&gt;```.
+```
+&lt;header&gt;```, ```&lt;nav&gt;```, ```&lt;main&gt;```, ```&lt;aside&gt;```, ```&lt;article&gt;```, ```&lt;section&gt;```, ```&lt;summary&gt;```, ```&lt;figcaption&gt;```, ```&lt;details&gt;```, ```&lt;abbr&gt;```, ```&lt;code&gt;```, heading groups ```&lt;h1&gt;``` - ```&lt;h6&gt;``` and ```&lt;picture&gt;```.
 
 The header elements contain introductory elements for the web page, such as navigation items, logo, and hero section of the page.
 The nav tag holds useful links for navigating a current web page or to other pages in an HTML document:
 
-e>&lt;!-- Example of a navigation links --&gt;<br><br>&lt;nav&gt;<br>    &lt;ul&gt;<br>        &lt;li&gt;<br>            &lt;a href=&quot;#hero&quot;&gt;<br>                Hero link<br>            &lt;/a&gt;<br>        &lt;/li&gt;<br>        &lt;li&gt;<br>            &lt;a href=&quot;page1.html&quot;&gt;<br>                Page 1<br>            &lt;/a&gt;<br>        &lt;/li&gt;<br>        &lt;li&gt;<br>            &lt;a href=&quot;page2.html&quot;&gt;<br>                Page 2<br>            &lt;/a&gt;<br>        &lt;/li&gt;<br>    &lt;/ul&gt;<br>&lt;/nav&gt;</pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=8f7147961e" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!-- Example of a navigation links --&gt;
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#hero&quot;&gt;
+                Hero link
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;page1.html&quot;&gt;
+                Page 1
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;page2.html&quot;&gt;
+                Page 2
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=8f7147961e" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 The main element contains the primary content within the document body. It can be content that extensively explains or expands on information about the web page.
 
@@ -51,21 +108,42 @@ The article element is a piece of information that is independent and reusable. 
 This element is a section of standalone information that another semantic element cannot adequately describe.
 
 This element defines a summary for a ```&lt;details&gt;``` element block:
-e>&lt;!-- Example of a details and summary --&gt;<br><br>&lt;details&gt;<br>    &lt;summary&gt;This is the summary for the full details &lt;/summary&gt;<br>    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, itaque. Lorem ipsum, dolor sit amet consectetur<br>    adipisicing elit. Nostrum animi quaerat fugit ab corporis minima corrupti soluta odio harum deserunt, quae dicta<br>    natus repellendus repellat facere sed quod delectus consectetur!<br>&lt;/details&gt;</pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=cab342a498" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!-- Example of a details and summary --&gt;
+&lt;details&gt;
+    &lt;summary&gt;This is the summary for the full details &lt;/summary&gt;
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic, itaque. Lorem ipsum, dolor sit amet consectetur
+    adipisicing elit. Nostrum animi quaerat fugit ab corporis minima corrupti soluta odio harum deserunt, quae dicta
+    natus repellendus repellat facere sed quod delectus consectetur!
+&lt;/details&gt;```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=cab342a498" target="_blank" rel="noopener noreferrer">Save this code</a>
 When the summary element above it toggles the content in the details tag, it appears like this:
 
 ![](387049efb3/634d89e8984d7e8756d2a5a7_image2_e9982b66704e15fb30340a7a7369a745.g)
 
 The figcaption element represents a caption that describes its parent ```&lt;figure&gt;&lt;/figure&gt;``` tag:
 
-e>&lt;!--Example demonstrating how figcaption is used --&gt;<br><br>&lt;figure&gt;<br>    &lt;img src=&quot;sample-image.webp&quot; alt=&quot;a sample image&quot;&gt;<br>    &lt;figcaption&gt;<br>        A sample image to demonstrate captions<br>    &lt;/figcaption&gt;<br>&lt;/figure&gt;</pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=d2e740a2ef" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;!--Example demonstrating how figcaption is used --&gt;
+&lt;figure&gt;
+    &lt;img src=&quot;sample-image.webp&quot; alt=&quot;a sample image&quot;&gt;
+    &lt;figcaption&gt;
+        A sample image to demonstrate captions
+    &lt;/figcaption&gt;
+&lt;/figure&gt;```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=d2e740a2ef" target="_blank" rel="noopener noreferrer">Save this code</a>
 The abbr element defines an abbreviation/acronym; it has a title <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes#attribute_list" target="_blank" rel="noopener noreferrer">attribute</a> containing the expanded version:
-e>   &lt;!-- How to use abbr tag --&gt;<br><br>    &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt; </pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=54a347ac31" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+   &lt;!-- How to use abbr tag --&gt;
+    &lt;abbr title=&quot;HyperText Markup Language&quot;&gt;HTML&lt;/abbr&gt; ```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=54a347ac31" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 The ```&lt;code&gt;``` tag displays its content as a computer code sample.
 
 These semantic elements give their contents the role of headings, with priority levels from one to six. For example, the ```&lt;h1&gt;``` represents the most important heading on the page. The browser user agent has a default style applied to the heading group tags that emphasize the priority level of each element.
 The ```&lt;picture&gt;``` tag allows you to provide different images for different contexts. It can contain zero or more ```&lt;source&gt;``` tags and a ```&lt;img&gt;``` tag. When a ```&lt;source&gt;``` condition is met, the ```srcset``` link will replace the ```&lt;img&gt;``` placeholder; otherwise, the link in the ```src``` attribute for the ```&lt;img&gt;``` tag is displayed:
-e>&lt;picture&gt;<br>  &lt;source media=&quot;(min-width: 60em)&quot; srcset=&quot;images/dino-wide.jpg&quot;&gt;<br>  &lt;source media=&quot;(min-width: 38em)&quot; srcset=&quot;images/dino-rectangle.jpg&quot;&gt;<br>  &lt;img src=&quot;images/dino-small.jpg&quot; alt=&quot;All the dinosaurs!&quot;&gt;<br>&lt;/picture&gt;</pre><p><a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=d68646ab12" target="_blank" rel="noopener noreferrer">Save this code</a>
+```
+&lt;picture&gt;
+  &lt;source media=&quot;(min-width: 60em)&quot; srcset=&quot;images/dino-wide.jpg&quot;&gt;
+  &lt;source media=&quot;(min-width: 38em)&quot; srcset=&quot;images/dino-rectangle.jpg&quot;&gt;
+  &lt;img src=&quot;images/dino-small.jpg&quot; alt=&quot;All the dinosaurs!&quot;&gt;
+&lt;/picture&gt;```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=d68646ab12" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ## Conclusion

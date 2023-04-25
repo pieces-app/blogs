@@ -14,18 +14,18 @@ You can implement server-side rendering in your application easily by following 
 
 Server-side rendering is used in applications that depend on data that comes from external sources like an e-commerce website.
 Some advantages to using server-side rendering include:
-- <strong>SEO-friendly web pages</strong>: Using server-side rendering means that all page information has been resolved into HTML when the page is downloaded. This helps web crawlers to see page information and data, which is great for SEO purposes.
-- <strong>Instant page availability:</strong> For slower connections, server-side rendered pages are available right away from the first page.
+- **SEO-friendly web pages**: Using server-side rendering means that all page information has been resolved into HTML when the page is downloaded. This helps web crawlers to see page information and data, which is great for SEO purposes.
+- **Instant page availability:** For slower connections, server-side rendered pages are available right away from the first page.
 
 Some disadvantages of using server-side rendering include:
-- <strong>Server latency</strong>: Server-side rendered pages need to fetch data from the server. Imagine a situation when you have many users fetching different pages, such as in an e-commerce site. In this case, there will be latency from the server on page request.
-- <strong>Twice rendered pages</strong>: Server-side rendered pages are first rendered on the server side and then on the client side when the data is sent over and the Javascript works on it. This might have a negative impact on page load speed.
+- **Server latency**: Server-side rendered pages need to fetch data from the server. Imagine a situation when you have many users fetching different pages, such as in an e-commerce site. In this case, there will be latency from the server on page request.
+- **Twice rendered pages**: Server-side rendered pages are first rendered on the server side and then on the client side when the data is sent over and the Javascript works on it. This might have a negative impact on page load speed.
 
 ## Static Site Generation
 Static site generation is a technique whereby data is pre-rendered at build time. This means that all the pages are converted into HTML files, static paths, and assets like JavaScript and CSS. In Next.js, the page is pre-rendered at compilation time and immediately loaded upon request.
 Next.js provides support for static site generation through the use of two functions: The ```getStaticProps``` function and the ```getStaticPaths``` function.
 
-<strong>The ```getStaticProps``` Function</strong>
+**The ```getStaticProps``` Function**
 
 The ```getStaticProps``` function tells Next.js to pre-render the page at build time using props returned by it, and then it sends the necessary data to the app components.
 
@@ -36,7 +36,28 @@ You should use the ```getStaticProps``` function when:
 - You can publicly cache the data.
 
 You can implement static site generation with ```getStaticProps``` by following the example below:
-e>function Blog({ posts }) {<br> return (<br>  &lt;ul&gt;<br>   {posts.map((post) =&gt; (<br>    &lt;li&gt;{post.title}&lt;/li&gt;<br>   ))}<br>  &lt;/ul&gt;<br> )<br>}<br><br>export async function getStaticProps() {<br><br> const res = await fetch('https://.../posts')<br> const posts = await res.json()<br><br> return {<br>  props: {<br>   posts,<br>  },<br> }<br>}<br><br>export default Blog</pre><p><strong>The ```getStaticPaths``` Function</strong>
+```
+function Blog({ posts }) {
+ return (
+  &lt;ul&gt;
+   {posts.map((post) =&gt; (
+    &lt;li&gt;{post.title}&lt;/li&gt;
+   ))}
+  &lt;/ul&gt;
+ )
+}
+export async function getStaticProps() {
+ const res = await fetch('https://.../posts')
+ const posts = await res.json()
+ return {
+  props: {
+   posts,
+  },
+ }
+}
+export default Blog
+```
+**The ```getStaticPaths``` Function**
 During the construction process, this function generates a list of pages that will be pre-rendered. This is significant since the function enables you to design dynamic data routes.
 You can implement static site generation with the ```getStaticPaths``` function via the example below:
 Static site generation is great for portfolio sites and web pages connected to a content management system (CMS).

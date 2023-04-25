@@ -44,36 +44,63 @@ GitHub auto-complete plugins offered:
 ## Getting Started
 The three ways I recommend installing UIkit in your projects are:
 
-<strong>1. Via Download</strong>
+**1. Via Download**
 Download the<a href="https://github.com/uikit/uikit/releases/tag/v3.15.10" target="_blank" rel="noopener noreferrer"> latest release </a>with pre-built JavaScript and CSS.
 
-<strong>2. Via npm or yarn</strong>
+**2. Via npm or yarn**
 
-```yarn add uikit```
+```
+yarn add uikit
+```
 
-<pre>npm i uikit</pre>
 
-<strong>3. Via CDN</strong>
+<pre>npm i uikit
+```
+
+
+**3. Via CDN**
 
 By utilizing HTML classes, we’ll be able to add a stylistic component to our HTML.
 You can use the CDN provided above to continue; I extracted the zipped folder I downloaded for this tutorial.
 It's simple to apply UIkit's styles, and one feature I like about them is that you can customize them by utilizing the standard CSS style attribute. To make a long story short, styles are added in the same way that simple HTML styles are added. So, let's get started!
 Code:
-e>&lt;h1 class=&quot;uk-text-primary&quot;&gt;Hello primary color&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-success&quot;&gt;Hello success color&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-warning&quot;&gt;Hello warning color&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-danger&quot;&gt;Hello danger color&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-muted&quot;&gt;Hello muted color&lt;/h1&gt;</pre><p>Output:
+```
+&lt;h1 class=&quot;uk-text-primary&quot;&gt;Hello primary color&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-success&quot;&gt;Hello success color&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-warning&quot;&gt;Hello warning color&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-danger&quot;&gt;Hello danger color&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-muted&quot;&gt;Hello muted color&lt;/h1&gt
+```
+Output:
 
 ![](flow.com/6143afec68f555387049efb3/635bfcf5642ab73db9691cf9_image8_640b61e791c6928f734be47d5e279043_800.p)
 
     ### 2. Text Alignment
 By applying the formats supplied below, you can quickly add alignment to an element.
 Code:
-e><em>&lt;!-- Alignment --&gt;<br></em>&lt;h1 class=&quot;uk-text-left&quot;&gt;Align left&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-center&quot;&gt;Align center&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-right&quot;&gt;Align right&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-left uk-text-success&quot;&gt;Align left with color&lt;/h1&gt;</pre><p>Output:
+```
+&lt;!-- Alignment --&gt;
+&lt;h1 class=&quot;uk-text-left&quot;&gt;Align left&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-center&quot;&gt;Align center&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-right&quot;&gt;Align right&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-left uk-text-success&quot;&gt;Align left with color&lt;/h1&gt
+```
+Output:
 ![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/635bfcf5642ab77516691cfa_image6_3fe4c361fab1c278d6fc3807e08bf1b2_800.p)
 You can see that we added combined styles for &quot;align left with color&quot;. This is fantastic since it allows you to add different styles by experimenting with the styles already provided.
 
 ### 3. Font Weight
 Next, we'll be working with font weight, which is simple to use and implement. You just need to be aware of how it is represented in standard CSS font-weight-adding values (e.g., 300, 900). I'll explain everything below and use code examples so you can get a clear understanding of font weight in UIkit.
 Code:
-e><em>&lt;!-- Font Weight --&gt;<br></em>&lt;h1 class=&quot;uk-text-light&quot;&gt;Light text which is 300 in font Weight&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-normal&quot;&gt;Normal text which is 400 in font Weight&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-bold&quot;&gt;Bold text which is 900 in font Weight&lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-lighter uk-text-success&quot;&gt;Lighter text with no default value &lt;/h1&gt;<br>&lt;h1 class=&quot;uk-text-bolder uk-text-danger&quot;&gt;Bolder text with no default value&lt;/h1&gt;</pre><p>Output:
+```
+&lt;!-- Font Weight --&gt;
+&lt;h1 class=&quot;uk-text-light&quot;&gt;Light text which is 300 in font Weight&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-normal&quot;&gt;Normal text which is 400 in font Weight&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-bold&quot;&gt;Bold text which is 900 in font Weight&lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-lighter uk-text-success&quot;&gt;Lighter text with no default value &lt;/h1&gt;
+&lt;h1 class=&quot;uk-text-bolder uk-text-danger&quot;&gt;Bolder text with no default value&lt;/h1&gt
+```
+Output:
 
 ![](bflow.com/6143afec68f555387049efb3/635bfcf5642ab73b5a691d07_image4_11922635cae64082d5bbe1d114948e2e_800.p)
 
@@ -84,25 +111,59 @@ the uk-button-default, etc.
 Applying styles to the button will allow us to use it.
 
 Code:
-e>&lt;br&gt;<br>&lt;button class=&quot;uk-button uk-button-default&quot;&gt; Default button&lt;/button&gt;<br>&lt;button class=&quot;uk-button uk-button-default&quot; disabled&gt;Disabled Default button&lt;/button&gt;<br>&lt;br&gt;<br>&lt;br&gt;<br>&lt;button class=&quot;uk-button uk-button-danger&quot;&gt; Danger Button&lt;/button&gt;<br>&lt;button class=&quot;uk-button uk-button-primary&quot;&gt;Primary Button&lt;/button&gt;</pre><p>Output:
+```
+&lt;br&gt;
+&lt;button class=&quot;uk-button uk-button-default&quot;&gt; Default button&lt;/button&gt;
+&lt;button class=&quot;uk-button uk-button-default&quot; disabled&gt;Disabled Default button&lt;/button&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;button class=&quot;uk-button uk-button-danger&quot;&gt; Danger Button&lt;/button&gt;
+&lt;button class=&quot;uk-button uk-button-primary&quot;&gt;Primary Button&lt;/button&gt
+```
+Output:
 ![](flow.com/6143afec68f555387049efb3/635bfcf5642ab719df691d06_image7_00a145cbc69d33561d5c74c58bf78f93_800.p)
 Learn more about styling buttons<a href="https://getuikit.com/docs/button" target="_blank" rel="noopener noreferrer"> here</a>.
 
 ### 5. Alerts
 This section teaches you how to show alert messages with styles applied. Let's jump in.
 Common classes applied to alert styles:
-```uk-alert:``` Installs the alert for getting started
-```.uk-alert-primary:``` Gives the message a prominent styling.
-```.uk-alert-success:``` Indicates success or a positive message.
-```.uk-alert-warning:``` Indicates a message containing a warning.
-```.uk-alert-danger:``` Indicates an important or error message.
+```
+uk-alert:``` Installs the alert for getting started
+```
+.uk-alert-primary:``` Gives the message a prominent styling.
+```
+.uk-alert-success:``` Indicates success or a positive message.
+```
+.uk-alert-warning:``` Indicates a message containing a warning.
+```
+.uk-alert-danger:``` Indicates an important or error message.
 .```uk-alert-close:``` Implements styles and closes the alert messages.
-```.uk-close:``` Installer-specific attribute that sets up the JavaScript on click event, which will be used to hide the error message.
+```
+.uk-close:``` Installer-specific attribute that sets up the JavaScript on click event, which will be used to hide the error message.
 
 We all know that these error messages don’t display long on the screen. An event must occur, and either you close it manually, or it closes itself automatically, which could be implemented with JavaScript ```SetTimeout```. However, ```SetTimeout``` is not covered in this tutorial, so use this <a href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout" target="_blank" rel="noopener noreferrer">link</a> to learn about ```SetTimeout```.
 
 Code:
-e><em>&lt;!-- Alert  --&gt;<br></em>&lt;div class=&quot;uk-alert-primary&quot; uk-alert&gt;<br>  &lt;a class=&quot;uk-alert-close&quot; uk-close&gt;&lt;/a&gt;<br>  &lt;p&gt;This is a primary success message.&lt;/p&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;uk-alert-success&quot; uk-alert&gt;<br>  &lt;a class=&quot;uk-alert-close&quot; uk-close&gt;&lt;/a&gt;<br>  &lt;p&gt;This is a secondary success message.&lt;/p&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;uk-alert-warning&quot; uk-alert&gt;<br>  &lt;a class=&quot;uk-alert-close&quot; uk-close&gt;&lt;/a&gt;<br>  &lt;p&gt;This is a danger warning message.&lt;/p&gt;<br>&lt;/div&gt;<br>&lt;div class=&quot;uk-alert-danger&quot; uk-alert&gt;<br>  &lt;a class=&quot;uk-alert-close&quot; uk-close&gt;&lt;/a&gt;<br>  &lt;p&gt;This is a danger alert message.&lt;/p&gt;<br>&lt;/div&gt;</pre><p>Output:
+```
+&lt;!-- Alert  --&gt;
+&lt;div class=&quot;uk-alert-primary&quot; uk-alert&gt;
+  &lt;a class=&quot;uk-alert-close&quot; uk-close&gt;&lt;/a&gt;
+  &lt;p&gt;This is a primary success message.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;uk-alert-success&quot; uk-alert&gt;
+  &lt;a class=&quot;uk-alert-close&quot; uk-close&gt;&lt;/a&gt;
+  &lt;p&gt;This is a secondary success message.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;uk-alert-warning&quot; uk-alert&gt;
+  &lt;a class=&quot;uk-alert-close&quot; uk-close&gt;&lt;/a&gt;
+  &lt;p&gt;This is a danger warning message.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;uk-alert-danger&quot; uk-alert&gt;
+  &lt;a class=&quot;uk-alert-close&quot; uk-close&gt;&lt;/a&gt;
+  &lt;p&gt;This is a danger alert message.&lt;/p&gt;
+&lt;/div&gt
+```
+Output:
 
 ![](low.com/6143afec68f555387049efb3/635bfcf5642ab7836b691cfe_image12_a037b8b0a0ee4842fe44c9d168cc794a_800.p)
 
@@ -113,32 +174,77 @@ Let's get started.
 
 A dropdown can contain a nav from the <a href="https://getuikit.com/docs/nav" target="_blank" rel="noopener noreferrer">Nav component</a>. Simply add the ```.uk-nav``` class and the ```.uk-dropdown-nav``` modifier to a ```&lt;ul&gt;``` element.
 Code:
-e>&lt;button class=&quot;uk-button uk-button-default&quot; type=&quot;button&quot;&gt;Hover&lt;/button&gt;<br>&lt;div uk-dropdown&gt;<br>  &lt;ul class=&quot;uk-nav uk-dropdown-nav&quot;&gt;<br>    &lt;li class=&quot;uk-active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Active&lt;/a&gt;&lt;/li&gt;<br>    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;<br>    &lt;li class=&quot;uk-nav-header&quot;&gt;Header&lt;/li&gt;<br>    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;<br>    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;<br>    &lt;li class=&quot;uk-nav-divider&quot;&gt;&lt;/li&gt;<br>    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;<br>  &lt;/ul&gt;<br>&lt;/div&gt;</pre><p>Output:
+```
+&lt;button class=&quot;uk-button uk-button-default&quot; type=&quot;button&quot;&gt;Hover&lt;/button&gt;
+&lt;div uk-dropdown&gt;
+  &lt;ul class=&quot;uk-nav uk-dropdown-nav&quot;&gt;
+    &lt;li class=&quot;uk-active&quot;&gt;&lt;a href=&quot;#&quot;&gt;Active&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;uk-nav-header&quot;&gt;Header&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;uk-nav-divider&quot;&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Item&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt
+```
+Output:
 
 ![](-ssl.webflow.com/6143afec68f555387049efb3/635bfcf5642ab72757691cfc_image2_640b1e2130757c00c26350eed1219dc9_800.p)
-You can learn more about dropdowns from the UIkit<a href="https://getuikit.com/docs/dropdown" target="_blank" rel="noopener noreferrer"> official doc</a><strong>.</strong>
+You can learn more about dropdowns from the UIkit<a href="https://getuikit.com/docs/dropdown" target="_blank" rel="noopener noreferrer"> official doc</a>**.**
 
 ### 7. Background
 To give an element a background color, you can include one of the following classes. Your chosen or modified UIkit style determines the actual color for each modification.
-```.uk-background-default:``` Applies the default background color.
-```.uk-background-muted:``` Applies a muted background color.
-```.uk-background-primary:``` Applies the primary background color.
-```.uk-background-secondary:``` Applies a secondary background color.
+```
+.uk-background-default:``` Applies the default background color.
+```
+.uk-background-muted:``` Applies a muted background color.
+```
+.uk-background-primary:``` Applies the primary background color.
+```
+.uk-background-secondary:``` Applies a secondary background color.
 
 > Note: I will use ```uk-flex``` to implement the common CSS display flex.
 
 Code:
-e>&lt;div class=&quot;uk-child-width uk-text-center uk-flex&quot;&gt;<br>  &lt;div&gt;<br>    &lt;div class=&quot;uk-background-primary uk-light uk-padding uk-panel&quot;&gt;<br>      &lt;p class=&quot;uk-h4&quot;&gt;Primary&lt;/p&gt;<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>  &lt;div&gt;<br>    &lt;div class=&quot;uk-background-secondary uk-light uk-padding uk-panel&quot;&gt;<br>      &lt;p class=&quot;uk-h4&quot;&gt;Secondary&lt;/p&gt;<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>&lt;/div&gt;</pre><p>Note: ```uk-child-width``` stretches the width of the direct child of the parent ```div``` where flex was applied.
+```
+&lt;div class=&quot;uk-child-width uk-text-center uk-flex&quot;&gt;
+  &lt;div&gt;
+    &lt;div class=&quot;uk-background-primary uk-light uk-padding uk-panel&quot;&gt;
+      &lt;p class=&quot;uk-h4&quot;&gt;Primary&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;div class=&quot;uk-background-secondary uk-light uk-padding uk-panel&quot;&gt;
+      &lt;p class=&quot;uk-h4&quot;&gt;Secondary&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt
+```
+Note: ```uk-child-width``` stretches the width of the direct child of the parent ```div``` where flex was applied.
 Output:
 ![](s-ssl.webflow.com/6143afec68f555387049efb3/635bfcf5642ab761e8691cf8_image5_130c98169e463436597cc5345a2e4851_800.p)
 
 ### 8. Background Images
 To add a background image to your app if you’re implementing an inline approach, use ```style=&quot;background-image: url(images/dark.jpg)```. In order to apply styles and alignment to the background, apply the UIkit classes.
 Code:
-e>&lt;div class=&quot;uk-child-width-1-2@s uk-light&quot; uk-grid&gt;<br>  &lt;div&gt;<br>    &lt;div class=&quot;.uk-background-center-right uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center&quot;<br>style=&quot;background-image: url(img.png);&quot;&gt;<br>      &lt;h1 class=&quot;uk-h1 uk-text-bolder&quot;&gt;Hello World&lt;/h1&gt;<br>    &lt;/div&gt;<br>  &lt;/div&gt;<br>&lt;/div&gt;</pre><p>Output:
+```
+&lt;div class=&quot;uk-child-width-1-2@s uk-light&quot; uk-grid&gt;
+  &lt;div&gt;
+    &lt;div class=&quot;.uk-background-center-right uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-middle uk-flex-center&quot;
+style=&quot;background-image: url(img.png);&quot;&gt;
+      &lt;h1 class=&quot;uk-h1 uk-text-bolder&quot;&gt;Hello World&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt
+```
+Output:
 ![](a department store." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/635bfcf6642ab7034e691d1e_image10_61c1777ef718ace59bb90182d5a77665_800.p)
 Add the ```uk-background-norepeat``` class to stop smaller images from repeating to fill the background space.
-e>&lt;div class=&quot;uk-background-norepeat&quot;&gt;&lt;/div&gt;</pre><p>You can learn more about background images at this<a href="https://getuikit.com/docs/background" target="_blank" rel="noopener noreferrer"> link</a>.
+```
+&lt;div class=&quot;uk-background-norepeat&quot;&gt;&lt;/div&gt
+```
+You can learn more about background images at this<a href="https://getuikit.com/docs/background" target="_blank" rel="noopener noreferrer"> link</a>.
 
 ### 9. Toggle
 Use a toggle to reveal, change, or alter the look of certain content elements.
@@ -148,7 +254,12 @@ The item's class or attribute can be added or removed using the toggle. It autom
 Additionally, you can toggle several elements at once. Simply use a selector that applies to all items and add the ```target: SELECTOR``` option to the ```uk-toggle``` attribute.
 
 Code:
-e>&lt;button class=&quot;uk-button uk-button-default&quot; type=&quot;button&quot; uk-toggle=&quot;target: .toggle&quot;&gt;Toggle&lt;/button&gt;<br>&lt;p class=&quot;toggle&quot;&gt;UIKit is Easy!&lt;/p&gt;<br>&lt;p class=&quot;toggle&quot; hidden&gt;Start using it!&lt;/p&gt;</pre><p>Output: 
+```
+&lt;button class=&quot;uk-button uk-button-default&quot; type=&quot;button&quot; uk-toggle=&quot;target: .toggle&quot;&gt;Toggle&lt;/button&gt;
+&lt;p class=&quot;toggle&quot;&gt;UIKit is Easy!&lt;/p&gt;
+&lt;p class=&quot;toggle&quot; hidden&gt;Start using it!&lt;/p&gt
+```
+Output:
 ![](s://uploads-ssl.webflow.com/6143afec68f555387049efb3/635bfcf5642ab7747c691cfb_image1_c23d94df700c9313e5d3f53c53ef46f8_800.p)
 ![](rc="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/635bfcf5642ab70ed9691cfd_image3_3d672505cdef977296d0e33b2da84f8a_800.p)
 
@@ -164,8 +275,63 @@ Use the width component to specify the slider items' widths. Use the ```.uk-chil
 Please remember that everything still functions if you use conventional CSS.
 
 The basic CSS that we'll be using without the slider is seen below:
-e>&lt;style&gt;<br>  img {<br>    width: 340px;<br>    height: 400px;<br>    object-fit: cover;<br>  }<br>&lt;/style&gt;</pre><p>Slide Code:
-e>&lt;div class=&quot;uk-position-relative uk-visible-toggle uk-light&quot; tabindex=&quot;-1&quot; uk-slider&gt;<br>  &lt;ul class=&quot;uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m&quot;&gt;<br>  &lt;li&gt;<br>    &lt;img src=&quot;slides/slide3.png&quot; alt=&quot;&quot;&gt;<br>    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;<br>      &lt;h1&gt;1&lt;/h1&gt;<br>    &lt;/div&gt;<br>  &lt;/li&gt;<br>  &lt;li&gt;<br>    &lt;img src=&quot;slides/slide1.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;<br>      &lt;h1&gt;2&lt;/h1&gt;<br>    &lt;/div&gt;<br>  &lt;/li&gt;<br>  &lt;li&gt;<br>    &lt;img src=&quot;slides/slide2.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;<br>      &lt;h1&gt;3&lt;/h1&gt;<br>    &lt;/div&gt;<br>  &lt;/li&gt;<br>  &lt;li&gt;<br>    &lt;img src=&quot;slides/slide6.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;<br>      &lt;h1&gt;4&lt;/h1&gt;<br>    &lt;/div&gt;<br>  &lt;/li&gt;<br>  &lt;li&gt;<br>    &lt;img src=&quot;slides/slide5.jpg&quot; alt=&quot;&quot;&gt;<br>    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;<br>     &lt;h1&gt;5&lt;/h1&gt;<br>    &lt;/div&gt;<br>  &lt;/li&gt;<br>  &lt;li&gt;<br>    &lt;img src=&quot;slides/slide6.jpg&quot; alt=&quot;&quot;&gt;<br>      &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;<br>        &lt;h1&gt;6&lt;/h1&gt;<br>      &lt;/div&gt;<br>  &lt;/li&gt;<br>&lt;/ul&gt;<br>&lt;a class=&quot;uk-position-center-left uk-position-small uk-hidden-hover&quot; href=&quot;#&quot; uk-slidenav-previous<br>uk-slider-item=&quot;previous&quot;&gt;&lt;/a&gt;<br>&lt;a class=&quot;uk-position-center-right uk-position-small uk-hidden-hover&quot; href=&quot;#&quot; uk-slidenav-next<br>uk-slider-item=&quot;next&quot;&gt;&lt;/a&gt;<br>&lt;/div&gt;</pre><p>Output:
+```
+&lt;style&gt;
+  img {
+    width: 340px;
+    height: 400px;
+    object-fit: cover;
+  }
+&lt;/style&gt
+```
+Slide Code:
+```
+&lt;div class=&quot;uk-position-relative uk-visible-toggle uk-light&quot; tabindex=&quot;-1&quot; uk-slider&gt;
+  &lt;ul class=&quot;uk-slider-items uk-child-width-1-2 uk-child-width-1-3@s uk-child-width-1-4@m&quot;&gt;
+  &lt;li&gt;
+    &lt;img src=&quot;slides/slide3.png&quot; alt=&quot;&quot;&gt;
+    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;
+      &lt;h1&gt;1&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;img src=&quot;slides/slide1.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;
+      &lt;h1&gt;2&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;img src=&quot;slides/slide2.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;
+      &lt;h1&gt;3&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;img src=&quot;slides/slide6.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;
+      &lt;h1&gt;4&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;img src=&quot;slides/slide5.jpg&quot; alt=&quot;&quot;&gt;
+    &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;
+     &lt;h1&gt;5&lt;/h1&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;img src=&quot;slides/slide6.jpg&quot; alt=&quot;&quot;&gt;
+      &lt;div class=&quot;uk-position-center uk-panel&quot;&gt;
+        &lt;h1&gt;6&lt;/h1&gt;
+      &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;a class=&quot;uk-position-center-left uk-position-small uk-hidden-hover&quot; href=&quot;#&quot; uk-slidenav-previous
+uk-slider-item=&quot;previous&quot;&gt;&lt;/a&gt;
+&lt;a class=&quot;uk-position-center-right uk-position-small uk-hidden-hover&quot; href=&quot;#&quot; uk-slidenav-next
+uk-slider-item=&quot;next&quot;&gt;&lt;/a&gt;
+&lt;/div&gt
+```
+Output:
 ![](bflow.com/6143afec68f555387049efb3/635bfcf6642ab758b1691d1f_image11_3a72dcea473bd41293b4d75012fd1e8c_800.p)
 
 The slider appears and is responsive to the outside appearance of things. <a href="https://getuikit.com/docs/slider" target="_blank" rel="noopener noreferrer">Click here</a> to find out more about sliders.

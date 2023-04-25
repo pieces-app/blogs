@@ -15,10 +15,10 @@ We will cover briefly:
 
 Before explaining the answer to this question, you need to know about FFI (Foreign Function Interface).
 
-### <strong>FFI Programming explained</strong>
+### **FFI Programming explained**
 
 FFI stands for Foreign Function Interface and allows one programming language to work with libraries written in another language. It's a common technique used by many programming languages, including Java, which refers to it as <a href="http://wiki.c2.com/?JavaNativeInterface">JavaNativeInterface</a>. FFI was originally created in <a href="http://wiki.c2.com/?CommonLisp">CommonLisp</a> but can be used in any language.
-When a low-level language is referred to as the &quot;<strong>host</strong>&quot; language and a high-level language is referred to as the &quot;<strong>guest</strong>&quot; language, communication between them is established as follows:
+When a low-level language is referred to as the &quot;**host**&quot; language and a high-level language is referred to as the &quot;**guest**&quot; language, communication between them is established as follows:
 - An API is provided for the host language to connect with guests.
 - A tool that doesn't belong to either language is used to build the bridge.
 - The guest language is also responsible for bridging the gap with the host language. The guest can call any function in the host language, but must have support for low-level features to communicate effectively.
@@ -40,7 +40,7 @@ Dart ffi is used to read, write, allocate and deallocate native memory. There ar
 - <a href="https://pub.dev/packages/tflite_flutter">tflite_flutter</a>
 - <a href="https://pub.dev/packages/dbus">dbus</a>
 
-### FFI Programming: <strong>Ways to use Dart FFI</strong>
+### FFI Programming: **Ways to use Dart FFI**
 
 There are times when you want to create your own fresh library, but more often, the library already exists (created by some other team) and you simply want to use it. In either case, we have the following choices:
 - Manually creating the FFI bindings
@@ -63,7 +63,7 @@ Instantiable Native Types: In Dart code, you can create instances of arrays, poi
 Purely Marker Native Types: Platform agnostic types like Bool, Double, Int64, Int32 cannot be created in Dart code.
 
 There are also<a href="https://api.dart.dev/stable/dart-ffi/Abi-class.html"> ABI</a> marker types that extend AbiSpecificInteger, like Size Short, etc.
-So, we’ve explained <strong>FFI</strong> and <strong>ffigen</strong>— let’s explore what’s new in ffigen in Dart 2.18.
+So, we’ve explained **FFI** and **ffigen**— let’s explore what’s new in ffigen in Dart 2.18.
 
 ## FFI Programming: What’s new in FFI Gen
 ![](e ObjC &amp; Swift interop, platform-specific http and a roadmap." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913916779cd895_image23_33ca671085291684a39ed958d46518ba_800.p)
@@ -91,13 +91,13 @@ We will be integrating the NSURLCache inside Dart and call some of its functions
 - diskCapacity : The capacity of the on-disk cache, in bytes.
 - memoryCapacity : The capacity of the in-memory cache, in bytes.
 
-## <strong>Creating a Dart CLI App</strong>
+## **Creating a Dart CLI App**
 We’ll start by creating the Dart CLI App using the below command. Also, upgrade to the latest Dart version 2.18!
 ![](p" src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139adb49cd87d_image3_b048986df92d718c0dccd512de7078da_800.p)
 
 <a href="https://aseem.pieces.cloud/?p=5eb640a0b0">Save to Pieces</a>
 
-<em>Note: There are various templates available for Dart; see below. By default, it selects console application.</em>
+Note: There are various templates available for Dart; see below. By default, it selects console application.
 
 ![](nsole template." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139bbec9cd88e_image7_2167c37e2564acebf893dc19f337e3c7_800.p)
 This gives us a basic template with all of the necessary files, for instance, pubspec or linter. Open the pubspec file to check the dependencies that come bundled with this template.
@@ -120,20 +120,20 @@ Let’s see the above configuration options:
 - headers This includes the path to the header files It includes everything from the location as specified under the entry points. In our case, the header files are present inside the Foundation.framework
 - exclude-all-by-default When a declaration filter (eg functions or structs:) is empty, it defaults to including everything. If this flag is enabled, the default behavior is to exclude everything instead.
 
-## <strong>Objective-C Config Options</strong>
+## **Objective-C Config Options**
 - objc-interfaces This filters for the interface declarations. In our case, we specify the NSURLCache interface
 
 ![](loads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913961609cd89b_image1_eb1155c660f60dff51c04c0100b8cc45_800.p)
 <a href="https://aseem.pieces.cloud/?p=a3af428b23">Save to Pieces</a>
 
-<strong>Generate FFI Bindings</strong>
+**Generate FFI Bindings**
 To generate the bindings, run the following:
 ![](//uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913905cd9cd88f_image6_063dc5d88c1cc7ccd52ff3c60dbbef36_800.p)
 
 <a href="https://aseem.pieces.cloud/?p=e942439276">Save to Pieces</a>
 This command creates a new file (url_cache_bindings.dart) as specified inside the output parameter of the url_cache_config.yaml, which contains a bunch of generated API bindings. Using this binding file, we can write our Dart main method.
 
-### <strong>Integrate into Dart</strong>
+### **Integrate into Dart**
 We generated the bindings using the FFI Gen in the above step. Let’s see how to integrate it with Dart.
 First, We create a new dart file called url_cache.dart.
 Inside this file, we will be loading and interacting with the generated library.
@@ -147,14 +147,14 @@ We mentioned the path of the library in the first step. Since the library we are
 
 > Note: We can use our own library or a static library (linked inside our app).
 
-<strong>Dynamic Linking</strong>: In this type, the external libraries are placed inside the final executable; however, the actual linking happens at the run time. In dynamic linking, only one copy of the shared library is kept inside the memory which <strong>reduces the program size, memory, and disk space</strong>. Since the libraries are shared, <strong>dynamic linking programs are slower</strong> in comparison to static linking programs.
+**Dynamic Linking**: In this type, the external libraries are placed inside the final executable; however, the actual linking happens at the run time. In dynamic linking, only one copy of the shared library is kept inside the memory which **reduces the program size, memory, and disk space**. Since the libraries are shared, **dynamic linking programs are slower** in comparison to static linking programs.
 A dynamically linked library is distributed in a separate file or folder within the app and loaded on demand. A dynamically linked library can be loaded into Dart via DynamicLibrary.open.
 
-<strong>Static Linking</strong>: In this type, modules are copied inside the program before creating the final executable. Since these programs include libraries, they are <strong>large in size</strong>. However, because the libraries are already compiled, these programs are <strong>faster than dynamically linked programs</strong>.
+**Static Linking**: In this type, modules are copied inside the program before creating the final executable. Since these programs include libraries, they are **large in size**. However, because the libraries are already compiled, these programs are **faster than dynamically linked programs**.
 
 A statically linked library is embedded into the app’s executable image and loaded when the app starts. Symbols from a statically linked library can be loaded using DynamicLibrary.executable or DynamicLibrary.process.
 
-<strong>Next</strong>, we construct the URLCacheLibrary by using the constructor which needs the dylib path. For this, we call DynamicLibrary.open. This loads the library file and provides access to its symbols.
+**Next**, we construct the URLCacheLibrary by using the constructor which needs the dylib path. For this, we call DynamicLibrary.open. This loads the library file and provides access to its symbols.
 
 Note: This process loads the library into the DartVM only once, regardless of the function calls.
 Once the library gets initialized, we can call the different methods present inside it (which were generated).
@@ -191,7 +191,7 @@ For generating the bindings we run the following:
 
 <a href="https://aseem.pieces.cloud/?p=55cf499839">Save to Pieces</a>
 
-This command creates a new file (timezone_bindings.dart) as specified inside the output<strong> </strong>parameter that contains generated API bindings. Using this binding file, we can write our Dart main method.
+This command creates a new file (timezone_bindings.dart) as specified inside the output** **parameter that contains generated API bindings. Using this binding file, we can write our Dart main method.
 
 We create a new dart file called timezones.dart. Inside this file, we load and interact with the generated library.
 ![](d timezone.dart in the terminal. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913909739cd897_image22_41285520a997cc307f2931ee928524e8_800.p)
@@ -216,10 +216,10 @@ Since we have the instance of NSTimeZone, we can access the different methods na
 The result is:
 ![]( the timezone name." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d1591398bc59cd882_image10_d7700faa66825545d384973fcc56f311_800.p)
 
-### <strong>Garbage Collection</strong>
+### **Garbage Collection**
 Objective-C uses reference counting for memory management, but on the Dart side, memory management is handled automatically. The Dart wrapper object retains a reference to the Objective-C object, and when the Dart object is garbage collected, the generated code automatically releases that reference using a<a href="https://api.dart.dev/dart-ffi/NativeFinalizer-class.html"> NativeFinalizer</a>.
 
-### <strong>Limitations of Objective-C Interoperability </strong>
+### **Limitations of Objective-C Interoperability **
 
 The current issues with multithreading are a limitation to Dart’s experimental support for Objective-C interop. However, these limitations are not intentional, but due to the relationship between the Dart isolates and OS threads and how Apple handles multithreading.
 - While FFI Gen supports converting Dart functions to Objective-C blocks, most Apple APIs don’t guarantee on which thread a callback will run.
@@ -230,10 +230,10 @@ Since the VM can change the thread in which an isolate can run, this means a cal
 ## FFI Programming: Testing FFIGen
 Up to this point, we’ve learned how to generate bindings and consume them from a Dart CLI. In this section, we’ll see how to test the generated bindings.
 We’ll install the dependencies<a href="https://pub.dev/packages/yaml"> YAML</a> and<a href="https://pub.dev/packages/logging"> logging</a> and create a file called ffi_2_18_test.
-<em>Note: The tests should follow the naming pattern &lt;name&gt;_test.dart.</em>
+Note: The tests should follow the naming pattern &lt;name&gt;_test.dart.
 The YAML dependency helps in the parsing of a YAML file, whereas logging provides us with the APIs useful for logging (based on the configuration as specified).
 
-### <strong>Set up Logging</strong>
+### **Set up Logging**
 We’ll configure the logging level and add a handler for the log messages. The level is set to Level.SEVERE. Next, we’ll listen to the onRecord stream for LogRecord events.
 
 ![](cord.message&quot;." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913983d99cd885_image25_6b28a8793c4e6721234f0fed3de7f534_800.p)
@@ -241,7 +241,7 @@ We’ll configure the logging level and add a handler for the log messages. The 
 <a href="https://aseem.pieces.cloud/?p=3548498159">Save to Pieces</a>
 The function logWarnings is called inside setUpAll. The function registered under setUpAll will be run once, before all of the tests.
 
-<strong>Test for NSURLCache</strong>
+**Test for NSURLCache**
 ![](://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913986939cd898_image27_983602cbdf4bb69213f01e1c45d9dc6d_800.p)
 
 <a href="https://aseem.pieces.cloud/?p=0b98428212">Save to Pieces</a>
@@ -266,7 +266,7 @@ This is because once we run the test using:
 It generates the config file during the run time, which then compares with the strings above.
 ![]( the terminal." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913971679cd894_image13_41f55bb0755f8d62a3b790bb453d36ab_800.p)
 
-<strong>Test for NSTimeZone</strong>
+**Test for NSTimeZone**
 ![](ploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139069d9cd89f_image20_712058fe043ecff10368e8a698e4b256_800.p)
 
 <a href="https://aseem.pieces.cloud/?p=036c4e8a83">Save to Pieces</a>

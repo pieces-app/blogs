@@ -8,7 +8,7 @@ id="">The Easy Peasy library handles state management in applications. It’s an
 
 ### Pros of Using Easy Peasy for React State Management
 - It provides all of Redux’s features, including state persistence and Redux middleware support.
-- Easy Peasy provides support for global, context, or local stores: The global store is accessible everywhere in your application, while a context store is accessible to a selected component. The local stores are for specific components, and can replace <strong id="">useState</strong>.
+- Easy Peasy provides support for global, context, or local stores: The global store is accessible everywhere in your application, while a context store is accessible to a selected component. The local stores are for specific components, and can replace <strong id="">useState**.
 - Easy Peasy supports computed properties, allowing you to create a state from an operation performed on another state.
 For more on Easy Peasy Redux, you can check its <a href="https://easy-peasy.vercel.app/" id="">official website</a>.
 
@@ -18,7 +18,8 @@ Easy Peasy has many advantages, but we should consider some tradeoffs of integra
 - You must know Redux in order to use it for React state management.
 
 ## Getting Started with Easy Peasy
-id="">Let’s look at the parts of Easy Peasy you need to understand to use the library.<br>
+id="">Let’s look at the parts of Easy Peasy you need to understand to use the library.
+
 
 ### Store
 id="">The store holds all of the actions and states for the application. The Easy Peasy store's structure is on model/object definition; they contain the states and all actions that act on the state.
@@ -35,7 +36,7 @@ id="">Actions are defined using the "action" function, encapsulating a function 
 
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62e40ab7765430ef6902d3ce_raycast-untitled%20(38).png" loading="lazy" id="" width="auto" height="auto" alt="A React code snippe)
 id="">The action above accepts a string as a payload to update the name state on the model.
-id=""><strong id=""><em id="">NB</em>:</strong> You should not destructure the state in your actions, as this will prevent the state from being updated.
+id=""><strong id=""><em id="">NB:** You should not destructure the state in your actions, as this will prevent the state from being updated.
 
 ### Thunks
 id="">Thunks are actions used to handle <a href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)" target="_blank" id="">side effects</a>, e.g., HTTPS requests.
@@ -44,8 +45,8 @@ id="">In the code block above, we have a thunk "fetchUserName" that accepts mode
 
 ### Hooks and Typing Hooks
 id="">Easy Peasy comes with a few custom hooks that help use its features or access the store:
-- <strong id="">useStoreAction hook</strong>: grants you access to the actions in the store
-- <strong id="">useStore:</strong> enables you to access the store instance
+- <strong id="">useStoreAction hook**: grants you access to the actions in the store
+- <strong id="">useStore:** enables you to access the store instance
 
 id="">You can check out the <a href="https://easy-peasy.vercel.app/docs/api/use-store-actions.html" id="">documentation</a> for additional information on the custom hooks and how to use them for React state management.
 id="">When using React-Typescript, you need to type the hooks to have the store model type. We can achieve this with the createTypedHooks function.
@@ -85,11 +86,12 @@ id="">In the code block above, we create a new store by calling the createStore 
 
 ### Integrating Easy Peasy State Management
 id="">To integrate the store into our app, we must wrap the application within the StoreProvider component from Easy Peasy.
-id=""><strong id=""><em id="">NB: </em></strong><em id="">If you are using React 18, you will need to cast the StoreProvider component; this will override the type error for children. You will also need to disable React.StrictMode in the index.tsx file.</em>
+id=""><strong id=""><em id="">NB: **<em id="">If you are using React 18, you will need to cast the StoreProvider component; this will override the type error for children. You will also need to disable React.StrictMode in the index.tsx file.
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62e41a1e6c8bce397de06023_raycast-untitled%20(51).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
 id="">We cast the type for the StoreProvider component from the code block and setting the prop type for children to React.ReactNode. Then, in the app function, we wrap the application in the StoreProvider component with the store props accepting the store created as value. Finally, the <a href="https://easy-peasy.vercel.app/docs/api/persist.html#rehydrating-your-store" id="">useStoreRehydrated</a> hook checks for the persisted data and rehydrates the state with the data found.
 
-### Using Easy Peasy for React Typescript State Management<br>
+### Using Easy Peasy for React Typescript State Management
+
 id="">We have completed the setup for Easy Peasy and integrated the store into the application, so it’s accessible from every component. The following action will use the state and actions from the store to get the application working.
 id="">To use the store state in the application component, we call the useStoreState hook.
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62e41a51ca2a2c74422bc819_raycast-untitled%20(52).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)

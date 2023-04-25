@@ -45,11 +45,11 @@ Further, ARIA can be used to create elements that are not present, like the tab 
 
 There are five important rules that guide developers through using ARIA and implementing accessible codes on the web:
 
-<strong>Rule 1:</strong> Always use the native semantics that have built-in roles instead of altering, taking control of, or adding ARIA roles. This is because no ARIA is better than a bad ARIA. The misdirected focus of creating accessibility can turn to confusion.
-<strong>Rule 2:</strong> Only change the native semantics when absolutely necessary.
-<strong>Rule 3:</strong> Ensure that all the interactive ARIAs are accessible using the keyboard.
-<strong>Rule 4</strong>: Do not use role=&quot;presentation&quot; or aria-hidden=&quot;true&quot; on a focusable element. This is because the users will have nothing to focus on. In the case of ```aria-hidden```<em>,</em> it can cause the parent of an interactive element to be hidden.
-<strong>Rule 5:</strong> All interactive elements must have an accessible name (the name of the UI element).
+**Rule 1:** Always use the native semantics that have built-in roles instead of altering, taking control of, or adding ARIA roles. This is because no ARIA is better than a bad ARIA. The misdirected focus of creating accessibility can turn to confusion.
+**Rule 2:** Only change the native semantics when absolutely necessary.
+**Rule 3:** Ensure that all the interactive ARIAs are accessible using the keyboard.
+**Rule 4**: Do not use role=&quot;presentation&quot; or aria-hidden=&quot;true&quot; on a focusable element. This is because the users will have nothing to focus on. In the case of ```aria-hidden```, it can cause the parent of an interactive element to be hidden.
+**Rule 5:** All interactive elements must have an accessible name (the name of the UI element).
 
 ### How to Use ARIA
 ARIA is used by either hiding the original semantics or adding meaning that supports the original semantics.
@@ -71,7 +71,8 @@ There is a pool of ARIA attributes used, but in this article, we’ll talk about
 2. ```aria-label```; This label helps users understand the purpose of an element. The label element is not enough to indicate the element's purpose.
 
 These attributes only work for some elements, like input.
-```aria-label``` is useful for creating custom widgets and is used for accessible labeling. It replaces other native labeling systems.
+```
+aria-label``` is useful for creating custom widgets and is used for accessible labeling. It replaces other native labeling systems.
 
 3. ```aria-labelledby```: This is used to reference elements that act as accessible labels. It overrides other labeling systems, including ARIA.
 

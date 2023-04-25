@@ -94,7 +94,11 @@ You guessed right, the keyword is “ jewelry” and you can see it has been use
 Learn how to write <a href="https://t.co/9tLoBtB5HI" target="_blank" rel="noopener noreferrer">appealing meta descriptions here</a>.
 
 With the meta tag for implementing keywords, you have to state all the keywords you use on the page inside the content attribute of this meta tag. This will also help Google to rank your website more highly when these keywords are queried by a user.
-e>&lt;!-- META KEYWORDS --&gt;<br> &lt;meta name=&quot;keywords&quot; content=&quot;Skincare,shop,nigeria,skin,acne,facial,blemishes&quot;&gt;</pre><p>The code block above shows how your meta keywords should look. The code block is displaying the meta keywords for a skincare company in Nigeria; these are the keywords that may be in users’ queries when they are searching for skincare-related topics on Google.
+```
+&lt;!-- META KEYWORDS --&gt;
+ &lt;meta name=&quot;keywords&quot; content=&quot;Skincare,shop,nigeria,skin,acne,facial,blemishes&quot;&gt
+```
+The code block above shows how your meta keywords should look. The code block is displaying the meta keywords for a skincare company in Nigeria; these are the keywords that may be in users’ queries when they are searching for skincare-related topics on Google.
 This meta tag also helps with accessibility of a website as it clearly states the author of the content on the site. It’s most helpful for personal blogs and other sites where you need Google to access the author of that website. This is how you should add the meta author to your HTML File.
 The meta viewport is automatically generated in the HTML boilerplate for you, but it is always best to be sure that it’s there. We no longer view web pages only on desktop screens; we have a range of devices with different screen sizes.
 A viewport is the visible area of a webpage on a screen. Meta viewport helps to scale the webpage to whatever screen size that webpage is being viewed on.
@@ -103,14 +107,28 @@ Google prioritizes websites available on many screen sizes, so if this tag is no
 If you’ve been a web developer for a while now, this should be a very familiar term. It’s best practice to use Semantic HTML when structuring your webpages.
 
 Semantic HTML helps to make your website more accessible for users and search engines. They provide meaning to different sections of the webpage by giving them unique names. Some of the important Semantic HTML elements you should use include:
-e>&lt;header&gt;<br>&lt;nav&gt;<br>&lt;section&gt;<br>&lt;article&gt;<br>&lt;aside&gt;<br>&lt;footer&gt;</pre><p>Use these semantic tags to structure the layout of your website, rather than just splashing divs all over your site. The more accessible your website is, the easier it is for Googlebot to crawl through your website. For more information about Semantic HTML, check out <a href="https://code.pieces.app/blog/getting-started-with-semantic-html" target="_blank" rel="noopener noreferrer">this guide</a>.
+```
+&lt;header&gt;
+&lt;nav&gt;
+&lt;section&gt;
+&lt;article&gt;
+&lt;aside&gt;
+&lt;footer&gt
+```
+Use these semantic tags to structure the layout of your website, rather than just splashing divs all over your site. The more accessible your website is, the easier it is for Googlebot to crawl through your website. For more information about Semantic HTML, check out <a href="https://code.pieces.app/blog/getting-started-with-semantic-html" target="_blank" rel="noopener noreferrer">this guide</a>.
 
 ### Image and Link Descriptions
 Just as Semantic HTML makes our site more easily accessible, properly describing what the images and links on your website are about will go a long way toward improving the SEO of your page.
 
 Don’t be afraid to describe your images properly with alt attributes.
 Don’t be afraid to use captions on your images to give them more context.
-e>&lt;figure&gt;<br> &lt;img src=&quot;./images/facial-cleanser&quot; alt=&quot;a facial cleanser to clear acne and tone the skin&quot;&gt;<br> &lt;figcaption&gt;Facial cleanser-to tone the skin and clear stubborn acne.&lt;/figcaption&gt;<br> &lt;/figure&gt;</pre><p>Above is an example of how you should structure your images. Only add captions if necessary, but always make sure to include text in your alt attributes to improve the accessibility of your site.
+```
+&lt;figure&gt;
+ &lt;img src=&quot;./images/facial-cleanser&quot; alt=&quot;a facial cleanser to clear acne and tone the skin&quot;&gt;
+ &lt;figcaption&gt;Facial cleanser-to tone the skin and clear stubborn acne.&lt;/figcaption&gt;
+ &lt;/figure&gt
+```
+Above is an example of how you should structure your images. Only add captions if necessary, but always make sure to include text in your alt attributes to improve the accessibility of your site.
 
 Using the anchor tag is almost inevitable in web development; therefore, you must write your anchor tags properly. Adding a title attribute creates a tooltip when the link is being hovered on. Sometimes the text of the anchor tag does not tell where that link takes the user, so adding a title attribute will help to eradicate this inconvenience not just for the user, but for Google as well.
 Have you ever clicked on a link to a website and it’s taken forever to load up, even with a fast network?

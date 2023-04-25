@@ -4,7 +4,7 @@
 > Wed Apr 05 2023 16:53:15 GMT+0000 (Coordinated Universal Time)
 
 id="">But in the real world, things are not so shiny. We often have to deal with codebases that have evolved over many years and components that bear the marks of many different developers.
-id="">Our story is about a component with <strong id="">2700 lines of code</strong>. That's... way too many. Let’s try to explain how things went south and how we can do better.
+id="">Our story is about a component with <strong id="">2700 lines of code**. That's... way too many. Let’s try to explain how things went south and how we can do better.
 
 ## Background
 id="">I currently work for a company that maintains a fleet management dashboard that shows vehicles roaming around a city in real time.
@@ -20,13 +20,13 @@ id="">Sure, there are several features that this single component is responsible
 ## The Component
 id="">Obviously, it would be stupid of me to paste 2700 lines of code into this article. (Not to mention illegal! 😓) But, let me show you, generally, the react component's structure:
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bdfdcce006d5baebc5cee7_2700-Line%20Component.png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet showing the general structure of a large React componen)
-id=""><strong id="">Okay, now tell me what’s wrong here.</strong>
+id=""><strong id="">Okay, now tell me what’s wrong here.**
 
 id="">To be 100% honest? Almost everything. Let me explain:
 
 ### Constant Declaration
 id="">This is an obvious one. Unfortunately, I've seen many examples of constant declaration across many companies and many components.
-id=""><strong id="">Keep the constants in a separate file.</strong>
+id=""><strong id="">Keep the constants in a separate file.**
 id="">It doesn’t matter if they’re being re-used or not, it’s still better to store constants in a separate file. Down the line, someone else will create a separate constant with the same value, which will eventually create confusion.
 id="">I do it this way:
 
@@ -70,7 +70,7 @@ id="">But even I wouldn’t try to convert our 2700-line component into a functi
 ## Results of Easy Refactors
 
 id="">Let me show you an estimate of how much we can improve this component without even understanding its function.
-id="">If all we do is export the constants to <em id="">constants.ts</em>, the styles to <em id="">styles.ts</em> and the helper methods to <em id="">helpers.ts, </em>we can reduce the component by 1400 lines. 
+id="">If all we do is export the constants to <em id="">constants.ts, the styles to <em id="">styles.ts and the helper methods to <em id="">helpers.ts, we can reduce the component by 1400 lines.
 ![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be0116aa5bf06e682c7456_Refactor%20Calculation.png" loading="lazy" id="" width="auto" height="auto" alt="A calculation of how many lines we can remove in with easy refactor)
 id="">This will take us about two hours of work; all we need to do is put things into the appropriate files and then import them.
 id="">We can reduce our component from 2700 lines to 1300 lines!
