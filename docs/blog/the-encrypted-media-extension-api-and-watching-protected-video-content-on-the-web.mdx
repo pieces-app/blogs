@@ -50,14 +50,14 @@ The method returns a promise that will either resolve with any supported CDM con
 
 ### MediaKeySystemAccess Interface
 ```
-navigator.requestMediaKeySystemAccess('com.widevine.alpha', [{&quot;label&quot;:&quot;&quot;,&quot;initDataTypes&quot;:[&quot;cenc&quot;],&quot;audioCapabilities&quot;:[{&quot;contentType&quot;:&quot;audio/mp4;codecs=\\&quot;mp4a.40.2\\&quot;&quot;,&quot;robustness&quot;:&quot;HW_SECURE_ALL&quot;},{&quot;contentType&quot;:&quot;audio/mp4;codecs=\\&quot;mp4a.40.2\\&quot;&quot;,&quot;robustness&quot;:&quot;HW_SECURE_DECODE&quot;},{&quot;contentType&quot;:&quot;audio/mp4;codecs=\\&quot;mp4a.40.2\\&quot;&quot;,&quot;robustness&quot;:&quot;HW_SECURE_CRYPTO&quot;},{&quot;contentType&quot;:&quot;audio/mp4;codecs=\\&quot;mp4a.40.2\\&quot;&quot;,&quot;robustness&quot;:&quot;SW_SECURE_DECODE&quot;},{&quot;contentType&quot;:&quot;audio/mp4;codecs=\\&quot;mp4a.40.2\\&quot;&quot;,&quot;robustness&quot;:&quot;SW_SECURE_CRYPTO&quot;}],&quot;videoCapabilities&quot;:[{&quot;contentType&quot;:&quot;video/mp4;codecs=\\&quot;avc1.4d401e\\&quot;&quot;,&quot;robustness&quot;:&quot;HW_SECURE_ALL&quot;},{&quot;contentType&quot;:&quot;video/mp4;codecs=\\&quot;avc1.4d401e\\&quot;&quot;,&quot;robustness&quot;:&quot;HW_SECURE_DECODE&quot;},{&quot;contentType&quot;:&quot;video/mp4;codecs=\\&quot;avc1.4d401e\\&quot;&quot;,&quot;robustness&quot;:&quot;HW_SECURE_CRYPTO&quot;},{&quot;contentType&quot;:&quot;video/mp4;codecs=\\&quot;avc1.4d401e\\&quot;&quot;,&quot;robustness&quot;:&quot;SW_SECURE_DECODE&quot;},{&quot;contentType&quot;:&quot;video/mp4;codecs=\\&quot;avc1.4d401e\\&quot;&quot;,&quot;robustness&quot;:&quot;SW_SECURE_CRYPTO&quot;}],&quot;distinctiveIdentifier&quot;:&quot;optional&quot;,&quot;persistentState&quot;:&quot;optional&quot;,&quot;sessionTypes&quot;:[&quot;temporary&quot;]}]).then(console.warn```<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=a08b469db2">Save this code</a>
+navigator.requestMediaKeySystemAccess('com.widevine.alpha', [{"label":"","initDataTypes":["cenc"],"audioCapabilities":[{"contentType":"audio/mp4;codecs=\\"mp4a.40.2\\"","robustness":"HW_SECURE_ALL"},{"contentType":"audio/mp4;codecs=\\"mp4a.40.2\\"","robustness":"HW_SECURE_DECODE"},{"contentType":"audio/mp4;codecs=\\"mp4a.40.2\\"","robustness":"HW_SECURE_CRYPTO"},{"contentType":"audio/mp4;codecs=\\"mp4a.40.2\\"","robustness":"SW_SECURE_DECODE"},{"contentType":"audio/mp4;codecs=\\"mp4a.40.2\\"","robustness":"SW_SECURE_CRYPTO"}],"videoCapabilities":[{"contentType":"video/mp4;codecs=\\"avc1.4d401e\\"","robustness":"HW_SECURE_ALL"},{"contentType":"video/mp4;codecs=\\"avc1.4d401e\\"","robustness":"HW_SECURE_DECODE"},{"contentType":"video/mp4;codecs=\\"avc1.4d401e\\"","robustness":"HW_SECURE_CRYPTO"},{"contentType":"video/mp4;codecs=\\"avc1.4d401e\\"","robustness":"SW_SECURE_DECODE"},{"contentType":"video/mp4;codecs=\\"avc1.4d401e\\"","robustness":"SW_SECURE_CRYPTO"}],"distinctiveIdentifier":"optional","persistentState":"optional","sessionTypes":["temporary"]}]).then(console.warn```<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=a08b469db2">Save this code</a>
 
 The first step is over. We detected that an existing configuration that suits our needs is available, so we can use that configuration returned by the ```requestMediaKeySystemAccess``` to go further.
 ```
 interface MediaKeySystemAccess {
     readonly attributeDOMStringkeySystem;
     MediaKeySystemConfigurationgetConfiguration();
- Promise&lt;MediaKeys&gt;createMediaKeys();
+ Promise<MediaKeys>createMediaKeys();
 };```<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=bdf84091ab">Save this code</a>
 Indeed, the previous method above is returning a ```MediaKeySystemAccess``` interface that will be our go-to to exchange data between the server and the CDM.
 
@@ -76,8 +76,8 @@ video.setMediaKeys(mediaKeys);```<a href="https://3863d558-45a9-40e6-9dff-136019
 Doing this will tell the video element that we will use that media key instance to decipher the content. A ```MediaKey``` represents a CDM instance. A ```MediaKey``` has the following interface:
 ```
 interface MediaKeys {
-    MediaKeySession  createSession(optional MediaKeySessionType sessionType = &quot;temporary&quot;);
- Promise&lt;boolean&gt; setServerCertificate(BufferSource serverCertificate);
+    MediaKeySession  createSession(optional MediaKeySessionType sessionType = "temporary");
+ Promise<boolean> setServerCertificate(BufferSource serverCertificate);
 };```<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=431743b9e0">Save this code</a>
 
 On the one hand, we have the ```setServerCertificate``` method that permits encrypting messages sent between the license/key server and the CDM. That method is not mandatory, but would help avoid an additional round trip of exchange between the license server that contains the keys used to decipher and the content decryption module (CDM).
@@ -95,16 +95,16 @@ It returns a ```MediaKeySession``` with a richer interface than we saw before:
 interface MediaKeySession :EventTarget {
     readonly attribute DOMStringsessionId;
     readonly attribute unrestricted doubleexpiration;
-    readonly attribute Promise&lt;void&gt;closed;
+    readonly attribute Promise<void>closed;
     readonly attribute MediaKeyStatusMapkeyStatuses;
              attribute EventHandleronkeystatuseschange;
              attribute EventHandleronmessage;
- Promise&lt;void&gt;generateRequest(DOMStringinitDataType,
+ Promise<void>generateRequest(DOMStringinitDataType,
                                      BufferSourceinitData);
- Promise&lt;boolean&gt;load(DOMStringsessionId);
- Promise&lt;void&gt;update(BufferSourceresponse);
- Promise&lt;void&gt;close();
- Promise&lt;void&gt;remove();
+ Promise<boolean>load(DOMStringsessionId);
+ Promise<void>update(BufferSourceresponse);
+ Promise<void>close();
+ Promise<void>remove();
 };```<a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=1e88428797">Save this code</a>
 
 We’re more specifically interested in the ```generateRequest``` method used to generate a challenge that will be sent to the license server. A challenge is raw binary data containing information on how to decipher the content. We then need to transmit that challenge to the license server that will be able to answer with a license containing the necessary keys to decrypt the video content.
@@ -118,25 +118,25 @@ It takes two parameters. The first is the encryption schema we should use. Most 
 ### Listening to events when the CDM is ready and pushing the license to the CDM
 Once we call the ```generateRequest``` method, we would need to wait for the challenge to be produced by the CDM. To achieve this, we can listen to a specific event on the ```mediaKeySession``` we created earlier:
 ```
-mediaKeySession.addEventListener('message', event =&gt; {
+mediaKeySession.addEventListener('message', event => {
  const challenge = event.message;
  const xhr = new XMLHttpRequest();
-    xhr.open(&quot;POST&quot;, LICENSE_SERVER_URL, true);
-    xhr.onerror = (err) =&gt; {
+    xhr.open("POST", LICENSE_SERVER_URL, true);
+    xhr.onerror = (err) => {
       reject(err);
     };
-    xhr.onload = (evt) =&gt; {
- if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300) {
+    xhr.onload = (evt) => {
+ if (xhr.status >= 200 &amp;&amp; xhr.status < 300) {
  const license = evt.target.response;
         resolve(license);
       } else {
  const error = new Error(
- &quot;getLicense's request finished with a &quot; + &#x60;${xhr.status} HTTP error&#x60;
+ "getLicense's request finished with a " + &#x60;${xhr.status} HTTP error&#x60;
         );
         reject(error);
       }
     };
-    xhr.responseType = &quot;arraybuffer&quot;;
+    xhr.responseType = "arraybuffer&quot;;
     xhr.send(challenge);
 }}
 ```

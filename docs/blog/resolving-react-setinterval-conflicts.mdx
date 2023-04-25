@@ -31,17 +31,17 @@ Below is an example of the problem with utilizing ```setInterval``` in JavaScrip
 **Bad Practice**
 
 ```
-import { useState } from &quot;react&quot;;
-import { Fragment } from &quot;react&quot;;
+import { useState } from "react&quot;;
+import { Fragment } from "react&quot;;
 function App() {
  let [count, setCount] = useState(0);
- setInterval(() =&gt; {
+ setInterval(() => {
   setCount(count + 1);
 }, 2000);
 return (
- &lt;Fragment&gt;
-  &lt;h1&gt;Count: {count}&lt;/h1&gt;
- &lt;/Fragment&gt;
+ <Fragment>
+  <h1>Count: {count}</h1>
+ </Fragment>
  );
 }
 export default App
@@ -57,16 +57,16 @@ In this section, we’ll be working with code samples and using a counter in Rea
 Immediately after the page loads for the first time, we'll call ```setInterval```.
 Here, we'll make use of ```setInterval``` by automating its execution upon a page's initial load:
 ```
-import { useEffect } from &quot;react&quot;;
-import { useState } from &quot;react&quot;;
-import { Fragment } from &quot;react&quot;;
+import { useEffect } from "react&quot;;
+import { useState } from "react&quot;;
+import { Fragment } from "react&quot;;
 function App() {
  let [count, setCount] = useState({
   num: 0,
 });
-useEffect(() =&gt; {
- setInterval(() =&gt; {
- setCount((prevState) =&gt; {
+useEffect(() => {
+ setInterval(() => {
+ setCount((prevState) => {
   return {
    num: prevState.num + 1,
   };
@@ -74,11 +74,11 @@ useEffect(() =&gt; {
 }, 1000);
 }, []);
 return (
- &lt;Fragment&gt;
-  &lt;div style={{ textAlign: &quot;center&quot; }}&gt;
-   &lt;h1&gt;Count: {count.num}&lt;/h1&gt;
-  &lt;/div&gt;
- &lt;/Fragment&gt;
+ <Fragment>
+  <div style={{ textAlign: "center" }}>
+   <h1>Count: {count.num}</h1>
+  </div>
+ </Fragment>
 );
 }
 export default App
@@ -87,14 +87,14 @@ React Hooks like<a href="https://reactjs.org/docs/hooks-state.html" target="_bla
 
 The ```useState``` is dependent on its prior state:
 ```
-setCount((prevState) =&gt; {
+setCount((prevState) => {
   return {
    num: prevState.num + 1,
   };
 });
- useEffect(() =&gt; {
-  setInterval(() =&gt; {
-   setCount((prevState) =&gt; {
+ useEffect(() => {
+  setInterval(() => {
+   setCount((prevState) => {
     return {
      num: prevState.num + 1,
    };
@@ -103,7 +103,7 @@ setCount((prevState) =&gt; {
 }, [])
 ```
 Output:
-![](/6143afec68f555387049efb3/63878e41c47f5726807b7e2a_image7_500c7375fc04ff89348244a79c76c3bb_800.p)
+![](/6143afec68f555387049efb3/63878e41c47f5726807b7e2a_image7_500c7375fc04ff89348244a79c76c3bb_800.png)
 
 As you can see, the ```useEffect``` method, which has a return function, is used in the code above.
 The cleaning function (after the user exits the page and the component unmounts) is the return function.
@@ -119,12 +119,12 @@ Read more about the React<a href="https://reactjs.org/docs/state-and-lifecycle.h
 
 Keep in mind that the interval begins as soon as a component loads for the first time. ```UseEffect``` is utilized in the function base component.
 ```
-import React from &quot;react&quot;;
+import React from "react&quot;;
 class App extends React.Component {
  state = { count: 0 };
  componentDidMount() {
-  setInterval(() =&gt; {
-   this.setState((prevState) =&gt; {
+  setInterval(() => {
+   this.setState((prevState) => {
     return {
      ...prevState,
     count: prevState.count + 1,
@@ -134,9 +134,9 @@ class App extends React.Component {
 }
 render() {
  return (
-  &lt;div&gt;
-   &lt;h1&gt;{this.state.count} Seconds&lt;/h1&gt;
-  &lt;/div&gt;
+  <div>
+   <h1>{this.state.count} Seconds</h1>
+  </div>
  );
 }
 }
@@ -144,64 +144,64 @@ export default App
 ```
 Output:
 
-![](c="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f5777f67b7e2b_image1_fae1e6f6a2275037f169ca9c04b5e522_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f5777f67b7e2b_image1_fae1e6f6a2275037f169ca9c04b5e522_800.png)
 
 ### Calling React SetInterval from onClick in a Function-based Component
 We can quickly use an ```onClick``` to call ```setInterval```.
 ```
-import { useState } from &quot;react&quot;;
+import { useState } from "react&quot;;
 function App() {
  const [count, setCount] = useState(0);
-const startCountHandler = () =&gt; {
- setInterval(() =&gt; {
-  setCount((count) =&gt; count + 1);
+const startCountHandler = () => {
+ setInterval(() => {
+  setCount((count) => count + 1);
  }, 1000);
 };
 return (
- &lt;div style={{ textAlign: &quot;center&quot; }}&gt;
-  &lt;h1&gt;{count}&lt;/h1&gt;
-  &lt;br /&gt;
-  &lt;button onClick={startCountHandler}&gt;Start&lt;/button&gt;
- &lt;/div&gt;
+ <div style={{ textAlign: "center" }}>
+  <h1>{count}</h1>
+  <br />
+  <button onClick={startCountHandler}>Start</button>
+ </div>
 );
 }
 export default App
 ```
 Output:
-![](="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f575e307b7e2d_image5_16d5b4cd954ec316c1688ca980ed7667_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f575e307b7e2d_image5_16d5b4cd954ec316c1688ca980ed7667_800.png)
 
 ### Using Clear Interval from an onClick in a Function-based Component
 To stop the counter in this area, we'll use<a href="https://developer.mozilla.org/en-US/docs/Web/API/clearInterval" target="_blank" rel="noopener noreferrer"> clearinterval</a>. It is incredibly simple to use.
 ```
-import { useState } from &quot;react&quot;;
+import { useState } from "react&quot;;
 function App() {
  const [count, setCount] = useState(0);
  const [intervalId, setIntervalId] = useState(0);
-const startCountHandler = () =&gt; {
- let newIntervalId = setInterval(() =&gt; {
-  setCount((count) =&gt; count + 1);
+const startCountHandler = () => {
+ let newIntervalId = setInterval(() => {
+  setCount((count) => count + 1);
 }, 1000);
  setIntervalId(newIntervalId);
 };
 // Stopping the interval
-const stopCountHandler = () =&gt; {
+const stopCountHandler = () => {
  clearInterval(intervalId);
 };
 return (
- &lt;div style={{ textAlign: &quot;center&quot; }}&gt;
-  &lt;h1&gt;{count}&lt;/h1&gt;
-  &lt;br /&gt;
-  &lt;button onClick={startCountHandler}&gt;Start&lt;/button&gt;
-  &lt;br /&gt;
-  &lt;button onClick={stopCountHandler}&gt;Stop&lt;/button&gt;
- &lt;/div&gt;
+ <div style={{ textAlign: "center" }}>
+  <h1>{count}</h1>
+  <br />
+  <button onClick={startCountHandler}>Start</button>
+  <br />
+  <button onClick={stopCountHandler}>Stop</button>
+ </div>
 );
 }
 export default App
 ```
 To store the interval id obtained from ```setInterval```, a new state was made. The function for establishing the interval is activated when we click the start button, and we added ```setIntervalId(newIntervalId)``` inside the React ```SetInterval``` function to save the interval id in the state we generated for the ```intervalID```.
 Output:
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f5701327b7e2e_image2_528402bdf8649552a6a563bfbb958a3c_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f5701327b7e2e_image2_528402bdf8649552a6a563bfbb958a3c_800.png)
 We can start the counter by pressing the start button, and stop the counter by pressing the stop button. By hitting the start button once more, a paused counter can be started again.
 
 ### Starting SetInterval in a Class-based Component from onClick
@@ -209,7 +209,7 @@ In this part, we'll call ```setInterval``` from a class-based component's<a href
 
 Note: Take care to bind the ‘this’ keyword, or else you can’t access the ```this.setState``` in the ```startCountHandler``` function.
 ```
-import React from &quot;react&quot;;
+import React from "react&quot;;
 class App extends React.Component {
  constructor(props) {
   super(props);
@@ -218,8 +218,8 @@ class App extends React.Component {
  this.startCountHandler = this.startCountHandler.bind(this);
 }
 startCountHandler() {
- setInterval(() =&gt; {
-  this.setState((prevState) =&gt; {
+ setInterval(() => {
+  this.setState((prevState) => {
    return {
     ...prevState,
     count: prevState.count + 1,
@@ -229,25 +229,25 @@ startCountHandler() {
 }
 render() {
  return (
-  &lt;div&gt;
-   &lt;h1&gt;{this.state.count} Seconds&lt;/h1&gt;
-   &lt;button onClick={this.startCountHandler}&gt;Start&lt;/button&gt;
-  &lt;/div&gt;
+  <div>
+   <h1>{this.state.count} Seconds</h1>
+   <button onClick={this.startCountHandler}>Start</button>
+  </div>
  );
 }
 }
 export default App
 ```
 Output:
-![](ttps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f571e4d7b7e30_image6_fa54be2aa4ad64ee632bf2eaf0d20d70_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f571e4d7b7e30_image6_fa54be2aa4ad64ee632bf2eaf0d20d70_800.png)
 ### Stopping the Countdown in Class-based Components Using clearInterval
 
 In this section, we'll utilize ```clearInterval``` in a class-based component to stop the counter from running during an ```onClick``` event.
 Let's get going.
-The function that will stop or pause the counter increment will be the React ```setInterval``` handler, to which we will bind the keyword &quot;this.&quot;<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener noreferrer"> Learn more about the “this” keyword</a>.
+The function that will stop or pause the counter increment will be the React ```setInterval``` handler, to which we will bind the keyword "this."<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this" target="_blank" rel="noopener noreferrer"> Learn more about the “this” keyword</a>.
 The code for a class-based component is shown below.
 ```
-import React, { useEffect, useState } from &quot;react&quot;;
+import React, { useEffect, useState } from "react&quot;;
 class App extends React.Component {
  constructor(props) {
   super(props);
@@ -257,8 +257,8 @@ this.startCountHandler = this.startCountHandler.bind(this);
 this.stopCountHandler = this.stopCountHandler.bind(this);
 }
 startCountHandler() {
- let newIntervalId = setInterval(() =&gt; {
-  this.setState((prevState) =&gt; {
+ let newIntervalId = setInterval(() => {
+  this.setState((prevState) => {
    return {
     ...prevState,
     count: prevState.count + 1,
@@ -266,7 +266,7 @@ startCountHandler() {
 });
 }, 1000);
 // Append the interval Id to state interval
-this.setState((prevState) =&gt; {
+this.setState((prevState) => {
  return {
   ...prevState,
   intervalId: newIntervalId,
@@ -281,31 +281,31 @@ stopCountHandler() {
 }
 render() {
  return (
-  &lt;div style={{ textAlign: &quot;center&quot; }}&gt;
-   &lt;h1&gt;{this.state.count} Seconds&lt;/h1&gt;
-   &lt;button onClick={this.startCountHandler}&gt;Start&lt;/button&gt;
-   &lt;br /&gt;
-   &lt;button onClick={this.stopCountHandler}&gt;Stop&lt;/button&gt;
-  &lt;/div&gt;
+  <div style={{ textAlign: "center" }}>
+   <h1>{this.state.count} Seconds</h1>
+   <button onClick={this.startCountHandler}>Start</button>
+   <br />
+   <button onClick={this.stopCountHandler}>Stop</button>
+  </div>
  );
 }
 }
 export default App
 ```
 Output:
-![](/uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f5729bd7b7e2c_image4_aa4ac120590b8c621251fcb1e1794c75_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f5729bd7b7e2c_image4_aa4ac120590b8c621251fcb1e1794c75_800.png)
 ### Utilizing a Backward Counter
 ```
 import { useState, useEffect } from 'react';
-const ForwardCounter = () =&gt; {
+const ForwardCounter = () => {
  const [counter, setCounter] = useState(0);
-useEffect(() =&gt; {
- const interval = setInterval(() =&gt; {
-  setCounter((prevCounter) =&gt; prevCounter - 1);
+useEffect(() => {
+ const interval = setInterval(() => {
+  setCounter((prevCounter) => prevCounter - 1);
  }, 1000);
- return () =&gt; clearInterval(interval);
+ return () => clearInterval(interval);
 }, []);
- return &lt;h1&gt;{counter}&lt;/h1&gt;;
+ return <h1>{counter}</h1&gt;;
 };
 export default ForwardCounter
 ```
@@ -318,36 +318,36 @@ This greatly helps to avoid sending many requests while a user is typing, which 
 Here, we'll implement this process using<a href="https://developer.mozilla.org/en-US/docs/Web/API/setTimeout" target="_blank" rel="noopener noreferrer"> ```setTimeout```</a> rather than ```setInterval```.
 Now, we’ll use ```<a href="https://developer.mozilla.org/en-US/docs/Web/API/clearInterval" target="_blank" rel="noopener noreferrer">clearInterval</a>``` to do the cleanup operation.
 ```
-import { useEffect, useState } from &quot;react&quot;;
+import { useEffect, useState } from "react&quot;;
 function App() {
- const [enteredValue, setEnteredValue] = useState(&quot;&quot;);
-useEffect(() =&gt; {
- const interval = setTimeout(() =&gt; {
-  if (enteredValue.length &gt; 0) {
+ const [enteredValue, setEnteredValue] = useState("");
+useEffect(() => {
+ const interval = setTimeout(() => {
+  if (enteredValue.length > 0) {
   // Make a fetch request in a real project
-  console.log(&quot;Send a request to a server...&quot;);
+  console.log("Send a request to a server...");
  }
 }, 1000);
- return () =&gt; clearInterval(interval);
+ return () => clearInterval(interval);
 }, [enteredValue]);
-const onChangedHandler = (e) =&gt; {
+const onChangedHandler = (e) => {
  setEnteredValue(e.target.value);
 };
 return (
- &lt;div style={{ textAlign: &quot;center&quot; }}&gt;
-  &lt;input
-   type={&quot;text&quot;}
+ <div style={{ textAlign: "center" }}>
+  <input
+   type={"text"}
    onChange={onChangedHandler}
    value={enteredValue}
-   style={{ padding: &quot;10px&quot;, margin: &quot;40px&quot; }}
-  /&gt;
- &lt;/div&gt;
+   style={{ padding: "10px", margin: "40px" }}
+  />
+ </div>
 );
 }
 export default App
 ```
 Output:
-![](ebflow.com/6143afec68f555387049efb3/63878e41c47f57dbbe7b7e2f_image3_af7f215fe7c98c3870012aeed1efd176_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63878e41c47f57dbbe7b7e2f_image3_af7f215fe7c98c3870012aeed1efd176_800.png)
 We can see from the output in the<a href="https://developer.mozilla.org/en-US/docs/Web/API/console" target="_blank" rel="noopener noreferrer"> console</a> that the console log was produced four times, which indicates that I actually waited four times before inputting another character.
 Make sure to test this out for yourself to see how it performs.
 All I ask is that you start using this in your React project so that you discover its value.

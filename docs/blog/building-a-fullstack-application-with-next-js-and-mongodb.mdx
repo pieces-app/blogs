@@ -25,10 +25,10 @@ After this, we set up the phonebook card component and pages for the application
 
 NextAuth is a library that allows you to easily add authentication to your application. It has built-in support for most authentication services like Google, Auth0, Facebook, GitHub, etc. For this tutorial, we’ll be using GitHub authentication. To get started, we create an ```auth``` folder under the ```api``` folder. Inside the newly created ```auth``` folder, we will create a new file ```[...nextauth].js``` with the code below:
 ```
-import { MongoDBAdapter } from &quot;@next-auth/mongodb-adapter&quot;;
-import NextAuth from &quot;next-auth/next&quot;;
-import Github from &quot;next-auth/providers/github&quot;;
-import clientPromise from &quot;../../../config/database/connection&quot;;
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter&quot;;
+import NextAuth from "next-auth/next&quot;;
+import Github from "next-auth/providers/github&quot;;
+import clientPromise from "../../../config/database/connection&quot;;
 export default NextAuth({
   providers: [
     Github({
@@ -48,7 +48,7 @@ export default NextAuth({
 });```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=fd444990e3" target="_blank" rel="noopener noreferrer">Save this code</a>
 The code block above will provide an authentication API for the application. We have the client ID and client secret on lines 9 and 10. The values for the fields are available from <a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a>.
 - Navigate to Settings.
-- Click on Developer settings &gt; OAuth Apps &gt; New OAuth App.
+- Click on Developer settings > OAuth Apps > New OAuth App.
 - Fill in the details for your OAuth app. Enter http://localhost:3000/api/auth/callback/github as the value for the authorization callback URL.
 - Register your application.
 - Find the client id. Also, you can click the “Generate a new client secret” button to create a client secret.
@@ -56,7 +56,7 @@ The code block above will provide an authentication API for the application. We 
 ### MongoDB Integration
 Since we’ll need a database for our application, we have to choose and add a database as an adapter to the authentication configuration, which allows us to save users and sessions on the database, as we can see on line 21. Therefore, we passed the MongoDBAdapter, which accepts a client connection as a promise.
 ```
-import { MongoClient } from &quot;mongodb&quot;
+import { MongoClient } from "mongodb"
 import mongoose from 'mongoose';
 const uri = process.env.MONGO_URI;
 const options = {
@@ -66,9 +66,9 @@ const options = {
 let client
 let clientPromise
 if (!process.env.MONGO_URI) {
-  throw new Error(&quot;Please add your Mongo URI to .env.local&quot;)
+  throw new Error("Please add your Mongo URI to .env.local")
 }
-if (process.env.NODE_ENV === &quot;development&quot;) {
+if (process.env.NODE_ENV === "development") {
   // In development mode, use a global variable so that the value
   // is preserved across module reloads caused by HMR (Hot Module Replacement).
   if (!global._mongoClientPromise) {
@@ -82,7 +82,7 @@ if (process.env.NODE_ENV === &quot;development&quot;) {
   clientPromise = client.connect()
 }
 
-export const connectMongo = async () =&gt; mongoose.connect(uri);
+export const connectMongo = async () => mongoose.connect(uri);
 // Export a module-scoped MongoClient promise. By doing this in a
 // separate module, the client
 export default clientPromise```<a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=98e1438723" target="_blank" rel="noopener noreferrer">Save this code</a>
@@ -92,16 +92,16 @@ In the code block above, there are two different connections to MongoDB.
 ## Application API Routes
 This section will look at creating the API Routes for the application. First, we’ll create a folder called ```phonebooks``` under the ```api``` folder. After that, we’ll set up our model for the phonebook collection.
 ```
-import mongoose from &quot;mongoose&quot;;
+import mongoose from "mongoose&quot;;
 const PhonebookSchema = new mongoose.Schema({
   user: {
     type: mongoose.Types.ObjectId,
-    ref: &quot;User&quot;,
-    require: [true, &quot;Each contact must be linked to a user&quot;],
+    ref: "User",
+    require: [true, "Each contact must be linked to a user"],
   },
   name: {
     type: String,
-    required: [true, &quot;Please provide contact name&quot;],
+    required: [true, "Please provide contact name"],
   },
   mobile: Number,
   fax: Number,
@@ -114,17 +114,17 @@ module.exports = mongoose.models.Phonebook || mongoose.model('Phonebook', Phoneb
 Use the code block above to create a collection schema using mongoose for the phonebook collection. We’ll also create a mongoose collection schema for the auto-created collections from NextAuth. All of the models can be found <a href="https://github.com/MelvinManni/next-mongoose/tree/main/config/database/models" target="_blank" rel="noopener noreferrer">here</a>.
 Following this, we create an index.js file under the phonebooks folders with the following code:
 ```
-import { getToken } from &quot;next-auth/jwt&quot;;
-import Phonebook from &quot;../../../config/database/models/phonebook&quot;;
-import Session from &quot;../../../config/database/models/session&quot;;
-import verifyUserSession from &quot;../../../config/utils/verifyUserSession&quot;;
+import { getToken } from "next-auth/jwt&quot;;
+import Phonebook from "../../../config/database/models/phonebook&quot;;
+import Session from "../../../config/database/models/session&quot;;
+import verifyUserSession from "../../../config/utils/verifyUserSession&quot;;
 
-const getPhonebooks = async (req, res) =&gt; {
+const getPhonebooks = async (req, res) => {
   try {
     const user = req.user;
     const phonebooks = await Phonebook.find({ user });
     res.status(200).json({
-      status: &quot;success&quot;,
+      status: "success",
       count: phonebooks.length,
       phonebooks,
     });
@@ -132,13 +132,13 @@ const getPhonebooks = async (req, res) =&gt; {
     res.send(error);
   }
 };
-const addPhoneBook = async (req, res) =&gt; {
+const addPhoneBook = async (req, res) => {
   try {
     const user = req.user;
     await Phonebook.create({ ...req.body, user });
     res.status(201).json({
-      status: &quot;success&quot;,
-      message: &quot;phonebook successfully created&quot;,
+      status: "success",
+      message: "phonebook successfully created",
     });
   } catch (error) {
     res.send(error);
@@ -153,10 +153,10 @@ export default async function handler(req, res) {
     Session,
   });
   switch (method) {
-    case &quot;GET&quot;:
+    case "GET":
       await getPhonebooks(req, res);
       break;
-    case &quot;POST&quot;:
+    case "POST":
       await addPhoneBook(req, res);
       break;
     default:
@@ -168,20 +168,20 @@ export default async function handler(req, res) {
 <a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=94cd45b0eb" target="_blank" rel="noopener noreferrer">Save this code</a>
 The code above exports a function that calls another function in a switch case, with the request method passed as a condition to the switch case. The exported function will call ```getPhonebooks``` if the request method is ```GET```. This will return all the contacts saved in the current user's phonebook. A ```POST``` request needs an object that fits the phonebook schema and creates a new contact detail on the current user's phonebook. If we check line 38, we have the ```verifyUserSession``` function, which checks the request session to list the current user and passes the user id to the req object under the ```user``` key.
 ```
-import { connectMongo } from &quot;../database/connection&quot;;
+import { connectMongo } from "../database/connection&quot;;
 const secret = process.env.SECRET;
 export default async function verifyUserSession({ req, res, getToken, Session }) {
   await connectMongo();
   const sessionToken = await getToken({ req, secret, raw: true });
   if (!sessionToken) {
-    return res.status(401).json({ status: &quot;failed&quot;, message: &quot;please login!&quot; });
+    return res.status(401).json({ status: "failed", message: "please login!" });
   }
   const user = await Session.findOne({ sessionToken });
   if (!user) {
-    return res.status(404).json({ status: &quot;failed&quot;, message: &quot;session or user does not exist&quot; });
+    return res.status(404).json({ status: "failed", message: "session or user does not exist" });
   }
-  if (new Date(user?.expires) &lt; new Date()) {
-    return res.status(440).json({ status: &quot;failed&quot;, message: &quot;session expired!&quot; });
+  if (new Date(user?.expires) < new Date()) {
+    return res.status(440).json({ status: "failed", message: "session expired!" });
   }
   req.user = user.userId;
 }
@@ -190,25 +190,25 @@ export default async function verifyUserSession({ req, res, getToken, Session })
 <a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=dd794a8ac6" target="_blank" rel="noopener noreferrer">Save this code</a>
 Next, we’ll set up API routes for handling fetching, updating, and deleting a contact. Finally, we’ll create a new file [id].js in the phonebooks folder. This will let us pass a query id to the req object for requests made to the phonebooks API route.
 ```
-import { getToken } from &quot;next-auth/jwt&quot;;
-import Phonebook from &quot;../../../config/database/models/phonebook&quot;;
-import Session from &quot;../../../config/database/models/session&quot;;
-import verifyUserSession from &quot;../../../config/utils/verifyUserSession&quot;;
-const getPhonebook = async (req, res) =&gt; {
+import { getToken } from "next-auth/jwt&quot;;
+import Phonebook from "../../../config/database/models/phonebook&quot;;
+import Session from "../../../config/database/models/session&quot;;
+import verifyUserSession from "../../../config/utils/verifyUserSession&quot;;
+const getPhonebook = async (req, res) => {
   try {
     const phonebook = await Phonebook.findOne({
       user: req.user,
       _id: req.query.id,
     });
     res.status(200).json({
-      status: &quot;success&quot;,
+      status: "success",
       contact: phonebook,
     });
   } catch (error) {
     res.send(error);
   }
 };
-const updatePhonebook = async (req, res) =&gt; {
+const updatePhonebook = async (req, res) => {
   try {
     const user = req.user;
     const docId = req.query.id;
@@ -217,19 +217,19 @@ const updatePhonebook = async (req, res) =&gt; {
     req.body._id = undefined;
     await Phonebook.findOneAndUpdate({ _id: docId, user }, { ...req.body });
     res.status(201).json({
-      status: &quot;success&quot;,
+      status: "success",
       message: &#x60;phonebook with id ${docId} updated&#x60;,
     });
   } catch (error) {
     res.send(error);
   }
 };
-const deletePhonebook = async (req, res) =&gt; {
+const deletePhonebook = async (req, res) => {
   try {
     const user = req.user;
     await Phonebook.findOneAndDelete({ _id: req.query.id, user });
     res.status(201).json({
-      status: &quot;success&quot;,
+      status: "success",
       message: &#x60;phonebook with id ${req.params.id} deleted&#x60;,
     });
   } catch (error) {
@@ -245,13 +245,13 @@ export default async function handler(req, res) {
     Session,
   });
   switch (method) {
-    case &quot;GET&quot;:
+    case "GET":
       await getPhonebook(req, res);
       break;
-    case &quot;PATCH&quot;:
+    case "PATCH":
       await updatePhonebook(req, res);
       break;
-    case &quot;DELETE&quot;:
+    case "DELETE":
       await deletePhonebook(req, res);
       break;
     default:
@@ -261,58 +261,58 @@ export default async function handler(req, res) {
 ```
 
 <a href="https://85d3a788-9617-4a31-862b-bc26c649acca.pieces.cloud/?p=b7e646b6cb" target="_blank" rel="noopener noreferrer">Save this code</a>
-The ```getPhonebook``` function will return a single contact from a user's phonebook with an id matching the query id. In addition, the application will execute the updatePhonebook function for &quot;PATCH&quot; request methods; the function will update the current contact with an id matching the query id, and the deletePhonebook function will delete a user's contact matching the query id.
+The ```getPhonebook``` function will return a single contact from a user's phonebook with an id matching the query id. In addition, the application will execute the updatePhonebook function for "PATCH" request methods; the function will update the current contact with an id matching the query id, and the deletePhonebook function will delete a user's contact matching the query id.
 
 ### Consuming API
 Following, we look at how to use the APIs created for the application. Firstly, we’ll look at handling authentication for the application's client side.
 Under the pages folder, we create an index.js file with this code:
 ```
-import { useSession, signIn, signOut } from &quot;next-auth/react&quot;;
-import Head from &quot;next/head&quot;;
-import Link from &quot;next/link&quot;;
-import { useCallback, useEffect, useState } from &quot;react&quot;;
-import PhonebookCard from &quot;../components/PhonebookCard&quot;;
-import styles from &quot;../styles/Home.module.css&quot;;
+import { useSession, signIn, signOut } from "next-auth/react&quot;;
+import Head from "next/head&quot;;
+import Link from "next/link&quot;;
+import { useCallback, useEffect, useState } from "react&quot;;
+import PhonebookCard from "../components/PhonebookCard&quot;;
+import styles from "../styles/Home.module.css&quot;;
 export default function Home() {
   const [phonebooks, setPhonebooks] = useState([]);
   const { data: session } = useSession();
-  const getPhonebooks = useCallback(async () =&gt; {
+  const getPhonebooks = useCallback(async () => {
     if (session) {
-      const res = await fetch(&quot;/api/phonebooks/&quot;);
+      const res = await fetch("/api/phonebooks/");
       const data = await res.json();
       console.log(data);
       data.phonebooks &amp;&amp; setPhonebooks(data.phonebooks);
     }
   }, [session]);
-  useEffect(() =&gt; {
+  useEffect(() => {
     getPhonebooks();
   }, [getPhonebooks]);
   return (
-    &lt;div className={styles.container}&gt;
-      &lt;Head&gt;
-        &lt;title&gt;Next MongoDb&lt;/title&gt;
-        &lt;meta name=&quot;description&quot; content=&quot;Generated by create next app&quot; /&gt;
-        &lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; /&gt;
-      &lt;/Head&gt;
-      &lt;main className={styles.main}&gt;
+    <div className={styles.container}>
+      <Head>
+        <title>Next MongoDb</title>
+        <meta name="description" content="Generated by create next app" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className={styles.main}>
         {!session ? (
-          &lt;button onClick={() =&gt; signIn()} className={styles.btn}&gt;
+          <button onClick={() => signIn()} className={styles.btn}>
             Sign In
-          &lt;/button&gt;
+          </button>
         ) : (
-          &lt;&gt;
-            &lt;h4 className=&quot;text-center&quot;&gt;
-              Welcome, &lt;br /&gt;
+          <>
+            <h4 className="text-center">
+              Welcome, <br />
               {session?.user?.name}
-            &lt;/h4&gt;
-            &lt;button onClick={signOut}&gt;Sign Out&lt;/button&gt;
-            &lt;div className={styles.linkText}&gt;
-              &lt;Link href=&quot;/add-phonebook&quot;&gt; Add Contact&lt;/Link&gt;
-            &lt;/div&gt;
-            &lt;div className={styles.cardContainer}&gt;
-              &lt;div className=&quot;cardGrid&quot;&gt;
-                {phonebooks.map((contact) =&gt; (
-                  &lt;PhonebookCard
+            </h4>
+            <button onClick={signOut}>Sign Out</button>
+            <div className={styles.linkText}>
+              <Link href="/add-phonebook"> Add Contact</Link>
+            </div>
+            <div className={styles.cardContainer}>
+              <div className="cardGrid">
+                {phonebooks.map((contact) => (
+                  <PhonebookCard
                     key={contact._id}
                     name={contact.name}
                     fax={contact.fax}
@@ -320,14 +320,14 @@ export default function Home() {
                     work={contact.work}
                     id={contact._id}
                     refresh={getPhonebooks}
-                  /&gt;
+                  />
                 ))}
-              &lt;/div&gt;
-            &lt;/div&gt;
-          &lt;/&gt;
+              </div>
+            </div>
+          </>
         )}
-      &lt;/main&gt;
-    &lt;/div&gt;
+      </main>
+    </div>
   );
 }
 ```
@@ -336,34 +336,34 @@ export default function Home() {
 On line 10, we have the session variable destructured from the ```useSession``` hook from NextAuth. The session variable holds the details of the current user session; it returns an object of the current session details or is undefined if a session does not exist. On line 34, we have a ternary operator that checks if a session exists. The operation renders a button that calls the ```signIn``` function from NextAuth if there is no active session; otherwise, it renders the current user's phonebook with all contact details. Finally, on line 12, we have the ```getPhonebooks``` callback. This handles fetching the current users and assigning the value to the phonebooks state.
 Following this, we set up the page to add a new contact to a user's phonebook. Under the pages folder, we’ll create a new ```add-phonebook.js``` file:
 ```
-import { useSession, signIn, signOut } from &quot;next-auth/react&quot;;
-import Head from &quot;next/head&quot;;
-import Link from &quot;next/link&quot;;
-import { useState } from &quot;react&quot;;
-import styles from &quot;../styles/Home.module.css&quot;;
-import phonebookStyles from &quot;../styles/Phonebook.module.css&quot;;
+import { useSession, signIn, signOut } from "next-auth/react&quot;;
+import Head from "next/head&quot;;
+import Link from "next/link&quot;;
+import { useState } from "react&quot;;
+import styles from "../styles/Home.module.css&quot;;
+import phonebookStyles from "../styles/Phonebook.module.css&quot;;
 export default function Home() {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const [state, setState] = useState({
-    name: &quot;&quot;,
-    mobile: &quot;&quot;,
-    fax: &quot;&quot;,
-    work: &quot;&quot;,
+    name: "",
+    mobile: "",
+    fax: "",
+    work: "",
   });
-  const handleChange = (e) =&gt; {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setState((prev) =&gt; ({ ...prev, [name]: value }));
+    setState((prev) => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = async (e) =&gt; {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await fetch(&quot;/api/phonebooks/&quot;, {
-        method: &quot;post&quot;,
+      await fetch("/api/phonebooks/", {
+        method: "post",
         headers: {
-          Accept: &quot;application/json&quot;,
-          &quot;Content-Type&quot;: &quot;application/json&quot;,
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(state),
       });
@@ -371,48 +371,48 @@ export default function Home() {
       console.log(error);
     } finally {
       setState({
-        name: &quot;&quot;,
-        mobile: &quot;&quot;,
-        fax: &quot;&quot;,
-        work: &quot;&quot;,
+        name: "",
+        mobile: "",
+        fax: "",
+        work: "",
       });
       setLoading(false);
     }
   };
   return (
-    &lt;div className={styles.container}&gt;
-      &lt;Head&gt;
-        &lt;title&gt;Next MongoDb&lt;/title&gt;
-        &lt;meta name=&quot;description&quot; content=&quot;Generated by create next app&quot; /&gt;
-        &lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; /&gt;
-      &lt;/Head&gt;
-      &lt;main className={styles.main}&gt;
+    <div className={styles.container}>
+      <Head>
+        <title>Next MongoDb</title>
+        <meta name="description" content="Generated by create next app" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className={styles.main}>
         {!session ? (
-          &lt;button onClick={() =&gt; signIn()} className={styles.btn}&gt;
+          <button onClick={() => signIn()} className={styles.btn}>
             Sign In
-          &lt;/button&gt;
+          </button>
         ) : (
-          &lt;&gt;
-            &lt;div className={styles.linkText}&gt;
-              &lt;Link href=&quot;/&quot;&gt; Go Back&lt;/Link&gt;
-            &lt;/div&gt;
-            &lt;h4 className=&quot;text-center&quot;&gt;Add New Contact&lt;/h4&gt;
-            &lt;button onClick={signOut}&gt;Sign Out&lt;/button&gt;
-            &lt;div className={styles.cardContainer}&gt;
-              &lt;form onSubmit={handleSubmit} className={phonebookStyles.card}&gt;
-                &lt;input onChange={handleChange} name=&quot;name&quot; value={state.name} type=&quot;text&quot; placeholder=&quot;Enter contact name&quot; /&gt;
-                &lt;input onChange={handleChange} name=&quot;mobile&quot; value={state.mobile} type=&quot;text&quot; placeholder=&quot;Enter contact mobile no.&quot; /&gt;
-                &lt;input onChange={handleChange} name=&quot;fax&quot; value={state.fax} type=&quot;text&quot; placeholder=&quot;Enter contact fax no.&quot; /&gt;
-                &lt;input onChange={handleChange} name=&quot;work&quot; value={state.work} type=&quot;text&quot; placeholder=&quot;Enter contact work no.&quot; /&gt;
-                &lt;button disabled={loading} className={&#x60;${styles.btn} ${styles.centerBtn}&#x60;}&gt;
-                  {loading ? &quot;Creating...&quot; : &quot;Create Contact&quot;}
-                &lt;/button&gt;
-              &lt;/form&gt;
-            &lt;/div&gt;
-          &lt;/&gt;
+          <>
+            <div className={styles.linkText}>
+              <Link href="/"> Go Back</Link>
+            </div>
+            <h4 className="text-center">Add New Contact</h4>
+            <button onClick={signOut}>Sign Out</button>
+            <div className={styles.cardContainer}>
+              <form onSubmit={handleSubmit} className={phonebookStyles.card}>
+                <input onChange={handleChange} name="name" value={state.name} type="text" placeholder="Enter contact name" />
+                <input onChange={handleChange} name="mobile" value={state.mobile} type="text" placeholder="Enter contact mobile no." />
+                <input onChange={handleChange} name="fax" value={state.fax} type="text" placeholder="Enter contact fax no." />
+                <input onChange={handleChange} name="work" value={state.work} type="text" placeholder="Enter contact work no." />
+                <button disabled={loading} className={&#x60;${styles.btn} ${styles.centerBtn}&#x60;}>
+                  {loading ? "Creating..." : "Create Contact"}
+                </button>
+              </form>
+            </div>
+          </>
         )}
-      &lt;/main&gt;
-    &lt;/div&gt;
+      </main>
+    </div>
   );
 }
 ```
@@ -420,20 +420,20 @@ export default function Home() {
 <a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=596748a49c" target="_blank" rel="noopener noreferrer">Save this code</a>
 The ```handleSubmit``` function above will make a ```POST``` request to the phonebooks API with the state passed as the request body. This will allow the creation of a new contact for the current user's phonebook. Under the ```PhonebookCard```, we have a delete request to the phonebooks API with the contact ID passed as request query:
 ```
-import { useRouter } from &quot;next/router&quot;;
-import React, { useState } from &quot;react&quot;;
-import styles from &quot;../styles/Phonebook.module.css&quot;;
+import { useRouter } from "next/router&quot;;
+import React, { useState } from "react&quot;;
+import styles from "../styles/Phonebook.module.css&quot;;
 export default function PhonebookCard({ name, mobile, fax, work, id, refresh }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const handleEdit = () =&gt; {
-    router.replace(&quot;/update-phonebook/&quot; + id);
+  const handleEdit = () => {
+    router.replace("/update-phonebook/" + id);
   };
-  const handleDelete = async () =&gt; {
+  const handleDelete = async () => {
     setLoading(true);
     try {
-      await fetch(&quot;/api/phonebooks/&quot; + id, {
-        method: &quot;delete&quot;,
+      await fetch("/api/phonebooks/" + id, {
+        method: "delete",
       });
     } catch (error) {
       console.log(error);
@@ -443,30 +443,30 @@ export default function PhonebookCard({ name, mobile, fax, work, id, refresh }) 
     }
   };
   return (
-    &lt;div className={styles.card}&gt;
-      &lt;div&gt;
-        &lt;div className={styles.textWrapper}&gt;
-          &lt;p className={styles.title}&gt;Name:&lt;/p&gt;
-          &lt;p className={styles.text}&gt;{name}&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div className={styles.textWrapper}&gt;
-          &lt;p className={styles.title}&gt;Mobile:&lt;/p&gt;
-          &lt;p className={styles.text}&gt;{mobile || &quot;N/A&quot;}&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div className={styles.textWrapper}&gt;
-          &lt;p className={styles.title}&gt;FAX:&lt;/p&gt;
-          &lt;p className={styles.text}&gt;{fax || &quot;N/A&quot;}&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div className={styles.textWrapper}&gt;
-          &lt;p className={styles.title}&gt;Work:&lt;/p&gt;
-          &lt;p className={styles.text}&gt;{work || &quot;N/A&quot;}&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div className=&quot;row-between&quot;&gt;
-        &lt;button onClick={handleEdit}&gt;Edit&lt;/button&gt;
-        &lt;button onClick={handleDelete}&gt;{loading ? &quot;Deleting...&quot; : &quot;Delete&quot;}&lt;/button&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+    <div className={styles.card}>
+      <div>
+        <div className={styles.textWrapper}>
+          <p className={styles.title}>Name:</p>
+          <p className={styles.text}>{name}</p>
+        </div>
+        <div className={styles.textWrapper}>
+          <p className={styles.title}>Mobile:</p>
+          <p className={styles.text}>{mobile || "N/A"}</p>
+        </div>
+        <div className={styles.textWrapper}>
+          <p className={styles.title}>FAX:</p>
+          <p className={styles.text}>{fax || "N/A"}</p>
+        </div>
+        <div className={styles.textWrapper}>
+          <p className={styles.title}>Work:</p>
+          <p className={styles.text}>{work || "N/A"}</p>
+        </div>
+      </div>
+      <div className="row-between">
+        <button onClick={handleEdit}>Edit</button>
+        <button onClick={handleDelete}>{loading ? "Deleting..." : "Delete"}</button>
+      </div>
+    </div>
   );
 }
 ```
@@ -475,47 +475,47 @@ export default function PhonebookCard({ name, mobile, fax, work, id, refresh }) 
 On line 13, we have the ```handleDelete``` function. This deletes a contact matching the ID passed to the request query. The ```handleEdit``` function on line 9 will replace the current route with the ```update-phonebook``` route.
 Finally, we’ll update a phonebook. To do this, we create a [id].js file under ```update-phonebook``` folder in pages:
 ```
-import { useSession, signIn, signOut } from &quot;next-auth/react&quot;;
-import Head from &quot;next/head&quot;;
-import Link from &quot;next/link&quot;;
-import { useRouter } from &quot;next/router&quot;;
-import { useCallback, useEffect, useState } from &quot;react&quot;;
-import styles from &quot;../../styles/Home.module.css&quot;;
-import phonebookStyles from &quot;../../styles/Phonebook.module.css&quot;;
+import { useSession, signIn, signOut } from "next-auth/react&quot;;
+import Head from "next/head&quot;;
+import Link from "next/link&quot;;
+import { useRouter } from "next/router&quot;;
+import { useCallback, useEffect, useState } from "react&quot;;
+import styles from "../../styles/Home.module.css&quot;;
+import phonebookStyles from "../../styles/Phonebook.module.css&quot;;
 export default function Home({ contact }) {
   const { data: session } = useSession();
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const query = router.query;
   const [state, setState] = useState({
-    name: &quot;&quot;,
-    mobile: &quot;&quot;,
-    fax: &quot;&quot;,
-    work: &quot;&quot;,
+    name: "",
+    mobile: "",
+    fax: "",
+    work: "",
   });
-  const getContact = useCallback(async () =&gt; {
+  const getContact = useCallback(async () => {
     if (session) {
-      const res = await fetch(&quot;/api/phonebooks/&quot; + query.id);
+      const res = await fetch("/api/phonebooks/" + query.id);
       const data = await res.json();
       data.contact &amp;&amp; setState(data.contact);
     }
   }, [query.id, session]);
-  useEffect(() =&gt; {
+  useEffect(() => {
     getContact();
   }, [getContact]);
-  const handleChange = (e) =&gt; {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    setState((prev) =&gt; ({ ...prev, [name]: value }));
+    setState((prev) => ({ ...prev, [name]: value }));
   };
-  const handleSubmit = async (e) =&gt; {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await fetch(&quot;/api/phonebooks/&quot; + query.id, {
-        method: &quot;PATCH&quot;,
+      await fetch("/api/phonebooks/" + query.id, {
+        method: "PATCH",
         headers: {
-          Accept: &quot;application/json&quot;,
-          &quot;Content-Type&quot;: &quot;application/json&quot;,
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(state),
       });
@@ -527,49 +527,49 @@ export default function Home({ contact }) {
     }
   };
   return (
-    &lt;div className={styles.container}&gt;
-      &lt;Head&gt;
-        &lt;title&gt;Next MongoDb&lt;/title&gt;
-        &lt;meta name=&quot;description&quot; content=&quot;Generated by create next app&quot; /&gt;        &lt;link rel=&quot;icon&quot; href=&quot;/favicon.ico&quot; /&gt;
-      &lt;/Head&gt;
-      &lt;main className={styles.main}&gt;
+    <div className={styles.container}>
+      <Head>
+        <title>Next MongoDb</title>
+        <meta name="description" content="Generated by create next app" />        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <main className={styles.main}>
         {!session ? (
-          &lt;button onClick={() =&gt; signIn()} className={styles.btn}&gt;
+          <button onClick={() => signIn()} className={styles.btn}>
             Sign In
-          &lt;/button&gt;
+          </button>
         ) : (
-          &lt;&gt;
-            &lt;div className={styles.linkText}&gt;
-              &lt;Link href=&quot;/&quot;&gt; Go Back&lt;/Link&gt;
-            &lt;/div&gt;
-            &lt;h4 className=&quot;text-center&quot;&gt;Update Contact: {query.id}&lt;/h4&gt;
-            &lt;button onClick={signOut}&gt;Sign Out&lt;/button&gt;
-            &lt;div className={styles.cardContainer}&gt;
-              &lt;form onSubmit={handleSubmit} className={phonebookStyles.card}&gt;
-                &lt;input onChange={handleChange} name=&quot;name&quot; value={state.name || &quot;&quot;} type=&quot;text&quot; placeholder=&quot;Enter contact name&quot; /&gt;
-                &lt;input onChange={handleChange} name=&quot;mobile&quot; value={state.mobile || &quot;&quot;} type=&quot;text&quot; placeholder=&quot;Enter contact mobile no.&quot; /&gt;
-                &lt;input onChange={handleChange} name=&quot;fax&quot; value={state.fax || &quot;&quot;} type=&quot;text&quot; placeholder=&quot;Enter contact fax no.&quot; /&gt;
-                &lt;input onChange={handleChange} name=&quot;work&quot; value={state.work || &quot;&quot;} type=&quot;text&quot; placeholder=&quot;Enter contact work no.&quot; /&gt;
-                &lt;button disabled={loading} className={&#x60;${styles.btn} ${styles.centerBtn}&#x60;}&gt;
-                  {loading ? &quot;Updating...&quot; : &quot;Update Contact&quot;}
-                &lt;/button&gt;
-              &lt;/form&gt;
-            &lt;/div&gt;
-          &lt;/&gt;
+          <>
+            <div className={styles.linkText}>
+              <Link href="/"> Go Back</Link>
+            </div>
+            <h4 className="text-center">Update Contact: {query.id}</h4>
+            <button onClick={signOut}>Sign Out</button>
+            <div className={styles.cardContainer}>
+              <form onSubmit={handleSubmit} className={phonebookStyles.card}>
+                <input onChange={handleChange} name="name" value={state.name || ""} type="text" placeholder="Enter contact name" />
+                <input onChange={handleChange} name="mobile" value={state.mobile || ""} type="text" placeholder="Enter contact mobile no." />
+                <input onChange={handleChange} name="fax" value={state.fax || ""} type="text" placeholder="Enter contact fax no." />
+                <input onChange={handleChange} name="work" value={state.work || ""} type="text" placeholder="Enter contact work no." />
+                <button disabled={loading} className={&#x60;${styles.btn} ${styles.centerBtn}&#x60;}>
+                  {loading ? "Updating..." : "Update Contact"}
+                </button>
+              </form>
+            </div>
+          </>
         )}
-      &lt;/main&gt;
-    &lt;/div&gt;
+      </main>
+    </div>
   );
 }
 ```
 
 <a href="https://user-147066d7-6cd9-463c-bdbe-2c385fc39ce0-fhcmbheklq-uc.a.run.app/?p=0e2140924f" target="_blank" rel="noopener noreferrer">Save this code</a>
 The code block above fetches the contact detail with an ID matching the router query, allowing us to edit and persist the new values in the database. Line 21 is a callback function that fetches the contact details from the database and assigns the value to the state. Finally, the ```handleSubmit``` function updates the existing value with the new value on the database.
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/6334669e9a107a317fab7e02_image1_1f4c83410be9efbbe30952195dde866c.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6334669e9a107a317fab7e02_image1_1f4c83410be9efbbe30952195dde866c.g)
 
 ## Deploying the Application
 We’ve successfully set up all the application features! The next step is to deploy the application. This article covers deploying the application on Vercel from your GitHub repository.
-- On your dashboard, click on the Add New button &gt; Project.
+- On your dashboard, click on the Add New button > Project.
 - On the import from Git Repository, search the repository for your Next.js application. Vercel will automatically detect the project is Next.js.
 - Click on “Deploy.”
 

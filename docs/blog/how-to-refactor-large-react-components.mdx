@@ -19,7 +19,7 @@ id="">Sure, there are several features that this single component is responsible
 
 ## The Component
 id="">Obviously, it would be stupid of me to paste 2700 lines of code into this article. (Not to mention illegal! 😓) But, let me show you, generally, the react component's structure:
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bdfdcce006d5baebc5cee7_2700-Line%20Component.png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet showing the general structure of a large React componen)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bdfdcce006d5baebc5cee7_2700-Line%20Component.png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet showing the general structure of a large React componen)
 id=""><strong id="">Okay, now tell me what’s wrong here.**
 
 id="">To be 100% honest? Almost everything. Let me explain:
@@ -30,10 +30,10 @@ id=""><strong id="">Keep the constants in a separate file.**
 id="">It doesn’t matter if they’re being re-used or not, it’s still better to store constants in a separate file. Down the line, someone else will create a separate constant with the same value, which will eventually create confusion.
 id="">I do it this way:
 
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bdff603fbf007debca0042_Constant%20Declarations.png" loading="lazy" id="" width="auto" height="auto" alt="An example of abstracted constant)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bdff603fbf007debca0042_Constant%20Declarations.png" loading="lazy" id="" width="auto" height="auto" alt="An example of abstracted constant)
 id="">Then I import them into my component:
 
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bdffdfd2b9b299a3b14436_Import%20Constant%20Declarations.png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet that imports constant declaration)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62bdffdfd2b9b299a3b14436_Import%20Constant%20Declarations.png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet that imports constant declaration)
 id="">For this particular React component, it isn’t a big deal, but best practices are best practices.
 
 ### Styles and Helper Methods
@@ -42,11 +42,11 @@ id="">If your component is only 30–50 lines of code, it can make sense to keep
 id="">But, this isn't true for big React projects. 580 lines of style declaration doesn’t make sense in any scenario, as you won’t need to touch these styles very often.
 id="">I follow the following folder structure to keep things organized:
 
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be0027d504332d7673352a_Folder%20Structure.png" loading="lazy" id="" width="auto" height="auto" alt="An example of React file structur)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be0027d504332d7673352a_Folder%20Structure.png" loading="lazy" id="" width="auto" height="auto" alt="An example of React file structur)
 id="">The responsibility of the files is clear from the names of the files themselves. It’s simple to split our massive component to one-third of its current size just by putting things where they should be! Refactoring React components doesn't have to be daunting.
 id="">An example:
 
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be0079afe7b262b3c78c38_Bad%20Styling.png" loading="lazy" id="" width="auto" height="auto" alt="An example of refactored stylin)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be0079afe7b262b3c78c38_Bad%20Styling.png" loading="lazy" id="" width="auto" height="auto" alt="An example of refactored stylin)
 id="">If you are using Raw CSS or SCSS, you probably don’t make this mistake, but projects using <a href="https://code.pieces.app/blog/react-themes-with-styled-components" target="_blank">styled-components</a> or material-ui mostly follow the above bad practice.
 id="">Once someone started it, it became the standard practice.
 id="">Don’t fall into this trap! Create a separate file for styles ahead of time; this can save your component in the future.
@@ -71,7 +71,7 @@ id="">But even I wouldn’t try to convert our 2700-line component into a functi
 
 id="">Let me show you an estimate of how much we can improve this component without even understanding its function.
 id="">If all we do is export the constants to <em id="">constants.ts, the styles to <em id="">styles.ts and the helper methods to <em id="">helpers.ts, we can reduce the component by 1400 lines.
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be0116aa5bf06e682c7456_Refactor%20Calculation.png" loading="lazy" id="" width="auto" height="auto" alt="A calculation of how many lines we can remove in with easy refactor)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be0116aa5bf06e682c7456_Refactor%20Calculation.png" loading="lazy" id="" width="auto" height="auto" alt="A calculation of how many lines we can remove in with easy refactor)
 id="">This will take us about two hours of work; all we need to do is put things into the appropriate files and then import them.
 id="">We can reduce our component from 2700 lines to 1300 lines!
 id="">Some may say that’s still a lot, but hey!!! One step at a time, right?
@@ -89,6 +89,6 @@ id="">Obviously, this component has lots of problems, but it has some good thing
 id="">Although the type declarations add up to 200 lines, they’re worth it. Without Typescript, it would be impossible to maintain this component.
 id="">Some of the dumb logic is extracted from the view logic itself. For example, showing a message based on vehicle status looks like this:
 
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be019cda48c1a37033e51f_Vehicle%20Status%20Message.png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62be019cda48c1a37033e51f_Vehicle%20Status%20Message.png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
 
 id="">It’s better to have them in a separate function instead of writing the logic into the view, which can look something like this:

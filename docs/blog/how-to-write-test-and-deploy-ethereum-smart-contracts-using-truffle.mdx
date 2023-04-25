@@ -77,10 +77,10 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 module.exports = {
   networks: {
     goerli: {
-      provider: () =&gt; {
- return new HDWalletProvider(mnemonic, &quot;http://127.0.0.1:8545&quot;);
+      provider: () => {
+ return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545");
       },
-      network_id: &quot;*&quot;,
+      network_id: "*",
      },
 }
 ```
@@ -90,11 +90,11 @@ npm install truffle-hdwallet-provider --save-dev
 ```
 Now that we are done setting up our ```truffle.config.js``` file, let’s start writing and testing our smart contract. In the test folder, create a file called ```financialContract_test.js``` and add the following code:
 ```
-const FinancialContract = artifacts.require(&quot;FinancialContract&quot;);
-contract(&quot;FinancialContract&quot;, () =&gt; {
-    it(&quot;has been deployed successfully&quot;, async () =&gt; {
+const FinancialContract = artifacts.require("FinancialContract");
+contract("FinancialContract", () => {
+    it("has been deployed successfully", async () => {
  const finance = await FinancialContract.deployed();
- assert(finance, &quot;contract was not deployed&quot;);
+ assert(finance, "contract was not deployed");
     });
 })
 ```
@@ -116,7 +116,7 @@ Here is what our output will look like:
 ```
 Compiling your contracts...
 ===========================
-&gt; Compiling ./contracts/FinancialContract.sol
+> Compiling ./contracts/FinancialContract.sol
 Error: Could not find artifacts for FinancialContract from any sources
  ....omitted...
 Truffle v5.5.26 (core: 5.5.26)
@@ -136,25 +136,25 @@ After making these changes, let’s run our tests again:
 ```
 Compiling your contracts...
 ===========================
-&gt; Compiling ./contracts/FinancialContract.sol
-&gt; Artifacts written to /tmp/test--23887-k79dUigR3QPQ
-&gt; Compiled successfully using:
+> Compiling ./contracts/FinancialContract.sol
+> Artifacts written to /tmp/test--23887-k79dUigR3QPQ
+> Compiled successfully using:
    - solc: 0.8.16+commit.07a7930e.Emscripten.clang
   Contract: FinancialContract
     1) has been deployed successfully
-    &gt; No events were emitted
+    > No events were emitted
   0 passing (192ms)
   1 failing
   1) Contract: FinancialContract
        has been deployed successfully:
      ReferenceError: Cannot access 'FinancialContract' before initialization
-      at Context.&lt;anonymous&gt; (test/FinancialContract_test.js:5:35)
+      at Context.<anonymous> (test/FinancialContract_test.js:5:35)
       at processTicksAndRejections (internal/process/task_queues.js:95:5)```
 Here, the error indicates that our contract has not yet been deployed to the network. Truffle builds our contracts before deploying them to a test network whenever we run the ```truffle test``` command. To deploy our contract, we will use the ```truffle migrate``` command. The deployment of our contracts is automated through migrations. Migrations are written in JavaScript.
 
 First, we will create a ```migrations/2_deploy_financialContract.js``` file to hold our migration code. Inside the file, add the following code:
 ```
-const FinancialContract = artifacts.require(&quot;FinancialContract&quot;);
+const FinancialContract = artifacts.require("FinancialContract");
 module.exports = function(deployer) {
     deployer.deploy(FinancialContract);
 
@@ -163,9 +163,9 @@ Now run the test with ```truffle test```. Here’s what our output will look lik
 ```
 Compiling your contracts...
 ===========================
-&gt; Compiling ./contracts/FinancialContract.sol
-&gt; Artifacts written to /tmp/test--5856-XvCghuxtf2Cy
-&gt; Compiled successfully using:
+> Compiling ./contracts/FinancialContract.sol
+> Artifacts written to /tmp/test--5856-XvCghuxtf2Cy
+> Compiled successfully using:
    - solc: 0.8.16+commit.07a7930e.Emscripten.clang
   Contract: FinancialContract
     ✔ has been deployed successfully
@@ -175,12 +175,12 @@ Our contract has been successfully deployed. This test confirms that everything 
 Our smart contract will be stored on the Ethereum network at a specific address once it has been deployed. It won't do anything until someone makes a request. Our functions specify what kind of work our contract is allowed to do. In the same way as before, we will start with a test to create a function that will return a value of 10.
 In your ```/test/financialContract_test.js``` file, add the code below:
 ```
-describe(&quot;value()&quot;, () =&gt; {
-        it(&quot;returns 0.01 ether&quot;, async () =&gt; {
+describe("value()", () => {
+        it("returns 0.01 ether", async () => {
  const finance = await FinancialContract.deployed();
  const expected = 10;
  const actual = await finance.value();
- assert.equal(actual, expected, &quot;return a value of 10 ether'&quot;);
+ assert.equal(actual, expected, "return a value of 10 ether'");
         });
     })
 ```
@@ -188,22 +188,22 @@ Since we are making a call to interact with our local test blockchain, we made o
 ```
 Compiling your contracts...
 ===========================
-&gt; Compiling ./contracts/FinancialContract.sol
-&gt; Artifacts written to /tmp/test--51119-ZO2Gl2SaUhyg
-&gt; Compiled successfully using:
+> Compiling ./contracts/FinancialContract.sol
+> Artifacts written to /tmp/test--51119-ZO2Gl2SaUhyg
+> Compiled successfully using:
    - solc: 0.8.16+commit.07a7930e.Emscripten.clang
   Contract: FinancialContract
     ✔ has been deployed successfully
     value()
       1) returns 10 ether
-    &gt; No events were emitted
+    > No events were emitted
   1 passing (137ms)
   1 failing
   1) Contract: FinancialContract
        value()
          returns 10 ether:
      TypeError: finance.value is not a function
-      at Context.&lt;anonymous&gt; (test/financialContract_test.js:12:42)
+      at Context.<anonymous> (test/financialContract_test.js:12:42)
       at processTicksAndRejections (internal/process/task_queues.js:95:5)```
 Based on the error, we see that ```finance.value``` is not a function. Inside our ```contracts/FinancialContract.sol``` contract, add the function below:
 ```
@@ -221,9 +221,9 @@ Here is what our output looks like:
 ```
 Compiling your contracts...
 ===========================
-&gt; Compiling ./contracts/FinancialContract.sol
-&gt; Artifacts written to /tmp/test--51657-dvLDHyxWOaQw
-&gt; Compiled successfully using:
+> Compiling ./contracts/FinancialContract.sol
+> Artifacts written to /tmp/test--51657-dvLDHyxWOaQw
+> Compiled successfully using:
    - solc: 0.8.16+commit.07a7930e.Emscripten.clang
   Contract: FinancialContract
     ✔ has been deployed successfully
@@ -237,14 +237,14 @@ In this section, we will look at making our contract dynamic. To achieve this, w
 
 To make sure that our state changes stay separate from the rest of the tests so that we do not find ourselves in a situation where the order of our test suite's success or failure will be influenced by the tests. We use the **clean room **feature to deploy new instances of our contracts. In our ```test/financialContract_test.js``` file, create another contract block and add the following code:
 ```
-contract(&quot;FinancialContract: update value&quot;, () =&gt; {
-    describe(&quot;setValue(uint256)&quot;, () =&gt; {
-        it(&quot;the passed-in uint256 value is set&quot;, async () =&gt; {
+contract("FinancialContract: update value", () => {
+    describe("setValue(uint256)", () => {
+        it("the passed-in uint256 value is set", async () => {
             const finance = await FinancialContract.deployed()
             const expected = 15;
             await finance.setValue(**expected**);
             const actual = await finance.value();
-            assert.equal(**actual**, expected, &quot;value was not updated&quot;);
+            assert.equal(**actual**, expected, "value was not updated");
         });
     });
 })
@@ -273,9 +273,9 @@ In your terminal, run the ```truffle test``` command. Here is what our output lo
 ```
 Compiling your contracts...
 ===========================
-&gt; Compiling ./contracts/FinancialContract.sol
-&gt; Artifacts written to /tmp/test--62673-uoVu8QO6JzNN
-&gt; Compiled successfully using:
+> Compiling ./contracts/FinancialContract.sol
+> Artifacts written to /tmp/test--62673-uoVu8QO6JzNN
+> Compiled successfully using:
    - solc: 0.8.16+commit.07a7930e.Emscripten.clang
   Contract: FinancialContract
     ✔ has been deployed successfully
@@ -292,23 +292,23 @@ Before we deploy our smart contract to the Goerli testnet, let’s install<a hre
 
 Parity is an Ethereum client written in Rust and provides one of the fastest syncing options of the available clients. To install Parity, run the code below in your root folder— If you’re running a Mac or Ubuntu (or the Windows 10 WSL version of Ubuntu).
 ```
-bash &lt;(**curl** https://get.parity.io -L)```
+bash <(**curl** https://get.parity.io -L)```
 Once we install the script, we want to start syncing the blocks from the Goerli testnet:
 ```
 parity --chain=goerli
 ```
 Install MetaMask, set it up, and copy your mnemonic key. Create a ```.env``` file and paste your mnemonic:
 ```
-MNEMONIC=&quot;your mnemonic&quot
+MNEMONIC="your mnemonic&quot
 ```
 Update your ```truffle.config.js``` file.
 ```
 goerli: {
- provider: () =&gt; {
+ provider: () => {
         const mnemonic = process.env.MNEMONIC
-        return new HDWalletProvider(mnemonic, &quot;http://127.0.0.1:8545&quot;);
+        return new HDWalletProvider(mnemonic, "http://127.0.0.1:8545");
       },
- network_id: &quot;*&quot;,
+ network_id: "*",
     },```
 To be able to deploy your smart contract to the Goerli network, you will need more than 10 GoerliETH. Visit the<a href="https://goerli-faucet.slock.it/" target="_blank" rel="noopener noreferrer"> Goerli faucet</a> to get some faucets. Run the following commands:
 ```

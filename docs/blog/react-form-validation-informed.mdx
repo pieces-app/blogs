@@ -24,34 +24,34 @@ In this section, we’ll go over how to include Informed in your application. By
 import { Form, Input, Debug } from 'informed';
 import './App.css';
 
-const App = () =&gt; (
- &lt;div className=&quot;App&quot;&gt;
-     &lt;Form&gt;
-      &lt;div&gt;
-       &lt;Input className=&quot;input&quot; name=&quot;name&quot; label=&quot;Name&quot; placeholder=&quot;Elon&quot; /&gt;
-       &lt;Input
-        className=&quot;input&quot;
-        name=&quot;age&quot;
-        type=&quot;number&quot;
-        label=&quot;Age&quot;
-       /&gt;
-       &lt;Input
-        className=&quot;input&quot;
-        name=&quot;phone&quot;
-        label=&quot;Phone&quot;
-        formatter=&quot;+234 (###)-###-####&quot;
-       /&gt;
-      &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
-     &lt;/div&gt;
-     &lt;Debug/&gt;
-    &lt;/Form&gt;
-  &lt;/div&gt;
+const App = () => (
+ <div className="App">
+     <Form>
+      <div>
+       <Input className="input" name="name" label="Name" placeholder="Elon" />
+       <Input
+        className="input"
+        name="age"
+        type="number"
+        label="Age"
+       />
+       <Input
+        className="input"
+        name="phone"
+        label="Phone"
+        formatter="+234 (###)-###-####"
+       />
+      <button type="submit">Submit</button>
+     </div>
+     <Debug/>
+    </Form>
+  </div>
 );
 export default App
 ```
 The code block above demonstrates how components imported from the Informed library are simply implemented. It’s critical to note the Debug component; this component displays the whole state of your form in real time, allowing for easier debugging. Also, the formatter prop shows you how to format input values. This can be added to text inputs as well.
 
-![](loads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d519e9720592_image_fdf21850d5a9bf3250c13a44f7c4ef88_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d519e9720592_image_fdf21850d5a9bf3250c13a44f7c4ef88_800.png)
 
 ### Validation Hooks
 
@@ -60,160 +60,160 @@ The ```useFormState``` hook from the Informed library gives you access to the fo
 
 ```
 import { Form, Input, useFormState } from 'informed';
-const ComponentUsingFormState = () =&gt; {
+const ComponentUsingFormState = () => {
  const formState = useFormState();
  return (
-  &lt;pre&gt;
-   &lt;code&gt;{JSON.stringify(formState.values, null, 2)}&lt;/code&gt;
-  &lt;/pre&gt;
+  <pre>
+   <code>{JSON.stringify(formState.values, null, 2)}</code>
+  </pre>
  );
 };
-const App = () =&gt; (
- &lt;div className=&quot;App&quot;&gt;
-  &lt;Form&gt;
-  &lt;div&gt;
-   &lt;Input name=&quot;name&quot; label=&quot;Name:&quot; /&gt;
-   &lt;Input name=&quot;occupation&quot; label=&quot;Occupation:&quot; /&gt;
-   &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-   &lt;h5&gt;Component using formState:&lt;/h5&gt;
-   &lt;ComponentUsingFormState /&gt;
-  &lt;/div&gt;
-  &lt;/Form&gt;
- &lt;/div&gt;
+const App = () => (
+ <div className="App">
+  <Form>
+  <div>
+   <Input name="name" label="Name:" />
+   <Input name="occupation" label="Occupation:" />
+   <button type="submit">Submit</button>
+  </div>
+  <div>
+   <h5>Component using formState:</h5>
+   <ComponentUsingFormState />
+  </div>
+  </Form>
+ </div>
 )
 ```
 In the code block above, in ```ComponentUsingFormState```, you can access the form values by using the dot notation ```formState.values```:
 
-![](-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d523e3720548_image_9dc29725c2922e2ee0dfc6687d1f16eb_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d523e3720548_image_9dc29725c2922e2ee0dfc6687d1f16eb_800.png)
 
 The ```useFormApi``` hook from the Informed library allows you to gain access to the form API functions. You can alter the value of an input using the functions that ```formApi``` provides for React form validation:
 ```
 ...
-import { Form, Input, useFormApi } from &quot;informed&quot;;
-const RandomSetterButton = () =&gt; {
+import { Form, Input, useFormApi } from "informed&quot;;
+const RandomSetterButton = () => {
  const formApi = useFormApi();
  return (
-  &lt;button
-   type=&quot;button&quot;
-   onClick={() =&gt;
+  <button
+   type="button"
+   onClick={() =>
     formApi.setValue(
-     &quot;name&quot;,
+     "name",
      Math.floor(Math.random() * Math.floor(Number.MAX_SAFE_INTEGER))
     )
    }
-  &gt;
+  >
    Random
-   &lt;/button&gt;
+   </button>
  );
 };
-const SetValuesButton = () =&gt; {
+const SetValuesButton = () => {
  const formApi = useFormApi();
  return (
-  &lt;button
-   type=&quot;button&quot;
-   onClick={() =&gt; formApi.setValues({ name: 'Asta', age: 26, color: &quot;Green&quot; })}
-  &gt;
+  <button
+   type="button"
+   onClick={() => formApi.setValues({ name: 'Asta', age: 26, color: "Green" })}
+  >
    All
-  &lt;/button&gt;
+  </button>
  );
 };
-const SetTheseValuesButton = () =&gt; {
+const SetTheseValuesButton = () => {
  const formApi = useFormApi();
   return (
-   &lt;button
-    type=&quot;button&quot;
-    onClick={() =&gt; formApi.setTheseValues({ age: 27, color: &quot;Yellow&quot; })}
-   &gt;
+   <button
+    type="button"
+    onClick={() => formApi.setTheseValues({ age: 27, color: "Yellow" })}
+   >
     Age &amp; Color
-   &lt;/button&gt;
+   </button>
   );
 };
-const App = () =&gt; (
- &lt;Form onSubmit={({ values }) =&gt; window.alert(JSON.stringify(values, null, 2))}&gt;
-  &lt;div&gt;
-   &lt;Input name=&quot;name&quot; label=&quot;First Name:&quot; /&gt;
-   &lt;Input name=&quot;age&quot; label=&quot;First Name:&quot; type=&quot;number&quot;  /&gt;
-   &lt;Input name=&quot;color&quot; label=&quot;Favorite Color:&quot; /&gt;
-   &lt;RandomSetterButton /&gt;
-   &lt;SetValuesButton /&gt;
-   &lt;SetTheseValuesButton /&gt;
-   &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
-  &lt;/div&gt;
- &lt;/Form&gt;
+const App = () => (
+ <Form onSubmit={({ values }) => window.alert(JSON.stringify(values, null, 2))}>
+  <div>
+   <Input name="name" label="First Name:" />
+   <Input name="age" label="First Name:" type="number"  />
+   <Input name="color" label="Favorite Color:" />
+   <RandomSetterButton />
+   <SetValuesButton />
+   <SetTheseValuesButton />
+   <button type="submit">Submit</button>
+  </div>
+ </Form>
 );
 ...```
 As shown in the code block above, the ```RandomSetterButton``` component uses ```setValue``` to target a single input. In this case, the name input is targeted, and the value is set to a random number. The ```SetTheseValuesButton``` component uses the ```setTheseValues``` function to change the values of name, age, and color inputs. Also, the ```SetValuesButton``` component uses ```setValues``` to set the input values of both age and color to different values. One of the important ```useFormApi``` functions is the ```onSubmit``` function. This gives you access to the form values, which can be used as payload to an endpoint.
 
-![](ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d5f818720547_WDn0u8N_2b8454070c66afd115c3f984a9b2a159.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d5f818720547_WDn0u8N_2b8454070c66afd115c3f984a9b2a159.g)
 
 The ```useFieldApi``` hook gives you access to the field API functions using a dot notation:
 ```
 ...
-import { Form, Input, useFieldApi } from &quot;informed&quot;;
-const ComponentUsingFieldApi = () =&gt; {
- const fieldApi = useFieldApi(&quot;name&quot;);
+import { Form, Input, useFieldApi } from "informed&quot;;
+const ComponentUsingFieldApi = () => {
+ const fieldApi = useFieldApi("name");
  return (
-  &lt;button
-   type=&quot;button&quot;
-   onClick={() =&gt;
+  <button
+   type="button"
+   onClick={() =>
     fieldApi.setValue(
      ' Math.floor(Math.random() * Math.floor(Number.MAX_SAFE_INTEGER))'
     )
    }
-  &gt;
+  >
    Random
-  &lt;/button&gt;
+  </button>
  );
 };
-const App = () =&gt; (
- &lt;Form&gt;
-  &lt;div&gt;
-   &lt;Input name=&quot;name&quot; label=&quot;Name:&quot; initialValue=&quot;Joe&quot; /&gt;
-   &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
-   &lt;h5&gt;Component using fieldApi:&lt;/h5&gt;
-  &lt;ComponentUsingFieldApi/&gt;
-  &lt;/div&gt;
- &lt;/Form&gt;
+const App = () => (
+ <Form>
+  <div>
+   <Input name="name" label="Name:" initialValue="Joe" />
+   <button type="submit">Submit</button>
+   <h5>Component using fieldApi:</h5>
+  <ComponentUsingFieldApi/>
+  </div>
+ </Form>
 );
 ...```
 The ```name``` field having the ```initialValue``` Meliodas, changes to a random number when the random button is clicked:
 
-![](ds-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d5301e72052a_avwYLXe_dd82415d01a7710c45e45acae0fbed64.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d5301e72052a_avwYLXe_dd82415d01a7710c45e45acae0fbed64.g)
 
 The ```useFieldState``` hook gives you access to the field state attributes:
 ```
 ...
 import { Form, Input, useFieldState } from 'informed';
-const ComponentUsingFieldState = ({ name }) =&gt; {
+const ComponentUsingFieldState = ({ name }) => {
  const fieldState = useFieldState(name);
  return (
-  &lt;&gt;
-   &lt;h5&gt;Component using fieldState: {name}&lt;/h5&gt;
+  <>
+   <h5>Component using fieldState: {name}</h5>
    Render: {Math.random()}
-   &lt;pre&gt;
-    &lt;code&gt;{JSON.stringify(fieldState, null, 2)}&lt;/code&gt;
-   &lt;/pre&gt;
-  &lt;/&gt;
+   <pre>
+    <code>{JSON.stringify(fieldState, null, 2)}</code>
+   </pre>
+  </>
  );
 };
-const App = () =&gt; (
- &lt;Form&gt;
-  &lt;div&gt;
-   &lt;Input name=&quot;name&quot; label=&quot;Name:&quot; /&gt;
-   &lt;Input field=&quot;age&quot; label=&quot;Age:&quot; type=&quot;number&quot; /&gt;
-   &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div&gt;
-   &lt;ComponentUsingFieldState name=&quot;name&quot; /&gt;
-   &lt;ComponentUsingFieldState name=&quot;age&quot; /&gt;
-  &lt;/div&gt;
- &lt;/Form&gt;
+const App = () => (
+ <Form>
+  <div>
+   <Input name="name" label="Name:" />
+   <Input field="age" label="Age:" type="number" />
+   <button type="submit">Submit</button>
+  </div>
+  <div>
+   <ComponentUsingFieldState name="name" />
+   <ComponentUsingFieldState name="age" />
+  </div>
+ </Form>
 );
 ...```
 From the code block above, the ```name``` field is passed into the ```useFieldState``` hook as an argument, and can be used to keep track of every name attribute in the form state:
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d57212720530_hvklIM9_b8e43c66c73cc4111280b39496a47cdc.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d57212720530_hvklIM9_b8e43c66c73cc4111280b39496a47cdc.g)
 
 ### Form Validation Methods
 Informed forms provide the validate prop to handle field-level validation. You can pass in rules from a function to validate an input field, or mark it as ```required```:
@@ -225,20 +225,20 @@ Informed allows you to create custom validation inputs that can be used across y
 ```
 ...
 import { useForm, useField, Debug } from 'informed';
-const CustomForm = ({ children, ...rest }) =&gt; {
+const CustomForm = ({ children, ...rest }) => {
  const { formController, render, userProps } = useForm(rest);
 /* --- DON'T FORGET TO CALL THE RENDER METHOD FROM THE HOOK! --- */
 return render(
- &lt;form
+ <form
   {...userProps}
   onReset={formController.reset}
   onSubmit={formController.submitForm}
-  onKeyDown={formController.keyDown}&gt;
+  onKeyDown={formController.keyDown}>
   {children}
- &lt;/form&gt;
+ </form>
  );
 };
-const CustomInput = props =&gt; {
+const CustomInput = props => {
  const { render, informed, fieldState, userProps, ref } = useField({
   type: 'text',
   ...props
@@ -247,39 +247,39 @@ const { id, label, ...rest } = userProps;
  const { error, showError } = fieldState;
 /* --- DON'T FORGET TO CALL THE RENDER METHOD FROM THE HOOK! --- */
 return render(
- &lt;&gt;
-  &lt;label htmlFor={id}&gt;{label}&lt;/label&gt;
-  &lt;input
+ <>
+  <label htmlFor={id}>{label}</label>
+  <input
    {...rest}
    {...informed}
    ref={ref}
    style={showError ? { border: 'solid 1px red' } : null}
-  /&gt;
-   {showError &amp;&amp; &lt;small style={{ color: 'red' }}&gt;{error}&lt;/small&gt;}
-  &lt;/&gt;
+  />
+   {showError &amp;&amp; <small style={{ color: 'red' }}>{error}</small>}
+  </>
  );
 };
-const App = () =&gt; (
- &lt;div className=&quot;App&quot;&gt;
-  &lt;CustomForm
-   onSubmit={({ values }) =&gt; window.alert(JSON.stringify(values, null, 2))}
-  &gt;
-   &lt;div&gt;
-    &lt;CustomInput
-     field=&quot;name&quot;
-     label=&quot;First name:&quot;
-     validateOn=&quot;change&quot;
+const App = () => (
+ <div className="App">
+  <CustomForm
+   onSubmit={({ values }) => window.alert(JSON.stringify(values, null, 2))}
+  >
+   <div>
+    <CustomInput
+     field="name"
+     label="First name:"
+     validateOn="change"
      required
      minLength={5}
-    /&gt;
-    &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
-   &lt;/div&gt;
-   &lt;Debug values errors /&gt;
-  &lt;/CustomForm&gt;
- &lt;/div&gt;
+    />
+    <button type="submit">Submit</button>
+   </div>
+   <Debug values errors />
+  </CustomForm>
+ </div>
 );
 ...```
 Using the ```useField``` and ```useForm``` hooks, a custom form and input component was generated in the code block above. When utilizing either hook, you must always call the render method obtained from both hooks:
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d51e7172052b_j3yYqiu_fe147621a5b320758df52aff9b15fb66.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/636a8c0d75f3d51e7172052b_j3yYqiu_fe147621a5b320758df52aff9b15fb66.g)
 
 ## Conclusion

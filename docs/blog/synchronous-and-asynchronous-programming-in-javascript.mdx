@@ -29,7 +29,7 @@ Synchronous programming is straightforward. It’s easier to write code, and it�
 Let’s use this illustration to see how asynchronous JavaScript runs:
 ```
 console.log('One');
-setTimeout(() =&gt; console.log('Two'), 100);
+setTimeout(() => console.log('Two'), 100);
 console.log('Three');
 // LOGS: 'One', 'Three', 'Two'```
 The ```setTimeout``` is what makes our code asynchronous. What the code does first in the example above is to log ```One```**. **Then, instead of executing the ```setTimeout```** **function, it logs ```Three```** **before it runs the ```setTimeout```** **function. Browsers run JavaScript, and there are web APIs that handle it for users. JavaScript passes the ```setTimeout```** **function in these web APIs, and then our code keeps running normally. By running code asynchronously, other code is not blocked from running. When the work is complete, a notification is sent to the main thread about whether the task was successful or failed.

@@ -67,9 +67,9 @@ class example {
     {
 
         int[][] arr = { { 5, 0 }, { 1, 7 } };
-        for (int i = 0; i &lt; 2; i++) {
-            for (int j = 0; j &lt; 2; j++) {
-                System.out.print(arr[i][j] + &quot; &quot;);
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.print(arr[i][j] + " ");
             }
              System.out.println();
         }
@@ -85,10 +85,10 @@ An example of three multi-dimensional arrays:
 class example {
   public static void main(String[] args) {
     int[][][] arr = {{{ 5, 0 }, { 1, 7 },{2 , 9}},};
-        for(int i=0; i &lt; arr.length; i++){
-      for(int j=0; j &lt; arr[i].length; j++){
-         for(int k=0; k &lt; arr[i][j].length; k++){
-            System.out.print( arr[i][j][k] + &quot; &quot;);
+        for(int i=0; i < arr.length; i++){
+      for(int j=0; j < arr[i].length; j++){
+         for(int k=0; k < arr[i][j].length; k++){
+            System.out.print( arr[i][j][k] + " ");
          }
          System.out.println();
       }
@@ -125,14 +125,14 @@ import java.util.*;
 class example {
         public static void main(String[] args)
         {
-                ArrayList&lt;Integer&gt; bags = new ArrayList&lt;&gt;();
-                for (int i = 1; i &lt;= 7; i++)
+                ArrayList<Integer> bags = new ArrayList<>();
+                for (int i = 1; i <= 7; i++)
                         bags.add(i);
                 System.out.println(bags);
                 bags.remove(3);
                 System.out.println(bags);
-                for (int i = 0; i &lt; bags.size(); i++)
-                        System.out.print(bags.get(i) + &quot; &quot;);
+                for (int i = 0; i < bags.size(); i++)
+                        System.out.print(bags.get(i) + " ");
         }
 }
 ```
@@ -144,7 +144,7 @@ Since Lists are interface inheritors, Lists can't create objects. You will need 
 
 Here is an example of using an ArrayList to create a List object:
 ```
-List&lt;Obj&gt; list = new ArrayList&lt;Obj&gt; ();```<a href="https://sophyia.pieces.cloud/?p=9d18439d79" target="_blank" rel="noopener noreferrer">Save this code</a>
+List<Obj> list = new ArrayList<Obj> ();```<a href="https://sophyia.pieces.cloud/?p=9d18439d79" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 Some of the operations in a List Interface include:
 - **add(),** adds elements to the List Interface; it takes two parameters.
@@ -158,11 +158,11 @@ import java.util.*;
 class example {
         public static void main(String args[])
         {
-                List&lt;String&gt; txt = new ArrayList&lt;&gt;();
+                List<String> txt = new ArrayList<>();
 
-                txt.add(&quot;Pieces&quot;);
-                txt.add(&quot;Pieces&quot;);
-                txt.add(2, &quot;Code&quot;);
+                txt.add("Pieces");
+                txt.add("Pieces");
+                txt.add(2, "Code");
                 System.out.println(txt);
         }
 }
@@ -178,14 +178,14 @@ class example {
 
         public static void main(String args[])
         {
-                List&lt;String&gt; txt = new ArrayList&lt;&gt;();
+                List<String> txt = new ArrayList<>();
 
-                txt.add(&quot;Pieces&quot;);
-                txt.add(&quot;Pieces&quot;);
-                txt.add(2, &quot;Code&quot;);
-                System.out.println(&quot;Initial ArrayList &quot; + txt);
-        txt.set(1, &quot;Random&quot;);
-          System.out.println(&quot;Updated ArrayList &quot; + txt);
+                txt.add("Pieces");
+                txt.add("Pieces");
+                txt.add(2, "Code");
+                System.out.println("Initial ArrayList " + txt);
+        txt.set(1, "Random");
+          System.out.println("Updated ArrayList " + txt);
     }
 }
 ```
@@ -203,17 +203,17 @@ class example {
 
         public static void main(String args[])
         {
-                List&lt;String&gt; txt = new ArrayList&lt;&gt;();
+                List<String> txt = new ArrayList<>();
 
-                txt.add(&quot;Pieces&quot;);
-                txt.add(&quot;Pieces&quot;);
-                txt.add(2, &quot;Code&quot;);
+                txt.add("Pieces");
+                txt.add("Pieces");
+                txt.add(2, "Code");
 
-                System.out.println(&quot;Initial ArrayList &quot; + txt);
+                System.out.println("Initial ArrayList " + txt);
         txt.remove(1);
-        System.out.println(&quot;After the Index Removal &quot; + txt);
-        txt.remove(&quot;Pieces&quot;);
-        System.out.println(&quot;After the Object Removal &quot;
+        System.out.println("After the Index Removal " + txt);
+        txt.remove("Pieces");
+        System.out.println("After the Object Removal "
                            + txt);
     }
 }
@@ -245,14 +245,14 @@ class Matrix {
         static int identity_matrix(int num)
         {
                 int row, col;
-                for (row = 0; row &lt; num; row++)
+                for (row = 0; row < num; row++)
                 {
-                        for (col = 0; col &lt; num; col++)
+                        for (col = 0; col < num; col++)
                         {
                                 if (row == col)
-                                        System.out.print( 1+&quot; &quot;);
+                                        System.out.print( 1+" ");
                                 else
-                                        System.out.print( 0+&quot; &quot;);
+                                        System.out.print( 0+" ");
                         }
                         System.out.println();
                 }
@@ -270,14 +270,14 @@ class matrix {
         {
                 int row, col;
 
-                for (row = 0; row &lt; num; row++)
+                for (row = 0; row < num; row++)
                 {
-                        for (col = 0; col &lt; num; col++)
+                        for (col = 0; col < num; col++)
                         {
                                 if (row == col)
-                                        System.out.print( 1+&quot; &quot;);
+                                        System.out.print( 1+" ");
                                 else
-                                        System.out.print( 0+&quot; &quot;);
+                                        System.out.print( 0+" ");
                         }
                         System.out.println();
                 }

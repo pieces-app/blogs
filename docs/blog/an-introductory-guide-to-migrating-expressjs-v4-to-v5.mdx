@@ -18,25 +18,25 @@ Let's explore the changes even further, but please note that Express.js V5 is st
 ### Rejected Promise and Error Handling
 In Express.js V4, when an error or rejection in a request handler is not explicitly handled or passed down to an error-handling middleware, it could potentially cause the app to crash. However, with Express.js V5, the application doesn’t crash; instead, a 500 response containing either the error or the rejected value is returned. Better yet, we can handle the event by passing it down to an error-handling middleware.
 ```
-app.get(&quot;/throw&quot;, async () =&gt; {
- return await Promise.resolve().then(() =&gt; {
- throw new Error(&quot;Pieces: error&quot;);
+app.get("/throw", async () => {
+ return await Promise.resolve().then(() => {
+ throw new Error("Pieces: error");
   });
 });
-app.get(&quot;/reject&quot;, () =&gt; {
- return Promise.reject(&quot;Pieces: rejected&quot;);
+app.get("/reject", () => {
+ return Promise.reject("Pieces: rejected");
 });```<a href="https://user-d6b93f60-4441-4576-aac8-a041d598ff4c-fhcmbheklq-uc.a.run.app/?p=44c845ab2f" target="_blank" rel="noopener noreferrer">Save this code</a>
 The above snippet would surely crash the entire application in Express.js V4, but thanks to V5 updates, it won’t.
 
 ### Return of app.router Object
 The app.router reference object to an Express app’s built-in router instance, which was removed in Express.js V4, has been brought back in V5. Now, we can define middleware and routes on the ```app.router``` object:
 ```
-const express = require(&quot;express&quot;);
+const express = require("express");
 const app = express();
 const router = app.router;
-router.post(&quot;/create&quot;, (req, res) =&gt; {
+router.post("/create", (req, res) => {
  // do something...
-  res.status(status).send(&quot;Created from Pieces!&quot;);
+  res.status(status).send("Created from Pieces!");
 });```<a href="https://user-d6b93f60-4441-4576-aac8-a041d598ff4c-fhcmbheklq-uc.a.run.app/?p=c75b4a885f" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ### Change of Syntax for Route Path Matching
@@ -60,7 +60,7 @@ The above snippet shows a route path that will match ```/inventory/1/pieces```, 
 The above snippet shows a route path that will match ```/inventory/pieces```, ```/inventory/1/pieces```, and so on when substituted, but not ```/inventory/1/2/pieces```.
 As mentioned above, all matching group expressions have to be<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp" target="_blank" rel="noopener noreferrer"> RegExp</a>. In Express.js V4, the use of ```(*)``` in route path was valid, but will fail in Express.js V5. The valid RegExp equivalent is ```(.*)```.
 
-The above snippet will return ```{&quot;id&quot;:&quot;1&quot;}``` as a response in Express.js V5, unlike ```(*)```, which will return ```{&quot;0&quot;:&quot;1&quot;,&quot;id&quot;:&quot;1&quot;}``` as a response in Express.js V4.
+The above snippet will return ```{"id":"1"}``` as a response in Express.js V5, unlike ```(*)```, which will return ```{"0":"1","id":"1"}``` as a response in Express.js V4.
 
 ### Asynchronous Behavior by res.render
 The ```res.render``` in Express.js V5 now supports asynchronous callback as its parameter. This improvement helps avoid bugs caused by view engines that are synchronous in implementation; the callback function handles any rendering error that may occur when trying to send the rendered HTML as a response to the client.
@@ -68,15 +68,15 @@ The ```res.render``` in Express.js V5 now supports asynchronous callback as its 
 ### Changes to the req.query Object
 The nature of the ```req.query``` property has been changed to a ```getter```**, **unlike its writable nature in Express.js V4.  The default query parser has been changed from extended to simple. This update also comes with the equivalent setter to change the default query parser if need be.
 ```
-const express = require(&quot;express&quot;);
+const express = require("express");
 const app = express();
-console.log(app.get(&quot;query parser&quot;));
-app.set(&quot;query parser&quot;, &quot;extended&quot;);```<a href="https://user-d6b93f60-4441-4576-aac8-a041d598ff4c-fhcmbheklq-uc.a.run.app/?p=007c4293ac" target="_blank" rel="noopener noreferrer">Save this code</a>
+console.log(app.get("query parser"));
+app.set("query parser", "extended");```<a href="https://user-d6b93f60-4441-4576-aac8-a041d598ff4c-fhcmbheklq-uc.a.run.app/?p=007c4293ac" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ### The Use of req.host to Manage Port
 The ```req.host``` property now manages and returns the host value from the Host HTTP header. For example, if the server-side application is running on ```http://localhost:8080```, then the code below will return ```localhost:3000``` on Express.js V5:
 ```
-app.get(&quot;/heath-check&quot;, (req, res) =&gt; {
+app.get("/heath-check", (req, res) => {
   res.status(status).send(&#x60;host: ${req.host}&#x60;);
 });```<a href="https://user-d6b93f60-4441-4576-aac8-a041d598ff4c-fhcmbheklq-uc.a.run.app/?p=064344bd44">Save this code</a>
 
@@ -103,7 +103,7 @@ The following function signatures have been changed as shown below:
 ### Migrating an Existing Express.js V4 Application to V5
 Luckily, migrating an existing server-side application to Express.js V5 won’t involve a lot of heavy lifting. The first approach would be to upgrade from V4 to V5 of Express.js by running the command below:
 ```
-npm install &quot;express@&gt;=5.0.0-beta.1&quot; --save
+npm install "express@>=5.0.0-beta.1" --save
 ```
 First, run the npm outdated command to see any packages that need to be updated. Next, re-run any existing test suites on the project, or rebuild the entire project to see all breaking changes. Follow the tutorial to fix any issues that occur.
 

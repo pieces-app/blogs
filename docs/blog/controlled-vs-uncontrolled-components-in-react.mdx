@@ -13,7 +13,7 @@ id="">Controlled components are components whose value is directed/driven by Rea
 id="">This means that these components will receive the latest changes.
 id="">For any controlled component, we pass our state variable inside the <em id="">value prop of the component. The function that changes this <em id="">state variable of the component is passed in the <em id="">onChange prop of the controlled component.
 id="">Here is an example that demonstrates a controlled component:
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f5416cbe7e7ecbfdf8b18b_raycast-untitled%20(96).png" loading="lazy" id="" width="auto" height="auto" alt="Code snippet with React cod)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f5416cbe7e7ecbfdf8b18b_raycast-untitled%20(96).png" loading="lazy" id="" width="auto" height="auto" alt="Code snippet with React cod)
 
 id="">Let’s explain:
 - id="">Its <em id="">render method consists of a <em id="">form with an <em id="">input element and a <em id="">strong element that displays the value of the state variable of the component.
@@ -25,7 +25,7 @@ id="">Let’s explain:
 id="">Here's a video for the above code:
 
 id="">The controlled component’s <em id="">value prop does not always need to be a component’s internal state. It can be a prop of the parent component, or it can come from the Redux store. This is similar to the <em id="">onChange prop.
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f42c8c5606d806c1b8a6b5_raycast-untitled%20(84).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f42c8c5606d806c1b8a6b5_raycast-untitled%20(84).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
 id="">In a similar manner, we can use <em id="">react-redux to get the state and the <em id="">handleOnChange function from the Redux store to have similar functionality to what we had when we were using <em id="">useState.
 id="">The same context can be applied to the checkbox, radio, text area, and select DOM elements so that they can act as controlled elements.
 
@@ -42,14 +42,14 @@ id="">The basic requirement of any uncontrolled component is to be handled by th
 id="">We use React’s <em id="">useRef for functional components or <em id="">createRef for class-based components. A <em id="">useRef is a hook that returns a mutable object with <em id="">current as its property with value being <em id="">initialValue that is passed inside the hook.
 id="">Here is the syntax of the <em id="">useRef hook:
 
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f42cccb9b831cce62ef24b_raycast-untitled%20(85).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f42cccb9b831cce62ef24b_raycast-untitled%20(85).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
 
 id="">A <em id="">ref object can be used in many ways, e.g., as a state variable that does not re-render the component on change, to access DOM elements, etc.
 
 id="">We can leverage this into our React uncontrolled component to access input elements attributes, i.e., value properties.
 id="">Here's a simple example of how you can create an uncontrolled component:
 
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f42df7f09d03702f9c3405_raycast-untitled%20(87).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f42df7f09d03702f9c3405_raycast-untitled%20(87).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with React cod)
 id="">And here is what the above component will look like:
 
 id="">As you can see, this <em id="">App component consists of <em id="">form and a bunch of <em id="">span elements. We use the <a href="https://jsonplaceholder.typicode.com/" target="_blank" id="">JSON placeholder API</a> in the component to fetch the <em id="">post based on <em id="">id. This is the summary of our component, but let’s understand a bit more about how the <em id="">App component works internally.
@@ -75,7 +75,7 @@ id="">Formik is a complete solution that helps you to implement form validation,
 id="">Now, let’s look at one simple example of how can Formik can be used to build a form along with the form validation.
 id="">We are going to use the same uncontrolled component example. First, we’ll convert the example into a controlled component and then, use Formik to make our life easier.
 
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f52af74f9c70097ce76bea_raycast-untitled%20(94).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with a React componen)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62f52af74f9c70097ce76bea_raycast-untitled%20(94).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with a React componen)
 
 id="">Here are some of the brief points that will get you up to speed on understanding the above component:
 - id=""><em id="">Formik is a wrapper component that helps to build forms.

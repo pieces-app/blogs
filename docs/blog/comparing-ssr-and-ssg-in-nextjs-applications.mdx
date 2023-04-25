@@ -39,11 +39,11 @@ You can implement static site generation with ```getStaticProps``` by following 
 ```
 function Blog({ posts }) {
  return (
-  &lt;ul&gt;
-   {posts.map((post) =&gt; (
-    &lt;li&gt;{post.title}&lt;/li&gt;
+  <ul>
+   {posts.map((post) => (
+    <li>{post.title}</li>
    ))}
-  &lt;/ul&gt;
+  </ul>
  )
 }
 export async function getStaticProps() {

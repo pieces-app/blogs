@@ -8,7 +8,7 @@ Feature Toggles (often also referred to as Feature Flags) are a powerful techniq
 ## Why use Feature Toggles?
 It’s 2023; I don’t have to talk about why you should be using a version control system (<a href="https://en.wikipedia.org/wiki/Version_control" target="_blank" rel="noopener noreferrer">VCS</a>). That being said, **Git** is the (almost) obvious choice. In my experience, there are two major strategies for managing **Git branches**.
 Git flow is a legacy Git workflow that was originally a disruptive and novel strategy for managing Git branches.
-![](.com/6143afec68f555387049efb3/63359702d8fadb60746b3284_image6_4ef2b14b363c9291662a02d558866ed1_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb60746b3284_image6_4ef2b14b363c9291662a02d558866ed1_800.png)
 
 ### So, Should Everyone Use Git flow?
 In my experience, Git flow is more suitable for packaged software (a product that you release on occasion).
@@ -18,7 +18,7 @@ If your team is a startup or an internet-facing website or web application, you 
 ### **Is There a Simpler Way?**
 GitHub flow/trunk-based development is a lightweight, branch-based workflow. The GitHub flow is useful for everyone, not just developers.
 
-![](low.com/6143afec68f555387049efb3/63359702d8fadb20656b3275_image13_1efad805f6d737c4d4848b12705956b6_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb20656b3275_image13_1efad805f6d737c4d4848b12705956b6_800.png)
 The primary problem associated with ```git flow``` is managing long-lived branches. With trunk-based development, we only have one deployable branch, aka ```master/main```. As the other branches are short-lived (literally a few hours), we can achieve continuous integration. So our code is always deployable at any instant. Perfect for web development. Or is it?
 This looks great in theory, but then how do we:
 - Develop long-running features?
@@ -37,21 +37,21 @@ This tiny flag will introduce a branch in the code and allow us to render a diff
 
 ### Scenario 1
 Let’s say we want to enable certain components only for a specific country. The simplest implementation is as follows:
-![](loads-ssl.webflow.com/6143afec68f555387049efb3/63359701d8fadb89426b31b6_image8_a1e9bde22948a73e5bb9ab47b9d78b78_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359701d8fadb89426b31b6_image8_a1e9bde22948a73e5bb9ab47b9d78b78_800.png)
 <a href="https://user-a00e97da-3485-43fd-bbec-75dcb17f675d-fhcmbheklq-uc.a.run.app/?p=50b64e9377" target="_blank" rel="noopener noreferrer">Save this code</a>
 The condition ```user.country === 'IN'``` is essentially a feature toggle.
-Evaluating the condition in order to render a component is now a responsibility of ```MyComponent```. Imagine the scenario wherein multiple components need to change based on country. You can argue that the computation can be abstracted out to a utility method. Something like ```const isIndia = (user) =&gt; user.country === 'IN'```.
+Evaluating the condition in order to render a component is now a responsibility of ```MyComponent```. Imagine the scenario wherein multiple components need to change based on country. You can argue that the computation can be abstracted out to a utility method. Something like ```const isIndia = (user) => user.country === 'IN'```.
 
 ### Scenario 2
 Let’s say we have a new UX and want user feedback on it. The simplest implementation is as follows:
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadbb8876b3201_image1_cebee51dfac4ba3a98d8e127a6f6780c_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadbb8876b3201_image1_cebee51dfac4ba3a98d8e127a6f6780c_800.png)
 
 <a href="https://user-a00e97da-3485-43fd-bbec-75dcb17f675d-fhcmbheklq-uc.a.run.app/?p=07574d9c5d" target="_blank" rel="noopener noreferrer">Save this code</a>
 Every time we need to add a user to the set of targeted users, the code needs to change. You can argue that we could fetch the list of users using some API, but the evaluation of the condition viz. ```targetedUsers.includes(user.id)``` sits in the code.
 
 ### Scenario 3
 Let’s say we have a brand new feature, but the underlying APIs are not completely ready for it to work. We definitely do not want our code to rot in a branch while the APIs are being finished, but we sure as hell cannot release it. Here's how we could implement feature toggles for it:
-![](ow.com/6143afec68f555387049efb3/63359701d8fadb620b6b31d7_image11_59975ce34f35b1d3cb3a52b0324b057c_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359701d8fadb620b6b31d7_image11_59975ce34f35b1d3cb3a52b0324b057c_800.png)
 <a href="https://user-a00e97da-3485-43fd-bbec-75dcb17f675d-fhcmbheklq-uc.a.run.app/?p=cb224bbc9c" target="_blank" rel="noopener noreferrer">Save this code</a>
 ```
 isBrandNewFeatureEnabled``` is just a boolean flag; it doesn’t need any other variables to be evaluated. Whenever the APIs are ready, we can test the feature in lower environments like ```qa``` or ```stage```. When we’re happy with it, turning on the feature toggles in production should be a piece of cake. You can argue that such a small boolean flag can be kept in an environment variable, but updating the environment variable would require a redeployment. :(
@@ -70,15 +70,15 @@ In this article, we will focus on Flagsmith React. Let's get cracking!
 ### Setting up Flagsmith
 Head over to <a href="https://app.flagsmith.com/signup" target="_blank" rel="noopener noreferrer">Flagsmith</a> and create an account. We're going to create an Organization and a Project.
 
-![](s-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb6f966b3200_image14_f461a5ef8bb19125fcc670019c3dbfb0_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb6f966b3200_image14_f461a5ef8bb19125fcc670019c3dbfb0_800.png)
 
 Next, we will create a simple boolean feature flag to start:
 
-![](uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb8f3a6b3215_image5_bc982f4f8d9cff5f311973a232a3ce1e_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb8f3a6b3215_image5_bc982f4f8d9cff5f311973a232a3ce1e_800.png)
 Then, we will create a sample app <a href="https://code.pieces.app/blog/alternatives-to-create-react-app" target="_blank" rel="noopener noreferrer">using ```create-react-app``` </a>and add ```react-native-flagsmith``` as a dependency. That's all we need!
 To start, we will create our own ```Provider``` using ```provider-pattern``` to encapsulate ```flagsmith```. This should look like this:
 
-![](ebflow.com/6143afec68f555387049efb3/63359702d8fadbe2206b322d_image2_6c7691a41a28fb5e4d89cab0ce8fd9fc_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadbe2206b322d_image2_6c7691a41a28fb5e4d89cab0ce8fd9fc_800.png)
 
 <a href="https://user-a00e97da-3485-43fd-bbec-75dcb17f675d-fhcmbheklq-uc.a.run.app/?p=ff444e9b4b" target="_blank" rel="noopener noreferrer">Save this code</a><a href="https://user-a00e97da-3485-43fd-bbec-75dcb17f675d-fhcmbheklq-uc.a.run.app/?p=ff444e9b4b"> </a>
 
@@ -91,7 +91,7 @@ The last thing we are doing here is setting the flag data in a map that can be u
 
 Let's go back a little to this piece of code:
 
-![](s://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359701d8fadb620b6b31d7_image11_59975ce34f35b1d3cb3a52b0324b057c_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359701d8fadb620b6b31d7_image11_59975ce34f35b1d3cb3a52b0324b057c_800.png)
 
 <a href="https://user-a00e97da-3485-43fd-bbec-75dcb17f675d-fhcmbheklq-uc.a.run.app/?p=cb224bbc9c" target="_blank" rel="noopener noreferrer">Save this code</a>
 
@@ -100,13 +100,13 @@ Every component where we do the feature flag evaluation is going to have a simil
 flag === true ? compA : compB1
 ```
 So, the skeleton is duplicated. We end up with unnecessary wrapper components just to branch out. Let's abstract that out in a small utility component.
-![](s-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb2f766b3202_image4_ebb9c408996bc342ca468de3370370db_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb2f766b3202_image4_ebb9c408996bc342ca468de3370370db_800.png)
 
 <a href="https://user-a00e97da-3485-43fd-bbec-75dcb17f675d-fhcmbheklq-uc.a.run.app/?p=e39a41942f" target="_blank" rel="noopener noreferrer">Save this code</a>
 All we are doing here is wrapping up the evaluation of feature flags for React. We already have a context provider that has all of the flags, and we’ve added a context consumer to consume those values. The rest is self-explanatory.
 
 Let's see how this all stitches together.
-![](s with Flagsmith." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb3d0a6b3276_image7_6e711f90733695f1c6533d081f928f57_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb3d0a6b3276_image7_6e711f90733695f1c6533d081f928f57_800.png)
 
 <a href="https://user-a00e97da-3485-43fd-bbec-75dcb17f675d-fhcmbheklq-uc.a.run.app/?p=331f479f5d" target="_blank" rel="noopener noreferrer">Save this code</a>
 
@@ -116,11 +116,11 @@ As everything is encapsulated, for local environments we can easily switch to us
 The real benefit of a feature flag provider is that we can enable/disable flags for certain users. We had parked this a while back— let's pick it back up.
 
 ## Implementing User Segmentation for Feature Toggles
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb444e6b3216_image3_32b9eda62be18ec8020332a250b865af_800.p)
-![](loads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb69816b322c_image12_1040501d2ba016df82b2f31f89855133_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb444e6b3216_image3_32b9eda62be18ec8020332a250b865af_800.png)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63359702d8fadb69816b322c_image12_1040501d2ba016df82b2f31f89855133_800.png)
 
 Now even if the feature is disabled globally, the flag would resolve to ```true``` for all of the users in that user segment. Isn't that cool? And we didn't have to touch a single line of code!
-What about those use cases where you don’t have the required attributes to add to Flagsmith for identification? Let’s say we want to enable a feature for all users whose age is ```&lt;18```. As we do not have age as an attribute, we can’t create a segment out of it. This can be achieved as a choreography in two steps. Assuming we have a way to know the age of a particular user that we fetch using our API, all we need to do is update this line of code:
+What about those use cases where you don’t have the required attributes to add to Flagsmith for identification? Let’s say we want to enable a feature for all users whose age is ```<18```. As we do not have age as an attribute, we can’t create a segment out of it. This can be achieved as a choreography in two steps. Assuming we have a way to know the age of a particular user that we fetch using our API, all we need to do is update this line of code:
 ```
 await flagsmith.identify(user.id, {
 email: user.email,

@@ -55,12 +55,12 @@ The only input for ```calc()``` is one expression. The expression's calculated o
 For example:
 **HTML**
 ```
-&lt;form&gt;
-    &lt;div class=&quot;email-box&quot;&gt;
-      &lt;label&gt;Enter email:&lt;/label&gt;
-      &lt;input type=&quot;text&quot;/&gt;
-    &lt;/div&gt;
-  &lt;/form&gt;```<a href="https://aleru.pieces.cloud/?p=b65145a75b" target="_blank" rel="noopener noreferrer">Share this code</a>
+<form>
+    <div class="email-box">
+      <label>Enter email:</label>
+      <input type="text"/>
+    </div>
+  </form>```<a href="https://aleru.pieces.cloud/?p=b65145a75b" target="_blank" rel="noopener noreferrer">Share this code</a>
 **CSS**
 ```
 input {
@@ -79,7 +79,7 @@ input {
 
 <a href="https://aleru.pieces.cloud/?p=3ee64ca5f2" target="_blank" rel="noopener noreferrer">Save this code</a>
 **OUTPUT**
-![](flow.com/6143afec68f555387049efb3/63b444427e2b10d7d25a4772_image3_0df3bbf95086684be1c935668cc072a7_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444427e2b10d7d25a4772_image3_0df3bbf95086684be1c935668cc072a7_800.png)
 ## Unit Conversion in CSS
 Using ```calc()```, a value without an assigned unit can be converted to a value with a unit. This can be achieved by multiplying the value by the number and unit type that you want to convert it to. Also, this is incredibly helpful if you have CSS variables set without the unit.
 ```
@@ -98,7 +98,7 @@ html{
 
 <a href="https://aleru.pieces.cloud/?p=f09a47814c" target="_blank" rel="noopener noreferrer">Save this code</a>
 **OUTPUT**
-![](w.com/6143afec68f555387049efb3/63b444427e2b105e1a5a4773_image1_a3d7af995f7d5726fe8f2d0d04be13ff_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444427e2b105e1a5a4773_image1_a3d7af995f7d5726fe8f2d0d04be13ff_800.png)
 
 ## Using calc() to Convert Font Sizes
 We can increase our font size based on the viewport or screen size. For example, consider a situation where we need our paragraph's font to be large on a desktop, but small on a mobile device. In this case, the c```alc()``` method is well suited for the job.
@@ -128,20 +128,20 @@ The units above can be divided, multiplied, added and subtracted.
 To position the boxes inside the container perfectly, the complete width of the screen (100%) was divided by 5 using the nested CSS method and 20px was subtracted from the resulting number to determine the final value for our minimum width.
 **HTML**
 ```
-&lt;div class=&quot;container&quot;&gt;
-  &lt;div class=&quot;box&quot;&gt;
-    &lt;p&gt;Books&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;box&quot;&gt;
-    &lt;p&gt;Hats&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;box&quot;&gt;
-    &lt;p&gt;Shoes&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;box&quot;&gt;
-&lt;p&gt;Clothes&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=999c42a668" target="_blank" rel="noopener noreferrer">Save this code</a>
+<div class="container">
+  <div class="box">
+    <p>Books</p>
+  </div>
+  <div class="box">
+    <p>Hats</p>
+  </div>
+  <div class="box">
+    <p>Shoes</p>
+  </div>
+  <div class="box">
+<p>Clothes</p>
+</div>
+</div>```<a href="https://aleru.pieces.cloud/?p=999c42a668" target="_blank" rel="noopener noreferrer">Save this code</a>
 **CSS**
 ```
 *{
@@ -174,23 +174,23 @@ body{
 
 <a href="https://aleru.pieces.cloud/?p=bf0a41ab3c" target="_blank" rel="noopener noreferrer">Save this code</a>
 OUTPUT
-![](" src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b1034a35a4774_image4_06cdc4fbd16454cdd4568234698248ee_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b1034a35a4774_image4_06cdc4fbd16454cdd4568234698248ee_800.png)
 Also, you can set overflow to scroll if the contents do not fit.
 ## Using CSS calc() to Fix Gutters Without Parents
 We can make two boxes or columns adjacent to one another. A fixed gap separates the columns, with the first being 40% wide and the second 60%. Also, we want the gap to be set to 1em. The columns are produced by internal padding within those columns, and they bump straight into one another.
 We can use ```calc()``` to set the first column to be 40% wide with a 1em right margin, and the second column to be 60% wide,  minus the initial 40% margin we just set the first column to.
 **HTML**
 ```
-&lt;div class=&quot;container&quot;&gt;
-        &lt;div class=&quot;books&quot;&gt;
-          &lt;h1&gt;BOOKS&lt;/h1&gt;
-          &lt;p&gt;Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium facilis quibusdam dolores magni maxime quasi unde laboriosam officia exercitationem! Magnam iusto illo fugiat enim ducimus modi voluptatibus adipisci error nesciunt.&lt;/p&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;hats&quot;&gt;
-          &lt;h1&gt;HATS&lt;/h1&gt;
-          &lt;p&gt;Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem commodi doloribus nesciunt eaque, error ab consequatur consequuntur excepturi aspernatur, quos mollitia, natus delectus qui dolorum expedita illum atque maiores. Vitae?&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=dad1459172" target="_blank" rel="noopener noreferrer">Save this code</a>
+<div class="container">
+        <div class="books">
+          <h1>BOOKS</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium facilis quibusdam dolores magni maxime quasi unde laboriosam officia exercitationem! Magnam iusto illo fugiat enim ducimus modi voluptatibus adipisci error nesciunt.</p>
+        </div>
+        <div class="hats">
+          <h1>HATS</h1>
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem commodi doloribus nesciunt eaque, error ab consequatur consequuntur excepturi aspernatur, quos mollitia, natus delectus qui dolorum expedita illum atque maiores. Vitae?</p>
+        </div>
+      </div>```<a href="https://aleru.pieces.cloud/?p=dad1459172" target="_blank" rel="noopener noreferrer">Save this code</a>
 **CSS**
 ```
 .books{
@@ -212,7 +212,7 @@ We can use ```calc()``` to set the first column to be 40% wide with a 1em right 
 
 <a href="https://aleru.pieces.cloud/?p=b2eb4191d5" target="_blank" rel="noopener noreferrer">Save this code</a>
 **OUTPUT**
-![](with a dummy paragraph." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b109ca45a4777_image2_422bc5f0da1416546d585857cfb864f2_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b109ca45a4777_image2_422bc5f0da1416546d585857cfb864f2_800.png)
 ## Using CSS calc() to Improve Background Positioning to the Right Bottom
 With the help of the ```calc()``` function, we can better determine the relative width of the right bottom of the background of our element as follows:
 ```
@@ -232,11 +232,11 @@ border: var(--size) solid #777474
 ```
 **HTML**
 ```
-&lt;div class=&quot;load&quot;&gt;
-    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;
-    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;
-    &lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;
-&lt;/div&gt;```<a href="https://aleru.pieces.cloud/?p=46e84ca327" target="_blank" rel="noopener noreferrer">Save this code</a>
+<div class="load">
+    <span class="loading"></span>
+    <span class="loading"></span>
+    <span class="loading"></span>
+</div>```<a href="https://aleru.pieces.cloud/?p=46e84ca327" target="_blank" rel="noopener noreferrer">Save this code</a>
 **CSS**
 ```
 .load {
@@ -277,9 +277,9 @@ border: var(--size) solid #777474
 
 <a href="https://aleru.pieces.cloud/?p=53d74fb9fd" target="_blank" rel="noopener noreferrer">Save this code</a>
 **OUTPUT**
-![](ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b10bbc05a4775_image5_2dda6836b954013952e4a0a35b0d1fbf.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b10bbc05a4775_image5_2dda6836b954013952e4a0a35b0d1fbf.g)
 ## Browser Compatibility With the calc() Function
 The ```calc()``` function is browser compatible, with some limitations. Below is a list of the browser compatibility of the CSS ```calc()```:
-![](compatible with calc()." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b102b5a5a4776_Screenshot2022-12-20at3_34_15PM_c64ecf40165376eec6f822d2af8a943a_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b444437e2b102b5a5a4776_Screenshot2022-12-20at3_34_15PM_c64ecf40165376eec6f822d2af8a943a_800.png)
 ## Conclusion
 Although the CSS ```calc()``` function might appear to have one specific application, it offers many useful options. For example, it comes in handy when we want to change our website's layout and other components and prevent repetition when doing the same calculations. The ```calc()``` function is a tool every web developer should know and utilize in many ways.

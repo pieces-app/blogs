@@ -23,7 +23,7 @@ One of the unique features of Fabric is interactivity on top of all object model
 ### Setting Up Fabric.js
 Just like every JavaScript library, setting up Fabric.js is quite easy and can be done in one of two ways. The first way is to download the source file from the official website,<a href="http://fabricjs.com/" target="_blank" rel="noopener noreferrer"> Fabricjs.com</a>:
 
-![](low.com/6143afec68f555387049efb3/63861e8bf0215d712e11a3ea_image6_24adb376c9b62261f3417adbe511c523.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8bf0215d712e11a3ea_image6_24adb376c9b62261f3417adbe511c523.g)
 
 A second way to set up Fabric.js is to copy the CDN link<a href="https://cdnjs.com/libraries/fabric.js" target="_blank" rel="noopener noreferrer"> HERE</a> and include it in your project. Then, you can create an HTML file, for example, index.html:
 
@@ -34,26 +34,26 @@ $ npm install fabric
 After this, you can import Fabric.js with this command:
 The canvas element is used to draw 2-dimensional graphics on websites. It has an API called<a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API" target="_blank" rel="noopener noreferrer"> Canvas API</a>, which is used to illustrate basic geometrical shapes like rectangles, triangles, and other objects. However, adding interactions to them or drawing complex shapes becomes very difficult. Fabric.js tends to fix this problem.
 
-Next, we’ll be creating some Canvas objects like rectangles and circles. Because Fabric.js works with the Canvas API, we must make the ```&lt;canvas&gt;``` element tag in the HTML and give it an id. Further, we must pass that id to the Fabric.js API to initialize the Fabric.js Canvas instance on the ```&lt;canvas&gt;``` tag with a bit of CSS to center it:
+Next, we’ll be creating some Canvas objects like rectangles and circles. Because Fabric.js works with the Canvas API, we must make the ```<canvas>``` element tag in the HTML and give it an id. Further, we must pass that id to the Fabric.js API to initialize the Fabric.js Canvas instance on the ```<canvas>``` tag with a bit of CSS to center it:
 ```
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
- &lt;head&gt;
- &lt;!-- Adding the fabric.js library --&gt;
-    &lt;script src=&quot;https://unpkg.com/fabric@5.2.1/dist/fabric.min.js&quot; &gt;&lt;/script&gt;
-    &lt;style&gt;
+<!DOCTYPE html>
+<html>
+ <head>
+ <!-- Adding the fabric.js library -->
+    <script src="https://unpkg.com/fabric@5.2.1/dist/fabric.min.js" ></script>
+    <style>
       body{
              display:flex;
               flex-direction:column;
               align-items:center;
            }
-    &lt;/styles&gt;
- &lt;/head&gt;
-  &lt;body&gt;
-      &lt;h2&gt;Learning Fabric&lt;/h2&gt;
-      &lt;canvas id=&quot;canvas&quot;&gt;&lt;/Canvas&gt;
-  &lt;/body&gt;
-&lt;/html&gt
+    </styles>
+ </head>
+  <body>
+      <h2>Learning Fabric</h2>
+      <canvas id="canvas"></Canvas>
+  </body>
+</html&gt
 ```
 Next, we initiate a Canvas instance in our script tag:
 
@@ -62,7 +62,7 @@ Next, we initiate a Canvas instance in our script tag:
 new fabric.Canvas(element: HTMLElement|String, options: Object)```
 This allows Fabric.js to create this class instance so that we can use the provided methods of Fabric.js:
 ```
-const canvas = new fabric.Canvas(&quot;canvas&quot;, {})```
+const canvas = new fabric.Canvas("canvas", {})```
 Now, we’ll go ahead and give our canvas different properties, such as width, height, and background color:
 ![](/6143afec68f555387049efb3/63861e8af0215d272b11a3e2_image10_231e8afd527405407bcf6619ee00df81_800.jp)
 
@@ -74,7 +74,7 @@ Now that we’ve initialized a canvas and given it various properties, we’re g
 new fabric.Rect({object})```
 Here the object houses the rectangle properties:
 ```
-const canvas = new fabric.Canvas(&quot;canvas&quot;, {
+const canvas = new fabric.Canvas("canvas", {
  width:500,
  height:500,
  backgroundColor:green
@@ -93,11 +93,11 @@ canvas.renderAll()
 The ```add()``` method is used to add objects to the Canvas element. In this case, it adds the rectangle we created to the canvas:
 
 ### Output
-![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215dd9c911a3e4_image9_5bc747c322ef6bb7bfc23cf83d270ac1.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215dd9c911a3e4_image9_5bc747c322ef6bb7bfc23cf83d270ac1.g)
 
 ## Creating a Circle
 In the same way, we’ll create a circle. This time, we’ll use<a href="http://fabricjs.com/docs/fabric.Circle.html"> fabric.Circle</a>:
-![](ps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215d73f711a3e7_image2_f04de2a62c43321dc2f14fe3f2ca8903.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215d73f711a3e7_image2_f04de2a62c43321dc2f14fe3f2ca8903.g)
 
 With the above steps, we created a rectangle and a circle using Fabric.js. Note how interactive the objects are! Next, we’ll discuss images in Fabric.js.
 
@@ -113,9 +113,9 @@ Using the Fabric.Image constructor requires us to create an image element in our
 fabric.Image(image_element)```
 HTML
 ```
-&lt;canvas id='canvas'&gt;&lt;/canvas&gt;
-&lt;img src='my_image.png' id='image' style='display:none'/&gt;
-&lt;!-- giving the image the css property of display none makes it not to show outside the canvas --&gt;```
+<canvas id='canvas'></canvas>
+<img src='my_image.png' id='image' style='display:none'/>
+<!-- giving the image the css property of display none makes it not to show outside the canvas -->```
 JS
 ```
 const image_element = document.querySelector('#image');
@@ -129,7 +129,7 @@ fabric.Image.fromURL(URL, function())
 ```
 After passing the URL, the callback function after the image is loaded. The first default parameter of the callback function is the fabric.Image object. Now, we can modify the image properties and then add it to the canvas:
 
-![](com/6143afec68f555387049efb3/63861e8af0215ddbd911a3e1_image4_57f3c11b88057c0a201128da02ac55e2_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215ddbd911a3e1_image4_57f3c11b88057c0a201128da02ac55e2_800.jp)
 
 ## Editing Images with Fabric.js
 Now that we know how to insert an image into a canvas, we’ll look at other image objects like image filters.
@@ -151,16 +151,16 @@ Fabric.js provides us with built-in filters:
 - Sepia2
 - Tint
 
-Every instance of ```fabric.Image``` has the &quot;filters&quot; property, which is a simple array of filters. We can use the array method to perform any required operation, including removing filters (pop, slice, shift), adding filters (push, unshift, slice), and even combining multiple filters. When we call ```applyFilters```, any filter in the “filters” array will be applied one by one. Let’s use some of these filters:
+Every instance of ```fabric.Image``` has the "filters" property, which is a simple array of filters. We can use the array method to perform any required operation, including removing filters (pop, slice, shift), adding filters (push, unshift, slice), and even combining multiple filters. When we call ```applyFilters```, any filter in the “filters” array will be applied one by one. Let’s use some of these filters:
 
-![](/uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215d4dcc11a3e6_image11_8c7edfd4ba930e71dd7786427506d436_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215d4dcc11a3e6_image11_8c7edfd4ba930e71dd7786427506d436_800.png)
 
 Above, we used the Grayscale filter; we can also apply other filters. All we have to do is simply change the filter, as shown in this example:
-![](sl.webflow.com/6143afec68f555387049efb3/63861e8af0215ddbd911a3e1_image4_57f3c11b88057c0a201128da02ac55e2_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215ddbd911a3e1_image4_57f3c11b88057c0a201128da02ac55e2_800.jp)
 
 ### Image Blending
 Blending is mixing two or more images to create a new image. Fabric.js gives us this ability. Here, we’re going to use the image blending filter for our image:
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8bf0215d1e3911a3e9_image3_36a9420c38146725c254817648810741.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8bf0215d1e3911a3e9_image3_36a9420c38146725c254817648810741.g)
 
 ### Image Clipping
 A very popular effect used today is image clipping, or rather image cropping, which is done to remove parts of an image that we don’t want. With Fabric.js, we can achieve this by using the ```clipPath``` method.
@@ -171,17 +171,17 @@ const clipPath = new fabric.Circle({
  top:200,
  left:250,
  // The originY and originX helps to center the image and the clipPath
-    originY:&quot;center&quot;,
- originX:&quot;center&quot;
+    originY:"center",
+ originX:"center"
 })```
 After that, we add it to the image that we want to clip using the filter method:
 
-![](rc="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215dbd6811a3e8_image7_781bad333e3f317af8ac23487094122d.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215dbd6811a3e8_image7_781bad333e3f317af8ac23487094122d.g)
 
 ### Image Blurring
 
 Like other image filters, the blur filter accepts objects because they can be adjusted. A practical example is changing the brightness of an image. You can apply other image filters without any additional configurations (like grayscale, invert, or sepia). Other image filters like brightness, pixelate, tint, and noise all operate in this way, too. However, the difference is that their values are not the same. The brightness filter's actual brightness level ranges from-1 (full black) to 1 (full white). The noise filter's value is between 0 and 1000. For the blur filter, the value ranges from 0 to 10.
 
-![](oads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215dae3811a3e3_image1_59bbf32eab51145bc1c4d67b82286287_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63861e8af0215dae3811a3e3_image1_59bbf32eab51145bc1c4d67b82286287_800.jp)
 
 ## Conclusion

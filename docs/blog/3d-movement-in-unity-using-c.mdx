@@ -71,6 +71,7 @@ private float horizontalInput;
 private float verticalInput;
 private Vector3 movedirection
 ```
+
 Next, we’ll initialize the directions by assigning inputs to each variable in the Update method:
 
 ```
@@ -176,11 +177,11 @@ The ```rigidbody``` is initialized within the ```Start()``` method in the class:
 ```
 Start()
 {
-     objRb = GetComponent&lt;Rigidbody&gt;();
+     objRb = GetComponent<Rigidbody>();
 
 ```
 
-The ```GetComponent&lt;Rigidbody&gt;()``` code above fetches the Rigidbody from the game object that it is attached to. After initialization, we’ll call the ```AddForce``` method in the ```FixedUpdate()``` method:
+The ```GetComponent<Rigidbody>()``` code above fetches the Rigidbody from the game object that it is attached to. After initialization, we’ll call the ```AddForce``` method in the ```FixedUpdate()``` method:
 
 ```
     void FixedUpdate()
@@ -203,7 +204,7 @@ public class TestClass : MonoBehaviour
      private Rigidbody objRb;
      void Start()
      {
-          objRb = GetComponent&lt;Rigidbody&gt;();
+          objRb = GetComponent<Rigidbody>();
      }
 
      void Update()
@@ -234,10 +235,11 @@ Let’s begin by declaring the following variables in the script file we’ve cr
   public float speed
 ```
 Next, we’ll initialize the inputs, rigidbody and movedirection.
+
 ```
   void Start()
   {
-       objRb = GetComponent&lt;Rigidbody&gt;();
+       objRb = GetComponent<Rigidbody>();
   }
   void Update()
   {
@@ -246,7 +248,9 @@ Next, we’ll initialize the inputs, rigidbody and movedirection.
        movedirection = new Vector3(horizontalInput , 0 ,verticalInput);
 
 ```
+
 Finally, let’s add the following code to the FixedUpdate() method:
+
 ```
 objRb.velocity = movedirection * speed;
 ```
@@ -267,7 +271,7 @@ public class TestClass : MonoBehaviour
      public float speed ;
      void Start()
      {
-          objRb = GetComponent&lt;Rigidbody&gt;();
+          objRb = GetComponent<Rigidbody>();
      }
      void Update()
      {
@@ -293,6 +297,7 @@ public void MovePosition(Vector3 position);
 
 
 The position parameter provides the new position for the rigidbody object. To illustrate this alternative means of coding movement, let’s look at a quick example below:
+
 ```
 using UnityEngine;
 using System.Collections;
@@ -305,7 +310,7 @@ public class TestClass : MonoBehaviour
      public float speed = 5f ;
      void Start()
      {
-          objRb = GetComponent&lt;Rigidbody&gt;();
+          objRb = GetComponent<Rigidbody>();
      }
      void FixedUpdate()
      {

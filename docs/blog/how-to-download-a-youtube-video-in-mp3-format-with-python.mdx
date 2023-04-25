@@ -55,7 +55,7 @@ from pytube import YouTube
 import os```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=2607449932" target="_blank" rel="noopener noreferrer">Save this code</a>
 With the libraries imported, you’ll now get the url of the video to be downloaded from the user. To do this, use the ```input()``` function to get the url from the user and the ```YouTube()``` function as imported from the pytube library to save it as a variable for downloading:
 ```
-yt = YouTube(str(input(&quot;Enter the URL of the video you want to download: \\n&gt;&gt; &quot;))}
+yt = YouTube(str(input("Enter the URL of the video you want to download: \\n>> "))}
 ```
 
 <a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=cca64c9db0" target="_blank" rel="noopener noreferrer">Save this code</a>
@@ -68,8 +68,8 @@ audio = yt.streams.filter(only_audio = True).first(}
 ## Step 4: Set a Destination for Saved Files
 The next step is to determine the destination where the file will be saved. This can be done by creating a variable called destination that will hold the path to your video as a string. In this instance, there will be an option for the user to save the audio file in the same directory as the project:
 ```
-print(&quot;Enter the destination (leave blank for current directory)&quot;)
-destination = str(input(&quot;&gt;&gt; &quot;)) or '.'```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=237941b8f5" target="_blank" rel="noopener noreferrer">Save this code</a>
+print("Enter the destination (leave blank for current directory)")
+destination = str(input(">> ")) or '.'```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=237941b8f5" target="_blank" rel="noopener noreferrer">Save this code</a>
 ## Step 5: Download and Save the File
 The final step is to download and save the audio file:
 <a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=237941b8f5">https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=237941b8f5</a>
@@ -83,14 +83,14 @@ os.rename(out_file, new_file}
 <a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=641447bb49" target="_blank" rel="noopener noreferrer">Save this code</a>
 With the video saved, you’ll then display a result of success for the user to know that the audio has been successfully downloaded:
 ```
-print(yt.title + &quot; has been successfully downloaded in .mp3 format.&quot;}
+print(yt.title + " has been successfully downloaded in .mp3 format."}
 ```
 
 <a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=80084f8fc9" target="_blank" rel="noopener noreferrer">Save this code</a>
 ## Step 6: Test in the Terminal
 Next, you can test the program you’ve built on the terminal. To do this, go to the project directory in your terminal and run the command shown below:
 ```
-python &lt;file_name&gt;.py```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=82ad46b468" target="_blank" rel="noopener noreferrer">Save this code</a>
+python <file_name>.py```<a href="https://user-c185237a-4958-4e1e-a972-57cc037976e7-agyqaaz4hq-uc.a.run.app/?p=82ad46b468" target="_blank" rel="noopener noreferrer">Save this code</a>
 ## Step 7: Use Flask to Build a Web Application to Prioritize Functionality
 Flask is a micro web framework written in Python that is used to develop web applications. In this tutorial, you’ll use Flask to create a web application that will take the format shown below.
 Flask uses templates to expand the functionality of a web application while maintaining a simple and organized file structure. Templates are enabled using the Jinja2 template engine, which was installed when you downloaded Flask. Templates also allow data to be shared and processed before being turned into content and sent back to the client.
@@ -98,54 +98,54 @@ Now, create a folder called ```templates``` in your project folder. In that fold
 At this point, your project folder should look like this:
 Add the following block of code to the ```index.html``` file:
 ```
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css&quot;
-      integrity=&quot;sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2&quot; crossorigin=&quot;anonymous&quot;&gt;
-  &lt;title&gt;YouTube downloader&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;div class=&quot;container&quot;&gt;
-      &lt;h1&gt;YouTube downloader as MP3&lt;/h1&gt;
-      &lt;div&gt;Enter the URL of the video you want to download: &lt;/div&gt;
-      &lt;div&gt;
-          &lt;form method=&quot;POST&quot;&gt;
-              &lt;div class=&quot;form-group&quot;&gt;
-                  &lt;textarea name=&quot;text&quot; cols=&quot;20&quot; rows=&quot;10&quot; class=&quot;form-control&quot;&gt;&lt;/textarea&gt;
-              &lt;/div&gt;
-                  &lt;button type=&quot;submit&quot; class=&quot;btn btn-success&quot;&gt;Download!&lt;/button&gt;
-              &lt;/div&gt;
-          &lt;/form&gt;
-      &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;```<a href="https://c185237a-4958-4e1e-a972-57cc037976e7.pieces.cloud/?p=987c449505" target="_blank" rel="noopener noreferrer">Save this code</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <title>YouTube downloader</title>
+</head>
+<body>
+  <div class="container">
+      <h1>YouTube downloader as MP3</h1>
+      <div>Enter the URL of the video you want to download: </div>
+      <div>
+          <form method="POST">
+              <div class="form-group">
+                  <textarea name="text" cols="20" rows="10" class="form-control"></textarea>
+              </div>
+                  <button type="submit" class="btn btn-success">Download!</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</body>
+</html>```<a href="https://c185237a-4958-4e1e-a972-57cc037976e7.pieces.cloud/?p=987c449505" target="_blank" rel="noopener noreferrer">Save this code</a>
 Add this to the ```results.html``` file:
 ```
-&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css&quot;
-        integrity=&quot;sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2&quot; crossorigin=&quot;anonymous&quot;&gt;
-    &lt;title&gt;Result&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class=&quot;container&quot;&gt;
-        &lt;h2&gt;Results&lt;/h2&gt;
-        &lt;div&gt;
-            &lt;strong&gt;MP3 file has been successfully downloaded in .mp3 format.&lt;/strong&gt;
-        &lt;/div&gt;
-        &lt;div&gt;
-            &lt;a href=&quot;{{ url_for('index') }}&quot;&gt;Try another one!&lt;/a&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;```<a href="https://c185237a-4958-4e1e-a972-57cc037976e7.pieces.cloud/?p=377a498957" target="_blank" rel="noopener noreferrer">Save this code</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Result</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Results</h2>
+        <div>
+            <strong>MP3 file has been successfully downloaded in .mp3 format.</strong>
+        </div>
+        <div>
+            <a href="{{ url_for('index') }}">Try another one!</a>
+        </div>
+    </div>
+</body>
+</html>```<a href="https://c185237a-4958-4e1e-a972-57cc037976e7.pieces.cloud/?p=377a498957" target="_blank" rel="noopener noreferrer">Save this code</a>
 Now, edit the ```app.py``` file you created earlier to reflect the flask ```POST``` and ```GET``` methods. The file should look like this:
 ```
 from flask import Flask, redirect, url_for, request, render_template, session

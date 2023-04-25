@@ -7,7 +7,7 @@ For both developers and non-developers who want to build and produce beautiful w
 This guide will go into great detail regarding headless WordPress, including what it is, when to use it, and why. In the final section, we'll look at setting up a headless WordPress environment and developing the front end with Vue.js.
 
 ## What is WordPress?
-If you've been in the CMS industry for a while, you probably already know that WordPress is regarded as what they call a &quot;monolithic&quot; CMS. You have a strong backend where you can create and manage content, and it’s still made with the front-end experience in mind. With the aid of WordPress, it’s also possible to incorporate display functionality utilizing themes and plugins that fuse the front and back ends together.
+If you've been in the CMS industry for a while, you probably already know that WordPress is regarded as what they call a "monolithic" CMS. You have a strong backend where you can create and manage content, and it’s still made with the front-end experience in mind. With the aid of WordPress, it’s also possible to incorporate display functionality utilizing themes and plugins that fuse the front and back ends together.
 WordPress can be used as a wonderful content management system. You can expand your content control beyond your theme by using the REST API that WordPress offers.
 Headless WordPress differs from the current WordPress, which is more proactive and pushes or delivers content to mostly browser-based sites. When using Headless WordPress, you can still use the back-end functionality of the WordPress platform, but it will change into a reactive system, meaning the content will automatically differ based on the characteristics of the front-end website where the content is viewed.
 
@@ -24,7 +24,7 @@ The use of a Rest API enables programmers to communicate with cross-technology i
 
 On your WordPress blog **Dashboard, **go to **Settings, **select **Permalinks, **and tick either **Post name** or **Custom Structure.** I’ll be going with **Post name**.
 
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a513929d8cada_image1_9eab0b22257a88eefbb16bde6121d55f_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a513929d8cada_image1_9eab0b22257a88eefbb16bde6121d55f_800.jp)
 
 Download the Postman Chrome extension now that we are using API calls. Open the Postman extension and enter the URL using the guidelines below.
 ```
@@ -36,43 +36,43 @@ http://localhost/wordpress/wp-json/wp/v2/posts
 ```
 The post data on your WordPress site will be fetched using the aforementioned URL.
 
-![](uploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a51378ed8cae1_image3_ed1b96b71fa9848b3ab24e6a041b35e1_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a51378ed8cae1_image3_ed1b96b71fa9848b3ab24e6a041b35e1_800.png)
 
 Above, we have our data from our REST API in JSON format. Here's the structure you should see after a GET request:
 ```
 {
-        &quot;id&quot;: 5,
-        &quot;date&quot;: &quot;2022-10-01T12:57:47&quot;,
-        &quot;date_gmt&quot;: &quot;2022-10-01T12:57:47&quot;,
-        &quot;guid&quot;: {
-            &quot;rendered&quot;: &quot;http://localhost/wordpress/?p=5&quot;
+        "id": 5,
+        "date": "2022-10-01T12:57:47",
+        "date_gmt": "2022-10-01T12:57:47",
+        "guid": {
+            "rendered": "http://localhost/wordpress/?p=5"
         },
-        &quot;modified&quot;: &quot;2022-10-01T15:19:58&quot;,
-        &quot;modified_gmt&quot;: &quot;2022-10-01T15:19:58&quot;,
-        &quot;slug&quot;: &quot;ejiro-thankgod&quot;,
-        &quot;status&quot;: &quot;publish&quot;,
-        &quot;type&quot;: &quot;post&quot;,
-        &quot;link&quot;: &quot;http://localhost/wordpress/ejiro-thankgod/&quot;,
-        &quot;title&quot;: {
-            &quot;rendered&quot;: &quot;Ejiro ThankGod&quot;
+        "modified": "2022-10-01T15:19:58",
+        "modified_gmt": "2022-10-01T15:19:58",
+        "slug": "ejiro-thankgod",
+        "status": "publish",
+        "type": "post",
+        "link": "http://localhost/wordpress/ejiro-thankgod/",
+        "title": {
+            "rendered": "Ejiro ThankGod"
         },
-        &quot;content&quot;: {
-            &quot;rendered&quot;: &quot;\\nHello! just trying things out alright\\n&quot;,
-            &quot;protected&quot;: false
+        "content": {
+            "rendered": "\\nHello! just trying things out alright\\n",
+            "protected": false
         },
-        &quot;excerpt&quot;: {
-            &quot;rendered&quot;: &quot;&lt;p&gt;Hello! just trying things out alright&lt;/p&gt;\\n&quot;,
-            &quot;protected&quot;: false
+        "excerpt": {
+            "rendered": "<p>Hello! just trying things out alright</p>\\n",
+            "protected": false
         },
-        &quot;author&quot;: 1,
-        &quot;featured_media&quot;: 0,
-        &quot;comment_status&quot;: &quot;open&quot;,
-        &quot;ping_status&quot;: &quot;open&quot;,
-        &quot;sticky&quot;: false,
-        &quot;template&quot;: &quot;&quot;,
-        &quot;format&quot;: &quot;standard&quot;,
-        &quot;meta&quot;: [],
-        &quot;categories&quot;: [
+        "author": 1,
+        "featured_media": 0,
+        "comment_status": "open",
+        "ping_status": "open",
+        "sticky": false,
+        "template": "",
+        "format": "standard",
+        "meta": [],
+        "categories": [
  1
         ],
 
@@ -87,7 +87,7 @@ Headless WordPress will be used for the project's whole backend content manageme
 - Text Editor, such as Sublime or VS Code
 After setting up the environment with the Vue command line, run the following command on the terminal and follow the prompts to create a Vue app.
 ```
-vue create &lt;app name&gt
+vue create <app name&gt
 ```
 Run the following command after the project has been created to view the Vue app project output at<a href="http://localhost:8080/" target="_blank" rel="noopener noreferrer"> http://localhost:8080</a>.
 ```
@@ -96,17 +96,17 @@ npm run serve
 The project source code should then be opened in the code editor of your choice; this is where we'll actually start writing code.
 Add the following code to your App.vue file:
 ```
-&lt;template&gt;
-  &lt;div&gt;
-    &lt;ul v-for=&quot;post in posts&quot; v-bind:key=&quot;post.id&quot;&gt;
-      &lt;li&gt;
-        &lt;h2&gt;{{ post.title.rendered }}&lt;/h2&gt;
-      &lt;/li&gt;
-      &lt;p&gt;{{ post.content.rendered }}&lt;/p&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
-&lt;script&gt;
+<template>
+  <div>
+    <ul v-for="post in posts" v-bind:key="post.id">
+      <li>
+        <h2>{{ post.title.rendered }}</h2>
+      </li>
+      <p>{{ post.content.rendered }}</p>
+    </ul>
+  </div>
+</template>
+<script>
 export default {
   data() {
  return {
@@ -117,7 +117,7 @@ export default {
  async getData() {
  try {
  let response = await fetch(
- &quot;http://localhost/wordpress/wp-json/wp/v2/posts&quot;
+ "http://localhost/wordpress/wp-json/wp/v2/posts"
         );
  this.posts = await response.json();
       } catch (error) {
@@ -129,14 +129,14 @@ export default {
  this.getData();
   },
 };
-&lt;/script&gt
+</script&gt
 ```
 Line-by-line explanations of the aforementioned block of code in the methods property will follow.
 ```
 async getData() {
  try {
         let response = await fetch(
- &quot;http://localhost/wordpress/wp-json/wp/v2/posts&quot;
+ "http://localhost/wordpress/wp-json/wp/v2/posts"
         );
  this.posts = await response.json();
       } catch (error) {
@@ -148,16 +148,16 @@ A block of code that will be tested for errors while it is performed is defined 
 Considering that the ```fetch``` function will return a promise, ```await``` is prefixed to the request. The information returned by the API following the fulfillment of the promise will be kept in the variable response.
 Using the ```v-for``` directive to loop through the posts, we can now display the data in the template.
 ```
-&lt;ul v-for=&quot;post in posts&quot; v-bind:key=&quot;post.id&quot;&gt;
-      &lt;li&gt;
-       &lt;h2&gt;{{ post.title.rendered }}&lt;/h2&gt;
-      &lt;/li&gt;
-      &lt;p&gt;{{ post.content.rendered }}&lt;/p&gt;
-    &lt;/ul&gt
+<ul v-for="post in posts" v-bind:key="post.id">
+      <li>
+       <h2>{{ post.title.rendered }}</h2>
+      </li>
+      <p>{{ post.content.rendered }}</p>
+    </ul&gt
 ```
 Now if we check our Vue front-end, we can see the post we made from the WordPress site. Basically, all we have to do is beautify our front-end website and add more API calls.
 
-![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a514b5ad8cab0_image2_bb0c82611bcdbd9557db4987a8d178de_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6380df92d03a514b5ad8cab0_image2_bb0c82611bcdbd9557db4987a8d178de_800.png)
 
 ## The benefit of Headless CMS
 - A single headless CMS instance can handle an unlimited number of digital channels rather than having to create several, parallel content management system instances, for example, to support web and mobile channels.

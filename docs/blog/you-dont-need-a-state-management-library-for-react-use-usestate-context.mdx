@@ -8,7 +8,7 @@ As a result, it's no surprise that there are so many open-source tools dedicated
 
 It's worth noting some drawbacks associated with using a state management library, which include:
 - **Complexity**: Keeping a state management system is not easy. It is incredibly useful for development, but controlling it might be difficult.
-- **Heavy**: If you're creating a basic blog or a SPA (Single Page Application) with few activities, or if you only want to promote your idea and content, state management isn't for you because it stores &quot;redundant&quot; data.
+- **Heavy**: If you're creating a basic blog or a SPA (Single Page Application) with few activities, or if you only want to promote your idea and content, state management isn't for you because it stores "redundant" data.
 
 Despite React's widespread use, one of the most significant challenges developers face when working with the toolkit is excessive component re-rendering, which slows down performance and reduces readability.
 When developers need components to connect with each other in a process known as prop drilling, component re-rendering is very destructive.
@@ -34,10 +34,10 @@ You should be familiar with the following:
 ## What Is React State Management?
 React applications are built using components. A typical React application consists of multiple linked components. There must be a way to update various pieces of data in any given component without affecting other components.
 
-Here is where the idea of a &quot;state&quot; comes into play.
-&quot;State&quot; in React is just a fancy term for a JavaScript data structure. If a user changes the state by interacting with your application, the UI may look completely different afterward because it's represented by this new state rather than the old state.
+Here is where the idea of a "state" comes into play.
+"State" in React is just a fancy term for a JavaScript data structure. If a user changes the state by interacting with your application, the UI may look completely different afterward because it's represented by this new state rather than the old state.
 
-Think of a social media platform where selecting the &quot;like&quot; or &quot;follow&quot; button changes the status of a number of different elements.
+Think of a social media platform where selecting the "like" or "follow" button changes the status of a number of different elements.
 - Follow or Unfollow a user
 - Add a user
 - Reply to a user
@@ -52,59 +52,59 @@ Let's look at some popular and powerful React state management libraries:
 
 There are many different types of states to manage in React, but for the purposes of this tutorial, we'll focus on just two of them:
 - Global state
-**Local state**: The data we manage in one or more components is referred to as a &quot;local state.&quot;
+**Local state**: The data we manage in one or more components is referred to as a "local state."
 
 Local states are most often managed in React using the useState hook.
 Given the abundance of tools included in the core React library for managing states, local state management in React may be the simplest type of state management in the world.
 
 To track values for a form component, such as form submission, when the form is disabled, or the values of a form's inputs, a local state would be required.
 ```
-const Counter = () =&gt; {
+const Counter = () => {
  const [count, setCount] = useState(0)
- const incrememt = () =&gt; setCount(count =&gt; count + 1)
+ const incrememt = () => setCount(count => count + 1)
  return (
-    &lt;&gt;
-      &lt;h1&gt;The count is: {count}&lt;/h1&gt;
-      &lt;button onClick={increment}&gt;increment&lt;/button&gt;
-    &lt;/&gt;
+    <>
+      <h1>The count is: {count}</h1>
+      <button onClick={increment}>increment</button>
+    </>
   )
 
 ```
 Let’s render the counter component and see what happens.
 ```
-&lt;&gt;
-  &lt;Counter /&gt;
-  &lt;Counter /&gt;
-&lt;/&gt
+<>
+  <Counter />
+  <Counter />
+</&gt
 ```
 Notice that we end up with less code, but we still have to pass state manually for each component.
 
-**Global state**: Data that we manage across various components is referred to as a &quot;global state.&quot;
+**Global state**: Data that we manage across various components is referred to as a "global state."
 
 A global state is required when we want to get and update data across our app, or at least across multiple components.
 Global means our state is accessible by every element or component of the app. It's important to remember that because it echoes in every component that accesses it, the rendering affects the entire app.
 
 An authenticated user state is a typical illustration of a global state. It is necessary to access and modify a user's data throughout our app while they are logged in.
 ```
-export const Counter = ({ part = 0 }) =&gt; {
+export const Counter = ({ part = 0 }) => {
  const dispatch = useDispatch()
  // Now it selects just one of counters
- const count = useSelector(store =&gt; store.counters[part].count)
+ const count = useSelector(store => store.counters[part].count)
  return (
-    &lt;&gt;
-      &lt;h1&gt;The count is: {count}&lt;/h1&gt;
+    <>
+      <h1>The count is: {count}</h1>
       {/*We'll also need to change our action factory and reducer */}
-      &lt;button onClick={() =&gt; dispatch(inc(part))}&gt;Increment&lt;/button&gt;
-    &lt;/&gt;
+      <button onClick={() => dispatch(inc(part))}>Increment</button>
+    </>
   )
 
 ```
 Next, a counter component can be called as so:
 ```
-&lt;&gt;
-  &lt;Counter /&gt;
-  &lt;Counter part={1} /&gt;
-&lt;/&gt
+<>
+  <Counter />
+  <Counter part={1} />
+</&gt
 ```
 Now the counter store can be updated:
 
@@ -138,14 +138,14 @@ These arguments are referred to as props in React components, which stands for p
 However, it can become verbose and inconvenient if you need to pass a prop deep into the tree or if multiple components require the same prop.
 
 Take a look at the component tree below, which shows how we pass props down through many levels of different app components.
-![](ps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d4033107c581729d23b926_image1_c64c86512194775e92df9267631b263e_800.p)
-Our code is cluttered and challenging to maintain because we manually pass state and data through components that don't need it. Additionally, we might encounter bugs and unintentionally rename props in the middle of this &quot;drilling&quot; process. Large-scale applications exacerbate these problems, rendering this method impossible.
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d4033107c581729d23b926_image1_c64c86512194775e92df9267631b263e_800.png)
+Our code is cluttered and challenging to maintain because we manually pass state and data through components that don't need it. Additionally, we might encounter bugs and unintentionally rename props in the middle of this "drilling" process. Large-scale applications exacerbate these problems, rendering this method impossible.
 
 You can read more about prop-drilling in the official React <a href="https://beta.reactjs.org/learn/passing-data-deeply-with-context#the-problem-with-passing-props" target="_blank" rel="noopener noreferrer">documentation</a>.
 You might be thinking that we haven't done any state management. In this example, we'll use the ```useState``` hook in conjunction with the context API to manage the state of our app. Every component that depends on our context will now need to be re-rendered whenever its value is updated in order to keep all of the components' states in sync. If you're unfamiliar with the ```useState``` hook, think about this example:
 ```
 Const [state, setState] = useState('initial value')```
-State is the variable that has the value &quot;initial state&quot; assigned to it, and ```setState``` is a callback function to change the state variable's value. Every time the value of the state variable changes, every component that uses it must be re-rendered. To update the value of our state variable, we must call ```setState```. For the moment, this is sufficient to understand the ```useState``` hook.
+State is the variable that has the value "initial state" assigned to it, and ```setState``` is a callback function to change the state variable's value. Every time the value of the state variable changes, every component that uses it must be re-rendered. To update the value of our state variable, we must call ```setState```. For the moment, this is sufficient to understand the ```useState``` hook.
 
 ## Getting started with React Context
 The Context API allows you to share and manage state across your components, as well as provide data to only those that need it.
@@ -159,40 +159,40 @@ It may sound complicated, but you will find it simple, as you will see in the ex
 
 So, import React and ```createContext``` as so:
 ```
-import React, { createContext } from &quot;react&quot;;
+import React, { createContext } from "react&quot;;
 const UserContext = createContext()
 ```
 Create a component that will wrap the provider named ```Provider```, e.g., ```UserProvider```.
 
 An example using ```useState``` hooks:
 ```
-const UserProvider = ({ children }) =&gt; {
- const [name, setName] = useState(&quot;Mike&quot;);
+const UserProvider = ({ children }) => {
+ const [name, setName] = useState("Mike");
  const [age, setAge] = useState(1);
- const happyBirthday = () =&gt; setAge(age + 1);
+ const happyBirthday = () => setAge(age + 1);
  return (
-    &lt;UserContext.Provider value={{ name, age, happyBirthday }}&gt;
+    <UserContext.Provider value={{ name, age, happyBirthday }}>
       {children}
-    &lt;/UserContext.Provider&gt;
+    </UserContext.Provider>
   );
 }
 ```
 To consume the context and export it, create a higher order component, for example, ```userData``` as below:
 ```
-const userData = (Child) =&gt; (props) =&gt; (
-  &lt;UserContext.Consumer&gt;
-    {(context) =&gt; &lt;Child {...props} {...context} /&gt;}
-  &lt;/UserContext.Consumer&gt;
+const userData = (Child) => (props) => (
+  <UserContext.Consumer>
+    {(context) => <Child {...props} {...context} />}
+  </UserContext.Consumer>
 );
 export { UserProvider, userData }
 ```
 With this advancement, we can now provide context in the app root. So, let’s wrap the context provider in the next part as so:
 ```
 ReactDOM.render(
-  &lt;UserProvider&gt;
-    &lt;App /&gt;
-  &lt;/UserProvider&gt;,
- document.getElementById(&quot;root&quot;)
+  <UserProvider>
+    <App />
+  </UserProvider>,
+ document.getElementById("root")
 )
 ```
 Other components can access the ```userData``` function via the ```useContext``` hook, whilst noting that the consumer consumes the closest provided context.

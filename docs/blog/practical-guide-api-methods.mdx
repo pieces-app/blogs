@@ -6,7 +6,7 @@
 ## What is an API?
 An Application Programming Interface (API) is a means through which different applications or programs communicate/interchange data. APIs are widely used today by many organizations to transmit and manipulate data between applications. They can be used in nearly all digitalized industries, including banking, education, health, and sports.
 With APIs, an Application A can send a response to or request info from another Application B over specified API methods. For example, assume you wish to send money to a friend's bank account using payment platforms like Stripe or PayPal. It’s via APIs that these payment platforms are able to communicate with your friend's bank and the money gets sent to your friend's account. You need APIs to establish interactions between software programs (e.g., yours and that of other organizations).
-In this article, you will learn about APIs, how they work, and their structure. You will also learn about some of the most used API methods, such as ```GET```, ```POST```, ```DELETE```, ```PATCH```, and ```PUT```. You’ll learn how to &quot;call&quot; (communicate with) APIs using JavaScript as well as Postman. You will also learn about HTTP status codes, and lastly, how to handle errors when calling APIs.
+In this article, you will learn about APIs, how they work, and their structure. You will also learn about some of the most used API methods, such as ```GET```, ```POST```, ```DELETE```, ```PATCH```, and ```PUT```. You’ll learn how to "call" (communicate with) APIs using JavaScript as well as Postman. You will also learn about HTTP status codes, and lastly, how to handle errors when calling APIs.
 
 ## REST APIs
 REST APIs use HTTP requests to access data from API endpoints. These requests are done via API methods (which are covered in a later section of this article), and their requests and responses are represented in <a href="https://www.json.org/" target="_blank" rel="noopener noreferrer">JSON format</a>.
@@ -24,7 +24,7 @@ If successful, Bank X's API returns a response containing your friend's details.
 ```
 // Bank X replies with a response
 {
- name: &quot;Oyindamola Rowaiye&quot;
+ name: "Oyindamola Rowaiye"
  accountNumber: 2974044820
 
 ```
@@ -45,15 +45,15 @@ Using the ```GET``` method, you can get the list of users available from the ```
 Please note that the default API method used when calling an API using the ```fetch()``` method is the ```GET``` method. Therefore, it doesn't have to be defined explicitly, unlike other methods.
 Here's how API data is retrieved using the ```GET``` method:
 ```
-const baseURL = &quot;https://62ab0faba62365888bd3aea0.mockapi.io/api/v1&quot;;
+const baseURL = "https://62ab0faba62365888bd3aea0.mockapi.io/api/v1&quot;;
 fetch(&#x60;${baseURL}/users&#x60;)
-.then(res =&gt; res.json())
-.then(data =&gt; console.log(data)) // logs list of users
-.catch(error =&gt; console.log(error.message))
+.then(res => res.json())
+.then(data => console.log(data)) // logs list of users
+.catch(error => console.log(error.message))
 ```
 If you noticed, the ```GET``` method isn't specified like so:
 ```
-fetch(&#x60;${baseURL}/users&#x60;, { method: &quot;GET&quot; })```
+fetch(&#x60;${baseURL}/users&#x60;, { method: "GET" })```
 But, it’s still able to fetch the list of users from the ```/users``` endpoint.
 
 Also, you can fetch data for a single user by attaching the ID of the user to the end of the endpoint URL, e.g., ```users/1```, like so:
@@ -67,23 +67,23 @@ Here's how data is sent to the API server using the ```POST``` method:
 ```
 // new user data to be created in the API server
 const newUser = {
-  fname: &quot;Paul&quot;,
-  paymentMethod: &quot;Direct Deposit&quot;,
-  rate: &quot;750&quot;,
+  fname: "Paul",
+  paymentMethod: "Direct Deposit",
+  rate: "750",
   hours: 40,
   overtimeHours: 4,
-  salaryAmount: &quot;1500.55&quot;,
-  lname: &quot;Ibeabuchi&quot;,
-  compType: &quot;Salaried&quot;,
+  salaryAmount: "1500.55",
+  lname: "Ibeabuchi",
+  compType: "Salaried",
 }
-const baseURL = &quot;https://62ab0faba62365888bd3aea0.mockapi.io/api/v1&quot;;
+const baseURL = "https://62ab0faba62365888bd3aea0.mockapi.io/api/v1&quot;;
 fetch(&#x60;${baseURL}/users&#x60;, {
-  method: &quot;POST&quot;,
+  method: "POST",
   body: JSON.stringify(newUser)
 })
-.then(res =&gt; res.json())
-.then(data =&gt; console.log(data))
-.catch(error =&gt; console.log(error))
+.then(res => res.json())
+.then(data => console.log(data))
+.catch(error => console.log(error))
 ```
 Note that the ```newUser``` object was converted to JSON string using the ```JSON.stringify``` method, else it will throw an error.
 
@@ -92,7 +92,7 @@ This method is as straightforward as the name implies. It is used to delete a re
 The ```PATCH``` method is basically used to update one or more properties in the API data or resource. You have to specify an object containing properties that you want to ```PATCH``` and the API server will update the resource data corresponding to the properties you have specified.
 
 The method is set to ```PATCH``` and the ID for the resource to be updated is attached to the end of the endpoint like so:
-The ```PUT``` method is much similar to the ```PATCH``` method as they are both used to update data in the API server. However, the difference is that the ```PUT``` method is more like a &quot;replace&quot; action. Unlike ```PATCH```, where you just specify the property (or properties) to be updated, ```PUT``` requires you to include all the properties with values to be updated.
+The ```PUT``` method is much similar to the ```PATCH``` method as they are both used to update data in the API server. However, the difference is that the ```PUT``` method is more like a "replace" action. Unlike ```PATCH```, where you just specify the property (or properties) to be updated, ```PUT``` requires you to include all the properties with values to be updated.
 Here's what a ```PUT``` request looks like:
 
 There are various levels of <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status#successful_responses" target="_blank" rel="noopener noreferrer">HTTP status codes</a>, and each signifies different possible situations when a request is made to an API server. The most common ones are:

@@ -24,7 +24,7 @@ That's when byte streams begin to take shape. MSE and HTTP form a great team whe
 This technique is very efficient because you don't have to download the entire video, but only what you really consume; there’s no point in downloading the complete video data when you can only watch one part of it at a time.
 Here is a small schema explaining the process that most streaming companies use to transport video data to your TV, phone or computer.
 
-![](" src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63176af152c14e4e9218944c_ScreenShot2022-09-02at2_03_43PM_b5158075f03068fd82fbf31e5ccd5143_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63176af152c14e4e9218944c_ScreenShot2022-09-02at2_03_43PM_b5158075f03068fd82fbf31e5ccd5143_800.png)
 
 ## How it works
 Based on the schema above, we can see that the server stores the various pieces that the client needs to play a video.
@@ -41,13 +41,13 @@ Nowadays, manipulating binary data on the front end is not very common, but this
 
 ## The MSE API
 
-### The &lt;video/&gt; element
+### The <video/> element
 
-![](ps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63176af252c14e032018945c_ScreenShot2022-09-02at2_05_38PM_5b2acc5ac487bb2370bf81647dda018d_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63176af252c14e032018945c_ScreenShot2022-09-02at2_05_38PM_5b2acc5ac487bb2370bf81647dda018d_800.png)
 
-The magic happens in the <a href="https://www.w3.org/TR/2011/WD-html5-20110113/video.html#attr-media-src" target="_blank" rel="noopener noreferrer">&lt;video/&gt; HTML5 element</a>. Many developers know that we have to specify a media element to the ```src``` attribute like so:
+The magic happens in the <a href="https://www.w3.org/TR/2011/WD-html5-20110113/video.html#attr-media-src" target="_blank" rel="noopener noreferrer"><video/> HTML5 element</a>. Many developers know that we have to specify a media element to the ```src``` attribute like so:
 ```
-&lt;video src=&quot;https://myvideo.com/birthday.mp4&quot;/&gt
+<video src="https://myvideo.com/birthday.mp4"/&gt
 ```
 But a few know that we can pass a URL that is directly linked to an object that lives in memory.
 
@@ -58,12 +58,12 @@ The URL will look like what we have below:
 ```
 const video = document.querySelector('video');
 video.src = URL.createObjectURL(...);
-//src=&quot;blob:&lt;https://www.youtube.com/8d195e98-26d6-4f01-8251-f1d1fabc2634&gt;&quot
+//src="blob:<https://www.youtube.com/8d195e98-26d6-4f01-8251-f1d1fabc2634>&quot
 ```
 <a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=adb749911c" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a>
 
 ### Media Source
-Now that we know that we can create a URL that is directly linked to an object, we will leverage the MediaSource API to create a ```MediaSource``` object connected to the ```&lt;video/&gt;``` element.
+Now that we know that we can create a URL that is directly linked to an object, we will leverage the MediaSource API to create a ```MediaSource``` object connected to the ```<video/>``` element.
 ```
 const mediaSource = new MediaSource();
 video.src = URL.createObjectURL(mediaSource)
@@ -76,13 +76,13 @@ This is when the ```SourceBuffer``` object is used.
 ### SourceBuffer
 The ```SourceBuffer``` object acts like an actual buffer. It's a small object used to store data and could be represented like so:
 
-![](ttps://uploads-ssl.webflow.com/6143afec68f555387049efb3/63176af152c14e817418944b_ScreenShot2022-09-02at2_08_36PM_83ac7f4f7410f83c81ca7001f72fde29_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63176af152c14e817418944b_ScreenShot2022-09-02at2_08_36PM_83ac7f4f7410f83c81ca7001f72fde29_800.png)
 
 We will store the two-second video segments we discussed earlier in this buffer.
 
 A few methods live in the ```MediaSource``` instance. One of them is ```addSourceBuffer```. This is the method that will create and add a ```SourceBuffer``` object to the ```MediaSource```.
 ```
-const mimeCodec = 'video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;';
+const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
 const bufferVideo = mediaSource.addSourceBuffer(mimeCodec)
 ```
 <a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=37f44cad38" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a>
@@ -101,7 +101,7 @@ Here, ```mimeCodec``` is essential, because most of the time, you can’t push a
 The codec is the program we name that encodes and decodes a data stream.
 Finally, once we have our ```SourceBuffer``` instance, we can start adding actual video segments to the buffer we just created, thanks to the ```appendBuffer(buf)``` method on the ```SourceBuffer``` instance.
 ```
-const mimeCodec = 'video/mp4; codecs=&quot;avc1.42E01E, mp4a.40.2&quot;';
+const mimeCodec = 'video/mp4; codecs="avc1.42E01E, mp4a.40.2"';
 const bufferVideo = mediaSource.addSourceBuffer(mimeCodec);
 bufferVideo.appendBuffer(buf)```
 <a href="https://3863d558-45a9-40e6-9dff-136019435fd6.pieces.cloud/?p=582045b77b" target="_blank" rel="noopener noreferrer">Click to save this command to Pieces</a>
@@ -119,7 +119,7 @@ console.log(mediaSource.readyState); // closed
 
 We need to wait for the ```MediaSource``` to be in the **open** state.
 ```
-mediaSource.addEventListener('sourceopen', () =&gt; {
+mediaSource.addEventListener('sourceopen', () => {
  // The mediaSource is open and ready to receive a sourceBuffer
 })
 ```
@@ -134,7 +134,7 @@ We will use the ```responseType``` property from the ```XMLHttpRequest``` API th
 const xhr = new XMLHttpRequest;
   xhr.open('get', url);
   xhr.responseType = 'arraybuffer';
-  xhr.onload = () =&gt; {
+  xhr.onload = () => {
  // append the video segment to the buffer
   sourceBuffer.appendBuffer(xhr.response);
   };

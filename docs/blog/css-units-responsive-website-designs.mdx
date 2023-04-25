@@ -41,11 +41,11 @@ Below are the frequently used relative units that we’ll discuss:
 
 When using Element (```em```), the font sizes of child elements depend on the font size of their parent element.
 ```
-&lt;section&gt;
-        &lt;p id= “first” &gt;Css Units&lt;/p&gt;
-        &lt;p id= “second” &gt;Measurement Units&lt;/p&gt;
-        &lt;p id= “third”&gt;Mathematics&lt;/p&gt;
-&lt;/section&gt
+<section>
+        <p id= “first” >Css Units</p>
+        <p id= “second” >Measurement Units</p>
+        <p id= “third”>Mathematics</p>
+</section&gt
 ```
 In the code snippet above, we can see that the three paragraphs are all children of the section element.
 ```
@@ -97,7 +97,7 @@ If we view this webpage on a desktop with a screen width of 1200px, then the fir
 0.5 * 1200px =  600px, therefore, the first paragraph is 600px wide. Using this formula, we can deduce that the second paragraph is 360px wide, and the third paragraph is 120px wide.
 Check out this visual representation, in which each element has a differently colored border:
 
-![]( src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63fcdaa9f99797b4c12f2f08_image2_eb197bec839ee3d083f1ffcb2251a898_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63fcdaa9f99797b4c12f2f08_image2_eb197bec839ee3d083f1ffcb2251a898_800.png)
 
 Percentage CSS units work the same way with margins, paddings, heights, and so on.
 A viewport is the visible part of a webpage. The size of a viewport varies based on the type of device being used. Hence, the viewport is 100% as wide as the visible part of the webpage. In order to calculate the width of an element, you should understand that ```1vw``` is equivalent to 1% of the viewport’s width.
@@ -124,11 +124,11 @@ Let’s return to our paragraphs from earlier and give them widths in ```vws```.
 
 ```
 Since ```1vw``` = 1% of the viewport width, ```100vw``` = 100% of the viewport width. Let’s take a look at our paragraphs and how they’ve scaled based on their parameters.
-![]( src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63fcdaa9f99797750a2f2f27_image3_bf91d00557f09c3c57874122b9ff3fdd_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63fcdaa9f99797750a2f2f27_image3_bf91d00557f09c3c57874122b9ff3fdd_800.png)
 
 Just like the viewport width, the viewport height refers to the height of the visible window on device. ```1vh``` is equivalent to 1% of the viewport height.
 So, if an element is set to ```50vh```, in the browser, that element is 50% (half) of the viewport height. The red element in the image below is ```50vh``` high.
-![]( src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63fcdaa9f99797e6212f2f02_image1_54ab62d59a788be940ca67dcbe505c8b_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63fcdaa9f99797e6212f2f02_image1_54ab62d59a788be940ca67dcbe505c8b_800.png)
 
 ## Recommended Use Cases for CSS Units
 It can be confusing to figure out which CSS units to use in a given scenario. It takes practice to completely understand the use cases for each unit, but I’ll highlight a few common ones below.

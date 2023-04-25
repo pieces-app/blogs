@@ -13,7 +13,7 @@ Flutter has numerous state management components, including Provider, GetX, Bloc
 - Create a GetX controller and make a network request using the http package.
 - Display the data in an appropriate format.
 
-![](webflow.com/6143afec68f555387049efb3/63e3d1c02d302d794e7c350e_image2_8d7201cf6c9bd88973f42d2a2efc2e21_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63e3d1c02d302d794e7c350e_image2_8d7201cf6c9bd88973f42d2a2efc2e21_800.png)
 
 Now, use the following Flutter GetX CLI command in your command prompt to install the packages:
 
@@ -32,13 +32,13 @@ class OpenseaModel {
   OpenseaModel({
     required this.assets,
   });
-  List&lt;Assets&gt;? assets;
-  OpenseaModel.fromJson(Map&lt;String, dynamic&gt; json) {
-    assets = List.from(json['assets']).map((e) =&gt; Assets.fromJson(e)).toList();
+  List<Assets>? assets;
+  OpenseaModel.fromJson(Map<String, dynamic> json) {
+    assets = List.from(json['assets']).map((e) => Assets.fromJson(e)).toList();
   }
-  Map&lt;String, dynamic&gt; toJson() {
-    final _data = &lt;String, dynamic&gt;{};
-    _data['assets'] = assets!.map((e) =&gt; e.toJson()).toList();
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
+    _data['assets'] = assets!.map((e) => e.toJson()).toList();
     return _data;
   }
 }
@@ -53,14 +53,14 @@ class Assets {
   String? name;
   String? description;
   String? permalink;
-  Assets.fromJson(Map&lt;String, dynamic&gt; json) {
+  Assets.fromJson(Map<String, dynamic> json) {
     imageUrl = json['image_url'];
     name = json['name'];
     description = null;
     permalink = json['permalink'];
   }
-  Map&lt;String, dynamic&gt; toJson() {
-    final _data = &lt;String, dynamic&gt;{};
+  Map<String, dynamic> toJson() {
+    final _data = <String, dynamic>{};
     _data['image_url'] = imageUrl;
     _data['name'] = name;
     _data['description'] = description;
@@ -82,7 +82,7 @@ class OpenseaController extends GetxController {
   var isLoading = false.obs;
   OpenseaModel? openseaModel;
   @override
-  Future&lt;void&gt; onInit() async {
+  Future<void> onInit() async {
     super.onInit();
     fetchData();
   }
@@ -127,7 +127,7 @@ class MyApp extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('opensea Api')),
         body: Obx(
-      () =&gt; openseaController.isLoading.value
+      () => openseaController.isLoading.value
           ? Center(
               child: CircularProgressIndicator(),
             )
@@ -154,7 +154,7 @@ class MyApp extends StatelessWidget {
               }),
     ));
   }
-  Future&lt;void&gt; _launchInBrowser(Uri url) async {
+  Future<void> _launchInBrowser(Uri url) async {
     if (!await launchUrl(
       url,
       mode: LaunchMode.externalApplication,
@@ -169,14 +169,14 @@ class MyApp extends StatelessWidget {
 Also, there is a ```_launchInBrowser() ```method that will open your images link in the browser.
 
 **Output:**
-![](ser. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63e3d1c02d302dfe487c350f_image_f5d273aa10090f0519efd3ee2f85112c_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63e3d1c02d302dfe487c350f_image_f5d273aa10090f0519efd3ee2f85112c_800.png)
 
 ## Conclusion
 In this article, you learned how to use Flutter and GetX to Fetch data from an OpenSea API. We began by importing packages, then generated a model for our JSON. After that, we created a controller file to retrieve data from the OpenSea API. Finally, the data was displayed in a list view.
 
 ### Follow this Tutorial on YouTube:
 
-![](ht="33.9%" data-rt-dimensions="200:113" data-page-url="https://www.youtube.com/watch?v=Hjv0n_Qp9lQ&list=PLrTDw7ICfHFkvOFW_AERUTUbpmIPFccjS&index=3"><div><iframe width="200" height="113" src="https://www.youtube.com/embed/Hjv0n_Qp9lQ?feature=oembed&list=PLrTDw7ICfHFkvOFW_AERUTUbpmIPFccjS&index=3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Flutter Getx Rest API Tutorial - Fetching Data From Opensea Api"></ifr)
+![](https://uploads-ssl.webflow.com/embed/Hjv0n_Qp9lQ?feature=oembed&list=PLrTDw7ICfHFkvOFW_AERUTUbpmIPFccjS&index=3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen title="Flutter Getx Rest API Tutorial - Fetching Data From Opensea Api"></ifr)
 
 **Full Source Code:**
 <a href="https://bit.ly/3NkrvkZ" target="_blank" rel="noopener noreferrer">https://bit.ly/3NkrvkZ</a>

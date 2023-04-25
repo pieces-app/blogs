@@ -22,9 +22,9 @@ Like all JavaScript frameworks, SolidJS is made up of components, and is built o
 Let’s have a look at an exemplary component based on SolidJS:
 ```
 function Component(props) {
- return &lt;div&gt;Hello {props.name}&lt;/div&gt;;
+ return <div>Hello {props.name}</div&gt;;
 }
-&lt;Component name=&quot;Ejiro&quot; /&gt;
+<Component name="Ejiro" />
 ```
 SolidJS components are essentially JavaScript functions that output JSX, a hybrid of HTML and JavaScript.
 
@@ -34,7 +34,7 @@ The syntax is similar to React.js for rendering components, so it might look fam
 import { render } from 'solid-js/web';
 import './index.css';
 import App from './App';
-render(() =&gt; &lt;App /&gt;, document.getElementById('root'))
+render(() => <App />, document.getElementById('root'))
 ```
 The render function must first be imported before we can proceed. After creating a ```div``` with some ```text``` and a ```prop```, we then render the component and the container element:
 Like every other framework, SolidJS has its own method for handling routing, which lets users jump between different web pages.
@@ -44,16 +44,16 @@ npm i @solidjs/router
 ```
 Wrap your root component in the ```@solidjs/router``` component after installation:
 ```
-import { render } from &quot;solid-js/web&quot;;
-import { Router } from &quot;@solidjs/router&quot;;
-import App from &quot;./App&quot;;
+import { render } from "solid-js/web&quot;;
+import { Router } from "@solidjs/router&quot;;
+import App from "./App&quot;;
 render(
- () =&gt; (
-   &lt;Router&gt;
-     &lt;App /&gt;
-   &lt;/Router&gt;
+ () => (
+   <Router>
+     <App />
+   </Router>
   ),
- document.getElementById(&quot;app&quot;)
+ document.getElementById("app")
 )
 ```
 By wrapping the root component, we can then display the routes anywhere in the app.
@@ -70,52 +70,52 @@ With SolidJS, there are two ways to start. The first is via their online<a href=
 There are two versions of templates: the TypeScript template and the JavaScript template. For this introduction, we'll use the JavaScript version; later, we'll talk about the TypeScript version.
 We'll develop a ```Todolist.jsx``` component, which will have an input field and a list of every task the user has ever logged:
 ```
-import styles from &quot;./Todolist.module.css&quot;
+import styles from "./Todolist.module.css"
 import { TiDeleteOutline } from 'solid-icons/ti'
-import { createStore } from &quot;solid-js/store&quot;
+import { createStore } from "solid-js/store"
 function TodoList() {
  let input;
- const addTodo = (input) =&gt; {
+ const addTodo = (input) => {
  const title = input.value;
  if (!title.trim()) return;
         setTodos({
             objects: [{ text: title, id: todos.counter }, ...todos.objects],
             counter: todos.counter + 1
         });
-        input.value = &quot;&quot;;
+        input.value = "&quot;;
     }
- const deleteTodo = (output) =&gt; {
-        setTodos('objects', (t) =&gt; t.filter((object) =&gt; object.id !== output))
+ const deleteTodo = (output) => {
+        setTodos('objects', (t) => t.filter((object) => object.id !== output))
     }
  const [todos, setTodos] = createStore({
         objects: [],
         counter: 0,
     })
  return (
- &lt;/&gt;
- &lt;div class={styles.container}&gt;
- &lt;input type=&quot;text&quot; ref={input}
-                    placeholder=&quot;What do you have in mind today?&quot; name=&quot;todo&quot;
-                    onKeyDown={(e) =&gt; {
-                        if (e.key === &quot;Enter&quot;) {
+ </>
+ <div class={styles.container}>
+ <input type="text" ref={input}
+                    placeholder="What do you have in mind today?" name="todo"
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") {
                             addTodo(input);
                         }
-                    }}&gt;
- &lt;/input&gt;
- &lt;ul class={styles.todoList}&gt;
- &lt;For each={todos.objects}&gt;{(todo) =&gt;
- &lt;li&gt;
- &lt;div class={styles.todoItem}&gt;
+                    }}>
+ </input>
+ <ul class={styles.todoList}>
+ <For each={todos.objects}>{(todo) =>
+ <li>
+ <div class={styles.todoItem}>
                                 {todo.text}
- &lt;TiDeleteOutline onClick={() =&gt; {
-                                    deleteTodo(todo.id)}}&gt;&lt;/TiDeleteOutline&gt;
- &lt;/div&gt;
- &lt;/li&gt;
+ <TiDeleteOutline onClick={() => {
+                                    deleteTodo(todo.id)}}></TiDeleteOutline>
+ </div>
+ </li>
                     }
- &lt;/For&gt;
- &lt;/ul&gt;
- &lt;/div&gt;
- &lt;/&gt;
+ </For>
+ </ul>
+ </div>
+ </>
     );
 }
 export default TodoList
@@ -145,7 +145,7 @@ Next, we’ll have to style our application by creating the ```Todolist.module.c
 
 ```
 This is how our application currently appears:
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6392097986f8d9a38842a378_image1_6c9356abc388aa250190378377f85fe3_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6392097986f8d9a38842a378_image1_6c9356abc388aa250190378377f85fe3_800.png)
 
 ## SolidJS With TypeScript
 Solid is made to be simple to use with TypeScript. It uses standard JSX, which creates code that TypeScript can understand, and it has advanced built-in types for its API. This article offers some helpful hints for using TypeScript and writing SolidJS code.

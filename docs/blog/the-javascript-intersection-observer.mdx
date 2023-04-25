@@ -18,7 +18,7 @@ It’s important to watch for intersection changes with regard to the target ele
 
 ## Why Choose the JavaScript Intersection Observer?
 As the internet advances, we need to implement changes that conform with the web’s rapid evolution, hence the need for intersection information. The Intersection Observer is used for the following:
-- Lazy-loading of images or other content as a page is scrolled, and in the implementation of &quot;infinite scrolling&quot; on web sites, where more and more content is loaded as users scroll (so they don’t have to keep flipping through pages).
+- Lazy-loading of images or other content as a page is scrolled, and in the implementation of "infinite scrolling" on web sites, where more and more content is loaded as users scroll (so they don’t have to keep flipping through pages).
 - Observing and reporting the visibility of marketing content, campaigns, advertisements in order to calculate viewership.
 - Deciding whether or not to initiate tasks or animation processes based on if the user will see the results.
 - Scroll-spying for contextual content (navigation bars, table of contents, sections, etc.).
@@ -51,7 +51,7 @@ The ```options``` object passed into the ```intersectionObserver()``` constructo
 The root is the element used as the viewport for checking visibility of the target, and must be the origin of the target. This is rarely used, however. It is only useful when there is a scrolling container inside your page that you want to check observations for, since you can make the scrolling container the root element instead of the screen.
 
 ### rootMargin
-This is the margin around the root. It could have values similar to the CSS margin property, e.g. &quot;20px 30px 40px&quot; (top, right, bottom), or they can carry percentage values. This set of values either allows growth or shrinks each side of the root element's bounding box before carrying out intersections.
+This is the margin around the root. It could have values similar to the CSS margin property, e.g. "20px 30px 40px" (top, right, bottom), or they can carry percentage values. This set of values either allows growth or shrinks each side of the root element's bounding box before carrying out intersections.
 
 The threshold can be a single number or an array of numbers that indicate the target’s percentage of visibility at which the observer's callback should be executed. To detect when visibility passes the 50% mark, you can use a value of 0.5. If you want to ensure that the callback runs every time visibility passes another 25%, the array should be specified as [0, 0.25, 0.5, 0.75, 1]. The default is always 0, which means that as soon as even one pixel is visible, the callback will run. A value of 1.0 means that the threshold is not passed until every pixel is visible.
 The Intersection Observer API considers rectangles. Therefore, if the visible portion of an element is not rectangular, the element's intersection rectangle will be the smallest rectangle that contains all the visible portions of the element.
@@ -66,8 +66,8 @@ observer.observe(target);
 // it will wait until you assign a target to our observer (even if the target is currently not visible)```
 Whenever the target meets a threshold specified for the Intersection Observer, the callback is invoked:
 ```
-let callback = (entries, observer) =&gt; {
-  entries.forEach((entry) =&gt; {
+let callback = (entries, observer) => {
+  entries.forEach((entry) => {
  // Each entry describes an intersection change for one observed
  // target element:
  //   entry.boundingClientRect

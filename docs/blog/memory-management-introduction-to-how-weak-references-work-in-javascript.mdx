@@ -41,11 +41,15 @@ In other words, the strong reference prevents the item from being removed from m
 
 ## The Difference Between Map and WeakMap
 As we learned about garbage collection, the JavaScript engine stores a value in memory for as long as it is accessible. Let's look at some examples:
+
 ```
 let tesla = { name: 'car' };
 tesla = null;
-// The object is not functional again.```
+// The object is not functional again.
+```
+
 While a data structure is in memory, its properties are considered accessible, so they’re typically preserved. If we store an item in an array, the object may still be retrieved even if it has no other references, as long as the array is in memory.
+
 ```
 let map = new Map();
 let tesla = { name: 'car' };
@@ -59,10 +63,11 @@ The ```Map``` object keeps track of key-value pairs and remembers the order in w
 This means the object is similar to an object in that we can store key-value pairs and retrieve the values within the ```Map``` using the key. However, unlike a typical JavaScript object, we must use the ```.get()``` function to get the values.
 
 A ```WeakMap``` is quite similar to a ```Map```, except the references it stores are weak references, which means it will not prevent garbage collection from deleting items it refers to if they are not firmly linked elsewhere.
-```
-WeakMap``` also has the disadvantage of not being enumerable, due to the weak references.
+
+```WeakMap``` also has the disadvantage of not being enumerable, due to the weak references.
 
 Finally, we must use objects as keys, but the values can be anything, such as text or an integer. Here is an example of  a ```WeakMap``` and the techniques that can be applied to it:
+
 ```
 const countries = new WeakMap();
 const continents = new WeakMap();
@@ -79,8 +84,9 @@ countries.delete(obj1);
 countries.has(obj1); // false, this is because the object has been deleted
 console.log(countries)
 ```
-```
-WeakMap()``` can also be used to store additional data. Let’s assume we're developing a food delivery app platform with software that counts the number of people who use the application. In this scenario, we'd like to reduce the count when customers leave. This task would be difficult to accomplish with ```Map```, but it’s relatively simple with ```WeakMap()```:
+
+```WeakMap()``` can also be used to store additional data. Let’s assume we're developing a food delivery app platform with software that counts the number of people who use the application. In this scenario, we'd like to reduce the count when customers leave. This task would be difficult to accomplish with ```Map```, but it’s relatively simple with ```WeakMap()```:
+
 ```
 let countPerson = new WeakMap();
 function countUsers(user) {
@@ -98,6 +104,7 @@ When using ```Map()```, we must clean ```countPerson``` every time a client leav
 ## The Difference Between Set and WeakSet
 
 The ```Set``` object allows us to store unique values of any type, whether they’re raw values or object references. A set, like an array, lacks a key-value pair. Using array methods ```for...of``` and ```.forEach()```, we can iterate through a set of arrays:
+
 ```
 let meals = new Set(['Rice', 'Pizza', 'Risotto', 'Garri']);
 for (let names of meals) {

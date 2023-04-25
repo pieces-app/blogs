@@ -73,16 +73,16 @@ For our Signup endpoint, we will do the following:
 - Redirect the employee to the sign-in route
 ```
 const bycrypt = require('brypt');
-const Employee = require(&quot;../Database/employee&quot;);
-const employeeSignup = async (req, role, res) =&gt; {
+const Employee = require("../Database/employee");
+const employeeSignup = async (req, role, res) => {
   try {
     //Get employee from database with same name if any
-    const validateEmployeename = async (name) =&gt; {
+    const validateEmployeename = async (name) => {
       let employee = await Employee.findOne({ name });
       return employee ? false : true;
     };
     //Get employee from database with same email if any
-    const validateEmail = async (email) =&gt; {
+    const validateEmail = async (email) => {
       let employee = await Employee.findOne({ email });
       return employee ? false : true;
     };
@@ -110,7 +110,7 @@ const employeeSignup = async (req, role, res) =&gt; {
     });
     await newEmployee .save();
     return res.status(201).json({
-      message: &quot;Hurry! now you are successfully registred. Please nor login.&quot;
+      message: "Hurry! now you are successfully registred. Please nor login."
     });
   } catch (err) {
     // Implement logger function if any
@@ -137,14 +137,14 @@ We'll also create another middleware for restricting access to certain routes to
 /**
  * @DESC Verify JWT from authorization header Middleware
  */
-const employeeAuth = (req, res, next) =&gt; {
-  const authHeader = req.headers[&quot;authorization&quot;];
+const employeeAuth = (req, res, next) => {
+  const authHeader = req.headers["authorization"];
   console.log(process.env.APP_SECRET);
   if (!authHeader) return res.sendStatus(403);
   console.log(authHeader); // Bearer token
-  const token = authHeader.split(&quot; &quot;)[1];
-  jwt.verify(token, process.env.APP_SECRET, (err, decoded) =&gt; {
-    console.log(&quot;verifying&quot;);
+  const token = authHeader.split(" ")[1];
+  jwt.verify(token, process.env.APP_SECRET, (err, decoded) => {
+    console.log("verifying");
     if (err) return res.sendStatus(403); //invalid token
     console.log(decoded); //for correct token
     next();
@@ -153,12 +153,12 @@ const employeeAuth = (req, res, next) =&gt; {
 /**
  * @DESC Check Role Middleware
  */
-const checkRole = (roles) =&gt; async (req, res, next) =&gt; {
+const checkRole = (roles) => async (req, res, next) => {
   let { name } = req.body;
   //retrieve employee info from DB
   const employee = await Employee.findOne({ name });
   !roles.includes(employee.role)
-    ? res.status(401).json(&quot;Sorry you do not have access to this route&quot;)
+    ? res.status(401).json("Sorry you do not have access to this route")
     : next();
 }
 ```
@@ -172,21 +172,21 @@ In this section, we'll be creating the following sets of routes and applying the
 - Protected routes for each department
 
 To test out our application, we'll be creating a demo user named Victor with a Software Engineering role.
-![](flow.com/6143afec68f555387049efb3/63c0198f139e8e0eec99ee53_image4_5d66cab0db2ebe24c252cf40f94d590c_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63c0198f139e8e0eec99ee53_image4_5d66cab0db2ebe24c252cf40f94d590c_800.jp)
 
 With our user created, let's try logging in.
-![](webflow.com/6143afec68f555387049efb3/63c0198f139e8ee33699ee51_image2_f68cdafbafb824b5e274862947062d02_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63c0198f139e8ee33699ee51_image2_f68cdafbafb824b5e274862947062d02_800.jp)
 
 Our user logged in correctly! Now, let's try logging in from the Human Resources department’s route.
-![](ion." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63c0198f139e8ed09199ee50_image3_c1822bb330c637a0119591218a4f9954_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63c0198f139e8ed09199ee50_image3_c1822bb330c637a0119591218a4f9954_800.jp)
 
 We can see that our user cannot log in via another department’s route. Success!
 
 Now, let's try accessing the protected routes.
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63c0198f139e8e6cac99ee54_image1_370ef3a443ca9d363654804e00914c6c_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63c0198f139e8e6cac99ee54_image1_370ef3a443ca9d363654804e00914c6c_800.jp)
 
 Our user can access the software engineering protected route because that role is assigned to him. Let's try accessing the human resource route with our software engineering user.
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63c0198f139e8e8ea199ee52_image5_2802ea8f828cbd6bdd6e4c9597f984d3_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63c0198f139e8e8ea199ee52_image5_2802ea8f828cbd6bdd6e4c9597f984d3_800.jp)
 
 From the above images, we can see that all of our routes work as expected. They can all be tweaked, and more routes can be added with same logic, but I'll leave that to you.
 

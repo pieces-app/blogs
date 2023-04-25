@@ -66,11 +66,11 @@ Next, wait for the installation to be completed and proceed to creating the back
 With the required packages for the backend setup installed, create a TypeScript config file and add the configurations below:
 ```
 {
-  &quot;extends&quot;: &quot;./tsconfig.json&quot;,
-  &quot;compilerOptions&quot;: {
-    &quot;module&quot;: &quot;commonjs&quot;,
-    &quot;emitDecoratorMetadata&quot;: true,
-    &quot;esModuleInterop&quot;: true
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true
   }
 
 ```
@@ -78,9 +78,9 @@ Then, create a **server **folder in the **src **folder. Next, in the server fold
 ```
 import express from 'express';
 const app = express();
-app.listen(3002, () =&gt; console.log(&quot;Server started&quot;))
+app.listen(3002, () => console.log("Server started"))
 ```
-Since the application is using the Common.js module, you need to remove the ```&quot;type&quot;: &quot;module&quot;``` entry from the **package.json** file created by Vite.
+Since the application is using the Common.js module, you need to remove the ```"type": "module"``` entry from the **package.json** file created by Vite.
 Next, create an **api.ts** file on the **server **and load Remult in the backend as an Express middleware with the code snippet below:
 ```
 import { remultExpress } from 'remult/remult-express';
@@ -93,7 +93,7 @@ app.use(api)
 ```
 Next, update the** **```tsconfig.json``` file to enable TypeScript decorators in the React.js full stack App with the entry below:
 ```
-&quot;experimentalDecorators&quot;: true
+"experimentalDecorators": true
 ```
 A Remult application is configured to run the frontend and backend from the same domain in production. However, in development, the API server listens to <a href="http://localhost:3002/" target="_blank" rel="noopener noreferrer">http://localhost:3002</a>, while the frontend listens to port <a href="http://localhost:5173/" target="_blank" rel="noopener noreferrer">http://localhost:5173</a>. Therefore, you need to use the Vite proxy feature to divert all requests to the **API** to <a href="http://localhost:5173/api" target="_blank" rel="noopener noreferrer">http://localhost:5173/api</a>. To do this, update the **vite.confg.ts** file with the code snippet below:
 ```
@@ -103,7 +103,7 @@ export default defineConfig({
 })```
 Next, update the **package.json** file to add a start script to run the application in development with the entry below:
 ```
-&quot;dev&quot;: &quot;concurrently -k -n \\&quot;API,WEB\\&quot; -c \\&quot;bgBlue.bold,bgGreen.bold\\&quot; \\&quot;ts-node-dev -P tsconfig.server.json src/server/\\&quot; \\&quot;vite\\&quot;&quot
+"dev": "concurrently -k -n \\"API,WEB\\" -c \\"bgBlue.bold,bgGreen.bold\\" \\"ts-node-dev -P tsconfig.server.json src/server/\\" \\"vite\\"&quot
 ```
 Now, run the application with this command:
 
@@ -119,8 +119,8 @@ import { remultExpress } from 'remult/remult-express';
 import { MongoClient } from 'mongodb';
 import { MongoDataProvider } from 'remult/remult-mongo';
 app.use(remultExpress({
-  dataProvider: async () =&gt; {
-    const client = new MongoClient(&quot;mongodb://localhost:27017/local&quot;);
+  dataProvider: async () => {
+    const client = new MongoClient("mongodb://localhost:27017/local");
     await client.connect();
     return new MongoDataProvider(client.db('blogs'), client);
   }
@@ -155,8 +155,8 @@ Next, update the **server/index.ts** file to register the entity in the ```remul
 ```
 import { Blogs } from './shared /blog';
 app.use(remultExpress({
-  dataProvider: async () =&gt; {
-    const client = new MongoClient(&quot;mongodb://localhost:27017/local&quot;);
+  dataProvider: async () => {
+    const client = new MongoClient("mongodb://localhost:27017/local");
     await client.connect();
     return new MongoDataProvider(client.db('test'), client);
   },
@@ -171,8 +171,8 @@ Now let’s create our CRUD functions so that we Create, Read, Update and Delete
 
 First, you need to create a ```blogController.ts``` file in the **server/shared **folder. In the ```blogController.ts```** **file, add the following code:
 ```
-import { BackendMethod, remult } from &quot;remult&quot;;
-import { Blogs } from &quot;./blog&quot;;
+import { BackendMethod, remult } from "remult&quot;;
+import { Blogs } from "./blog&quot;;
 export class BlogsController {
   @BackendMethod({ allowed: true })
   static async create(title: string, coverImage: string, content: string) {
@@ -201,55 +201,55 @@ To get started, create a controllers folder in the **src **to create some React 
 
 First, create a **Form.ts** file in the controllers folder, and add the code below:
 ```
-import { useState } from &quot;react&quot;;
-import { BlogsController } from &quot;../server/shared /blogController&quot;;
+import { useState } from "react&quot;;
+import { BlogsController } from "../server/shared /blogController&quot;;
 export function Form() {
-  const [title, setTitle] = useState(&quot;&quot;);
-  const [coverImage, setCoverImage] = useState(&quot;&quot;);
-  const [content, setContent] = useState(&quot;&quot;);
+  const [title, setTitle] = useState("");
+  const [coverImage, setCoverImage] = useState("");
+  const [content, setContent] = useState("");
 
-  const create = async () =&gt; {
+  const create = async () => {
     await BlogsController.create(title, coverImage, content);
 };
 return (
-&lt;div&gt;
-  &lt;div className=&quot;mb-3&quot;&gt;
-    &lt;label htmlFor=&quot;exampleFormControlInput1&quot; className=&quot;form-label&quot;&gt;
+<div>
+  <div className="mb-3">
+    <label htmlFor="exampleFormControlInput1" className="form-label">
     Title
-    &lt;/label&gt;
-    &lt;input
-      type=&quot;email&quot;
-      className=&quot;form-control&quot;
-      id=&quot;exampleFormControlInput1&quot;
-      onChange={(e) =&gt; setTitle(e.target.value)}
-    /&gt;
-  &lt;/div&gt;
-  &lt;div className=&quot;mb-3&quot;&gt;
-    &lt;label htmlFor=&quot;exampleFormControlInput1&quot; className=&quot;form-label&quot;&gt;
+    </label>
+    <input
+      type="email"
+      className="form-control"
+      id="exampleFormControlInput1"
+      onChange={(e) => setTitle(e.target.value)}
+    />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="exampleFormControlInput1" className="form-label">
     Cover Image
-    &lt;/label&gt;
-    &lt;input
-      type=&quot;email&quot;
-      className=&quot;form-control&quot;
-      id=&quot;exampleFormControlInput1&quot;
-      onChange={(e) =&gt; setCoverImage(e.target.value)}
-    /&gt;
-  &lt;/div&gt;
-  &lt;div className=&quot;mb-3&quot;&gt;
-    &lt;label htmlFor=&quot;exampleFormControlTextarea1&quot; className=&quot;form-label&quot;&gt;
+    </label>
+    <input
+      type="email"
+      className="form-control"
+      id="exampleFormControlInput1"
+      onChange={(e) => setCoverImage(e.target.value)}
+    />
+  </div>
+  <div className="mb-3">
+    <label htmlFor="exampleFormControlTextarea1" className="form-label">
     Content
-    &lt;/label&gt;
-    &lt;textarea
-      className=&quot;form-control&quot;
-      id=&quot;exampleFormControlTextarea1&quot;
-      rows=&quot;3&quot;
-      onChange={(e) =&gt; setContent(e.target.value)}
-    &gt;&lt;/textarea&gt;
-  &lt;/div&gt;
-  &lt;div className=&quot;mb-3&quot;&gt;
-    &lt;button className=&quot;btn btn-primary&quot; onClick={()=&gt; create()}&gt;Add&lt;/button&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+    </label>
+    <textarea
+      className="form-control"
+      id="exampleFormControlTextarea1"
+      rows="3"
+      onChange={(e) => setContent(e.target.value)}
+    ></textarea>
+  </div>
+  <div className="mb-3">
+    <button className="btn btn-primary" onClick={()=> create()}>Add</button>
+  </div>
+</div>
 );
 
 ```
@@ -257,37 +257,37 @@ In the above code snippet, we imported the ```BlogsController``` class so we can
 
 We need this form to display in a modal when clicked. Therefore, we need to create a Modal.tsx file in the controllers file to create a ```Modal``` component. This can be done by using the code snippet below:
 ```
-import { Form } from &quot;./Form&quot;;
+import { Form } from "./Form&quot;;
 export function Modal() {
 return (
-  &lt;div
-    className=&quot;modal fade&quot;
-    id=&quot;staticBackdrop&quot;
-    data-bs-backdrop=&quot;static&quot;
-    data-bs-keyboard=&quot;false&quot;
-    tabIndex=&quot;-1&quot;
-    aria-labelledby=&quot;staticBackdropLabel&quot;
-    aria-hidden=&quot;true&quot;
-  &gt;
-  &lt;div className=&quot;modal-dialog&quot;&gt;
-   &lt;div className=&quot;modal-content&quot;&gt;
-    &lt;div className=&quot;modal-header&quot;&gt;
-      &lt;h5 className=&quot;modal-title&quot; id=&quot;staticBackdropLabel&quot;&gt;
+  <div
+    className="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabIndex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+  <div className="modal-dialog">
+   <div className="modal-content">
+    <div className="modal-header">
+      <h5 className="modal-title" id="staticBackdropLabel">
       Create New Blog
-      &lt;/h5&gt;
-    &lt;button
-      type=&quot;button&quot;
-      className=&quot;btn-close&quot;
-      data-bs-dismiss=&quot;modal&quot;
-      aria-label=&quot;Close&quot;
-    &gt;&lt;/button&gt;
-    &lt;/div&gt;
-    &lt;div className=&quot;modal-body&quot;&gt;
-    &lt;Form /&gt;
-    &lt;/div&gt;
-   &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+      </h5>
+    <button
+      type="button"
+      className="btn-close"
+      data-bs-dismiss="modal"
+      aria-label="Close"
+    ></button>
+    </div>
+    <div className="modal-body">
+    <Form />
+    </div>
+   </div>
+  </div>
+</div>
 );
 
 ```
@@ -295,74 +295,74 @@ In the above code, we used the ```Bootstrap``` classes to create a modal for the
 
 Next, we’ll need to add a clickable button to show the modal component we just created. To add a button in the header part of the application, create a Header.ts file in the controllers folder and add the code below:
 ```
-import { Modal } from &quot;./Modal&quot;;
+import { Modal } from "./Modal&quot;;
 export function Header() {
 return (
-  &lt;nav className=&quot;navbar navbar-light bg-light&quot;&gt;
-    &lt;div className=&quot;container-fluid&quot;&gt;
-    &lt;a className=&quot;navbar-brand&quot;&gt;Blog App&lt;/a&gt;
-    &lt;button
-      className=&quot;btn btn-primary&quot;
-      data-bs-toggle=&quot;modal&quot;
-      data-bs-target=&quot;#staticBackdrop&quot;
-    &gt;
+  <nav className="navbar navbar-light bg-light">
+    <div className="container-fluid">
+    <a className="navbar-brand">Blog App</a>
+    <button
+      className="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#staticBackdrop"
+    >
     Add New
-    &lt;/button&gt;
-   &lt;/div&gt;
-  &lt;Modal/&gt;
-&lt;/nav&gt;
+    </button>
+   </div>
+  <Modal/>
+</nav>
 );
 
 ```
 Now, let’s update the code in the** **```App.tsx``` file to make the ```Header``` component available, read the blog data from our Remult backend, and render it to users with the following:
 ```
-import { useEffect, useState } from &quot;react&quot;;
-import { Header } from &quot;./components/Header&quot;;
-import { BlogsController } from &quot;./server/shared /blogController&quot;;
-import { Blogs } from &quot;./server/shared /blog&quot;;
+import { useEffect, useState } from "react&quot;;
+import { Header } from "./components/Header&quot;;
+import { BlogsController } from "./server/shared /blogController&quot;;
+import { Blogs } from "./server/shared /blog&quot;;
 function App() {
-  const [blogs, setBlogs] = useState&lt;Blogs[]&gt;([]);
-  useEffect(() =&gt; {
-    const fetchData = async () =&gt; {
+  const [blogs, setBlogs] = useState<Blogs[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
     const blogData = await BlogsController.getAll();
     setBlogs(blogData);
   };
   fetchData();
 });
-const deleteBlog = async (id:string)=&gt;{
+const deleteBlog = async (id:string)=>{
   await BlogsController.deleteOne(id)
 }
 return (
-&lt;div className=&quot;App&quot;&gt;
-  &lt;Header /&gt;
-    &lt;div className=&quot;container&quot;&gt;
-    &lt;div className=&quot;row&quot;&gt;
+<div className="App">
+  <Header />
+    <div className="container">
+    <div className="row">
       {blogs &amp;&amp;
-        blogs.map((blog: Blogs) =&gt; {
+        blogs.map((blog: Blogs) => {
       return (
-        &lt;div className=&quot;card&quot; style={{ width: &quot;18rem&quot;, margin:&quot;20px&quot; }} key={blog.id}&gt;
-          &lt;img
+        <div className="card" style={{ width: "18rem", margin:"20px" }} key={blog.id}>
+          <img
             src={blog.coverImage}
-            className=&quot;card-img-top&quot;
-            alt=&quot;...&quot;
-          /&gt;
-        &lt;div className=&quot;card-body&quot;&gt;
-          &lt;h5 className=&quot;card-title&quot;&gt;{blog.title}&lt;/h5&gt;
-            &lt;p className=&quot;card-text&quot;&gt;
+            className="card-img-top"
+            alt="..."
+          />
+        <div className="card-body">
+          <h5 className="card-title">{blog.title}</h5>
+            <p className="card-text">
             {blog.content}
-            &lt;/p&gt;
-            &lt;a href=&quot;#&quot; className=&quot;btn btn-sm btn-danger&quot; onClick={()=&gt;{
+            </p>
+            <a href="#" className="btn btn-sm btn-danger" onClick={()=>{
                deleteBlog(blog.id)
-            }}&gt;
+            }}>
             Delete
-            &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
+            </a>
+        </div>
+       </div>
      );
     })}
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
+    </div>
+  </div>
+</div>
 );
 }
 export default App
@@ -370,10 +370,10 @@ export default App
 Also, with the above code snippet, we created a delete function to delete blogs from our database by calling the ```deleteOne``` endpoint using the ```BlogsController```** **controller class.
 
 Next, open your browser and navigate to <a href="http://localhost:5173/" target="_blank" rel="noopener noreferrer">http://localhost:5173</a>, and you should see the output on the screenshot below:
-![](loads-ssl.webflow.com/6143afec68f555387049efb3/63614dff1eb9182703a65da6_image2_79575295c40725aca88abdf2c4081a89_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63614dff1eb9182703a65da6_image2_79575295c40725aca88abdf2c4081a89_800.png)
 
 Click the Add New button to create a new blog.
-![](="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63614dff1eb91880fda65da7_image1_9562fa5bf35783a59804210a8a68da4a_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63614dff1eb91880fda65da7_image1_9562fa5bf35783a59804210a8a68da4a_800.png)
 
 ## Conclusion and Resources
 In this tutorial, we went through a React TypesScript tutorial to build a full-stack application using Remult. We began by learning what Remult is and why a developer would use it to build full-stack web applications. Then, we built a blog application with CRUD operations as a demonstration.

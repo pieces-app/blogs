@@ -39,6 +39,7 @@ React components that perform state updates and run asynchronous operations can 
 - Reducing the amount of available memory, thereby affecting the project's performance.
 - Reducing the speed of the application.
 - Contributing to a system crash.
+
 You need to fix this data leak! Here's a helpful <a href="https://www.loginradius.com/blog/engineering/how-to-fix-memory-leaks-in-react/#fixes-for-memory-leaks" target="_blank" rel="noopener noreferrer">guide</a> to doing so:
 
 ### Uncaught Exception
@@ -63,37 +64,43 @@ Here is the code used in importing the file, and the error describing the code:
 ### Incorrect Path Errors
 As displayed in the above code, the problem originates where the path begins. When declaring a path, the number of dots required is just two; on the contrary, the three dots used here generate the error.
 Here is the correct code for declaring the path:
+
 ```
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import '../src/CSS_Files/style.css'
 ```
-Also, when you have another style overriding the main class, it is usually a result of specificity. Specificity here states that if two or more CSS rules factor towards the same element, the selector with the pre-eminent specificity value will &quot;win,&quot; and you will apply its style declaration to that HTML element.
+
+Also, when you have another style overriding the main class, it is usually a result of specificity. Specificity here states that if two or more CSS rules factor towards the same element, the selector with the pre-eminent specificity value will "win," and you will apply its style declaration to that HTML element.
 Specificity here, for instance:
+
 ```
-&lt;html&gt;
-    &lt;head&gt;
-      &lt;style&gt;
+<html>
+    <head>
+      <style>
  p {color: red;}
-      &lt;/style&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
+      </style>
+    </head>
+    <body>
 
-    &lt;p&gt;Hello World!&lt;/p&gt;
+    <p>Hello World!</p>
 
-    &lt;/body&gt;
-    &lt;/html&gt
+    </body>
+    </html&gt
 ```
-Here we have used the &quot;p&quot; element as a selector, and specified a red color for this element. The resulting text will be red:
+
+Here we have used the "p" element as a selector, and specified a red color for this element. The resulting text will be red:
 
 <a href="https://www.w3schools.com/css/css_specificity.asp" target="_blank" rel="noopener noreferrer">Source</a>
-In some cases, this text color is further styled or restyled in the CSS style sheet with the CSS rule:  ```!important
-```
+In some cases, this text color is further styled or restyled in the CSS style sheet with the CSS rule:
+
+```!important```
 
 This adds more importance to a property/value than usual.
-Using this  ```!important``` rule will override all previous styling rules for that specific property on that element.
-### Syntax Errors in the Stylesheet
 
+Using this  ```!important``` rule will override all previous styling rules for that specific property on that element.
+
+### Syntax Errors in the Stylesheet
 These are usually a result of:
 - Typos, or the lack of separating CSS declarations with a semicolon.
 - Mixing up the correct syntax for selectors, e.g. class selectors begin with a period: .class-name
@@ -114,7 +121,7 @@ Specifically, 404 is categorized as a render error code that appears when trying
 ### Network Errors
 Network errors usually happen when making API/third party requests, and this can also lead to the layout getting disoriented because assets aren’t loaded. For instance, updating the front end of your website or application can suddenly result in network errors with a request block on the browser log. Sometimes, the API is on a separate port or host from the front end in cases like these.
 Network error messages can appear like this:
-![](bflow.com/6143afec68f555387049efb3/6331d191a7d17afbd46997a3_image2_73a76b5481512bd11dd1c99fe9733efe_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6331d191a7d17afbd46997a3_image2_73a76b5481512bd11dd1c99fe9733efe_800.png)
 
 This (above) is an error message from the <a href="https://app.grammarly.com/ddocs/1692799746" target="_blank" rel="noopener noreferrer">Grammarly</a> website. Most of the time, this issue is specific to your computer, and you need to disconnect from your internet for a few seconds and then reconnect. However, if the same thing appears when trying to access the website with another device, then troubleshoot your internet connection. <a href="https://www.makeuseof.com/common-network-errors-how-to-fix/" target="_blank" rel="noopener noreferrer">Here are some common network errors you may encounter, and how to fix them</a>.
 
@@ -130,8 +137,8 @@ This is the correct media query syntax:
 ```
 @media type and (condition) {
   //features to be changed (CSS classes)
-
 ```
+
 For instance:
 Javascript is not a typed language; therefore, you most likely will run into issues where you see “null” or “undefined” where text is supposed to be. In addition, data type errors often happen when we access a variable that does not exist, or the API returns a wrong value.
 One fix for this is opting for TypeScript, where you can specify the exact data type expected, allowing you to catch these errors during the build.

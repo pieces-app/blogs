@@ -61,7 +61,7 @@ main{
 .styledInput {
   margin-bottom: 25px;
 }
-.styledInput &gt; input {
+.styledInput > input {
   background: #fefefe;
   border: 1px solid #8db2e2;
   box-sizing: border-box;
@@ -71,19 +71,19 @@ main{
   max-width: max-content;
   padding: 5px 15px;
   padding-top: 0.7rem;
-  font-family: &quot;Gill Sans&quot;, &quot;Gill Sans MT&quot;, Calibri, &quot;Trebuchet MS&quot;, sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #242235;
   font-style: normal;
   font-size: 0.87rem;
   line-height: 15px;
 }
-.styledInput &gt; input:focus {
+.styledInput > input:focus {
   box-shadow: 1px 2px 4px #8db2e2;
 }
-.styledInput &gt; input::placeholder {
+.styledInput > input::placeholder {
   color: #929292;
   font-size: 14.4px;
-  font-family: &quot;Courier New&quot;, Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   font-style: normal;
   font-weight: 700;
   text-transform: capitalize;
@@ -98,7 +98,7 @@ button {
   color: #fff;
   background: #2f4858;
   border-radius: 4px;
-  font-family: &quot;PT Sans&quot;, sans-serif;
+  font-family: "PT Sans", sans-serif;
   font-weight: 700;
   border: none;
   display: flex;
@@ -126,7 +126,7 @@ button:focus:before {
 button:before {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.6);
-  content: &quot;&quot;;
+  content: "&quot;;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -148,102 +148,102 @@ button:before {
 ## Using Formik and Yup Form Validation
 The ```App.js```** **file has a simple sign-up form controlled by Formik. In order to validate Forms in React, inject the Yup form validation schema into the Formik object:
 ```
-import logo from &quot;./logo.svg&quot;;
-import { useFormik } from &quot;formik&quot;;
-import * as Yup from &quot;yup&quot;;
-import &quot;./App.css&quot;;
-import StyledInput from &quot;./components/StyledInput&quot;;
-import { useState } from &quot;react&quot;;
+import logo from "./logo.svg&quot;;
+import { useFormik } from "formik&quot;;
+import * as Yup from "yup&quot;;
+import "./App.css&quot;;
+import StyledInput from "./components/StyledInput&quot;;
+import { useState } from "react&quot;;
 function App() {
   const [loading, setLoading] = useState(false);
   const validateSchema = Yup.object().shape({
-    firstName: Yup.string().required(&quot;This field is required&quot;),
+    firstName: Yup.string().required("This field is required"),
     lastName: Yup.string().notRequired(),
-    email: Yup.string().email(&quot;Please enter a valid email&quot;).required(&quot;This field is required&quot;),
+    email: Yup.string().email("Please enter a valid email").required("This field is required"),
     password: Yup.string()
-      .required(&quot;This field is required&quot;)
-      .min(8, &quot;Pasword must be 8 or more characters&quot;)
-      .matches(/(?=.*[a-z])(?=.*[A-Z])\\w+/, &quot;Password ahould contain at least one uppercase and lowercase character&quot;)
-      .matches(/\\d/, &quot;Password should contain at least one number&quot;)
-      .matches(/[&#x60;!@#$%^&amp;*()_+\\-=[\\]{};':&quot;\\\\|,.&lt;&gt;/?~]/, &quot;Password should contain at least one special character&quot;),
-    confirmPassword: Yup.string().when(&quot;password&quot;, (password, field) =&gt; {
+      .required("This field is required")
+      .min(8, "Pasword must be 8 or more characters")
+      .matches(/(?=.*[a-z])(?=.*[A-Z])\\w+/, "Password ahould contain at least one uppercase and lowercase character")
+      .matches(/\\d/, "Password should contain at least one number")
+      .matches(/[&#x60;!@#$%^&amp;*()_+\\-=[\\]{};':"\\\\|,.<>/?~]/, "Password should contain at least one special character"),
+    confirmPassword: Yup.string().when("password", (password, field) => {
       if (password) {
-        return field.required(&quot;The passwords do not match&quot;).oneOf([Yup.ref(&quot;password&quot;)], &quot;The passwords do not match&quot;);
+        return field.required("The passwords do not match").oneOf([Yup.ref("password")], "The passwords do not match");
       }
     }),
   });
   const formik = useFormik({
     initialValues: {
-      firstName: &quot;&quot;,
-      lastName: &quot;&quot;,
-      email: &quot;&quot;,
-      password: &quot;&quot;,
-      confirmPassword: &quot;&quot;,
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
     },
     validationSchema: validateSchema,
-    onSubmit: (values, { resetForm }) =&gt; {
+    onSubmit: (values, { resetForm }) => {
       console.log(values);
       setLoading(true);
-      setTimeout(() =&gt; {
+      setTimeout(() => {
         setLoading(false);
         resetForm();
       }, 1000 * 2);
     },
   });
   return (
-    &lt;div className=&quot;App&quot;&gt;
-      &lt;header className=&quot;App-header&quot;&gt;
-        &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;
-        &lt;h4&gt;Signup&lt;/h4&gt;
-      &lt;/header&gt;
-      &lt;main&gt;
-        &lt;form className=&quot;spaceY-lg w100-small w50-lg&quot; onSubmit={formik.handleSubmit}&gt;
-          &lt;StyledInput
-            label=&quot;First Name&quot;
-            name=&quot;firstName&quot;
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h4>Signup</h4>
+      </header>
+      <main>
+        <form className="spaceY-lg w100-small w50-lg" onSubmit={formik.handleSubmit}>
+          <StyledInput
+            label="First Name"
+            name="firstName"
             onChange={formik.handleChange}
             value={formik.values.firstName}
-            type={&quot;text&quot;}
-            helperText={formik.errors.firstName ? formik.errors.firstName : &quot;&quot;}
-          /&gt;
-          &lt;StyledInput
-            label=&quot;Last Name&quot;
-            type={&quot;text&quot;}
-            name=&quot;lastName&quot;
+            type={"text"}
+            helperText={formik.errors.firstName ? formik.errors.firstName : ""}
+          />
+          <StyledInput
+            label="Last Name"
+            type={"text"}
+            name="lastName"
             onChange={formik.handleChange}
             value={formik.values.lastName}
-            helperText={formik.errors.lastName ? formik.errors.lastName : &quot;&quot;}
-          /&gt;
-          &lt;StyledInput
-            label=&quot;Email Address&quot;
-            type={&quot;email&quot;}
-            name=&quot;email&quot;
+            helperText={formik.errors.lastName ? formik.errors.lastName : ""}
+          />
+          <StyledInput
+            label="Email Address"
+            type={"email"}
+            name="email"
             onChange={formik.handleChange}
             value={formik.values.email}
-            helperText={formik.errors.email ? formik.errors.email : &quot;&quot;}
-          /&gt;
-          &lt;StyledInput
-            label=&quot;Password&quot;
-            type={&quot;password&quot;}
-            name=&quot;password&quot;
+            helperText={formik.errors.email ? formik.errors.email : ""}
+          />
+          <StyledInput
+            label="Password"
+            type={"password"}
+            name="password"
             onChange={formik.handleChange}
             value={formik.values.password}
-            helperText={formik.errors.password ? formik.errors.password : &quot;&quot;}
-          /&gt;
-          &lt;StyledInput
-            label=&quot;Confirm Password&quot;
-            type={&quot;password&quot;}
-            name=&quot;confirmPassword&quot;
+            helperText={formik.errors.password ? formik.errors.password : ""}
+          />
+          <StyledInput
+            label="Confirm Password"
+            type={"password"}
+            name="confirmPassword"
             onChange={formik.handleChange}
             value={formik.values.confirmPassword}
-            helperText={formik.errors.confirmPassword ? formik.errors.confirmPassword : &quot;&quot;}
-          /&gt;
-          &lt;button disabled={loading} type={&quot;submit&quot;}&gt;
-            {loading ? &quot;Loading...&quot; : &quot;Sign Up&quot;}
-          &lt;/button&gt;
-        &lt;/form&gt;
-      &lt;/main&gt;
-    &lt;/div&gt;
+            helperText={formik.errors.confirmPassword ? formik.errors.confirmPassword : ""}
+          />
+          <button disabled={loading} type={"submit"}>
+            {loading ? "Loading..." : "Sign Up"}
+          </button>
+        </form>
+      </main>
+    </div>
   );
 }
 export default App;```<a href="https://melvin.pieces.cloud/?p=a0c94fadf8" target="_blank" rel="noopener noreferrer">Save this code</a>
@@ -261,11 +261,11 @@ Yup has some built-in validators that we can implement. As seen in the code bloc
 We can create our custom validation rules by using the ```matches()```** ** method for string schema. This accepts a regular expression and the validation message as a value:
 ```
     password: Yup.string()
-      .required(&quot;This field is required&quot;)
-      .min(8, &quot;Pasword must be 8 or more characters&quot;)
-      .matches(/(?=.*[a-z])(?=.*[A-Z])\\w+/, &quot;Password ahould contain at least one uppercase and lowercase character&quot;)
-      .matches(/\\d/, &quot;Password should contain at least one number&quot;)
-      .matches(/[&#x60;!@#$%^&amp;*()_+\\-=[\\]{};':&quot;\\\\|,.&lt;&gt;/?~]/, &quot;Password should contain at least one specia```<a href="https://melvin.pieces.cloud/?p=387d4d94a1" target="_blank" rel="noopener noreferrer">Save this code</a>
+      .required("This field is required")
+      .min(8, "Pasword must be 8 or more characters")
+      .matches(/(?=.*[a-z])(?=.*[A-Z])\\w+/, "Password ahould contain at least one uppercase and lowercase character")
+      .matches(/\\d/, "Password should contain at least one number")
+      .matches(/[&#x60;!@#$%^&amp;*()_+\\-=[\\]{};':"\\\\|,.<>/?~]/, "Password should contain at least one specia```<a href="https://melvin.pieces.cloud/?p=387d4d94a1" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 The schema rule above will check if a value is a string and verify that the string value is not empty. Next, it will check to make sure that the minimum length for the string characters is eight. Finally, the following three validation rules for the value are customized using a regular expression:
 - The first expression checks if there is at least one uppercase letter and one lowercase letter in the string.
@@ -274,101 +274,101 @@ The schema rule above will check if a value is a string and verify that the stri
 
 This validation can be applied in real-life scenarios for creating a strong password, as seen in the code sample in the ```App.js```** **file:
 
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b3030c83c6d5f6a08d4784_image3_2801fcfdf10873b9c7745fb26676c17a.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b3030c83c6d5f6a08d4784_image3_2801fcfdf10873b9c7745fb26676c17a.g)
 
 ### Validating a Dynamic Form with Formik and Yup
 The Formik validation package also comes with built-in components that let us control the form state and events. In this section we’ll examine how to create a dynamic form using Formik form components and Yup. First, we’ll set up a form that allows us to create a list of items:
 ```
-import &quot;./styles.css&quot;;
-import * as yup from &quot;yup&quot;;
-import { Field, FieldArray, Form, Formik } from &quot;formik&quot;;
-import React from &quot;react&quot;;
+import "./styles.css&quot;;
+import * as yup from "yup&quot;;
+import { Field, FieldArray, Form, Formik } from "formik&quot;;
+import React from "react&quot;;
 export default function App() {
   const [list, setList] = React.useState([]);
   const validationSchema = yup.object().shape({
-    items: yup.array().of(yup.string().required(&quot;This value is required&quot;))
+    items: yup.array().of(yup.string().required("This value is required"))
   });
   return (
-    &lt;div className=&quot;App&quot;&gt;
-      &lt;Formik
+    <div className="App">
+      <Formik
         initialValues={{
-          items: [&quot;&quot;]
+          items: [""]
         }}
         validationSchema={validationSchema}
-        onSubmit={(values, { resetForm }) =&gt; {
+        onSubmit={(values, { resetForm }) => {
           setList(values.items);
-          setTimeout(() =&gt; {
-            console.log(&quot;clean&quot;);
+          setTimeout(() => {
+            console.log("clean");
             resetForm();
           }, 3000);
         }}
-      &gt;
-        {({ values }) =&gt; (
-          &lt;Form&gt;
-            {values.items.map((_, index) =&gt; (
-              &lt;React.Fragment key={index}&gt;
-                &lt;FieldArray
-                  name=&quot;items&quot;
-                  render={(helpers) =&gt; (
-                    &lt;div&gt;
-                      &lt;Field name={&#x60;items.${index}&#x60;}&gt;
+      >
+        {({ values }) => (
+          <Form>
+            {values.items.map((_, index) => (
+              <React.Fragment key={index}>
+                <FieldArray
+                  name="items"
+                  render={(helpers) => (
+                    <div>
+                      <Field name={&#x60;items.${index}&#x60;}>
                         {({
                           field, // { name, value, onChange, onBlur }
                           form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
                           meta
-                        }) =&gt; (
-                          &lt;div&gt;
-                            &lt;input
-                              type=&quot;text&quot;
-                              placeholder=&quot;Enter item...&quot;
+                        }) => (
+                          <div>
+                            <input
+                              type="text"
+                              placeholder="Enter item..."
                               {...field}
-                            /&gt;
+                            />
                             {meta.touched &amp;&amp; meta.error &amp;&amp; (
-                              &lt;small className=&quot;error&quot;&gt;{meta.error}&lt;/small&gt;
+                              <small className="error">{meta.error}</small>
                             )}
-                          &lt;/div&gt;
+                          </div>
                         )}
-                      &lt;/Field&gt;
-                      &lt;div className=&quot;row&quot;&gt;
-                        &lt;button
+                      </Field>
+                      <div className="row">
+                        <button
                           disabled={values.items.length === 1}
-                          onClick={() =&gt; {
-                            values.items.length &gt; 1 &amp;&amp; helpers.remove(index);
+                          onClick={() => {
+                            values.items.length > 1 &amp;&amp; helpers.remove(index);
                           }}
-                          type=&quot;button&quot;
-                          className=&quot;remove&quot;
-                        &gt;
+                          type="button"
+                          className="remove"
+                        >
                           Remove
-                        &lt;/button&gt;
+                        </button>
                         {values.items.length === index + 1 &amp;&amp; (
-                          &lt;button
-                            type=&quot;button&quot;
-                            onClick={() =&gt; {
-                              helpers.push(&quot;&quot;);
+                          <button
+                            type="button"
+                            onClick={() => {
+                              helpers.push("");
                             }}
-                            className=&quot;add&quot;
-                          &gt;
+                            className="add"
+                          >
                             Add New Item
-                          &lt;/button&gt;
+                          </button>
                         )}
-                      &lt;/div&gt;
-                    &lt;/div&gt;
+                      </div>
+                    </div>
                   )}
-                /&gt;
-              &lt;/React.Fragment&gt;
+                />
+              </React.Fragment>
             ))}
-            &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
-          &lt;/Form&gt;
+            <button type="submit">Submit</button>
+          </Form>
         )}
-      &lt;/Formik&gt;
-      &lt;div className=&quot;list-wrapper&quot;&gt;
-        &lt;ul&gt;
-          {list.map((val) =&gt; (
-            &lt;li&gt;{val}&lt;/li&gt;
+      </Formik>
+      <div className="list-wrapper">
+        <ul>
+          {list.map((val) => (
+            <li>{val}</li>
           ))}
-        &lt;/ul&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
+        </ul>
+      </div>
+    </div>
   );
 }
 ```
@@ -376,8 +376,8 @@ export default function App() {
 <a href="https://melvin.pieces.cloud/?p=49dd4e86ae" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 In the code block above, we have the Yup schema, which is an array type of strings. As we can see from the Yup validation schema, the array values are required; we cannot have an empty string as an array value.
-Next, we imported the ```Formik``` component from the Formik package; this wraps the form. Since we’re working with arrays/dynamic form values, we used the ```FieldArray``` component, which helps with array manipulations. On line 32, we have the ```FieldArray```, which is used to render each form field and button. The render props from the ```FieldArray``` had helper props passed to them. This prop allowed us to mutate the array values, as seen in the &quot;Add New Item&quot; button, where we used the ```push()``` method from the helpers to add new values at the end of the array. Also, the &quot;remove&quot; button calls the ```remove()```** **method on click, with the item's index to remove passed as a parameter:
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/63b3030c83c6d599a08d4783_image1_4048e61d06aada1b9cb258fdbbe71f4d.g)
+Next, we imported the ```Formik``` component from the Formik package; this wraps the form. Since we’re working with arrays/dynamic form values, we used the ```FieldArray``` component, which helps with array manipulations. On line 32, we have the ```FieldArray```, which is used to render each form field and button. The render props from the ```FieldArray``` had helper props passed to them. This prop allowed us to mutate the array values, as seen in the "Add New Item" button, where we used the ```push()``` method from the helpers to add new values at the end of the array. Also, the "remove" button calls the ```remove()```** **method on click, with the item's index to remove passed as a parameter:
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63b3030c83c6d599a08d4783_image1_4048e61d06aada1b9cb258fdbbe71f4d.g)
 
 Finally, to test your dynamic form, you can use the code sample in this <a href="https://codesandbox.io/s/3h5o32" target="_blank" rel="noopener noreferrer">codesandbox</a>.
 

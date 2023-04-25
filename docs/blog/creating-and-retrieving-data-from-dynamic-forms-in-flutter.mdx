@@ -28,9 +28,9 @@ Now, let’s create a ```home.dart``` file and paste the code block below into i
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
  @override
- State&lt;HomeScreen&gt; createState() =&gt; _HomeScreenState();
+ State<HomeScreen> createState() => _HomeScreenState();
 }
-class _HomeScreenState extends State&lt;HomeScreen&gt; {
+class _HomeScreenState extends State<HomeScreen> {
  @override
  Widget build(BuildContext context) {
  return Container();
@@ -74,9 +74,9 @@ The code block above is the entry code to our application. With this, we’re se
 
 Let’s start developing our home screen by populating it with a dynamic form. To do this, let’s head over to the ```home.dart``` file and add the following private variables below to the  ```_HomeScreenState```:
 ```
-class _HomeScreenState extends State&lt;HomeScreen&gt; {
+class _HomeScreenState extends State<HomeScreen> {
   int _formCount = 0;                                  //add this
-  final List&lt;Map&lt;String, dynamic&gt;&gt; _dataArray = [];    //add this
+  final List<Map<String, dynamic>> _dataArray = [];    //add this
   String? _data = '';                                  //add this
  @override
  ...        // other code blocks here
@@ -85,9 +85,9 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; {
 In the code block above, we’re initializing some private variables that will help manage our app state internally and store some state data.
 Next, let’s build our form widget. We’ll add the code block below at the end of the override build widget before the   ```_HomeScreenState``` closing braces:
 ```
-class _HomeScreenState extends State&lt;HomeScreen&gt; {
+class _HomeScreenState extends State<HomeScreen> {
   . . .      // other code blocks here
-  Widget form(int key) =&gt; Padding(
+  Widget form(int key) => Padding(
         padding: const EdgeInsets.only(bottom: 10.0),
         child: TextFormField(
           decoration: InputDecoration(hintText: 'Form ${key + 1}'),
@@ -99,12 +99,12 @@ In the code block above, we’re creating our ```TextFormField``` widget with a 
 
 Let’s make our form dynamic by giving users the flexibility of adding and removing forms manually. To do this, we’ll copy and paste the code below directly under the ```form()``` created in the previous section:
 ```
-Widget buttonRow() =&gt; Row(
+Widget buttonRow() => Row(
  mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Visibility(
-            visible: _formCount &gt; 0,
+            visible: _formCount > 0,
             child: IconButton(
               onPressed: () {
                   if (_dataArray.isNotEmpty) {
@@ -124,7 +124,7 @@ Widget buttonRow() =&gt; Row(
           ),
           IconButton(
               onPressed: () {
-                setState(() =&gt; _formCount++);
+                setState(() => _formCount++);
               },
               icon: const CircleAvatar(
                   backgroundColor: Colors.teal,
@@ -140,7 +140,7 @@ In the remove button, we’re also removing the last input object from the ```_d
 
 Lastly, let’s add all of our components together to see what we’ve achieved so far. We’ll update the build context with the code below:
 ```
-class _HomeScreenState extends State&lt;HomeScreen&gt; {
+class _HomeScreenState extends State<HomeScreen> {
   ...    // other code blocks here
   @override
  Widget build(BuildContext context) {
@@ -151,7 +151,7 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; {
           padding: const EdgeInsets.symmetric(horizontal: 25.0),
           child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: &lt;Widget&gt;[
+          children: <Widget>[
               const SizedBox(height: 19),
               const Text('Names of Programming Languages',
                 style: TextStyle(
@@ -159,7 +159,7 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; {
                 color: Colors.teal,
                 fontSize: 22)),
               const SizedBox(height: 20),
-              ...List.generate(_formCount, (index) =&gt; form(index)),
+              ...List.generate(_formCount, (index) => form(index)),
               buttonRow(),
               const SizedBox(height: 10),
               Visibility(visible: _dataArray.isNotEmpty, child: Text(_data!)),
@@ -176,14 +176,14 @@ class _HomeScreenState extends State&lt;HomeScreen&gt; {
 In the code block above, we’re generating our ```form()``` widget using the number of ```_formCount```s we have. We’re also making our ```_data``` string only visible when the ```_dataArray``` has a value.
 
 With our progress so far, we should be able to achieve the result below:
-![](rc="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d015f0567fcc94adfc6b4c_image2_3cd9670de9a941cb73c7471287012fca.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d015f0567fcc94adfc6b4c_image2_3cd9670de9a941cb73c7471287012fca.g)
 
 ## Retrieving Data From Forms
 The trickiest part of creating a dynamic form is retrieving its real-time data. In this section, we’ll be creating our logic for retrieving real-time data from our dynamic form. Now, let’s add the function below to the base of the ```_HomeScreenState``` below the ```buttonRow()``` widget created earlier:
 ```
 void _onUpdate(int key, String val) {
  void addData() {
-      Map&lt;String, dynamic&gt; json = {'id': key, 'value': val};
+      Map<String, dynamic> json = {'id': key, 'value': val};
       _dataArray.add(json);
       setState(() {
         _data = _dataArray.toString();
@@ -193,7 +193,7 @@ void _onUpdate(int key, String val) {
       addData();
     } else {
      for (var map in _dataArray) {
-        if (map[&quot;id&quot;] == key) {
+        if (map["id"] == key) {
           _dataArray[key]['value'] = val;
           setState(() {
             _data = _dataArray.toString();
@@ -202,7 +202,7 @@ void _onUpdate(int key, String val) {
         }
       }
  for (var map in _dataArray) {
- if (map[&quot;id&quot;] == key) {
+ if (map["id"] == key) {
  return;
           }
         }
@@ -215,18 +215,18 @@ In the code block above, we're adding our JSON object, which contains the key an
 
 Lastly, let’s call the function in our ```TextFormForm```. We’ll add the code block below to the form’s ```TextFormField()``` widget:
 ```
-Widget form(int key) =&gt; Padding(
+Widget form(int key) => Padding(
  padding: const EdgeInsets.only(bottom: 10.0),
         child: TextFormField(
         decoration: InputDecoration(hintText: 'Form ${key + 1}'),
-          onChanged: (val) =&gt; _onUpdate(key, val),       // add this
+          onChanged: (val) => _onUpdate(key, val),       // add this
         ),
       )
 ```
 In the code block above, we’re passing the key (passed into the form widget) and the value from the ```onChanged``` property. The value contains the input typed into the ```TextFormField``` as we type.
 
 Finally, let’s see our fully built dynamic form app:
-![](tons." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d015f0567fcc7b06fc6b4d_image1_92de8fdae2401a1dd55681dfd7fbda7f.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d015f0567fcc7b06fc6b4d_image1_92de8fdae2401a1dd55681dfd7fbda7f.g)
 
 ## Conclusion
 Dynamic forms are a very important tool in our development cycle. In this article, we’ve looked at the dynamic form, its uses, and why we should use it in our applications. We’ve also looked at how we can retrieve data from a real-time dynamic form.

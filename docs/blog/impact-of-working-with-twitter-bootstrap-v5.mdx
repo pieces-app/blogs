@@ -21,58 +21,58 @@ There have been more than twenty different versions of Twitter Bootstrap, but th
 
 ## Installation/Set Up
 There are several ways to install and set up Bootstrap:
-- **Content Delivery Network (Twitter Bootstrap CDN): **This is the easiest way to install Bootstrap. Visit <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">getbootstrap.com</a>, scroll down to the &quot;Include via CDN&quot; link, copy the &quot;CSS ONLY&quot; link, and paste it into the required destination in your VS Code IDE. You also need to copy the &quot;JavaScript Bundle with Popper&quot; link and paste it into your VS Code IDE. Check out the example below:
+- **Content Delivery Network (Twitter Bootstrap CDN): **This is the easiest way to install Bootstrap. Visit <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer">getbootstrap.com</a>, scroll down to the "Include via CDN" link, copy the "CSS ONLY" link, and paste it into the required destination in your VS Code IDE. You also need to copy the "JavaScript Bundle with Popper" link and paste it into your VS Code IDE. Check out the example below:
 ```
 npm install bootstrap@5.2.0
 ```
-NB: In order to know that you have appropriately installed Bootstrap, all you need to do is to copy the full path to your browser. When you open your browser, right-click and select Inspect; then, click on &quot;Network&quot; and reload the page to see the Bootstrap Bundle and bootstrap.min.css indicating that Bootstrap is installed. For more information, visit the <a href="https://getbootstrap.com/docs/5.2/getting-started/introduction/" target="_blank" rel="noopener noreferrer">Getting Started</a> page.
+NB: In order to know that you have appropriately installed Bootstrap, all you need to do is to copy the full path to your browser. When you open your browser, right-click and select Inspect; then, click on "Network" and reload the page to see the Bootstrap Bundle and bootstrap.min.css indicating that Bootstrap is installed. For more information, visit the <a href="https://getbootstrap.com/docs/5.2/getting-started/introduction/" target="_blank" rel="noopener noreferrer">Getting Started</a> page.
 
 ## Creating A Project Using Bootstrap V5
 Once we’ve installed Bootstrap, we can go straight to building a project.
 
 ### <a href="https://www.w3schools.com/bootstrap/bootstrap_typography.asp" target="_blank" rel="noopener noreferrer">Heading Element</a>
-<a href="https://www.w3schools.com/bootstrap/bootstrap_typography.asp" target="_blank" rel="noopener noreferrer">To center our </a>content, we can use a Bootstrap by Twitter container. Once you add the &quot;Container&quot; class and save it, reload the browser to see it in the middle of the page. You’ll also notice the changes when the window is adjusted, which means it responds to the viewport. We have a class called the &quot;Page Header&quot; for the heading and a subheading &quot;With faded secondary text.&quot; Again, you will notice that it is responsive when you adjust the browser window. An example of a Heading Element is in the code below:
+<a href="https://www.w3schools.com/bootstrap/bootstrap_typography.asp" target="_blank" rel="noopener noreferrer">To center our </a>content, we can use a Bootstrap by Twitter container. Once you add the "Container" class and save it, reload the browser to see it in the middle of the page. You’ll also notice the changes when the window is adjusted, which means it responds to the viewport. We have a class called the "Page Header" for the heading and a subheading "With faded secondary text." Again, you will notice that it is responsive when you adjust the browser window. An example of a Heading Element is in the code below:
 ```
-&lt;!DOCTYPE html&gt;
-&lt;**html** lang=&quot;en&quot;&gt;
-&lt;**head**&gt;
- &lt;**meta** charset=&quot;UTF-8&quot;&gt;
- &lt;**meta** http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
- &lt;**meta** name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
- &lt;**title**&gt;Creating a Project Using Twitter Bootstrap&lt;/**title**&gt;
- &lt;!-- CSS only --&gt;
-&lt;**link** href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot; integrity=&quot;sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT&quot; crossorigin=&quot;anonymous&quot;&gt;
-&lt;/**head**&gt;
-&lt;**body**&gt;
- &lt;**div** class=&quot;container&quot;&gt;
- &lt;**h1** class=&quot;page-header&quot;&gt;Hello Bootstrap World &lt;**small** class=&quot;text-muted&quot;&gt;With faded secondary text&lt;/**small**&gt;&lt;/**h1**&gt;
- &lt;/**div**&gt;
- &lt;!-- JavaScript Bundle with Popper --&gt;
-&lt;**script** src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js&quot; integrity=&quot;sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8&quot; crossorigin=&quot;anonymous&quot;&gt;&lt;/**script**&gt;
-&lt;/**body**&gt;
-&lt;/**html**&gt
+<!DOCTYPE html>
+<**html** lang="en">
+<**head**>
+ <**meta** charset="UTF-8">
+ <**meta** http-equiv="X-UA-Compatible" content="IE=edge">
+ <**meta** name="viewport" content="width=device-width, initial-scale=1.0">
+ <**title**>Creating a Project Using Twitter Bootstrap</**title**>
+ <!-- CSS only -->
+<**link** href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</**head**>
+<**body**>
+ <**div** class="container">
+ <**h1** class="page-header">Hello Bootstrap World <**small** class="text-muted">With faded secondary text</**small**></**h1**>
+ </**div**>
+ <!-- JavaScript Bundle with Popper -->
+<**script** src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></**script**>
+</**body**>
+</**html**&gt
 ```
 The above code is the Heading Element; it will look like this in your browser:
-![](ttps://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d8383150df4_image7_9a9ec6ac5e7f6520305beea5131ccf18_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d8383150df4_image7_9a9ec6ac5e7f6520305beea5131ccf18_800.png)
 ### <a href="https://www.w3schools.com/bootstrap/bootstrap_typography.asp" target="_blank" rel="noopener noreferrer">Paragraph, strong, mark, lead elements</a>
-- We use the ```&lt;mark&gt;``` tag to highlight text.
-- We use the ```&lt;del&gt;``` tag to cross out text.
-- We use the ```&lt;u&gt;``` tag to underline text.
-- We use the ```&lt;strong&gt;``` tag to bold text.
-- We use the ```&lt;em&gt;``` tag to italicize text.
+- We use the ```<mark>``` tag to highlight text.
+- We use the ```<del>``` tag to cross out text.
+- We use the ```<u>``` tag to underline text.
+- We use the ```<strong>``` tag to bold text.
+- We use the ```<em>``` tag to italicize text.
 ```
-&lt;**p** class=&quot;lead&quot;&gt;Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem eaque perspiciatis,
-      repellendus autem ipsa eius! Nesciunt natus, modi doloribus a eaque sit ea facilis&lt;/**p**&gt;
- &lt;**p**&gt;&lt;**mark**&gt;ipsum dolor, sit amet consectetur adipisicing elit&lt;/**mark**&gt;. Exercitationem eaque perspiciatis,
- &lt;**del**&gt;repellendus autem ipsa eius!&lt;/**del**&gt; Nesciunt natus, eaque sit ea facilis
-  eligendi quo atque laborum incidunt ipsam. &lt;**strong**&gt;Lorem ipsum dolor sit amet consectetur&lt;/**strong**&gt;
-  adipisicing elit. &lt;**em**&gt;non nobis velit. Illo voluptatem itaque eveniet et,&lt;/**em**&gt;
-  impedit consequuntur &lt;**u**&gt;nihil ipsam necessitatibus&lt;/**u**&gt;, fugiat praesentium velit
-  amet a mollitia quibusdam voluptatibus?&lt;/**p**&gt;
- &lt;/**div**&gt
+<**p** class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem eaque perspiciatis,
+      repellendus autem ipsa eius! Nesciunt natus, modi doloribus a eaque sit ea facilis</**p**>
+ <**p**><**mark**>ipsum dolor, sit amet consectetur adipisicing elit</**mark**>. Exercitationem eaque perspiciatis,
+ <**del**>repellendus autem ipsa eius!</**del**> Nesciunt natus, eaque sit ea facilis
+  eligendi quo atque laborum incidunt ipsam. <**strong**>Lorem ipsum dolor sit amet consectetur</**strong**>
+  adipisicing elit. <**em**>non nobis velit. Illo voluptatem itaque eveniet et,</**em**>
+  impedit consequuntur <**u**>nihil ipsam necessitatibus</**u**>, fugiat praesentium velit
+  amet a mollitia quibusdam voluptatibus?</**p**>
+ </**div**&gt
 ```
 The above code will give you this outcome in the browser:
-![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d0b5d150dfc_image9_3f1ab7d918be316d4a2cb599817238b7_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d0b5d150dfc_image9_3f1ab7d918be316d4a2cb599817238b7_800.png)
 ### <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" target="_blank" rel="noopener noreferrer">Alignment and Float</a>
 Alignment and Float help us to position text. We can align text to the center, left, or right of the page. Twitter Bootstrap V5 made many changes to Alignment and Float because several utilities changed names.
 - ```Left-*``` and ```Right-*``` were renamed to ```start-*``` and ```end-*
@@ -84,170 +84,170 @@ Alignment and Float help us to position text. We can align text to the center, l
 - ```text-left-*``` and ```text-right-*``` were renamed to ```text-start*``` and ```text-end*
 ```
 
-The ```&lt;hr&gt;``` tag, called the Horizontal rule, breaks the paragraph-level element.
+The ```<hr>``` tag, called the Horizontal rule, breaks the paragraph-level element.
 For alignment, we will use different classes: ```text-start```, ```text-center```, ```text-end```, ```text-justify```, and ```text-nowrap```. We also have some transformation classes. For example, let's say that we want all of the ```text-start``` to be upper case, the ```text-center``` to be capitalized, and the ```text-end``` to be lowercase. We’ll add it to the Transformation classes. In Float, we have ```float-start``` and ```float-end```. Note that when you float something, you have to clear it in order for the code to go back to normal. In Twitter Bootstrap, a special utility called ```Clearfix``` will do this quickly.
 ```
-&lt;hr&gt;
-&lt;!-- ALIGNMENT &amp; TRANSFORMATION --&gt;
-&lt;p class=&quot;text-start text-uppercase&quot;&gt;start aligned text.&lt;/p&gt;
-&lt;p class=&quot;text-center text-capitalize&quot;&gt;Center aligned text.&lt;/p&gt;
-&lt;p class=&quot;text-end text-lowercase&quot;&gt;end aligned text.&lt;/p&gt;
-&lt;p class=&quot;text-justify&quot;&gt;Justified text.&lt;/p&gt;
-&lt;p class=&quot;text-nowrap&quot;&gt;No Wrap text.&lt;/p&gt;
-&lt;!-- QUICK FLOATS --&gt;
-&lt;div class=&quot;float-start&quot;&gt;Float start on all viewport sizes&lt;/div&gt;
-&lt;div class=&quot;float-end&quot;&gt;Float end on all viewport sizes&lt;/div&gt;
-&lt;!-- CLEAR FLOATS --&gt;
-&lt;div class=&quot;clearfix&quot;&gt;&lt;/div&gt;
-&lt;hr&gt
+<hr>
+<!-- ALIGNMENT &amp; TRANSFORMATION -->
+<p class="text-start text-uppercase">start aligned text.</p>
+<p class="text-center text-capitalize">Center aligned text.</p>
+<p class="text-end text-lowercase">end aligned text.</p>
+<p class="text-justify">Justified text.</p>
+<p class="text-nowrap">No Wrap text.</p>
+<!-- QUICK FLOATS -->
+<div class="float-start">Float start on all viewport sizes</div>
+<div class="float-end">Float end on all viewport sizes</div>
+<!-- CLEAR FLOATS -->
+<div class="clearfix"></div>
+<hr&gt
 ```
 The code above will show the outcome below in a Chrome browser:
-![](/uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d28b9150df2_image8_58d340852011c560d1e30299321d3242_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d28b9150df2_image8_58d340852011c560d1e30299321d3242_800.png)
 ### <a href="https://www.w3schools.com/tags/tag_blockquote.asp" target="_blank" rel="noopener noreferrer">Block Quotes</a>
 We use block quotes to style the blocks of contents from other sources that appear within our document. Block quotes make a project look excellent and well-organized. When we use block quotes, we are quoting from another source; hence we should link the URL in the cited example.
 ```
-&lt;!-- BLOCKQUOTE --&gt;
-&lt;blockquote class=&quot;blockquote&quot;&gt;
-&lt;p&gt;A typical example of Blockquote.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figcaption class=&quot;blockquote-footer&quot;&gt;
-Quote by &lt;cite title=&quot;Emeka Henry&quot;&gt;Emeka Henry&lt;/cite&gt;
-&lt;/figcaption&gt;
-&lt;/figure&gt
+<!-- BLOCKQUOTE -->
+<blockquote class="blockquote">
+<p>A typical example of Blockquote.</p>
+</blockquote>
+<figcaption class="blockquote-footer">
+Quote by <cite title="Emeka Henry">Emeka Henry</cite>
+</figcaption>
+</figure&gt
 ```
 The above code will give us the outcome below in the Chrome browser:
-![](webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d2e33150de9_image4_e640a58e536ca0284f1c1ad1233e02ea_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d2e33150de9_image4_e640a58e536ca0284f1c1ad1233e02ea_800.png)
 ### <a href="https://www.w3schools.com/bootstrap/bootstrap_list_groups.asp" target="_blank" rel="noopener noreferrer">List Item Element</a>
-The ```&lt;li&gt;``` tag represent the items we have in a list which are always contained in a parent element; for example, an ordered list ```&lt;ol&gt;```, an unordered list ```&lt;ul&gt;```, or a menu list ```&lt;menu&gt;```. The list item naturally comes with a bullet, but the bullets will disappear once we add a class like ```list-unstyled```. We also have a ```list-inline``` which is very good for a menu. Here’s an example of the code of the list item below:
+The ```<li>``` tag represent the items we have in a list which are always contained in a parent element; for example, an ordered list ```<ol>```, an unordered list ```<ul>```, or a menu list ```<menu>```. The list item naturally comes with a bullet, but the bullets will disappear once we add a class like ```list-unstyled```. We also have a ```list-inline``` which is very good for a menu. Here’s an example of the code of the list item below:
 ```
-&lt;!-- LISTS --&gt;
-&lt;ul class=&quot;list-unstyled&quot;&gt;
-&lt;li&gt;first item.&lt;/li&gt;
-&lt;li&gt;second item.&lt;/li&gt;
-&lt;li&gt;third item.&lt;/li&gt;
-&lt;li&gt;fourth item.&lt;/li&gt;
-&lt;li&gt;fifth item.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class=&quot;list-inline&quot;&gt;
-&lt;li class=&quot;list-inline-item&quot;&gt;first item.&lt;/li&gt;
-&lt;li class=&quot;list-inline-item&quot;&gt;second item.&lt;/li&gt;
-&lt;li class=&quot;list-inline-item&quot;&gt;third item.&lt;/li&gt;
-&lt;li class=&quot;list-inline-item&quot;&gt;fourth item.&lt;/li&gt;
-&lt;li class=&quot;list-inline-item&quot;&gt;fifth item.&lt;/li&gt;
-&lt;/ul&gt
+<!-- LISTS -->
+<ul class="list-unstyled">
+<li>first item.</li>
+<li>second item.</li>
+<li>third item.</li>
+<li>fourth item.</li>
+<li>fifth item.</li>
+</ul>
+<ul class="list-inline">
+<li class="list-inline-item">first item.</li>
+<li class="list-inline-item">second item.</li>
+<li class="list-inline-item">third item.</li>
+<li class="list-inline-item">fourth item.</li>
+<li class="list-inline-item">fifth item.</li>
+</ul&gt
 ```
 The code above will give us the outcome below in the browser:
-![](.com/6143afec68f555387049efb3/6388e4cf7ebe5d5bf7150dea_image3_1c61dcc96b74fe6550aec8714ba84df3_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d5bf7150dea_image3_1c61dcc96b74fe6550aec8714ba84df3_800.png)
 ### <a href="https://www.w3schools.com/bootstrap4/bootstrap_colors.asp" target="_blank" rel="noopener noreferrer">Contextual Colors Element</a>
 The contextual color will help us to add color to our text in order to alert people on things like danger, warning, success, etc. Twitter Bootstrap’s contextual colors help us with flexible alert messages and adequate styling.
 ```
-&lt;!-- CONTEXTUAL COLORS --&gt;
-&lt;div class=&quot;alert alert-default&quot; role=&quot;alert&quot;&gt;
+<!-- CONTEXTUAL COLORS -->
+<div class="alert alert-default" role="alert">
 A Default alert
-&lt;div class=&quot;alert alert-primary&quot; role=&quot;alert&quot;&gt;
+<div class="alert alert-primary" role="alert">
 A primary alert
-&lt;/div&gt;
-&lt;div class=&quot;alert alert-secondary&quot; role=&quot;alert&quot;&gt;
+</div>
+<div class="alert alert-secondary" role="alert">
 A secondary alert
-&lt;/div&gt;
-&lt;div class=&quot;alert alert-success&quot; role=&quot;alert&quot;&gt;
+</div>
+<div class="alert alert-success" role="alert">
 A success alert
-&lt;/div&gt;
-&lt;div class=&quot;alert alert-danger&quot; role=&quot;alert&quot;&gt;
+</div>
+<div class="alert alert-danger" role="alert">
 Danger alert
-&lt;/div&gt;
-&lt;div class=&quot;alert alert-warning&quot; role=&quot;alert&quot;&gt;
+</div>
+<div class="alert alert-warning" role="alert">
 A warning alert
-&lt;/div&gt
+</div&gt
 ```
 The above code will give us the outcome below on the Chrome browser:
-![](uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d11ab150df3_image2_8af9689caa469154fba6c1727f9ed500_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d11ab150df3_image2_8af9689caa469154fba6c1727f9ed500_800.png)
 ### <a href="https://getbootstrap.com/docs/4.0/components/buttons/" target="_blank" rel="noopener noreferrer">Buttons</a>
 Bootstrap V5 has many buttons, each programmed to support multiple sizes. I will start from the default buttons to other buttons like primary, secondary, success, etc. The code for the complete button and the code for button sizes is below:
 ```
-&lt;!-- BUTTONS --&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Default&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;Secondary&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-warning&quot;&gt;Warning&lt;/button&gt;
-&lt;br&gt;
-&lt;!-- BUTTONS SIZES --&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-sm&quot;&gt;Small button&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-sm&quot;&gt;Small button&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-secondary btn-sm&quot;&gt;Small button&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; disabled&gt;Primary button&lt;/button&gt;
-&lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; disabled&gt;Button&lt;/button&gt
+<!-- BUTTONS -->
+<button type="button" class="btn btn-default">Default</button>
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<br>
+<!-- BUTTONS SIZES -->
+<button type="button" class="btn btn-default btn-sm">Small button</button>
+<button type="button" class="btn btn-primary btn-sm">Small button</button>
+<button type="button" class="btn btn-secondary btn-sm">Small button</button>
+<button type="button" class="btn btn-primary" disabled>Primary button</button>
+<button type="button" class="btn btn-secondary" disabled>Button</button&gt
 ```
 The above code will give us the outcome below on the Chrome browser:
-![](ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d52d1150de7_image1_bd01e4be76f4b68257c932c04b5e8b06_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5d52d1150de7_image1_bd01e4be76f4b68257c932c04b5e8b06_800.png)
 ### <a href="https://www.w3schools.com/Bootstrap/bootstrap_forms.asp" target="_blank" rel="noopener noreferrer">Forms</a>
 With Bootstrap by Twitter, you can easily create a well-styled form that has up to four inputs like your name, your email, your messages, and your password, along with the form-check and the submit button. I will drop the code for the form below:
 ```
-&lt;!-- FORMS --&gt;
-&lt;form&gt;
- &lt;div class=&quot;mb-3&quot;&gt;
-  &lt;label for=&quot;InputName&quot; class=&quot;form-label&quot;&gt;Name&lt;/label&gt;
-  &lt;input type=&quot;Name&quot; class=&quot;form-control&quot; id=&quot;InputName&quot;&gt;
- &lt;/div&gt;
-  &lt;div class=&quot;mb-3&quot;&gt;
-   &lt;label for=&quot;InputEmail&quot; class=&quot;form-label&quot;&gt;Email address&lt;/label&gt;
-   &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;InputEmail&quot; aria-describedby=&quot;emailHelp&quot;&gt;
-    &lt;div id=&quot;emailHelp&quot; class=&quot;form-text&quot;&gt;We won't share your email with anybody.&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;mb-3&quot;&gt;
-   &lt;label for=&quot;yourmessage&quot; class=&quot;form-label&quot;&gt;Message&lt;/label&gt;
-   &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;yourmessage&quot;&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;mb-3&quot;&gt;
-   &lt;label for=&quot;InputPassword&quot; class=&quot;form-label&quot;&gt;Password&lt;/label&gt;
-   &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;InputPassword&quot;&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;mb-3 form-check&quot;&gt;
-   &lt;input type=&quot;checkbox&quot; class=&quot;form-check-input&quot; id=&quot;Check&quot;&gt;
-   &lt;label class=&quot;form-check-label&quot; for=&quot;Check&quot;&gt;Check me out&lt;/label&gt;
-  &lt;/div&gt;
-   &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
-  &lt;/form&gt;
-&lt;/form&gt
+<!-- FORMS -->
+<form>
+ <div class="mb-3">
+  <label for="InputName" class="form-label">Name</label>
+  <input type="Name" class="form-control" id="InputName">
+ </div>
+  <div class="mb-3">
+   <label for="InputEmail" class="form-label">Email address</label>
+   <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We won't share your email with anybody.</div>
+  </div>
+  <div class="mb-3">
+   <label for="yourmessage" class="form-label">Message</label>
+   <input type="password" class="form-control" id="yourmessage">
+  </div>
+  <div class="mb-3">
+   <label for="InputPassword" class="form-label">Password</label>
+   <input type="password" class="form-control" id="InputPassword">
+  </div>
+  <div class="mb-3 form-check">
+   <input type="checkbox" class="form-check-input" id="Check">
+   <label class="form-check-label" for="Check">Check me out</label>
+  </div>
+   <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</form&gt
 ```
 The code above will give us the output below on the Chrome browser:
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5da9a9150de8_image6_91c9d25168a78e377accc134ae5c4c12_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5da9a9150de8_image6_91c9d25168a78e377accc134ae5c4c12_800.png)
 ### <a href="https://www.w3schools.com/bootstrap5/bootstrap_tables.php" target="_blank" rel="noopener noreferrer">Tables</a>
 Bootstrap tables are responsive. You can modify the table by adding buttons, checkboxes, and so on.
 ```
-&lt;!-- TABLE --&gt;
-&lt;table class=&quot;table&quot;&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th scope=&quot;col&quot;&gt;Serial Number&lt;/th&gt;
-   &lt;th scope=&quot;col&quot;&gt;First-name&lt;/th&gt;
-   &lt;th scope=&quot;col&quot;&gt;Last-name&lt;/th&gt;
-   &lt;th scope=&quot;col&quot;&gt;Handle&lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
-   &lt;td&gt;Emeka&lt;/td&gt;
-   &lt;td&gt;Henry&lt;/td&gt;
-   &lt;td&gt;@emekahenry&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
-   &lt;td&gt;Cynthia&lt;/td&gt;
-   &lt;td&gt;Eboh&lt;/td&gt;
-   &lt;td&gt;@cynthiaeboh&lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;th scope=&quot;row&quot;&gt;3&lt;/th&gt;
-   &lt;td colspan=&quot;2&quot;&gt;Jessy the Sparkles&lt;/td&gt;
-   &lt;td&gt;@jesysparkles&lt;/td&gt;
-  &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt
+<!-- TABLE -->
+<table class="table">
+ <thead>
+  <tr>
+   <th scope="col">Serial Number</th>
+   <th scope="col">First-name</th>
+   <th scope="col">Last-name</th>
+   <th scope="col">Handle</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <th scope="row">1</th>
+   <td>Emeka</td>
+   <td>Henry</td>
+   <td>@emekahenry</td>
+  </tr>
+  <tr>
+   <th scope="row">2</th>
+   <td>Cynthia</td>
+   <td>Eboh</td>
+   <td>@cynthiaeboh</td>
+  </tr>
+  <tr>
+   <th scope="row">3</th>
+   <td colspan="2">Jessy the Sparkles</td>
+   <td>@jesysparkles</td>
+  </tr>
+ </tbody>
+</table&gt
 ```
 The above code will give us the outcome below on the Chrome browser:
-![](ebflow.com/6143afec68f555387049efb3/6388e4cf7ebe5dea19150de6_image5_b5d90602f66ba2de3107c0e196ad2379_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/6388e4cf7ebe5dea19150de6_image5_b5d90602f66ba2de3107c0e196ad2379_800.png)
 ## Conclusion

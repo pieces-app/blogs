@@ -72,14 +72,14 @@ id=""># mkdir /var/www/koalacast.io
 id="">Then, create a blank .conf file to which I’ll write virtual host instructions.
 id=""># vi /etc/apache2/sites-available/koalacast.io.conf
 id="">I devise the following configuration while reading <a href="https://httpd.apache.org/docs/2.4/vhosts/examples.html" target="_blank" id="">the Apache documentation...</a>
-id="">&lt;VirtualHost *:80&gt;
+id=""><VirtualHost *:80>
  &nbsp; &nbsp;ServerName koalacast.io
  &nbsp; &nbsp;ServerAlias www.koalacast.io
  &nbsp; &nbsp;ServerAdmin webmaster@localhost
  &nbsp; &nbsp;DocumentRoot /var/www/koalacast.io
  &nbsp; &nbsp;ErrorLog ${APACHE_LOG_DIR}/error.log
  &nbsp; &nbsp;CustomLog ${APACHE_LOG_DIR}/access.log combined
-&lt;/VirtualHost&gt;
+</VirtualHost>
 id="">...and save to Pieces for Developers. If there are connection issues on port 80, I can quickly reference the Apache configuration files that I wrote for that virtual host.
 
 ![](9_Untitled3_33c358e8eab9857ed3c6c251850a8e89_800.png" width="auto" height="auto" loading="auto" id)

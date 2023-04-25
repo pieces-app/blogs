@@ -40,9 +40,9 @@ id="">The following image shows you different contrast levels for text with its 
 id="">As Flutter follows Material Design guidelines, most parts of your apps will have high enough contrast between text and their background unless you’ve added custom theming, in which case you need to make sure the CR is high enough.
 id="">You can use online tools like <a href="https://webaim.org/resources/contrastchecker/" target="_blank" id="">contrast-checker</a> and <a href="https://contrast-ratio.com/" target="_blank" id="">contrast-ratio</a> to see if the CR of your colors meets app accessibility standards.
 id="">Also, some users may prefer a higher CR than the default. They can turn on this option through the accessibility settings on their device.
-![](8f555387049efb3/6425ac9f7d58f797abd33a8f_contrast.jpg" loading="lazy" id="" width="auto" height="auto" alt="A screenshot of the settings view showing &quot;Increase Contrast&quot; turned o)
+![](8f555387049efb3/6425ac9f7d58f797abd33a8f_contrast.jpg" loading="lazy" id="" width="auto" height="auto" alt="A screenshot of the settings view showing "Increase Contrast" turned o)
 id="">In your app, you can add a check for this option through the <em id="">highContrast property of <em id="">MediaQuery. Based on the result, update your background colors to provide higher contrast.
-![]( id=""><img src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62fbc50326e6887d2ed833fe_raycast-untitled%20(97).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with Dart code)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62fbc50326e6887d2ed833fe_raycast-untitled%20(97).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with Dart code)
 id="">Note: This flag is currently updated on iOS devices that are running iOS 13 and above.
 
 ## Tap Targets
@@ -60,7 +60,7 @@ id="">On Android, we have a screen reader called TalkBack. On iOS, we have Voice
 id="">By default, most Flutter widgets have some semantics. Flutter is smart enough to update those default semantics based on the data you pass to the required parameters of those widgets.
 id="">Let’s look at the following example where we navigate through a Flutter counter app with the help of Android's screen reader.
 
-![](webflow.com/6143afec68f555387049efb3/62fbcafaef501c23ad1281bb_raycast-untitled%20(98).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with several Flutter widgets)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/62fbcafaef501c23ad1281bb_raycast-untitled%20(98).png" loading="lazy" id="" width="auto" height="auto" alt="A code snippet with several Flutter widgets)
 
 id="">When the app is first opened with the screen reader, it reads the title in the <em id="">AppBar. As we tap different parts of the app, it gives feedback on the tapped component.
 id="">The default results are usually fine, but sometimes the default semantics won’t be able to provide a user with the proper information. In such cases, you can add your own semantics to suit your needs. Flutter provides us with several accessibility widgets that can help us to build more accessible apps.

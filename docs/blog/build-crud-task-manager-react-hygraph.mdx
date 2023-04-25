@@ -27,7 +27,7 @@ Before you have access to the Hygraph admin panel, you’ll need to create an ac
 Once you’ve signed up, create a project name, choose the region where you want your data to be stored and served, and choose a plan. For our task manager project, we are using a free forever plan.
 From our admin dashboard, on the left, below environments, click on Schema. This will allow us to create a model. We have named our content type Task and added fields to our content.
 
-![](bflow.com/6143afec68f555387049efb3/63efa8173dcbda131700e625_image4_75b8ce9ab36a5642272c5dcaaa5444c6_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda131700e625_image4_75b8ce9ab36a5642272c5dcaaa5444c6_800.png)
 
 Based on the image above, we created three fields:
 - **title - (**single-line text) - The title of the task.
@@ -36,22 +36,22 @@ Based on the image above, we created three fields:
 
 ### Adding Content
 Even though we can create tasks from the front end of our task manager app, we can also create new tasks from your Hygraph Admin Dashboard. Click on ```Content```, then ```Create entry```. Fill out the information.
-![](s://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda368700e624_image3_4ac2702aef241f84edfd674b9e138de6_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda368700e624_image3_4ac2702aef241f84edfd674b9e138de6_800.png)
 Once you have filled out the available fields, click on the **save and publish** button. You can go back and create more items.
 
 ### Hygraph API Playground
 Hygraph provides us with a GraphQL API playground where we can test our queries and perform mutation queries.
 
-![](uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda7cc500e64a_image9_15048a05ffadfd3bd32efb99589357c3_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda7cc500e64a_image9_15048a05ffadfd3bd32efb99589357c3_800.png)
 You can play around with this Hygraph API  environment to see the data you are querying.
 
-![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda541a00e665_image6_7b84137078f4dec00757ee3de24f7e2f_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda541a00e665_image6_7b84137078f4dec00757ee3de24f7e2f_800.png)
 
 ### Setting up Roles and Permissions
 Before we begin to query this data inside our React App, we must first get and set up our API endpoint and permissions to open or query any published content.
-Go to **Project settings** &gt; **Permanent Auth Tokens &gt; add token, **input the name of your token, and click on** add &amp; configure permission.** Then click on **Add permission **to add permissions. With this, anybody can make a public API request without requiring authentication.
+Go to **Project settings** > **Permanent Auth Tokens > add token, **input the name of your token, and click on** add &amp; configure permission.** Then click on **Add permission **to add permissions. With this, anybody can make a public API request without requiring authentication.
 
-![](/uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda477400e61d_image2_33585028a1a4d7c9d4ed8e8284666aa3_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda477400e61d_image2_33585028a1a4d7c9d4ed8e8284666aa3_800.png)
 Store your token somewhere secure. Later on, we’ll use it to authenticate and fetch data from our React task manager app.
 
 ## Building our Task Manager Frontend with React
@@ -78,9 +78,9 @@ yarn add react-router-dom
 After installing ```react-router-dom```, you need to make it available anywhere in your task manager app. To do this, you need to import ```BrowserRouter``` from ```react-router-dom``` and then wrap the root (App) component in your ```index.js``` file.
 ```
 root.render(
-  &lt;BrowserRouter&gt;
-      &lt;App /&gt;
-  &lt;/BrowserRouter&gt;
+  <BrowserRouter>
+      <App />
+  </BrowserRouter>
 )
 ```
 To install Material UI, run the command below in your terminal:
@@ -93,7 +93,7 @@ To query tasks from our Hygraph endpoint, we need to develop a GraphQL client th
 ```
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from &quot;react-router-dom&quot;
+import { BrowserRouter } from "react-router-dom"
 import App from './App';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 const client = new ApolloClient({
@@ -105,11 +105,11 @@ const client = new ApolloClient({
 });
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  &lt;BrowserRouter&gt;
-    &lt;ApolloProvider client={client}&gt;
-      &lt;App /&gt;
-    &lt;/ApolloProvider&gt;
-  &lt;/BrowserRouter&gt;
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </BrowserRouter>
 )
 ```
 Here we implement the Apollo client and inject it into the application by wrapping it with the Apollo provider.
@@ -126,22 +126,22 @@ In your ```BottomNav.js``` file, add the code below:
 import { AddTask, Task } from '@mui/icons-material';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 import React, { useState } from 'react'
-const BottomNav = () =&gt; {
+const BottomNav = () => {
   const [value, setValue] = useState('task');
   return (
-    &lt;div&gt;
-        &lt;BottomNavigation
+    <div>
+        <BottomNavigation
             showLabels
             sx={{bgcolor: '#292f38'}}
             value={value}
-            onChange={(event, newValue) =&gt; {
+            onChange={(event, newValue) => {
               setValue(newValue);
             }}
-        &gt;
-          &lt;BottomNavigationAction href='/' sx={{color: '#ccc'}} label=&quot;Tasks&quot; icon={&lt;Task /&gt;} /&gt;
-          &lt;BottomNavigationAction href='/new ' sx={{color: '#ccc'}} label=&quot;AddTask&quot; icon={&lt;AddTask /&gt;} /&gt;
-        &lt;/BottomNavigation&gt;
-  &lt;/div&gt;
+        >
+          <BottomNavigationAction href='/' sx={{color: '#ccc'}} label="Tasks" icon={<Task />} />
+          <BottomNavigationAction href='/new ' sx={{color: '#ccc'}} label="AddTask" icon={<AddTask />} />
+        </BottomNavigation>
+  </div>
   )
 }
 export default BottomNav
@@ -149,27 +149,27 @@ export default BottomNav
 We use Material UI to create navigation in our task manager that allows us to navigate through the list of tasks as well as creating a task.
 ```
 import React from 'react';
-import { Route, Routes } from &quot;react-router-dom&quot;;
+import { Route, Routes } from "react-router-dom&quot;;
 import AddTask from './components/AddTask';
 import TaskList from './components/TaskList';
 import BottomNav from './components/BottomNav';
 import './App.css'
 function App() {
   return (
-      &lt;div className='container'&gt;
-        &lt;div className='app-wrapper'&gt;
-          &lt;div className='header'&gt;
-            &lt;h1&gt;Task Manager&lt;/h1&gt;
-          &lt;/div&gt;
-          &lt;div className='main'&gt;
-            &lt;Routes&gt;
-              &lt;Route path=&quot;/&quot; element={&lt;TaskList /&gt;} /&gt;
-              &lt;Route path=&quot;/new&quot; element={&lt;AddTask /&gt; } /&gt;
-            &lt;/Routes&gt;
-          &lt;/div&gt;
-          &lt;BottomNav /&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
+      <div className='container'>
+        <div className='app-wrapper'>
+          <div className='header'>
+            <h1>Task Manager</h1>
+          </div>
+          <div className='main'>
+            <Routes>
+              <Route path="/" element={<TaskList />} />
+              <Route path="/new" element={<AddTask /> } />
+            </Routes>
+          </div>
+          <BottomNav />
+        </div>
+      </div>
   );
 }
 export default App
@@ -202,40 +202,40 @@ In your ```components/Tasks.js``` file, add the following code:
 import React  from 'react'
 import {AssignmentInd, Delete, Description, Update} from '@mui/icons-material';
 import { List, ListItemButton, ListItemIcon, ListItemText, Typography, Stack, Button, Modal, Box, FormControl, OutlinedInput, InputLabel } from '@mui/material';
-const Task = ({ task, getTask }) =&gt; {
+const Task = ({ task, getTask }) => {
   return (
-    &lt;li className='list-item'&gt;
-        &lt;List sx={{ width: '100%'}} component=&quot;nav&quot; aria-labelledby=&quot;nested-list-subheader&quot;
-        &gt;
-        &lt;Typography sx={{color: '#ccc'}} variant=&quot;h5&quot; gutterBottom&gt;
+    <li className='list-item'>
+        <List sx={{ width: '100%'}} component="nav" aria-labelledby="nested-list-subheader"
+        >
+        <Typography sx={{color: '#ccc'}} variant="h5" gutterBottom>
             {task.title}
-        &lt;/Typography&gt;
-        &lt;ListItemButton&gt;
-            &lt;ListItemIcon&gt;
-             &lt;Description sx={{ color: '#ccc'}} /&gt;
-            &lt;/ListItemIcon&gt;
-            &lt;ListItemText primary={task.description} /&gt;
-        &lt;/ListItemButton&gt;
-        &lt;ListItemButton&gt;
-            &lt;ListItemIcon&gt;
-                &lt;AssignmentInd sx={{ color: '#ccc'}} /&gt;
-            &lt;/ListItemIcon&gt;
-            &lt;ListItemText primary={task.assignedTo} /&gt;
-        &lt;/ListItemButton&gt;
-        &lt;/List&gt;
-        &lt;Stack direction=&quot;row&quot; spacing={1}&gt;
-            &lt;Button className='btn-delete task-btn'&gt;
-                &lt;Delete
+        </Typography>
+        <ListItemButton>
+            <ListItemIcon>
+             <Description sx={{ color: '#ccc'}} />
+            </ListItemIcon>
+            <ListItemText primary={task.description} />
+        </ListItemButton>
+        <ListItemButton>
+            <ListItemIcon>
+                <AssignmentInd sx={{ color: '#ccc'}} />
+            </ListItemIcon>
+            <ListItemText primary={task.assignedTo} />
+        </ListItemButton>
+        </List>
+        <Stack direction="row" spacing={1}>
+            <Button className='btn-delete task-btn'>
+                <Delete
                 sx={{bgcolor: '#292f38', color: '#ccc'}}
-                /&gt;
-            &lt;/Button&gt;
-            &lt;Button className='btn-delete task-btn'&gt;
-                &lt;Update
+                />
+            </Button>
+            <Button className='btn-delete task-btn'>
+                <Update
                 sx={{bgcolor: '#292f38', color: '#ccc'}}
-                /&gt;
-            &lt;/Button&gt;
-        &lt;/Stack&gt;
-    &lt;/li&gt;
+                />
+            </Button>
+        </Stack>
+    </li>
   )
 }
 export default Task
@@ -249,29 +249,29 @@ import { useQuery } from '@apollo/client';
 import { ALL_TASK } from '../lib/api';
 import Task from './Task';
 import { Typography } from '@mui/material';
-const TaskList = () =&gt; {
+const TaskList = () => {
   const { loading, error, data } = useQuery(ALL_TASK)
-  if (loading) return &lt;p&gt;Getting tasks...&lt;/p&gt;;
-  if (error) return &lt;p&gt;An error occurred&lt;/p&gt;;
+  if (loading) return <p>Getting tasks...</p&gt;;
+  if (error) return <p>An error occurred</p&gt;;
   return (
-    &lt;div&gt;
-        &lt;Typography sx={{color: '#ccc'}} variant=&quot;p&quot; gutterBottom&gt;
+    <div>
+        <Typography sx={{color: '#ccc'}} variant="p" gutterBottom>
             Total Tasks: {data.tasks.length}
-        &lt;/Typography&gt;
+        </Typography>
         {data.tasks.length ?
             (
-                &lt;ul className='list'&gt;
-                    {data.tasks.map((task) =&gt; (
-                        &lt;Task task={task} key={task.id} getTask={ALL_TASK} /&gt;
+                <ul className='list'>
+                    {data.tasks.map((task) => (
+                        <Task task={task} key={task.id} getTask={ALL_TASK} />
                     ))}
-                &lt;/ul&gt;
+                </ul>
             )
             :
             (
-                &lt;div className='no-tasks'&gt;No Tasks&lt;/div&gt;
+                <div className='no-tasks'>No Tasks</div>
             )
         }
-    &lt;/div&gt;
+    </div>
   )
 }
 export default TaskList
@@ -283,7 +283,7 @@ We imported the ```useQuery``` hook provided by the Apollo client and we passed 
 - **```data```** - this contains data returned by Hygrapyh.
 
 Inside the ```data``` object, we now have access to the tasks. When the application renders the component, the ```useQuery``` hook will be called.
-![](.webflow.com/6143afec68f555387049efb3/63efa8173dcbdabef400e5ca_image5_e70a85ae3bb39f782f7bc5180fee5e2a_800.jp)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbdabef400e5ca_image5_e70a85ae3bb39f782f7bc5180fee5e2a_800.jp)
 
 ## Creating New Tasks with Mutation
 To create a task in your task manager, in your ```lib/api.js``` file, add the query below:
@@ -309,48 +309,48 @@ import React, { useState } from 'react'
 import { useMutation } from '@apollo/client'
 import { CREATE_TASK } from '../lib/api';
 import {OutlinedInput, FormControl, InputLabel, Button, Box} from '@mui/material'
-const AddTask = () =&gt; {
+const AddTask = () => {
   const [task, setTask] = useState({});
   const [createTask, { isadding }] = useMutation(CREATE_TASK)
   if (isadding) return 'Submitting...';
-  const handleOnChange = (event)=&gt; {
+  const handleOnChange = (event)=> {
     setTask({ ...task, [event.target.name]: event.target.value});
   }
-  const onClick = () =&gt; {
+  const onClick = () => {
     createTask({variables: { ...task }});
   }
   return (
-    &lt;Box
-    sx={{ maxWidth: '100%'}}&gt;
-      &lt;FormControl fullWidth sx={{ my: 1 }}&gt;
-        &lt;InputLabel sx={{color: '#cccc'}}&gt;Title&lt;/InputLabel&gt;
-        &lt;OutlinedInput
+    <Box
+    sx={{ maxWidth: '100%'}}>
+      <FormControl fullWidth sx={{ my: 1 }}>
+        <InputLabel sx={{color: '#cccc'}}>Title</InputLabel>
+        <OutlinedInput
           onChange={handleOnChange}
           name='title'
-          label=&quot;title&quot;
+          label="title"
           sx={{border: '1px solid #cccc'}}
-        /&gt;
-      &lt;/FormControl&gt;
-      &lt;FormControl fullWidth sx={{ my: 1 }}&gt;
-        &lt;InputLabel sx={{color: '#cccc'}}&gt;Description&lt;/InputLabel&gt;
-         &lt;OutlinedInput
+        />
+      </FormControl>
+      <FormControl fullWidth sx={{ my: 1 }}>
+        <InputLabel sx={{color: '#cccc'}}>Description</InputLabel>
+         <OutlinedInput
           onChange={handleOnChange}
           name='description'
-          label=&quot;description&quot;
+          label="description"
           sx={{border: '1px solid #cccc'}}
-        /&gt;
-      &lt;/FormControl&gt;
-      &lt;FormControl fullWidth sx={{ my: 1 }}&gt;
-        &lt;InputLabel sx={{color: '#cccc'}}&gt;Assigned To&lt;/InputLabel&gt;
-        &lt;OutlinedInput
+        />
+      </FormControl>
+      <FormControl fullWidth sx={{ my: 1 }}>
+        <InputLabel sx={{color: '#cccc'}}>Assigned To</InputLabel>
+        <OutlinedInput
           onChange={handleOnChange}
           name='assignedTo'
-          label=&quot;Assigned To&quot;
+          label="Assigned To"
           sx={{border: '1px solid #cccc'}}
-        /&gt;
-      &lt;/FormControl&gt;
-       &lt;Button href='/' onClick={onClick} type='submit' sx={{ my: 1, py: 2 }} fullWidth variant=&quot;contained&quot;&gt;Add Task&lt;/Button&gt;
-    &lt;/Box&gt;
+        />
+      </FormControl>
+       <Button href='/' onClick={onClick} type='submit' sx={{ my: 1, py: 2 }} fullWidth variant="contained">Add Task</Button>
+    </Box>
   )
 }
 export default AddTask
@@ -358,7 +358,7 @@ export default AddTask
 First, we used the ```useState``` hook from React to store the provided state. We then used the ```useMutation``` hook from the Apollo client. The ```useMutation``` hook depends on the ```createTask``` function to execute the ```CREATE_TASK``` mutation query. If the ```createTask``` function gets called, the mutation gets executed. We then use the ```handleOnChange``` function to update the ```state``` whenever the user inputs data.
 After entering dummy content and clicking on Add task in our task manager, if all goes well, a new task will be created and you will be able to view your content in the Hygraph Dashboard. Newly created tasks don’t automatically get published unless we call the publish function or publish it from the dashboard. But, we already defined our query to also fetch content from the draft, so newly created content will automatically be displayed on our front end.
 
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda9c9d00e61c_image1_3044f2ccaa4f784e5cec419fe94d3901.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda9c9d00e61c_image1_3044f2ccaa4f784e5cec419fe94d3901.g)
 
 ### Updating Tasks in our Task Manager
 It's easy to update posts by simply adding new content to existing content and updating the Hygraph store. In our ```lib/api.js``` file, add the query below:
@@ -380,10 +380,10 @@ Updating entities using mutations is similar to creating new ones, except you ne
 We'll need a form to collect the data we'll need to update a task. We’ll create a modal so that when a user tries to update a task by clicking on the update icon, it will call up a modal containing the form.
 ```
 const [open, setOpen] = useState(false);
-const handleOpen = () =&gt; setOpen(true);
-const handleClose = () =&gt; setOpen(false);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
 const [replacementTask, setReplacementTask] = useState({});
-const handleOnChange = (event)=&gt; {
+const handleOnChange = (event)=> {
     setReplacementTask({ ...replacementTask, [event.target.name]: event.target.value });
 }
 const [updateTask] = useMutation(UPDATE_TASk, {
@@ -391,61 +391,61 @@ const [updateTask] = useMutation(UPDATE_TASk, {
         { query: getTask },
     ]
 });
-const handleUpdate = () =&gt; {
+const handleUpdate = () => {
     updateTask({ variables: { id: task.id, ...replacementTask }})
 
 ```
 To better control the process of creating and updating content, we define several states. We then define functions that are responsible for handling form input and calling the Hygraph API services in our query.
 Add the ```handleOpen``` function to the Update icon:
 ```
-&lt;Button className='btn-delete task-btn'&gt;
-    &lt;Update
+<Button className='btn-delete task-btn'>
+    <Update
     sx={{bgcolor: '#292f38', color: '#ccc'}}
     onClick={handleOpen}
-    /&gt;
-&lt;/Button&gt
+    />
+</Button&gt
 ```
 With this, when you click on the update button a modal will pop up containing the form field. Now below the ```Button``` container, add the modal component from Material UI to build our form field.
 ```
-&lt;Modal open={open} onClose={handleClose} aria-labelledby=&quot;modal-modal-title&quot;
-      aria-describedby=&quot;modal-modal-description&quot;&gt;
-  &lt;Box sx={style}&gt;
-    &lt;FormControl fullWidth sx={{ my: 1 }}&gt;
-        &lt;InputLabel sx={{color: '#cccc'}}&gt;Title&lt;/InputLabel&gt;
-        &lt;OutlinedInput
+<Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description">
+  <Box sx={style}>
+    <FormControl fullWidth sx={{ my: 1 }}>
+        <InputLabel sx={{color: '#cccc'}}>Title</InputLabel>
+        <OutlinedInput
             onChange={handleOnChange}
             name='title'
-            label=&quot;Title&quot;
+            label="Title"
             sx={{color: '#cccc'}}
-        /&gt;
-    &lt;/FormControl&gt;
-    &lt;FormControl fullWidth sx={{ my: 1 }}&gt;
-      &lt;InputLabel sx={{color: '#cccc'}}&gt;Description&lt;/InputLabel&gt;
-        &lt;OutlinedInput
+        />
+    </FormControl>
+    <FormControl fullWidth sx={{ my: 1 }}>
+      <InputLabel sx={{color: '#cccc'}}>Description</InputLabel>
+        <OutlinedInput
             onChange={handleOnChange}
             name='description'
-            label=&quot;Description&quot;
+            label="Description"
             sx={{color: '#cccc'}}
-         /&gt;
-    &lt;/FormControl&gt;
-    &lt;FormControl fullWidth sx={{ my: 1 }}&gt;
-        &lt;InputLabel sx={{color: '#cccc'}}&gt;Assigned To&lt;/InputLabel&gt;
-        &lt;OutlinedInput
+         />
+    </FormControl>
+    <FormControl fullWidth sx={{ my: 1 }}>
+        <InputLabel sx={{color: '#cccc'}}>Assigned To</InputLabel>
+        <OutlinedInput
             onChange={handleOnChange}
             name='assignedTo'
-            label=&quot;Assigned To&quot;
+            label="Assigned To"
             sx={{color: '#cccc'}}
-        /&gt;
-    &lt;/FormControl&gt;
-  &lt;Button href='/' sx={{ my: 1, py: 2 }} fullWidth variant=&quot;contained&quot;
+        />
+    </FormControl>
+  <Button href='/' sx={{ my: 1, py: 2 }} fullWidth variant="contained"
     onClick={handleUpdate}
-    type='submit'&gt;Update&lt;/Button&gt;
-  &lt;/Box&gt;
-&lt;/Modal&gt
+    type='submit'>Update</Button>
+  </Box>
+</Modal&gt
 ```
 With this, we can now successfully update our task. You will have to republish the task after editing it from the Hygraph dashboard.
 
-![](s-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda47f900e61b_image8_25806bdf6354185e6a6f15449e256815.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63efa8173dcbda47f900e61b_image8_25806bdf6354185e6a6f15449e256815.g)
 
 ### Deleting Tasks
 In this section, we’ll work on deleting each task from the front end of our task manager. In our ```lib/api.js``` file, add the following code:
@@ -469,7 +469,7 @@ const [deleteTask] = useMutation(DELETE_TASK, {
         { query: getTask },
     ]
 })
-const handleDelete = () =&gt; {
+const handleDelete = () => {
     deleteTask({ variables: { id: task.id }});
 
 ```

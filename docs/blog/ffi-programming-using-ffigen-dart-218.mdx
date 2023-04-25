@@ -18,7 +18,7 @@ Before explaining the answer to this question, you need to know about FFI (Forei
 ### **FFI Programming explained**
 
 FFI stands for Foreign Function Interface and allows one programming language to work with libraries written in another language. It's a common technique used by many programming languages, including Java, which refers to it as <a href="http://wiki.c2.com/?JavaNativeInterface">JavaNativeInterface</a>. FFI was originally created in <a href="http://wiki.c2.com/?CommonLisp">CommonLisp</a> but can be used in any language.
-When a low-level language is referred to as the &quot;**host**&quot; language and a high-level language is referred to as the &quot;**guest**&quot; language, communication between them is established as follows:
+When a low-level language is referred to as the "**host**" language and a high-level language is referred to as the "**guest**" language, communication between them is established as follows:
 - An API is provided for the host language to connect with guests.
 - A tool that doesn't belong to either language is used to build the bridge.
 - The guest language is also responsible for bridging the gap with the host language. The guest can call any function in the host language, but must have support for low-level features to communicate effectively.
@@ -26,7 +26,7 @@ When a low-level language is referred to as the &quot;**host**&quot; language an
 - Complicated or non-trivial objects or datatypes may be difficult to map from one environment to another.
 - One or both languages may be running on a<a href="https://en.wikipedia.org/wiki/Virtual_machine"> virtual machine</a> (VM); moreover, if both are, these will probably be different VMs.
 
-Dart has a library called &quot;dart:ffi&quot; that enables using FFI (Foreign Function Interface). Starting from Dart version 2.12, FFI is available in the stable channel. This allows you to use existing code in C libraries, giving you the benefits of both portability and the performance of highly optimized C code. With FFI Programming, you're not limited to just C, as you can also write code in other languages like Go or Rust, as long as it's compiled to a C library.
+Dart has a library called "dart:ffi" that enables using FFI (Foreign Function Interface). Starting from Dart version 2.12, FFI is available in the stable channel. This allows you to use existing code in C libraries, giving you the benefits of both portability and the performance of highly optimized C code. With FFI Programming, you're not limited to just C, as you can also write code in other languages like Go or Rust, as long as it's compiled to a C library.
 
 <a href="https://medium.com/dartlang/announcing-dart-2-12-499a6e689c87">Dart FFI</a> can also be used when a Flutter app requires more control over memory management and garbage collection. For example, this could be useful for an app using TensorFlow.
 
@@ -47,10 +47,10 @@ There are times when you want to create your own fresh library, but more often, 
 - Automatically generating the FFI bindings
 
 If you like automation, you probably chose the second option. As a result, we have<a href="https://pub.dev/packages/ffigen"> package:ffigen</a>
-The &quot;package:ffigen&quot; is created to save time when integrating large APIs with C code. Writing Dart bindings for these APIs can be very time-consuming. The Dart team created a binding generator, called &quot;ffigen,&quot; which automatically generates FFI wrappers from C header files.
+The "package:ffigen" is created to save time when integrating large APIs with C code. Writing Dart bindings for these APIs can be very time-consuming. The Dart team created a binding generator, called "ffigen," which automatically generates FFI wrappers from C header files.
 Under the hood, this package uses<a href="https://medium.datadriveninvestor.com/whats-llvm-4c0c3ed43a72"> LLVM</a> and LibClang to parse C header files. To install LLVM inside macOS, run:
 
-![](M on macOS" src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139b2aa9cd881_image8_e1950f8c97b57475c401bd6c54716a14_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139b2aa9cd881_image8_e1950f8c97b57475c401bd6c54716a14_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=7ee847aecb">Save to Pieces</a>
 
@@ -66,7 +66,7 @@ There are also<a href="https://api.dart.dev/stable/dart-ffi/Abi-class.html"> ABI
 So, we’ve explained **FFI** and **ffigen**— let’s explore what’s new in ffigen in Dart 2.18.
 
 ## FFI Programming: What’s new in FFI Gen
-![](e ObjC &amp; Swift interop, platform-specific http and a roadmap." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913916779cd895_image23_33ca671085291684a39ed958d46518ba_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913916779cd895_image23_33ca671085291684a39ed958d46518ba_800.png)
 The Dart team wants Dart to support interoperability with all the primary languages on the platforms where Dart runs.
 
 As of<a href="https://dart.dev/guides/language/evolution#dart-218"> Dart 2.18</a>, Dart code can now call Objective-C and Swift code since these are used for writing APIs for macOS and IOS. This interop mechanism supports across all types of apps from CLI apps to backend apps to Flutter code.
@@ -93,15 +93,15 @@ We will be integrating the NSURLCache inside Dart and call some of its functions
 
 ## **Creating a Dart CLI App**
 We’ll start by creating the Dart CLI App using the below command. Also, upgrade to the latest Dart version 2.18!
-![](p" src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139adb49cd87d_image3_b048986df92d718c0dccd512de7078da_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139adb49cd87d_image3_b048986df92d718c0dccd512de7078da_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=5eb640a0b0">Save to Pieces</a>
 
 Note: There are various templates available for Dart; see below. By default, it selects console application.
 
-![](nsole template." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139bbec9cd88e_image7_2167c37e2564acebf893dc19f337e3c7_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139bbec9cd88e_image7_2167c37e2564acebf893dc19f337e3c7_800.png)
 This gives us a basic template with all of the necessary files, for instance, pubspec or linter. Open the pubspec file to check the dependencies that come bundled with this template.
-![](ramming." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913911d39cd886_image21_770b7af9e34fe2a64f28dd74dc3ba760_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913911d39cd886_image21_770b7af9e34fe2a64f28dd74dc3ba760_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=d3e748a926">Save to Pieces</a>
 
@@ -109,7 +109,7 @@ Edit your pubspec file to add the<a href="https://pub.dev/packages/ffigen"> ffig
 - Via a custom YAML file; then specify this file while running — dart run ffigen --config config.yaml
 
 Create a file called url_cache_config.yaml and put the below contents inside it.
-![](l." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139f9039cd89e_image28_463db50ed95bb4a4f56bb4f4cad60e70_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139f9039cd89e_image28_463db50ed95bb4a4f56bb4f4cad60e70_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=65524da897">Save to Pieces</a>
 
@@ -123,12 +123,12 @@ Let’s see the above configuration options:
 ## **Objective-C Config Options**
 - objc-interfaces This filters for the interface declarations. In our case, we specify the NSURLCache interface
 
-![](loads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913961609cd89b_image1_eb1155c660f60dff51c04c0100b8cc45_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913961609cd89b_image1_eb1155c660f60dff51c04c0100b8cc45_800.png)
 <a href="https://aseem.pieces.cloud/?p=a3af428b23">Save to Pieces</a>
 
 **Generate FFI Bindings**
 To generate the bindings, run the following:
-![](//uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913905cd9cd88f_image6_063dc5d88c1cc7ccd52ff3c60dbbef36_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913905cd9cd88f_image6_063dc5d88c1cc7ccd52ff3c60dbbef36_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=e942439276">Save to Pieces</a>
 This command creates a new file (url_cache_bindings.dart) as specified inside the output parameter of the url_cache_config.yaml, which contains a bunch of generated API bindings. Using this binding file, we can write our Dart main method.
@@ -138,12 +138,12 @@ We generated the bindings using the FFI Gen in the above step. Let’s see how t
 First, We create a new dart file called url_cache.dart.
 Inside this file, we will be loading and interacting with the generated library.
 
-![](tps://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139694b9cd89d_image5_c6861b77ad7d6dbc51cbf7d68d1ee7af_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139694b9cd89d_image5_c6861b77ad7d6dbc51cbf7d68d1ee7af_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=62b146896f">Save to Pieces</a>
 
 We mentioned the path of the library in the first step. Since the library we are using is an internal library, the dylib points to the macOS’s framework dylib. We can consider this library to be dynamically linked.
-![](ow.com/6143afec68f555387049efb3/637e8a6d159139bde29cd88b_image2_9be660206aad748c72e1af70b8cf2448_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139bde29cd88b_image2_9be660206aad748c72e1af70b8cf2448_800.png)
 
 > Note: We can use our own library or a static library (linked inside our app).
 
@@ -159,16 +159,16 @@ A statically linked library is embedded into the app’s executable image and lo
 Note: This process loads the library into the DartVM only once, regardless of the function calls.
 Once the library gets initialized, we can call the different methods present inside it (which were generated).
 We are looking for a NSURLCache class. This class implements the caching of responses to URL load requests by mapping<a href="https://developer.apple.com/documentation/foundation/nsurlrequest"> NSURLRequest</a> objects to<a href="https://developer.apple.com/documentation/foundation/nscachedurlresponse"> NSCachedURLResponse</a> objects. For getting an instance of this class, we call sharedURLCache.
-![](w.com/6143afec68f555387049efb3/637e8a6d159139c8219cd887_image11_fc5b568db7a37cf2bd8ba41360f7e4e1_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139c8219cd887_image11_fc5b568db7a37cf2bd8ba41360f7e4e1_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=423c4f9502">Save to Pieces</a>
 Since we have the instance of URLCache, we can access the different methods currentDiskUsage, currentMemoryUsage, diskCapacity, and memoryCapacity. Let’s run the Dart code using:
-![](.webflow.com/6143afec68f555387049efb3/637e8a6d15913943839cd889_image9_9ef9dc5521edb1f637f90d89bb2ad25e_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913943839cd889_image9_9ef9dc5521edb1f637f90d89bb2ad25e_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=bc80478570">Save to Pieces</a>
 
 The result is:
-![](s-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139dd359cd891_image18_2301d98ec3a7f427808585c6f0dfc826_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139dd359cd891_image18_2301d98ec3a7f427808585c6f0dfc826_800.png)
 
 ## Using Configuration Inside Pubspec
 In the above section, we saw how to use the configuration specified inside a separate config file. Let’s see how to use the configuration inside the pubspec.
@@ -177,7 +177,7 @@ We’ll choose another Objective-C library present in macOS. One such library is
 This API is used for querying the time zones and standard time policies of a region. These time zones have identifiers such as America/Los_Angeles and can also be identified by abbreviations such as PST for Pacific Standard Time.
 The header for this library is present inside the NSTimeZone, which can be found inside the Apple Foundation library. Let’s include the configuration inside the pubspec:
 
-![](s-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139c1eb9cd88d_image16_f9e81b48ded37a99a50e06598b9450a5_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139c1eb9cd88d_image16_f9e81b48ded37a99a50e06598b9450a5_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=25ef409ab2">Save to Pieces</a>
 
@@ -187,14 +187,14 @@ In the above configuration, we specify:
 - headers The path to the header files which is present inside the Foundation.framework
 
 For generating the bindings we run the following:
-![](flow.com/6143afec68f555387049efb3/637e8a6d159139f2d99cd87f_image4_466672e6f132c400e460f6d391493f12_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139f2d99cd87f_image4_466672e6f132c400e460f6d391493f12_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=55cf499839">Save to Pieces</a>
 
 This command creates a new file (timezone_bindings.dart) as specified inside the output** **parameter that contains generated API bindings. Using this binding file, we can write our Dart main method.
 
 We create a new dart file called timezones.dart. Inside this file, we load and interact with the generated library.
-![](d timezone.dart in the terminal. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913909739cd897_image22_41285520a997cc307f2931ee928524e8_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913909739cd897_image22_41285520a997cc307f2931ee928524e8_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=95d04686fd">Save to Pieces</a>
 
@@ -204,17 +204,17 @@ We will be integrating the NSTimeZone inside Dart and calling some of its functi
 - secondsFromGMT: The current difference in seconds between the receiver and Greenwich Mean Time.
 
 For getting an instance of this class, we call localTimeZone.
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913901bf9cd88c_image15_ab8884718c92da0314e810547a639d90_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913901bf9cd88c_image15_ab8884718c92da0314e810547a639d90_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=ed384ca9cd">Save to Pieces</a>
 
 Since we have the instance of NSTimeZone, we can access the different methods named secondsFromGMT. Let’s run the Dart code using:
-![](n/timezone.dart&quot; in your terminal." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d1591394ae69cd88a_image12_a838527ceae4d8a116cd1f0ad5b30e58_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d1591394ae69cd88a_image12_a838527ceae4d8a116cd1f0ad5b30e58_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=23664cba0d">Save to Pieces</a>
 
 The result is:
-![]( the timezone name." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d1591398bc59cd882_image10_d7700faa66825545d384973fcc56f311_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d1591398bc59cd882_image10_d7700faa66825545d384973fcc56f311_800.png)
 
 ### **Garbage Collection**
 Objective-C uses reference counting for memory management, but on the Dart side, memory management is handled automatically. The Dart wrapper object retains a reference to the Objective-C object, and when the Dart object is garbage collected, the generated code automatically releases that reference using a<a href="https://api.dart.dev/dart-ffi/NativeFinalizer-class.html"> NativeFinalizer</a>.
@@ -230,19 +230,19 @@ Since the VM can change the thread in which an isolate can run, this means a cal
 ## FFI Programming: Testing FFIGen
 Up to this point, we’ve learned how to generate bindings and consume them from a Dart CLI. In this section, we’ll see how to test the generated bindings.
 We’ll install the dependencies<a href="https://pub.dev/packages/yaml"> YAML</a> and<a href="https://pub.dev/packages/logging"> logging</a> and create a file called ffi_2_18_test.
-Note: The tests should follow the naming pattern &lt;name&gt;_test.dart.
+Note: The tests should follow the naming pattern <name>_test.dart.
 The YAML dependency helps in the parsing of a YAML file, whereas logging provides us with the APIs useful for logging (based on the configuration as specified).
 
 ### **Set up Logging**
 We’ll configure the logging level and add a handler for the log messages. The level is set to Level.SEVERE. Next, we’ll listen to the onRecord stream for LogRecord events.
 
-![](cord.message&quot;." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913983d99cd885_image25_6b28a8793c4e6721234f0fed3de7f534_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913983d99cd885_image25_6b28a8793c4e6721234f0fed3de7f534_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=3548498159">Save to Pieces</a>
 The function logWarnings is called inside setUpAll. The function registered under setUpAll will be run once, before all of the tests.
 
 **Test for NSURLCache**
-![](://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913986939cd898_image27_983602cbdf4bb69213f01e1c45d9dc6d_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913986939cd898_image27_983602cbdf4bb69213f01e1c45d9dc6d_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=0b98428212">Save to Pieces</a>
 
@@ -254,20 +254,20 @@ The return value is mostly normal Dart objects. Since we are using the YAML file
 Next, we use the<a href="https://pub.dev/documentation/ffigen/latest/ffigen/Config-class.html"> Config</a> from the FFI Gen to create the configuration required for testing from the above YAML map. Finally, we use <a href="https://pub.dev/documentation/ffigen/latest/ffigen/parse.html">parse</a> to generate the bindings.
 
 The output from the above step is compared against the strings; for instance:
-![](ps://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e1591393bd59cd893_image14_4ff9bcaccd802bef71b00410c56242c1_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e1591393bd59cd893_image14_4ff9bcaccd802bef71b00410c56242c1_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=a9a245a860">Save to Pieces</a>
 This is because once we run the test using:
 
-![]("https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139892d9cd888_image29_059515fc6ae8213cbec3ad5ffc772ee4_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d159139892d9cd888_image29_059515fc6ae8213cbec3ad5ffc772ee4_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=265243aa19">Save to Pieces</a>
 
 It generates the config file during the run time, which then compares with the strings above.
-![]( the terminal." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913971679cd894_image13_41f55bb0755f8d62a3b790bb453d36ab_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e15913971679cd894_image13_41f55bb0755f8d62a3b790bb453d36ab_800.png)
 
 **Test for NSTimeZone**
-![](ploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139069d9cd89f_image20_712058fe043ecff10368e8a698e4b256_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139069d9cd89f_image20_712058fe043ecff10368e8a698e4b256_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=036c4e8a83">Save to Pieces</a>
 
@@ -277,16 +277,16 @@ Next, we use the<a href="https://pub.dev/documentation/ffigen/latest/ffigen/Conf
 Note: For the NSTimeZone, we specified the FFI Gen configuration inside the pubspec.yaml.
 Finally, we use <a href="https://pub.dev/documentation/ffigen/latest/ffigen/parse.html">parse</a> to generate the bindings. The output from this step is compares against the strings, for instance:
 
-![](ttps://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d1591390c459cd87c_image26_ccb3d0de8d926ec23ad42e984b2f9583_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d1591390c459cd87c_image26_ccb3d0de8d926ec23ad42e984b2f9583_800.png)
 <a href="https://aseem.pieces.cloud/?p=ab5f4abcc3">Save to Pieces</a>
 This is because once we run the test using this command:
 
-![](ot; in the terminal. " src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913937bd9cd884_image24_35c0f42a579c56d9c91c4dfc0866ee47_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6d15913937bd9cd884_image24_35c0f42a579c56d9c91c4dfc0866ee47_800.png)
 
 <a href="https://aseem.pieces.cloud/?p=e8824a96af">Save to Pieces</a>
 It generates the config file during the runtime and then it gets compared with the strings inside the test.
 
-![](c="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139d8fa9cd890_image17_5742967ac62bdc07adbb10a4339d4b24_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/637e8a6e159139d8fa9cd890_image17_5742967ac62bdc07adbb10a4339d4b24_800.png)
 
 ## Conclusion
 

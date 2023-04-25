@@ -24,7 +24,7 @@ id="">7. Finally, to provide support for syntax highlighting and code completion
 id="">With your dev environment all set up, you’re ready to start Flutter app development. This guide explains how to build a movie catalog web application that shows a list of movies under specific categories, where the content changes in each category according to the data available. This application was chosen for this Flutter tutorial as it will help you learn most of the fundamentals.
 id="">The user interface (UI) takes inspiration from the design below by <a href="https://dribbble.com/shots/3840377-Movie-Dashboard-for-Ipad/attachments/869734?mode=media" target="_blank" id="">Dribble artist Zaini Achmad</a>. Though it may seem complex for a beginner, building this application will allow you to appreciate the power of Flutter widgets and learn how to break down complex interfaces into simple and smaller units that are easier to build.
 id="">Please note, as this will not be a fully functioning web application, the data for the interface will be static and not all functionality will be covered. However, the tutorial will demonstrate how to design a Flutter UI that’s as close as possible to the sample artwork.
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2d5f801072c34a6b58_1*2NEY8dPdRjlcceMMRREK1g.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2d5f801072c34a6b58_1*2NEY8dPdRjlcceMMRREK1g.png" width="auto" height="auto" loading="auto" id)
 
 ## Building the App
 id="">Now that you’ve been introduced to Flutter and you have an idea about the app you’ll be building, it’s time to put together your Flutter web app and get it running. Each section will cover various tasks to explain and walk you through every aspect of building the application. 
@@ -32,10 +32,10 @@ id="">Now that you’ve been introduced to Flutter and you have an idea about th
 ### 1. Create and Run the Initial Project
 id="">First, you need to create a starter project. Enter the terminal change directory to an appropriate location on your system where you can start a project and run the command below:
 id="">In the command above, you’re telling Flutter to create a new Flutter app with the name “movie_catalogue”. This will scaffold a basic Flutter starter app with the name “movie_catalogue” into a directory with the same name. You should have an output similar to this:
-![](src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2d7c1a3c84e1106c31_1*pdGzxFctzQtzs0f8ba40aw.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2d7c1a3c84e1106c31_1*pdGzxFctzQtzs0f8ba40aw.png" width="auto" height="auto" loading="auto" id)
 id="">You can now change the directory to the project directory and run the basic app in your Chrome browser. Then, switch to the IDE of your choice (Android Studio for this tutorial). Open the project directory in your IDE to start writing some code.
 id="">You should have an output like this:
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2dda66886dd2594d54_1*J7_-4m7nWqWIuroVZb_SaQ.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2dda66886dd2594d54_1*J7_-4m7nWqWIuroVZb_SaQ.png" width="auto" height="auto" loading="auto" id)
 id="">Before you get started, clean up the `main.dart` file in the root of the project directory to contain only the code below for now:
 id="">In the above code, you’ve created a class called `TheMovieCatalogue`, which is the base of your app. It extends a `Stateless` widget, therefore making this class a widget (more to come on that in the “Building the Layout and User Interface” section below). It contains a build method that generates the final structure of the UI based on the various widgets described and their nested or lower-level widgets. In this case, you’re retrieving a `MaterialApp` widget from the Material library in Flutter (imported at the top of the file). This implements Google’s material design UI out of the box and gives you access to a wide range of widgets for building your user interface.
 id="">The `void main()` function you see is where the app gets called to start running when launched. Currently, if you run this Flutter web app, you’ll be presented with a blank page. Time to build your UI.
@@ -50,7 +50,7 @@ id="">In the file linked above, you have six constant variables declared and ini
 - id="">`bImageBase`: the string value for the base url for the backdrop images of each movie.
 - id="">`genres`: a list of movie genres with their ID and names.
 - id="">`newReleases`, `mostPopular`, `recommended`, and `topChart` are all lists of movies for the menu items “New Releases,” “Most Popular,” “Recommended,” and “Top Chart,” respectively.
-id=""><strong id="">Note:** In Dart, a JSON object is of type `Map&lt;dynamic,dynamic&gt;` because the keys of an object can be numeric or string values. However, since you’re sure that the keys of your objects are strings, you specify the map as `Map&lt;String,dynamic&gt;`. Therefore, for a list of JSON objects that is a list of maps, you type `List&lt;Map&lt;String,dynamic&gt;&gt;`.
+id=""><strong id="">Note:** In Dart, a JSON object is of type `Map<dynamic,dynamic>` because the keys of an object can be numeric or string values. However, since you’re sure that the keys of your objects are strings, you specify the map as `Map<String,dynamic>`. Therefore, for a list of JSON objects that is a list of maps, you type `List<Map<String,dynamic>>`.
 id="">Each object has a structure as below:
 id="">With your data in place, you can now proceed.
 
@@ -58,10 +58,10 @@ id="">With your data in place, you can now proceed.
 id="">Flutter UIs are built on blocks of widgets. Each and every item consists of one or more widgets just like UIs in standard web development are built using blocks of HTML elements. Each widget provides you with options to describe what it should look like or how it should behave: <a href="https://docs.flutter.dev/development/ui/widgets-intro" target="_blank" id="">Flutter has a widget for almost anything you can imagine</a>.
 id="">This section will cover how to get started using widgets to build the layout and UI for your Flutter web app.
 id="">To make this simple, you can break down the design into various sections as depicted in the diagram below, identify the units within them to build them individually, and finally bring them all together.
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2d8876883239ede34a_1*xlZCtnQQnR_g4fD-aO4SGg.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2d8876883239ede34a_1*xlZCtnQQnR_g4fD-aO4SGg.png" width="auto" height="auto" loading="auto" id)
 id="">You need to create a main widget that will provide the overall structure in which the various widgets for the individual sections will be placed. Below is a skeleton and tree of the layout that this tutorial will help you achieve. It lists the main widgets that are going to be used to compose the various sections.
 id="">However, some of these widgets will be wrapped in other widgets not shown in the diagram or tree. They are mainly to introduce some level of control or specific visual behaviors and effects, but will not affect the main structure.
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2d345e6d34522e2777_1*Vlz-EnpXLX3RfKeqgqCH6g.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2d345e6d34522e2777_1*Vlz-EnpXLX3RfKeqgqCH6g.png" width="auto" height="auto" loading="auto" id)
 id="">To get started, create a file called `layout.dart` inside the `lib` directory of the project root and edit its content as follows:
 id="">Here’s what’s going on in the code snippet above:
 id="">1. &nbsp;You create a `StatefulWidget` called “AppLayout” that’ll be used to contain and coordinate all other child widgets. You use a `StatefulWidget` because you’ll be handling and manipulating data for dynamic content based on specific events or actions. This can only be done in a widget with a state.
@@ -76,7 +76,7 @@ id="">9. For the Main Pane section, you use another expanded widget so it can ex
 id="">Now run the app in your browser — using either your IDE controls or the terminal — using this command:
 id="">You should have an output similar to the one below.
 
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2dc9e8b141b2aeb8af_1*NZLTZiz_8AY01674lwMQmw.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2dc9e8b141b2aeb8af_1*NZLTZiz_8AY01674lwMQmw.png" width="auto" height="auto" loading="auto" id)
 
 id="">Create a directory inside the `lib` directory of your project root and name it `widgets`. Create another directory there called `leftpane`. This directory will contain all the code and custom widgets related to the left pane.
 id="">Next, you’ll create the following files — ` main_nav_item.dart`, `sub_nav_item.dart`, and `left_pane_widget.dart`— inside the `leftpane` directory, and then follow the instructions below for creating the content within each.
@@ -98,7 +98,7 @@ id="">Change this:
 id="">to this:
 id="">Now run the app to see what you have. Your output should be similar to the image below. You’ll notice the menu items are clickable but nothing happens. You’ll work on that later.
 
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2edec22224e81083b4_1*aDEll10Y8_WD6GqmUo_01A.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2edec22224e81083b4_1*aDEll10Y8_WD6GqmUo_01A.png" width="auto" height="auto" loading="auto" id)
 
 id="">This section consists of two major components: the Profile Section and the Search Bar. Start by creating a directory named `mainheader` inside the `widgets` directory and create the following three files to provide the content for the components.
 id="">As you can see, this is a very simple widget.
@@ -116,7 +116,7 @@ id="">As you can see above, you’re returning a `Flexible` widget so that the s
 id="">Once again, update the `AppLayout` widget to include the `MainHeader` widget instead of the existing `Row` widget. You should edit the `layout.dart` file as follows:
 id="">Running the app should now give you the following output.
 
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2ef8f5c6eea1f36e08_1*DhUXbIeH4hcEcG2Biq0zoA.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2ef8f5c6eea1f36e08_1*DhUXbIeH4hcEcG2Biq0zoA.png" width="auto" height="auto" loading="auto" id)
 
 id="">This section has two major components. The first is the Sort Section and the second is the View Controls. Create a directory named `subheader` inside the `widgets` directory. You’ll then create the three files — `sort_control.dart`, `view_controls.dart`, and `sub_header.dart` — and define the contents for each file as per the specific instructions below.
 id="">The row contains the following children:
@@ -126,7 +126,7 @@ id="">The row contains the following children:
 id="">Update the `AppLayout` widget to now include the `SubHeader` widget instead of the existing `Row` widget. Edit the `layout.dart` file as follows:
 id="">Running the app should now give you an output that looks like the image below.
 
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2efad35e5d2e892549_1*qRXbuBw9KVbptzJhhg-VRg.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2efad35e5d2e892549_1*qRXbuBw9KVbptzJhhg-VRg.png" width="auto" height="auto" loading="auto" id)
 
 id="">This widget is the part of the application to which most attention will be paid by users, as it contains the main content. This part of the app takes the data provided and creates a grid of scrollable tile items. The contents of the file are as follows:
 - id="">Then, you define a constructor that allows you to initialize the data variable. This means when creating or instantiating this widget, you need to provide a list of maps with the movie data that will be used to build the `<a href="https://api.flutter.dev/flutter/widgets/GridView-class.html" target="_blank" id="">GridView`</a> of movies.
@@ -150,7 +150,7 @@ id="">Next, you replace the “Hellooooo World” `Text` widget with the `MainPa
 id="">Change this block:
 id="">to this:
 id="">Running the app should now give you an output similar to the following image.
-![](g src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2e14ca970ae5b9f4a3_1*ZsV3zYKiiY_FtYrsSPdIYg.png" width="auto" height="auto" loading="auto" id)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/628fed2e14ca970ae5b9f4a3_1*ZsV3zYKiiY_FtYrsSPdIYg.png" width="auto" height="auto" loading="auto" id)
 
 ### 4. Adding Basic Functionality
 id="">As stated earlier in this tutorial, the goal is to achieve basic functionality in our Flutter web app. In this case, making the main navigation on the left pane functional. In other words, clicking on each item will do two things:

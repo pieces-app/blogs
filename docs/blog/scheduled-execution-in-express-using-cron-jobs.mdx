@@ -24,8 +24,8 @@ npm install --save node-cron```<a href="https://melvin.pieces.cloud/?p=2b3e499ff
 
 To get started with using node-cron, use the code below:
 ```
-cron.schedule(&quot; */2 * * * * *&quot;, () =&gt; {
-  console.log(&quot;A cron job that runs every 2 seconds&quot;);
+cron.schedule(" */2 * * * * *", () => {
+  console.log("A cron job that runs every 2 seconds");
 });```<a href="https://melvin.pieces.cloud/?p=39db43a1fe" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 In the code block above, we have the cron package assigned to a variable cron. Then, we call the ```schedule``` method as seen on line 3. The ```schedule``` method accepts two required parameters and an optional configuration parameter:
@@ -38,23 +38,23 @@ Lastly, we have the third optional parameter. This is a configuration object wit
 - ```recoverMissedExecutions```: This is a boolean value. It allows you to specify if the package should catch missed executions instead of skipping them.
 ```
 const job = cron.schedule(
-  &quot; * */40 * * * *&quot;,
-  () =&gt; {
-    console.log(&quot;A cron job that runs every 40 minutes&quot;);
-    console.log(&quot;This job will start in 20 minutes&quot;);
+  " * */40 * * * *",
+  () => {
+    console.log("A cron job that runs every 40 minutes");
+    console.log("This job will start in 20 minutes");
   },
   {
     scheduled: false,
-    timezone: &quot;Nigeria/Lagos&quot;,
+    timezone: "Nigeria/Lagos",
   }
 );
 // this will start the job in 20 minutes
-setTimeout(() =&gt; {
+setTimeout(() => {
   job.start();
 }, 1000 * 60 * 20);```<a href="https://melvin.pieces.cloud/?p=89a54fab90" target="_blank" rel="noopener noreferrer">Save this code</a>
 
 ## Setting up an Express Application
-Now, we’ll set up an express server and see how we can use the node-cron package; you can find the project repository <a href="https://github.com/MelvinManni/express-cron" target="_blank" rel="noopener noreferrer">here</a>. The first step is to create an express server. To do this, we’ll create an &quot;express-cron&quot; folder and initialize a node application with this command:
+Now, we’ll set up an express server and see how we can use the node-cron package; you can find the project repository <a href="https://github.com/MelvinManni/express-cron" target="_blank" rel="noopener noreferrer">here</a>. The first step is to create an express server. To do this, we’ll create an "express-cron" folder and initialize a node application with this command:
 ```
 npm init -y```<a href="https://melvin.pieces.cloud/?p=28d14c9892" target="_blank" rel="noopener noreferrer">Save this code</a>
 
@@ -65,20 +65,20 @@ npm install --save express node-cron nodemon```<a href="https://melvin.pieces.cl
 The <a href="https://www.npmjs.com/package/nodemon" target="_blank" rel="noopener noreferrer">nodemon</a> package from the above command will automatically restart the server when file changes are detected. Once we’ve added the required packages, we’ll add scripts to ```package.json```.
 ```
 {
-  &quot;name&quot;: &quot;cron&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;main&quot;: &quot;server.js&quot;,
-  &quot;license&quot;: &quot;MIT&quot;,
+  "name": "cron",
+  "version": "1.0.0",
+  "main": "server.js",
+  "license": "MIT",
   //add this to  package.json
-  &quot;scripts&quot;: {
-    &quot;start&quot;: &quot;node server.js&quot;,
-    &quot;dev&quot;: &quot;nodemon server.js&quot;
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   //scripts ends here
-  &quot;dependencies&quot;: {
-    &quot;express&quot;: &quot;^4.18.1&quot;,
-    &quot;node-cron&quot;: &quot;^3.0.2&quot;,
-    &quot;nodemon&quot;: &quot;^2.0.20&quot;
+  "dependencies": {
+    "express": "^4.18.1",
+    "node-cron": "^3.0.2",
+    "nodemon": "^2.0.20"
   }
 }
 ```
@@ -87,55 +87,55 @@ The <a href="https://www.npmjs.com/package/nodemon" target="_blank" rel="noopene
 
 The next step will be to set up our express server:
 ```
-const express = require(&quot;express&quot;);
+const express = require("express");
 const app = express()
-app.get(&quot;/&quot;, (_, res) =&gt; {
-  res.send(&quot;Welcome to CRON server&quot;);
+app.get("/", (_, res) => {
+  res.send("Welcome to CRON server");
 });
 
 const PORT = process.env.PORT || 4400;
-app.listen(PORT, () =&gt; {
+app.listen(PORT, () => {
   console.log(&#x60;PORT running on: ${PORT}&#x60;);
 });```<a href="https://melvin.pieces.cloud/?p=43774abf53" target="_blank" rel="noopener noreferrer">Save this code</a>
 
-We import the express package in the code block above and assign it to the variable ```app```**. **On line 4, we have the home route for the server; this will send a response with the &quot;welcome to cron server&quot; message to the browser when we hit that route. Then, we’ll set the server to listen to the port set up in the <a href="https://nodejs.org/dist/latest-v8.x/docs/api/process.html#process_process_env" target="_blank" rel="noopener noreferrer">environment variable</a> or 4400. Finally, to start the application in development mode, we’ll run the following command:
+We import the express package in the code block above and assign it to the variable ```app```**. **On line 4, we have the home route for the server; this will send a response with the "welcome to cron server" message to the browser when we hit that route. Then, we’ll set the server to listen to the port set up in the <a href="https://nodejs.org/dist/latest-v8.x/docs/api/process.html#process_process_env" target="_blank" rel="noopener noreferrer">environment variable</a> or 4400. Finally, to start the application in development mode, we’ll run the following command:
 ```
 npm run dev     ```<a href="https://melvin.pieces.cloud/?p=bd0b4cbd96">Save this code</a>
 
-![](uploads-ssl.webflow.com/6143afec68f555387049efb3/63af0436c258ebb4d8672d37_image1_d3b626db6941982f5c9cfead84ab4069_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63af0436c258ebb4d8672d37_image1_d3b626db6941982f5c9cfead84ab4069_800.png)
 
 ### Using Node-cron in an Express App
 To use the node-cron in an express app, we’ll assign the package to the variable ```cron```**. **Then, as discussed in the section above, we must call the schedule method and pass in the parameters.
 ```
-const express = require(&quot;express&quot;);
-const cron = require(&quot;node-cron&quot;);
+const express = require("express");
+const cron = require("node-cron");
 const app = express();
-app.get(&quot;/&quot;, (_, res) =&gt; {
-  res.send(&quot;Welcome to CRON server&quot;);
+app.get("/", (_, res) => {
+  res.send("Welcome to CRON server");
 });
-cron.schedule(&quot; */2 * * * * *&quot;, () =&gt; {
-  console.log(&quot;A cron job that runs every 2 seconds&quot;);
+cron.schedule(" */2 * * * * *", () => {
+  console.log("A cron job that runs every 2 seconds");
 });
-cron.schedule(&quot; * */2 * * * *&quot;, () =&gt; {
-  console.log(&quot;A cron job that runs every 2 minutes&quot;);
+cron.schedule(" * */2 * * * *", () => {
+  console.log("A cron job that runs every 2 minutes");
 });
 const job = cron.schedule(
-  &quot; * */40 * * * *&quot;,
-  () =&gt; {
-    console.log(&quot;A cron job that runs every 40 minutes&quot;);
-    console.log(&quot;This job will start in 20 minutes&quot;);
+  " * */40 * * * *",
+  () => {
+    console.log("A cron job that runs every 40 minutes");
+    console.log("This job will start in 20 minutes");
   },
   {
     scheduled: false,
-    timezone: &quot;Nigeria/Lagos&quot;,
+    timezone: "Nigeria/Lagos",
   }
 );
 // this will start the job in 20 minutes
-setTimeout(() =&gt; {
+setTimeout(() => {
   job.start();
 }, 1000 * 60 * 20);
 const PORT = process.env.PORT || 4400;
-app.listen(PORT, () =&gt; {
+app.listen(PORT, () => {
   console.log(&#x60;PORT running on: ${PORT}&#x60;);
 });```<a href="https://melvin.pieces.cloud/?p=7ef543b990" target="_blank" rel="noopener noreferrer">Save this code</a>
 

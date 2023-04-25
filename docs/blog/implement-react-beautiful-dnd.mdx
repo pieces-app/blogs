@@ -28,7 +28,7 @@ Here are some other libraries that you can use to build drag and drop in React:
 ## What Are We Going to Build?
 As a React Beautiful DnD example, we’re going to build a very simple application that’ll have a list of items that we can drag and drop to reorder.
 The final product will look something like this.
-![](utiful DnD." src="https://uploads-ssl.webflow.com/6143afec68f555387049efb3/633d9f691db56726cbfbe5a2_image1_df7be4ab1983a48fb63217626b49cabb_800.p)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/633d9f691db56726cbfbe5a2_image1_df7be4ab1983a48fb63217626b49cabb_800.png)
 
 ### Prerequisites
 You’ll need a basic knowledge of React, and that’s it! Let's get started.
@@ -44,15 +44,15 @@ First, let’s make a simple list of tasks as a starting point:
 const initialTasks = [
   {
     id: 1,
-    title: &quot;Task 1&quot;,
+    title: "Task 1",
   },
   {
     id: 2,
-    title: &quot;Task 2&quot;,
+    title: "Task 2",
   },
   {
     id: 3,
-    title: &quot;Task 3&quot;,
+    title: "Task 3",
   },
 ];```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=048f4f9d14" target="_blank" rel="noopener noreferrer">Save this code</a>
 
@@ -60,14 +60,14 @@ const initialTasks = [
 The first step in using drag and drop functionality is to declare a particular area on the screen as droppable.
 The way we do this is by creating context. We will use this context to wrap the area on the screen where we want drag and drop:
 ```
-&lt;DragDropContext onDragEnd={onDragEnd}&gt;
+<DragDropContext onDragEnd={onDragEnd}>
   All drag-and-drop functionality happens inside this context
-&lt;/DragDropContext&gt
+</DragDropContext&gt
 ```
 You’ll notice a special function called ```onDragEnd``` passed into the context. We’ll use this function to update the state of our application.
 For now, let’s use the following code:
 ```
-const onDragEnd = (result) =&gt; {
+const onDragEnd = (result) => {
  console.log(result);
 }
 ```
@@ -76,14 +76,14 @@ Basically, this function will be called after a user finishes a drag and drop op
 ### 3. Create the Droppable Area
 Let's create a React Beautiful DnD component that will be used to wrap the area on the screen that will be droppable:
 ```
-&lt;Droppable droppableId=&quot;tasks&quot;&gt;
-  {(provided) =&gt; (
-    &lt;div ref={provided.innerRef} {...provided.droppableProps}&gt;
+<Droppable droppableId="tasks">
+  {(provided) => (
+    <div ref={provided.innerRef} {...provided.droppableProps}>
       { Your draggable items go here }
       {provided. placeholder} // This is a placeholder that will be used to show the space where the item will be dropped
-    &lt;/div&gt;
+    </div>
   )}
-&lt;/Droppable&gt;```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=60a2428c3b" target="_blank" rel="noopener noreferrer">Save this code </a>
+</Droppable>```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=60a2428c3b" target="_blank" rel="noopener noreferrer">Save this code </a>
 The ```droppableId``` is a unique identifier for the droppable area. This is used to identify the area when a drag and drop operation is completed.
 The ```provided``` object contains two properties:
 - The ```innerRef``` refers to the <a href="https://code.pieces.app/blog/understanding-dom-and-virtual-dom-and-how-they-work-with-react" target="_blank" rel="noopener noreferrer">DOM element</a> that wraps the droppable area.
@@ -93,18 +93,18 @@ The ```provided``` object contains two properties:
 Now, let's go over the task items individually and make them draggable:
 ```
 {
-  tasks.map((task, index) =&gt; (
-    &lt;Draggable key={task.id} draggableId={task.id.toString()} index={index}&gt;
-      {(provided) =&gt; (
-        &lt;div
+  tasks.map((task, index) => (
+    <Draggable key={task.id} draggableId={task.id.toString()} index={index}>
+      {(provided) => (
+        <div
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={provided.innerRef}
-        &gt;
-          &lt;div&gt;{task.title}&lt;/div&gt;
-        &lt;/div&gt;
+        >
+          <div>{task.title}</div>
+        </div>
       )}
-    &lt;/Draggable&gt;
+    </Draggable>
   ));
 }
 ```
@@ -119,7 +119,7 @@ Let's solve that issue!
 ### 5. Update the State with React Beautiful Dnd
 The above issue occurs because the application's state is not updated when the drag and drop operation is completed. Let's do that:
 ```
-const onDragEnd = (result) =&gt; {
+const onDragEnd = (result) => {
  if (!result.destination) return;
  const items = Array.from(tasks);
  const [reorderedItem] = items.splice(result.source.index, 1);
@@ -132,25 +132,25 @@ The ```destination``` property contains the ```index``` and ```droppableId``` of
 
 ### 6. Complete Code
 ```
-import React, { useState } from &quot;react&quot;;
-import { DragDropContext, Droppable, Draggable } from &quot;react-beautiful-dnd&quot;;
+import React, { useState } from "react&quot;;
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd&quot;;
 const initialTasks = [
   {
     id: 1,
-    title: &quot;Task 1&quot;,
+    title: "Task 1",
   },
   {
     id: 2,
-    title: &quot;Task 2&quot;,
+    title: "Task 2",
   },
   {
     id: 3,
-    title: &quot;Task 3&quot;,
+    title: "Task 3",
   },
 ];
 function App() {
  const [tasks, setTasks] = useState(initialTasks);
- const onDragEnd = (result) =&gt; {
+ const onDragEnd = (result) => {
  if (!result.destination) return;
  const items = Array.from(tasks);
  const [reorderedItem] = items.splice(result.source.index, 1);
@@ -158,34 +158,34 @@ function App() {
     setTasks(items);
   };
  return (
-    &lt;div className=&quot;App&quot;&gt;
-      &lt;DragDropContext onDragEnd={onDragEnd}&gt;
-        &lt;Droppable droppableId=&quot;tasks&quot;&gt;
-          {(provided) =&gt; (
-            &lt;div ref={provided.innerRef} {...provided.droppableProps}&gt;
-              {tasks.map((task, index) =&gt; (
-                &lt;Draggable
+    <div className="App">
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="tasks">
+          {(provided) => (
+            <div ref={provided.innerRef} {...provided.droppableProps}>
+              {tasks.map((task, index) => (
+                <Draggable
                   key={task.id}
                   draggableId={task.id.toString()}
                   index={index}
-                &gt;
-                  {(provided) =&gt; (
-                    &lt;div
+                >
+                  {(provided) => (
+                    <div
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
-                    &gt;
-                      &lt;div&gt;{task.title}&lt;/div&gt;
-                    &lt;/div&gt;
+                    >
+                      <div>{task.title}</div>
+                    </div>
                   )}
-                &lt;/Draggable&gt;
+                </Draggable>
               ))}
               {provided.placeholder}
-            &lt;/div&gt;
+            </div>
           )}
-        &lt;/Droppable&gt;
-      &lt;/DragDropContext&gt;
-    &lt;/div&gt;
+        </Droppable>
+      </DragDropContext>
+    </div>
   );
 }
 export default App;```<a href="https://a5411705-e582-4f98-a138-5ded95573d50.pieces.cloud/?p=a49f4186fa" target="_blank" rel="noopener noreferrer">Save this code</a>
@@ -203,15 +203,15 @@ To fix this issue, you have to remove the ```React.StrictMode```.
 Instead of this:
 ```
 ReactDOM.render(
-  &lt;React.StrictMode&gt;
-    &lt;App /&gt;
-  &lt;/React.StrictMode&gt;,
-  document.getElementById(&quot;root&quot;)
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
 )
 ```
 Use this:
 ```
-ReactDOM.render(&lt;App /&gt;, document.getElementById(&quot;root&quot;))
+ReactDOM.render(<App />, document.getElementById("root"))
 ```
 This should solve the issue.
 

@@ -22,22 +22,22 @@ import logo from './logo.svg';
 import './App.css';
 function App() {
  return (
- &lt;div className=&quot;App&quot;&gt;
- &lt;header className=&quot;App-header&quot;&gt;
- &lt;img src={logo} className=&quot;App-logo&quot; alt=&quot;logo&quot; /&gt;
- &lt;p&gt;
-          Edit &lt;code&gt;src/App.js&lt;/code&gt; and save to reload.
- &lt;/p&gt;
- &lt;a
-          className=&quot;App-link&quot;
-          href=&quot;https://reactjs.org&quot;
-          target=&quot;_blank&quot;
-          rel=&quot;noopener noreferrer&quot;
-        &gt;
+ <div className="App">
+ <header className="App-header">
+ <img src={logo} className="App-logo" alt="logo" />
+ <p>
+          Edit <code>src/App.js</code> and save to reload.
+ </p>
+ <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Learn React
- &lt;/a&gt;
- &lt;/header&gt;
- &lt;/div&gt;
+ </a>
+ </header>
+ </div>
   );
 }
 export default App
@@ -51,13 +51,13 @@ npm install react-tsparticles```<pre>npm install tsparticles
 After that, import Particles from ```react-tsparticles``` and ```{ loadFull }``` from ```tsparticles```:
 ```
 import './App.css';
-import Particles from &quot;react-tsparticles&quot;;
-import { loadFull } from &quot;tsparticles&quot;;
+import Particles from "react-tsparticles&quot;;
+import { loadFull } from "tsparticles&quot;;
 function App() {
  return (
- &lt;div className=&quot;App&quot;&gt;
- &lt;h1&gt;Welcome!&lt;/h1&gt;
- &lt;/div&gt;
+ <div className="App">
+ <h1>Welcome!</h1>
+ </div>
   );
 }
 export default App
@@ -65,18 +65,18 @@ export default App
 You can use the Particles component by passing some props such as ```init``` and ```id```, which will be initialization functions. Also, you’ll use the ```options``` prop, which will be the configurations for particles that we want to display:
 ```
 import './App.css';
-import Particles from &quot;react-tsparticles&quot;;
-import { loadFull } from &quot;tsparticles&quot;;
+import Particles from "react-tsparticles&quot;;
+import { loadFull } from "tsparticles&quot;;
 function App() {
  return (
- &lt;div className=&quot;App&quot;&gt;
- &lt;h1&gt;Welcome!&lt;/h1&gt;
- &lt;Particles
-      id=&quot;tsparticles&quot;
+ <div className="App">
+ <h1>Welcome!</h1>
+ <Particles
+      id="tsparticles"
       init={particlesInit}
       options={ // display config
-      }/&gt;
- &lt;/div&gt;
+      }/>
+ </div>
   );
 }
 export default App
@@ -85,168 +85,168 @@ You’re almost done! You just have to configure your particles/objects in order
 Below is the particle configuration for the project:
 ```
 import './App.css';
-import Particles from &quot;react-tsparticles&quot;;
-import { loadFull } from &quot;tsparticles&quot;;
+import Particles from "react-tsparticles&quot;;
+import { loadFull } from "tsparticles&quot;;
 function App() {
   return (
-    &lt;div className=&quot;App&quot;&gt;
-     &lt;h1&gt;Welcome!&lt;/h1&gt;
-     &lt;Particles
-      id=&quot;tsparticles&quot;
+    <div className="App">
+     <h1>Welcome!</h1>
+     <Particles
+      id="tsparticles"
       init={particlesInit}
       options={{
- &quot;fullScreen&quot;: {
- &quot;enable&quot;: true,
- &quot;zIndex&quot;: 1
+ "fullScreen": {
+ "enable": true,
+ "zIndex": 1
         },
- &quot;detectRetina&quot;: true,
- &quot;fpsLimit&quot;: 120,
- &quot;interactivity&quot;: {
- &quot;events&quot;: {
- &quot;onClick&quot;: {
- &quot;enable&quot;: true,
- &quot;mode&quot;: &quot;push&quot;
+ "detectRetina": true,
+ "fpsLimit": 120,
+ "interactivity": {
+ "events": {
+ "onClick": {
+ "enable": true,
+ "mode": "push"
                 },
- &quot;onDiv&quot;: {
- &quot;elementId&quot;: &quot;repulse-div&quot;,
- &quot;enable&quot;: false,
- &quot;mode&quot;: &quot;repulse&quot;
+ "onDiv": {
+ "elementId": "repulse-div",
+ "enable": false,
+ "mode": "repulse"
                 },
- &quot;onHover&quot;: {
- &quot;enable&quot;: true,
- &quot;mode&quot;: &quot;connect&quot;,
- &quot;parallax&quot;: {
- &quot;enable&quot;: false,
- &quot;force&quot;: 60,
- &quot;smooth&quot;: 10
+ "onHover": {
+ "enable": true,
+ "mode": "connect",
+ "parallax": {
+ "enable": false,
+ "force": 60,
+ "smooth": 10
                     }
                 },
- &quot;resize&quot;: true
+ "resize": true
             },
- &quot;modes&quot;: {
- &quot;bubble&quot;: {
- &quot;distance&quot;: 400,
- &quot;duration&quot;: 2,
- &quot;opacity&quot;: 0.8,
- &quot;size&quot;: 40,
- &quot;speed&quot;: 3
+ "modes": {
+ "bubble": {
+ "distance": 400,
+ "duration": 2,
+ "opacity": 0.8,
+ "size": 40,
+ "speed": 3
                 },
- &quot;connect&quot;: {
- &quot;distance&quot;: 80,
- &quot;lineLinked&quot;: {
- &quot;opacity&quot;: 0.5
+ "connect": {
+ "distance": 80,
+ "lineLinked": {
+ "opacity": 0.5
                     },
- &quot;radius&quot;: 60
+ "radius": 60
                 },
- &quot;grab&quot;: {
- &quot;distance&quot;: 400,
- &quot;lineLinked&quot;: {
- &quot;opacity&quot;: 1
+ "grab": {
+ "distance": 400,
+ "lineLinked": {
+ "opacity": 1
                     }
                 },
- &quot;push&quot;: {
- &quot;quantity&quot;: 4
+ "push": {
+ "quantity": 4
                 },
- &quot;remove&quot;: {
- &quot;quantity&quot;: 2
+ "remove": {
+ "quantity": 2
                 },
- &quot;repulse&quot;: {
- &quot;distance&quot;: 200,
- &quot;duration&quot;: 0.4
+ "repulse": {
+ "distance": 200,
+ "duration": 0.4
                 }
             }
         },
- &quot;particles&quot;: {
- &quot;color&quot;: {
- &quot;value&quot;: &quot;random&quot;
+ "particles": {
+ "color": {
+ "value": "random"
             },
- &quot;lineLinked&quot;: {
- &quot;blink&quot;: false,
- &quot;color&quot;: &quot;#ffffff&quot;,
- &quot;consent&quot;: false,
- &quot;distance&quot;: 150,
- &quot;enable&quot;: false,
- &quot;opacity&quot;: 0.4,
- &quot;width&quot;: 1
+ "lineLinked": {
+ "blink": false,
+ "color": "#ffffff",
+ "consent": false,
+ "distance": 150,
+ "enable": false,
+ "opacity": 0.4,
+ "width": 1
             },
- &quot;move&quot;: {
- &quot;attract&quot;: {
- &quot;enable&quot;: false,
- &quot;rotate&quot;: {
- &quot;x&quot;: 600,
- &quot;y&quot;: 1200
+ "move": {
+ "attract": {
+ "enable": false,
+ "rotate": {
+ "x": 600,
+ "y": 1200
                     }
                 },
- &quot;bounce&quot;: false,
- &quot;direction&quot;: &quot;none&quot;,
- &quot;enable&quot;: true,
- &quot;outMode&quot;: &quot;out&quot;,
- &quot;random&quot;: false,
- &quot;speed&quot;: 6,
- &quot;straight&quot;: false
+ "bounce": false,
+ "direction": "none",
+ "enable": true,
+ "outMode": "out",
+ "random": false,
+ "speed": 6,
+ "straight": false
             },
- &quot;number&quot;: {
- &quot;density&quot;: {
- &quot;enable&quot;: true,
- &quot;area&quot;: 800
+ "number": {
+ "density": {
+ "enable": true,
+ "area": 800
                 },
- &quot;limit&quot;: 500,
- &quot;value&quot;: 300
+ "limit": 500,
+ "value": 300
             },
- &quot;opacity&quot;: {
- &quot;animation&quot;: {
- &quot;enable&quot;: false,
- &quot;minimumValue&quot;: 0.1,
- &quot;speed&quot;: 1,
- &quot;sync&quot;: false
+ "opacity": {
+ "animation": {
+ "enable": false,
+ "minimumValue": 0.1,
+ "speed": 1,
+ "sync": false
                 },
- &quot;random&quot;: false,
- &quot;value&quot;: 0.5
+ "random": false,
+ "value": 0.5
             },
- &quot;shape&quot;: {
- &quot;type&quot;: &quot;circle&quot;
+ "shape": {
+ "type": "circle"
             },
- &quot;size&quot;: {
- &quot;animation&quot;: {
- &quot;enable&quot;: false,
- &quot;minimumValue&quot;: 0.1,
- &quot;speed&quot;: 40,
- &quot;sync&quot;: false
+ "size": {
+ "animation": {
+ "enable": false,
+ "minimumValue": 0.1,
+ "speed": 40,
+ "sync": false
                 },
- &quot;random&quot;: true,
- &quot;value&quot;: 5
+ "random": true,
+ "value": 5
             }
         },
- &quot;polygon&quot;: {
- &quot;draw&quot;: {
- &quot;enable&quot;: false,
- &quot;lineColor&quot;: &quot;#ffffff&quot;,
- &quot;lineWidth&quot;: 0.5
+ "polygon": {
+ "draw": {
+ "enable": false,
+ "lineColor": "#ffffff",
+ "lineWidth": 0.5
             },
- &quot;move&quot;: {
- &quot;radius&quot;: 10
+ "move": {
+ "radius": 10
             },
- &quot;scale&quot;: 1,
- &quot;type&quot;: &quot;none&quot;,
- &quot;url&quot;: &quot;&quot;
+ "scale": 1,
+ "type": "none",
+ "url": ""
         },
- &quot;background&quot;: {
- &quot;color&quot;: &quot;#000000&quot;,
- &quot;image&quot;: &quot;&quot;,
- &quot;position&quot;: &quot;50% 50%&quot;,
- &quot;repeat&quot;: &quot;no-repeat&quot;,
- &quot;size&quot;: &quot;cover&quot;
+ "background": {
+ "color": "#000000",
+ "image": "",
+ "position": "50% 50%",
+ "repeat": "no-repeat",
+ "size": "cover"
         }
     }
-      }/&gt;
-    &lt;/div&gt;
+      }/>
+    </div>
   );
 }
 export default App
 ```
 As a result, you’ll have this nice animation:
 
-![](flow.com/6143afec68f555387049efb3/63d1636004522c9e2e6526a0_image1_d9529ddc585753a9fa499ee5b9b5b769.g)
+![](https://uploads-ssl.webflow.com/6143afec68f555387049efb3/63d1636004522c9e2e6526a0_image1_d9529ddc585753a9fa499ee5b9b5b769.g)
 
 Now that you have options for different preset configurations, play with them! Below is a link to a GitHub<a href="https://github.com/matteobruni/tsparticles/tree/main/websites/particles.js.org/presets" target="_blank" rel="noopener noreferrer"> repository</a> that contains a list of various settings for different particles.
 

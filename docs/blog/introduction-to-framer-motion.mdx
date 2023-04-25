@@ -60,14 +60,14 @@ We assign this animation to our square div tag’s CSS using the animation css p
 ```
 Now, let’s create the same animation with the help of the Framer Motion library. Copy and paste the below code into your App.js file:
 ```
-&lt;motion.div
- className=&quot;square&quot;
+<motion.div
+ className="square"
  animate={{
   x: [0, 1000],
   opacity: [1, 0.8, 0.4, 0.1, 0],
  }}
- transition={{ ease: &quot;easeIn&quot;, duration: 3, repeat: Infinity }}
-/&gt;
+ transition={{ ease: "easeIn", duration: 3, repeat: Infinity }}
+/>
 ```
 Voila! It’s as simple as adding a component. All of the properties related to animation are added using animate and transition props. We will dive deeper into these props in the coming sections of this blog post.
 Before we build some examples, we’ll start off with the installation of our environment.
@@ -76,11 +76,11 @@ Before we build some examples, we’ll start off with the installation of our en
 We’re going to build our examples in React. To set up the project, we’re going to make use of the utility <a href="https://create-react-app.dev/" target="_blank" rel="noopener noreferrer">create-react-app</a>. It’s a simple utility that helps you create an initial project structure with just one command. You won’t need to install this package. When using with npx, i.e., a node package, executing it will fetch the required package from the npm registry so that the package can be executed without local installation.
 Now, let’s create our project. Copy and paste the below command in your terminal:
 ```
-npx create-react-app &lt;project-name&gt
+npx create-react-app <project-name&gt
 ```
-Where ```&lt;project-name&gt;``` is the name of your react project that you are creating. Next, navigate to your project folder and start the project:
+Where ```<project-name>``` is the name of your react project that you are creating. Next, navigate to your project folder and start the project:
 ```
-cd &lt;project-name&gt;
+cd <project-name>
 npm start
 ```
 Once the server is started, you will be welcomed with the homepage of your React app. Now it’s time for us to install the<a href="https://www.framer.com/docs/" target="_blank" rel="noopener noreferrer"> framer-motion</a> library. Copy and paste the below command into your terminal:
@@ -106,8 +106,8 @@ Let’s start by creating the basic structure of our example. This basic structu
 
 Inside your App.js file, copy and paste the below lorem ipsum text in such a way that you have a page where the text overflows the page, thus enabling a scroll bar:
 ```
-&lt;div&gt;
-  &lt;h1 className=&quot;question&quot;&gt;What is Lorem Ipsum?&lt;/h1&gt;
+<div>
+  <h1 className="question">What is Lorem Ipsum?</h1>
   Lorem Ipsum is simply dummy text of the printing and typesetting
   industry. Lorem Ipsum has been the industry's standard dummy text ever
   since the 1500s, when an unknown printer took a galley of type and
@@ -117,18 +117,18 @@ Inside your App.js file, copy and paste the below lorem ipsum text in such a way
   the release of Letraset sheets containing Lorem Ipsum passages, and
   more recently with desktop publishing software like Aldus PageMaker
   including versions of Lorem Ipsum.
- &lt;/div&gt;
+ </div>
 ```
 
 Once the text is placed, make sure your App.js file looks like below:
 ```
-import { motion } from &quot;framer-motion&quot;;
-import &quot;./styles.css&quot;;
+import { motion } from "framer-motion&quot;;
+import "./styles.css&quot;;
 export default function App() {
  return (
- &lt;div className=&quot;App&quot;&gt;
-  &lt;div&gt;
-   &lt;h1 className=&quot;question&quot;&gt;What is Lorem Ipsum?&lt;/h1&gt;
+ <div className="App">
+  <div>
+   <h1 className="question">What is Lorem Ipsum?</h1>
    Lorem Ipsum is simply dummy text of the printing and typesetting
    industry. Lorem Ipsum has been the industry's standard dummy text ever
    since the 1500s, when an unknown printer took a galley of type and
@@ -138,10 +138,10 @@ export default function App() {
    of Letraset sheets containing Lorem Ipsum passages, and more recently
    with desktop publishing software like Aldus PageMaker including versions
    of Lorem Ipsum.
-  &lt;/div&gt;
+  </div>
   /***  Lorem Ipsum text paragraphs*/
- &lt;div&gt;
-  &lt;h1 className=&quot;question&quot;&gt;Why do we use it?&lt;/h1&gt; Contrary to popular It
+ <div>
+  <h1 className="question">Why do we use it?</h1> Contrary to popular It
   is a long established fact that a reader will be distracted by the
   readable content of a page when looking at its layout. The point of
   using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -151,8 +151,8 @@ export default function App() {
   search for 'lorem ipsum' will uncover many web sites still in their
   infancy. Various versions have evolved over the years, sometimes by
   accident, sometimes on purpose (injected humour and the like).
-  &lt;/div&gt;
- &lt;/div&gt;
+  </div>
+ </div>
  );
 
 ```
@@ -168,17 +168,17 @@ Now finally update the CSS of the App class:
 ```
 To scale and animate an object when it’s in the viewport, simply place the object at the top of all of the Lorem Ipsum content and set the position attribute of the object to be absolute. Here’s what it will look like:
 ```
-import { motion } from &quot;framer-motion&quot;;
-import &quot;./styles.css&quot;;
+import { motion } from "framer-motion&quot;;
+import "./styles.css&quot;;
 export default function App() {
  return (
-  &lt;div className=&quot;App&quot;&gt;
+  <div className="App">
 {/* Objects to animate */}
-&lt;div
-     className=&quot;blob&quot;
-/&gt;
-&lt;div&gt;
- &lt;h1 className=&quot;question&quot;&gt;What is Lorem Ipsum?&lt;/h1&gt;
+<div
+     className="blob"
+/>
+<div>
+ <h1 className="question">What is Lorem Ipsum?</h1>
  Lorem Ipsum is simply dummy text of the printing and typesetting
  industry. Lorem Ipsum has been the industry's standard dummy text ever
  since the 1500s, when an unknown printer took a galley of type and
@@ -188,10 +188,10 @@ export default function App() {
  of Letraset sheets containing Lorem Ipsum passages, and more recently
  with desktop publishing software like Aldus PageMaker including versions
  of Lorem Ipsum.
-&lt;/div&gt;
+</div>
 /***  Lorem Ipsum text*/
-&lt;div&gt;
- &lt;h1 className=&quot;question&quot;&gt;Why do we use it?&lt;/h1&gt; Contrary to popular It
+<div>
+ <h1 className="question">Why do we use it?</h1> Contrary to popular It
  is a long established fact that a reader will be distracted by the
  readable content of a page when looking at its layout. The point of
  using Lorem Ipsum is that it has a more-or-less normal distribution of
@@ -201,8 +201,8 @@ export default function App() {
  search for 'lorem ipsum' will uncover many web sites still in their
  infancy. Various versions have evolved over the years, sometimes by
  accident, sometimes on purpose (injected humour and the like).
- &lt;/div&gt;
-&lt;/div&gt;
+ </div>
+</div>
  );
 
 ```
@@ -225,15 +225,15 @@ The above CSS will also ensure the following things:
 
 Now to animate this, we just need to make little changes to our object’s div tag. Replace the previous object div tag with the below code:
 ```
-&lt;motion.div
-   className=&quot;blob&quot;
+<motion.div
+   className="blob"
    initial={{ opacity: 0.5 }}
    whileInView={{ opacity: 0.5, scale: [1, 0.8, 1] }}
    animate={{
     rotate: [0, 150, 200, 150, 0]
    }}
    transition={{
-    type: &quot;spring&quot;,
+    type: "spring",
     duration: 4,
     repeat: Infinity
    }}
@@ -251,36 +251,36 @@ To make this look cooler, I’ve added the same object again with some minor cha
 
 Next, we have a bouncing ball animation. As the name of this section suggests, we’re going to make a bouncing ball. Create a new file called BouncingBall.js and copy-paste the following code:
 ```
-import &quot;./styles.css&quot;;
-import { motion } from &quot;framer-motion&quot;;
+import "./styles.css&quot;;
+import { motion } from "framer-motion&quot;;
 export default function App() {
  return (
-  &lt;div className=&quot;App&quot;&gt;
-   &lt;svg
-    height=&quot;400&quot;
-    width=&quot;400&quot;
+  <div className="App">
+   <svg
+    height="400"
+    width="400"
     style={{
-     border: &quot;1px solid black&quot;
+     border: "1px solid black"
     }}
-   &gt;
-    &lt;motion.circle
-     cx=&quot;50&quot;
-     cy=&quot;50&quot;
-     r=&quot;40&quot;
-     stroke=&quot;black&quot;
-     stroke-width=&quot;3&quot;
+   >
+    <motion.circle
+     cx="50"
+     cy="50"
+     r="40"
+     stroke="black"
+     stroke-width="3"
      animate={{
       cy: [310, 50]
      }}
      transition={{
-      ease: &quot;easeOut&quot;,
+      ease: "easeOut",
       duration: 0.9,
       yoyo: Infinity
      }}
-    /&gt;
-    &lt;path d=&quot;M 20 350 l 150 0&quot; stroke=&quot;black&quot; stroke-width=&quot;3&quot; /&gt;
-   &lt;/svg&gt;
-  &lt;/div&gt;
+    />
+    <path d="M 20 350 l 150 0" stroke="black" stroke-width="3" />
+   </svg>
+  </div>
  );
 
 ```

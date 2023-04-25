@@ -36,8 +36,7 @@ In React, each piece of UI is a component, and each component has a given state 
 After identifying the changed tree, React updates the <a href="https://www.techtarget.com/searchapparchitecture/definition/object" target="_blank" rel="noopener noreferrer">objects</a> that have been changed in the Real DOM.
 
 ### React’s Rendering Function
-```
-Render()``` is the process that updates and renders UI. The lifecycle method in React is ```render()```.
+```Render()``` is the process that updates and renders UI. The lifecycle method in React is ```render()```.
 The ```render()``` function creates the tree containing the React elements. When the state of a component is updated, ```render()``` provides a different tree containing the new React elements. By using ```setState()``` in the component, React immediately identifies the change in the state of the component and then re-renders it.
 After that, React finds a way to update the UI so that the recent changes can be reflected. At this point, React updates its Virtual DOM, and in turn, updates the changed objects on the real DOM.
 Updates to the Real DOM are sent in batches to repair and repaint the UI, leading to increased performance. This is better than sending updates on every single change.

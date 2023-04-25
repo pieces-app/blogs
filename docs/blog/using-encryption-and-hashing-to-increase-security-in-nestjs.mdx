@@ -102,8 +102,8 @@ import { User, UserDocument } from './models/users';
 import * as bcrypt from 'bcrypt';
 @Injectable()
 export class AppService {
-  constructor(@InjectModel('user') private userModel: Model&lt;UserDocument&gt;) {}
-  async createUser(user: User): Promise&lt;User&gt; {
+  constructor(@InjectModel('user') private userModel: Model<UserDocument>) {}
+  async createUser(user: User): Promise<User> {
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(user.password, salt);
     user.password = hashPassword;
@@ -116,7 +116,7 @@ In the above code snippet, we imported the ```bcrypt``` module, the ```User``` c
 Now, we’ll create another method to check if the password a user enters is the same as the plain-text equivalent of the hashed password. To do this, let’s add the method below to the AppService class:
 ```
 ...
-async loginUser(email: string, password: string): Promise&lt;string&gt; {
+async loginUser(email: string, password: string): Promise<string> {
     const user = await this.userModel.findOne({ email });
     if (user) {
       const match = await bcrypt.compare(password, user.password);
@@ -142,7 +142,7 @@ import {
 const alg = 'aes-256-ctr';
 let key = 'The Encryption Key';
 key = createHash('sha256').update(String(key)).digest('base64').substr(0, 32);
-export const encryptData = (data) =&gt; {
+export const encryptData = (data) => {
   const iv = randomBytes(16);
   const cipher = createCipheriv(alg, key, iv);
   const result = Buffer.concat([iv, cipher.update(data), cipher.final()]);
@@ -153,7 +153,7 @@ We imported all the functions we needed from the crypto module in the above code
 
 Now, let’s create another function to decrypt the data when an authorized user wants to access it. To do this, we’ll use the code snippet below:
 ```
-export const decryptData = (data) =&gt; {
+export const decryptData = (data) => {
   const iv = data.slice(0, 16);
   data = data.slice(16);
   const decipher = createDecipheriv(algorithm, key, iv);
@@ -168,7 +168,7 @@ Now, open the ```app.service.ts``` file, and create another method to encrypt an
 ...
 import { encryptData, decryptData } from './utils/encrypt-file';
 ...
-async sendMessage(message: string): Promise&lt;object&gt; {
+async sendMessage(message: string): Promise<object> {
   const encryptedMessage = encrypt(message);
   const decrytedMessage = decrypt(encryptedMessage);
   return {

@@ -82,7 +82,7 @@ An open-source contribution is only complete after a successful pull request (PR
 
 ## Version Control
 
-**Version control **is an efficient way to manage software development without making permanent changes to the source code of a project. The **source code** is an accumulation of a project’s versions, progress, documentation, and solutions. It cannot be seen by the users of that product.
+**Version control** is an efficient way to manage software development without making permanent changes to the source code of a project. The **source code** is an accumulation of a project’s versions, progress, documentation, and solutions. It cannot be seen by the users of that product.
 Developers build projects to solve the problems of their target audience. These projects often need to be updated to meet user demands. Version control supports collaboration and tracks changes made to the source code while making it accessible to the public. When developers work together on a project and make conflicting changes, version control detects the issues. Team members further tackle it by working on the source of the problem.
 ## Version Control Systems
 Version control systems (VCS) track changes made to files. There are several version control systems.
@@ -100,7 +100,10 @@ Version control systems (VCS) track changes made to files. There are several ver
 - **Configure Git**: Confirm if Git is properly installed with this command: git --version.
 - **User identification**: Set up your username and email address. It is necessary to use a functional email address as this will be associated with your GitHub account and other open-source projects.
 
-The command used for this is: ```git config
+The command used for this is:
+
+```
+git config
 ```
 
 ```
@@ -140,8 +143,11 @@ After this, save your changes and source it on the terminal using ```git add pub
 Run ```git status``` to check the file. It will show here if it is ready to be committed. Assuming it is, ```run git commit –-m``` “fix: and the sentence showing the changes you made.” Run ```git status``` again to confirm that a commit has been made.
 
 If this is positive, it means that the file has been moved to the staging area. It’s not ready to be added to the repository. At this time, the branch does not exist on the main server, so it is to be set as an upstream branch with this command:
+
 ```
-git push –set-upstream origin``` and the name of the file.
+git push –set-upstream origin
+```
+and the name of the file.
 
 This resolves all of the problems that prevent the file from leaving the terminal.
 
