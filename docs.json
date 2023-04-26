@@ -27,9 +27,19 @@
         }
     ],
     "sidebar": [
-      ["Our Favorites","/"],
-      ["Recent Publications", "/"],
-      ["This Year", "/"],
+      ["Recent Publications", [
+          ["Github & Pieces: Optimize Workflow", "/blog/github-pieces-top-10-highlights-how-pieces-optimizes-development-workflow"],
+          ["Developer Tools 2.0: Generative AI", "/blog/developer-tools-2-generative-ai"]
+      ]],
+      ["Featured", [
+          ["Top React Graph Visualization Libraries","/blog/top-react-graph-visualization-libraries"],
+          ["React Player with Customized Controls", "/blog/react-player-customized-controls"],
+          ["Role Based Access Systems in Node.JS", "/blog/role-based=access-systems-in-nodejs"],
+          ["Tailwind CSS Replacing Complex Classes @apply", "/blog/tailwind-css-replacing-complex-class-with-at-apply"]
+      ]],
+      ["This Year", [
+          ["OpenAI Api Supercharges Pieces", "/blog/openai-api-supercharges-developer-workflow-pieces"]
+      ]],
       ["Archive", "/"]
     ]
   }
