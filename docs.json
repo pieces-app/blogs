@@ -1,7 +1,35 @@
 {
-    "name": "docs.page",
-    "theme": "#36B9B9",
+    "name": "Pieces for Developers",
+    "theme": "#BFC5EA",
+    "favicon": "/assets/pieces_dark.png",
+    "logo": "/assets/pieces_dark.png",
+    "logoDark": "/assets/pieces_light.png",
+    "anchors": [
+        {
+            "title": "Visit pieces.app",
+            "icon": "home",
+            "link": "https://pieces.app"
+        },
+        {
+            "title": "Documentation",
+            "icon": "pencil",
+            "link": "https://docs.pieces.app"
+        },
+        {
+            "title": "Company News",
+            "icon": "newspaper",
+            "link": "https://news.pieces.app"
+        },
+        {
+            "title": "YouTube Channel",
+            "icon": "youtube",
+            "link": "https://youtube.com/@getpieces"
+        }
+    ],
     "sidebar": [
-    ["hi", "/"]
+      ["Our Favorites","/"],
+      ["Recent Publications", "/"],
+      ["This Year", "/"],
+      ["Archive", "/"]
     ]
   }
