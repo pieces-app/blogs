@@ -1,7 +1,59 @@
 {
-    "name": "docs.page",
-    "theme": "#36B9B9",
+    "name": "Pieces for Developers",
+    "theme": "#BFC5EA",
+    "favicon": "/assets/pieces_dark.png",
+    "logo": "/assets/pieces_dark.png",
+    "logoDark": "/assets/pieces_light.png",
+    "noindex": true,
+    "anchors": [
+        {
+            "title": "Visit pieces.app",
+            "icon": "home",
+            "link": "https://pieces.app"
+        },
+        {
+            "title": "Documentation",
+            "icon": "pencil",
+            "link": "https://docs.pieces.app"
+        },
+        {
+            "title": "Company News",
+            "icon": "newspaper",
+            "link": "https://news.pieces.app"
+        },
+        {
+            "title": "YouTube Channel",
+            "icon": "youtube",
+            "link": "https://youtube.com/@getpieces"
+        }
+    ],
     "sidebar": [
-    ["hi", "/"]
+      ["Recent Publications", [
+          ["Github & Pieces: Optimize Workflow", "/blog/github-pieces-top-10-highlights-how-pieces-optimizes-development-workflow"],
+          ["Developer Tools 2.0: Generative AI", "/blog/developer-tools-2-generative-ai"]
+      ]],
+      ["Featured", [
+          ["Top React Graph Visualization Libraries","/blog/top-react-graph-visualization-libraries"],
+          ["React Player with Customized Controls", "/blog/react-player-customized-controls"],
+          ["Role Based Access Systems in Node.JS", "/blog/role-based=access-systems-in-nodejs"],
+          ["Tailwind CSS Replacing Complex Classes @apply", "/blog/tailwind-css-replacing-complex-class-with-at-apply"]
+      ]],
+      ["Earlier This Year", [
+          ["OpenAI Api Supercharges Pieces", "/blog/openai-api-supercharges-developer-workflow-pieces"],
+          ["Top 5 Backend Web Development Frameworks for 2023", "/blog/top-backend-web-development-frameworks"],
+          ["Why CSS Units Batter for Responsive Design", "/blog/css-units-responsive-website-designs"],
+          ["Api Methods: A Practical Guide", "/blog/practical-guide-api-methods"],
+          ["An Analysis if Five Backend Database Tools", "/blog/backend-database-tools-analysis"]
+      ]],
+      ["Archive", [
+          ["2023", "/2023"],
+          ["User Stories", "/user-stories"],
+          ["December 2022, /2022-december"],
+          ["November 2022, /2022-november"],
+          ["October 2022", "/2022-october"],
+          ["September 2022", "/2022-september"],
+          ["August 2022, /2022-august"],
+          ["Early 2022", "/2022-early"]
+      ]]
     ]
   }
