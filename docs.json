@@ -28,6 +28,9 @@
         }
     ],
     "sidebar": [
+        ["General", [
+            ["Home", "/"]
+        ]],
       ["Recent Publications", [
           ["Github & Pieces: Optimize Workflow", "/blog/github-pieces-top-10-highlights-how-pieces-optimizes-development-workflow"],
           ["Developer Tools 2.0: Generative AI", "/blog/developer-tools-2-generative-ai"]
