@@ -4,6 +4,7 @@
     "favicon": "/assets/pieces_dark.png",
     "logo": "/assets/pieces_dark.png",
     "logoDark": "/assets/pieces_light.png",
+    "noindex": true,
     "anchors": [
         {
             "title": "Visit pieces.app",
